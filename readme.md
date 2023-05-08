@@ -110,6 +110,66 @@ This example uses ArcheType-gpt-3.5, and has a set of four custom labels: text n
 $ python archetype/src/run.py --model_name="gpt-3.5" --save_path="<SAVE_PATH>/results.json" --input_files="<CUSTOM_PATH>/Test" --input_labels="skip-eval" --label_set="custom" --custom-labels text number id place --method ans_contains_gt gt_contains_ans resample --response
 ```
 
+## Label Sets in our Paper
+
+SOTAB-27: 
+```
+[
+ 'Boolean',
+ 'Coordinates',
+ 'Country',
+ 'CreativeWork',
+ 'Date',
+ 'Event',
+ 'Gender',
+ 'JobPosting',
+ 'Language',
+ 'Company',
+ 'Number',
+ 'Organization',
+ 'Person',
+ 'Product',
+ 'SportsTeam',
+ 'Text',
+ 'Time',
+ 'URL',
+ 'category',
+ 'currency',
+ 'email',
+ 'price',
+ 'streetAddress',
+ 'telephone',
+ 'Age',
+ 'weight',
+ 'zipCode']
+```
+
+SOTAB-91: See the [associated site.](http://webdatacommons.org/structureddata/sotab/#toc8)
+
+D4Tables:
+```
+['School ID',
+ 'Ethnicity',
+ 'Letter Grade',
+ 'Educational Organization',
+ 'School DBN',
+ 'Region in Brooklyn',
+ 'Region in Bronx',
+ 'Permit Type',
+ 'Region in Queens',
+ 'Region in Manhattan',
+ 'Region in Staten Island',
+ 'County',
+ 'Elevator or Staircase',
+ 'Short City Agency Name',
+ 'Color',
+ 'Full City Agency Name',
+ 'Country',
+ 'State',
+ 'Month',
+ 'License plate type']
+```
+
 ## Citation
 
 ```
