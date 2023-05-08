@@ -1,0 +1,28 @@
+#!/bin/bash -x
+
+#SBATCH --output=archetype-sotab-ft-%j.log
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=8
+#SBATCH --time=47:59:00
+#SBATCH --mem=128GB
+#SBATCH --gres=gpu:1
+#SBATCH --job-name=archetype-sotab-ft
+#SBATCH --mail-type=BEGIN,END
+#SBATCH --mail-user=bf996@nyu.edu
+
+module purge;
+
+#debug flags
+echo $SLURM_JOB_NAME
+
+#env vars
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK;
+export MASTER_PORT=$(shuf -i 10000-65500 -n 1);
+export MASTER_ADDR="$(hostname -s).hpc.nyu.edu";
+export PYTHONPATH=/scratch/bf996/notebooks/doduo:/scratch/bf996/notebooks/$PYTHONPATH
+
+srun \
+    /bin/bash /scratch/bf996/notebooks/archetype/script/run_archetype_env.bash \
+    /bin/bash -c \
+    'python archetype/src/run.py --model_name="ArcheType-llama" --model_path=/scratch/bf996/text-generation-webui/models/llama-7b-cta-oc-new --save_path=/scratch/bf996/llm_er_std/proj/CTA_CPA_Benchmarks/wotab/archetypellama-cont+resam-full+oc-15sample.json-dataset --other_col --table_src --summ_stats --sample_size=15  --input_files="/scratch/bf996/datasets/sotab/Test" --input_labels="/scratch/bf996/datasets/sotab/CTA_test_gt.csv" --label_set="SOTAB-91" --method ans_contains_gt gt_contains_ans resample --results --response'

@@ -1,0 +1,624 @@
+class,CPA label,CTA label,fallback_CTA_label,Sherlock CTA,NYU CTA,GitTables CTA
+Recipe,interactionType,Action,,Description,DATE_TIME:EVENT,action
+CreativeWork,interactionType,Action,,Album,DATE_TIME:EVENT,action
+Event,addressLocality,addressLocality,,Address,LOCATION:ADDRESS,location
+Person,addressLocality,addressLocality,,Address,LOCATION:ADDRESS,location
+LocalBusiness,addressLocality,addressLocality,,Address,LOCATION:ADDRESS,location
+Restaurant,addressLocality,addressLocality,,Address,LOCATION:ADDRESS,location
+Place,addressLocality,addressLocality,,Address,LOCATION:ADDRESS,location
+Hotel,addressLocality,addressLocality,,Address,LOCATION:ADDRESS,location
+Museum,addressLocality,addressLocality,,Address,LOCATION:ADDRESS,location
+Event,addressRegion,addressRegion,,"State, Region, County",LOCATION:REGION,location
+Person,addressRegion,addressRegion,,"State, Region, County",LOCATION:REGION,location
+LocalBusiness,addressRegion,addressRegion,,"State, Region, County",LOCATION:REGION,location
+Restaurant,addressRegion,addressRegion,,"State, Region, County",LOCATION:REGION,location
+Place,addressRegion,addressRegion,,"State, Region, County",LOCATION:REGION,location
+Hotel,addressRegion,addressRegion,,"State, Region, County",LOCATION:REGION,location
+Museum,addressRegion,addressRegion,,"State, Region, County",LOCATION:REGION,location
+LocalBusiness,areaServed,"AdministrativeArea, GeoShape, Place",Place,"Area, Birth place, County","LOCATION:REGION, LOCATION:ADDRESS",location
+LocalBusiness,areaServed,"AdministrativeArea, GeoShape, Place",Place,"Area, Birth place, County","LOCATION:REGION, LOCATION:ADDRESS",location
+Product,audience,audience,,Person,NAMED_ENTITY:PERSON,members
+Product,audienceType,audience,,Type,NAMED_ENTITY:PERSON,members
+Book,NONE,Book/name,,Name,NAMED_ENTITY:BOOK,text
+Book,bookFormat,BookFormatType,,Type,OTHER:CATEGORICAL,category
+Event,isAccessibleForFree,Boolean,,Symbol,OTHER:BINARY,value
+CreativeWork,isFamilyFriendly,Boolean,,Symbol,OTHER:BINARY,value
+CreativeWork,isAccessibleForFree,Boolean,,Symbol,OTHER:BINARY,value
+Book,isAccessibleForFree,Boolean,,Symbol,OTHER:BINARY,value
+Hotel,petsAllowed,"Boolean, Text",Boolean,Symbol,"OTHER:BINARY, OTHER:STRING","value, text"
+Restaurant,acceptsReservations,"Boolean, URL",Boolean,Symbol,"OTHER:BINARY, ID:URL","value, url"
+Product,brand,Brand,,Brand,NAMED_ENTITY:PRODUCT,product
+Product,brand,Brand,,Brand,NAMED_ENTITY:PRODUCT,product
+Person,brand,Brand,,Brand,NAMED_ENTITY:PRODUCT,product
+LocalBusiness,brand,Brand,,Brand,NAMED_ENTITY:PRODUCT,product
+LocalBusiness,brand,Brand,,Brand,NAMED_ENTITY:PRODUCT,product
+Hotel,brand,Brand,,Brand,NAMED_ENTITY:PRODUCT,product
+Product,category,category,,Category,OTHER:CATEGORICAL,category
+Product,category,category,,Category,OTHER:CATEGORICAL,category
+Product,category,category,,Category,OTHER:CATEGORICAL,category
+Event,category,category,,Category,OTHER:CATEGORICAL,category
+SportsEvent,category,category,,Category,OTHER:CATEGORICAL,category
+JobPosting,occupationalCategory,CategoryCode,,Category,OTHER:CATEGORICAL,category
+LocalBusiness,latitude,CoordinateAT,,Location,LOCATION:COORDINATE,location
+LocalBusiness,longitude,CoordinateAT,,Location,LOCATION:COORDINATE,location
+Restaurant,latitude,CoordinateAT,,Location,LOCATION:COORDINATE,location
+Restaurant,longitude,CoordinateAT,,Location,LOCATION:COORDINATE,location
+Place,latitude,CoordinateAT,,Location,LOCATION:COORDINATE,location
+Place,longitude,CoordinateAT,,Location,LOCATION:COORDINATE,location
+Place,longitude,CoordinateAT,,Location,LOCATION:COORDINATE,location
+Place,latitude,CoordinateAT,,Location,LOCATION:COORDINATE,location
+Hotel,latitude,CoordinateAT,,Location,LOCATION:COORDINATE,location
+Hotel,longitude,CoordinateAT,,Location,LOCATION:COORDINATE,location
+Museum,latitude,CoordinateAT,,Location,LOCATION:COORDINATE,location
+Museum,longitude,CoordinateAT,,Location,LOCATION:COORDINATE,location
+Person,addressCountry,Country,,Country,LOCATION:COUNTRY,country
+Person,nationality,Country,,Country,LOCATION:COUNTRY,country
+LocalBusiness,addressCountry,Country,,Country,LOCATION:COUNTRY,country
+Restaurant,addressCountry,Country,,Country,LOCATION:COUNTRY,country
+Place,addressCountry,Country,,Country,LOCATION:COUNTRY,country
+Movie,countryOfOrigin,Country,,Country,LOCATION:COUNTRY,country
+Movie,countryOfOrigin,Country,,Country,LOCATION:COUNTRY,country
+Hotel,addressCountry,Country,,Country,LOCATION:COUNTRY,country
+Museum,addressCountry,Country,,Country,LOCATION:COUNTRY,country
+Book,exampleOfWork,CreativeWork,,Album,NAMED_ENTITY:CREATIVE_WORK,text
+Book,workExample,CreativeWork,,Album,NAMED_ENTITY:CREATIVE_WORK,text
+Recipe,recipeInstructions,"CreativeWork, ItemList",CreativeWork,Album,NAMED_ENTITY:CREATIVE_WORK,text
+Recipe,recipeInstructions,"CreativeWork, ItemList",CreativeWork,Album,NAMED_ENTITY:CREATIVE_WORK,text
+CreativeWork,NONE,CreativeWork/name,,Album,NAMED_ENTITY:CREATIVE_WORK,text
+TVEpisode,partOfSeries,CreativeWorkSeries,,Album,NAMED_ENTITY:CREATIVE_WORK,text
+TVEpisode,partOfSeries,CreativeWorkSeries,,Album,NAMED_ENTITY:CREATIVE_WORK,text
+Product,priceCurrency,currency,,Currency,PRICE:PAYMENT_PRICE,price
+Event,priceCurrency,currency,,Currency,PRICE:PAYMENT_PRICE,price
+LocalBusiness,currenciesAccepted,currency,,Currency,PRICE:PAYMENT_PRICE,price
+JobPosting,currency,currency,,Currency,PRICE:PAYMENT_PRICE,price
+JobPosting,salaryCurrency,currency,,Currency,PRICE:PAYMENT_PRICE,price
+JobPosting,currency,currency,,Currency,PRICE:PAYMENT_PRICE,price
+CreativeWork,priceCurrency,currency,,Currency,PRICE:PAYMENT_PRICE,price
+Book,priceCurrency,currency,,Currency,PRICE:PAYMENT_PRICE,price
+Hotel,currenciesAccepted,currency,,Currency,PRICE:PAYMENT_PRICE,price
+SportsEvent,priceCurrency,currency,,Currency,PRICE:PAYMENT_PRICE,price
+Product,priceValidUntil,Date,,"Day, Birth date",DATE_TIME:END_DATE,date issued
+Person,deathDate,Date,,"Day, Birth date",DATE_TIME:END_DATE,date issued
+Product,releaseDate,Date,,"Day, Birth date",DATE_TIME:START_DATE,date issued
+Person,birthDate,Date,,"Day, Birth date",DATE_TIME:START_DATE,date issued
+LocalBusiness,foundingDate,Date,,"Day, Birth date",DATE_TIME:START_DATE,date issued
+Product,validThrough,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:END_DATE,date issued
+Event,endDate,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:END_DATE,date issued
+Event,validThrough,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:END_DATE,date issued
+JobPosting,validThrough,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:END_DATE,date issued
+SportsEvent,endDate,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:END_DATE,date issued
+Product,productionDate,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:EVENT,date issued
+Recipe,dateModified,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:EVENT,date issued
+CreativeWork,dateModified,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:EVENT,date issued
+Movie,dateModified,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:EVENT,date issued
+Product,validFrom,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+Event,startDate,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+Event,validFrom,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+Recipe,datePublished,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+Recipe,dateCreated,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+JobPosting,datePosted,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+CreativeWork,datePublished,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+CreativeWork,dateCreated,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+Movie,dateCreated,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+Movie,datePublished,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+Movie,startDate,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+Book,datePublished,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+MusicRecording,datePublished,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+MusicRecording,datePublished,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+MusicRecording,dateCreated,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+SportsEvent,startDate,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+SportsEvent,validFrom,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+MusicAlbum,datePublished,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+MusicAlbum,dateCreated,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+TVEpisode,datePublished,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+TVEpisode,startDate,"Date, DateTime",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+Product,availabilityEnds,"Date, DateTime, Time",DateTime,"Day, Birth date",DATE_TIME:END_DATE,date issued
+Product,availabilityStarts,"Date, DateTime, Time",DateTime,"Day, Birth date",DATE_TIME:START_DATE,date issued
+Hotel,checkoutTime,"DateTime, Time",,"Day, Birth date",DATE_TIME:END_DATE,date issued
+Event,doorTime,"DateTime, Time",,"Day, Birth date",DATE_TIME:EVENT,date issued
+Hotel,checkInTime,"DateTime, Time",,"Day, Birth date",DATE_TIME:START_DATE,date issued
+LocalBusiness,dayOfWeek,DayOfWeek,,Day,DATE_TIME:DAY,date issued
+Restaurant,dayOfWeek,DayOfWeek,,Day,DATE_TIME:DAY,date issued
+Place,dayOfWeek,DayOfWeek,,Day,DATE_TIME:DAY,date issued
+Product,availableDeliveryMethod,DeliveryMethod,,category,OTHER:CATEGORICAL,category
+Product,width,Distance,,Range,OTHER:NUMERIC,"serial number, order number, value"
+Product,width,Distance,,Range,OTHER:NUMERIC,"serial number, order number, value"
+Product,height,Distance,,Range,OTHER:NUMERIC,"serial number, order number, value"
+Product,height,Distance,,Range,OTHER:NUMERIC,"serial number, order number, value"
+Product,depth,Distance,,Range,OTHER:NUMERIC,"serial number, order number, value"
+Product,depth,Distance,,Range,OTHER:NUMERIC,"serial number, order number, value"
+Person,height,Distance,,Range,OTHER:NUMERIC,"serial number, order number, value"
+Person,height,Distance,,Range,OTHER:NUMERIC,"serial number, order number, value"
+Event,duration,Duration,,Duration,DATE_TIME:TIME,duration
+Recipe,prepTime,Duration,,Duration,DATE_TIME:TIME,duration
+Recipe,cookTime,Duration,,Duration,DATE_TIME:TIME,duration
+Recipe,totalTime,Duration,,Duration,DATE_TIME:TIME,duration
+Movie,duration,Duration,,Duration,DATE_TIME:TIME,duration
+MusicRecording,duration,Duration,,Duration,DATE_TIME:TIME,duration
+MusicAlbum,duration,Duration,,Duration,DATE_TIME:TIME,duration
+TVEpisode,duration,Duration,,Duration,DATE_TIME:TIME,duration
+JobPosting,educationRequirements,EducationalOccupationalCredential,,Education,ATTRIBUTE:INDUSTRY,"manufacturer, producer"
+JobPosting,qualifications,EducationalOccupationalCredential,,Education,ATTRIBUTE:INDUSTRY,"manufacturer, producer"
+Person,alumniOf,"EducationalOrganization, Organization",EducationalOrganization,Education,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+Person,alumniOf,"EducationalOrganization, Organization",EducationalOrganization,Education,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+Event,email,email,,Symbol,ID:EMAIL,email
+Person,email,email,,Symbol,ID:EMAIL,email
+Person,email,email,,Symbol,ID:EMAIL,email
+Person,email,email,,Symbol,ID:EMAIL,email
+LocalBusiness,email,email,,Symbol,ID:EMAIL,email
+LocalBusiness,email,email,,Symbol,ID:EMAIL,email
+CreativeWork,email,email,,Symbol,ID:EMAIL,email
+Restaurant,email,email,,Symbol,ID:EMAIL,email
+Hotel,email,email,,Symbol,ID:EMAIL,email
+Recipe,calories,Energy,,Capacity,OTHER:NUMERIC,serial number
+Event,NONE,Event/name,,Result,DATE_TIME:EVENT,event
+Event,eventAttendanceMode,EventAttendanceModeEnumeration,,Result,OTHER:CATEGORICAL,category
+SportsEvent,eventAttendanceMode,EventAttendanceModeEnumeration,,Result,OTHER:CATEGORICAL,category
+Event,eventStatus,EventStatusType,,Result,OTHER:CATEGORICAL,category
+SportsEvent,eventStatus,EventStatusType,,Result,OTHER:CATEGORICAL,category
+Person,faxNumber,faxNumber,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+Person,faxNumber,faxNumber,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+LocalBusiness,faxNumber,faxNumber,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+Place,faxNumber,faxNumber,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+Hotel,faxNumber,faxNumber,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+Person,gender,GenderType,,Gender,ATTRIBUTE:GENDER,gender
+Product,eligibleRegion,"GeoShape, Place",Place,Location,LOCATION:COORDINATE,location
+Hotel,NONE,Hotel/name,,Company,NAMED_ENTITY:COMPANY,"manufacturer, producer"
+Product,sku,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,mpn,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,serialNumber,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,gtin,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,gtin13,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,gtin14,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,identifier,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,gtin8,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,sku,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,productID,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,mpn,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,gtin13,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,identifier,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,identifier,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,gtin12,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,gtin8,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,gtin,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Product,gtin14,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Event,identifier,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Person,identifier,IdentifierAT,,Code,ID:NUMERIC_ID,id
+LocalBusiness,isicV4,IdentifierAT,,Code,ID:NUMERIC_ID,id
+JobPosting,identifier,IdentifierAT,,Code,ID:NUMERIC_ID,id
+JobPosting,identifier,IdentifierAT,,Code,ID:NUMERIC_ID,id
+Book,isbn,IdentifierAT,,Code,ID:NUMERIC_ID,id
+JobPosting,identifierNameAP,identifierNameAP,,Name,ID:STRING_ID,id
+Product,reviewCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Product,ratingCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Event,reviewCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Event,maximumAttendeeCapacity,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Event,remainingAttendeeCapacity,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Recipe,ratingCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Recipe,reviewCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Recipe,userInteractionCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+LocalBusiness,reviewCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+LocalBusiness,ratingCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+CreativeWork,userInteractionCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+CreativeWork,ratingCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+CreativeWork,reviewCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+CreativeWork,commentCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Restaurant,ratingCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Restaurant,reviewCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Place,reviewCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Place,ratingCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Movie,ratingCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Movie,reviewCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Book,numberOfPages,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Book,reviewCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Book,ratingCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Hotel,reviewCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+Hotel,ratingCount,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+MusicAlbum,numTracks,Integer,,"Plays, Capacity",OTHER:NUMERIC,"serial number, order number, value"
+TVEpisode,episodeNumber,"Integer, Text",Integer,"Plays, Capacity","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+TVEpisode,seasonNumber,"Integer, Text",Integer,"Plays, Capacity","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Product,availability,ItemAvailability,,Category,OTHER:CATEGORICAL,category
+Event,availability,ItemAvailability,,Category,OTHER:CATEGORICAL,category
+Book,availability,ItemAvailability,,Category,OTHER:CATEGORICAL,category
+SportsEvent,availability,ItemAvailability,,Category,OTHER:CATEGORICAL,category
+MusicAlbum,track,"ItemList, MusicRecording",MusicRecording,Album,OTHER:CATEGORICAL,category
+MusicAlbum,track,"ItemList, MusicRecording",MusicRecording,Album,OTHER:CATEGORICAL,category
+JobPosting,NONE,JobPosting/name,,Industry,ATTRIBUTE:INDUSTRY,"manufacturer, producer"
+Event,inLanguage,Language,,Language,OTHER:CATEGORICAL,language
+Recipe,inLanguage,Language,,Language,OTHER:CATEGORICAL,language
+Person,knowsLanguage,Language,,Language,OTHER:CATEGORICAL,language
+CreativeWork,inLanguage,Language,,Language,OTHER:CATEGORICAL,language
+Movie,inLanguage,Language,,Language,OTHER:CATEGORICAL,language
+Book,inLanguage,Language,,Language,OTHER:CATEGORICAL,language
+Hotel,availableLanguage,Language,,Language,OTHER:CATEGORICAL,language
+Hotel,availableLanguage,Language,,Language,OTHER:CATEGORICAL,language
+Product,acceptedPaymentmethod,"LoanOrCredit, PaymentMethod",paymentAccepted,Credit,OTHER:BINARY,value
+LocalBusiness,NONE,LocalBusiness/name,,Company,NAMED_ENTITY:COMPANY,"manufacturer, producer"
+Place,amenityFeature,LocationFeatureSpecification,,Address,LOCATION:ADDRESS,location
+Place,amenityFeature,LocationFeatureSpecification,,Address,LOCATION:ADDRESS,location
+Hotel,amenityFeature,LocationFeatureSpecification,,Company,LOCATION:ADDRESS,location
+Hotel,amenityFeature,LocationFeatureSpecification,,Company,LOCATION:ADDRESS,location
+Event,hasMap,"Map, URL",,Description,LOCATION:MAP,location
+LocalBusiness,hasMap,"Map, URL",Map,Description,LOCATION:MAP,location
+LocalBusiness,hasMap,"Map, URL",Map,Description,LOCATION:MAP,location
+Place,hasMap,"Map, URL",,Description,LOCATION:MAP,location
+Recipe,fatContent,Mass,,Area,OTHER:NUMERIC,size
+Recipe,carboHydrateContent,Mass,,Area,OTHER:NUMERIC,size
+Recipe,proteinContent,Mass,,Area,OTHER:NUMERIC,size
+Recipe,sodiumContent,Mass,,Area,OTHER:NUMERIC,size
+Recipe,sugarContent,Mass,,Area,OTHER:NUMERIC,size
+Recipe,saturatedFatContent,Mass,,Area,OTHER:NUMERIC,size
+Recipe,fiberContent,Mass,,Area,OTHER:NUMERIC,size
+Recipe,cholesterolContent,Mass,,Area,OTHER:NUMERIC,size
+Recipe,transFatContent,Mass,,Area,OTHER:NUMERIC,size
+Recipe,unsaturatedFatContent,Mass,,Area,OTHER:NUMERIC,size
+Restaurant,hasMenu,"Menu, URL",Menu,Description,OTHER:STRING,"text, description"
+JobPosting,baseSalary,MonetaryAmount,,Currency,PRICE:PURCHASE_PRICE,price
+JobPosting,baseSalary,MonetaryAmount,,Currency,PRICE:PURCHASE_PRICE,price
+JobPosting,estimatedSalary,MonetaryAmount,,Currency,PRICE:PURCHASE_PRICE,price
+Movie,NONE,Movie/name,,Album,NAMED_ENTITY:MOVIE,name
+Museum,NONE,Museum/name,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+MusicRecording,inAlbum,MusicAlbum,,Album,NAMED_ENTITY:MUSIC_ALBUM,name
+MusicAlbum,inAlbum,MusicAlbum,,Album,NAMED_ENTITY:MUSIC_ALBUM,name
+MusicRecording,inAlbum,MusicAlbum,,Album,NAMED_ENTITY:MUSIC_GROUP,name
+MusicAlbum,NONE,MusicAlbum/name,,Album,NAMED_ENTITY:MUSIC_ALBUM,name
+Movie,musicBy,"MusicGroup, Person",MusicArtistAT,Artist,"NAMED_ENTITY:MUSIC_GROUP, NAMED_ENTITY:PERSON",name
+Movie,musicBy,"MusicGroup, Person",MusicArtistAT,Artist,"NAMED_ENTITY:MUSIC_GROUP, NAMED_ENTITY:PERSON",name
+MusicRecording,byArtist,"MusicGroup, Person",MusicArtistAT,Artist,"NAMED_ENTITY:MUSIC_GROUP, NAMED_ENTITY:PERSON",name
+MusicRecording,byArtist,"MusicGroup, Person",MusicArtistAT,Artist,"NAMED_ENTITY:MUSIC_GROUP, NAMED_ENTITY:PERSON",name
+MusicAlbum,byArtist,"MusicGroup, Person",MusicArtistAT,Artist,"NAMED_ENTITY:MUSIC_GROUP, NAMED_ENTITY:PERSON",name
+MusicAlbum,byArtist,"MusicGroup, Person",MusicArtistAT,Artist,"NAMED_ENTITY:MUSIC_GROUP, NAMED_ENTITY:PERSON",name
+MusicRecording,NONE,MusicRecording/name,,Album,NAMED_ENTITY:MUSIC_ALBUM,name
+CreativeWork,copyrightYear,Number,,Year,OTHER:NUMERIC,"serial number, order number, value"
+Movie,copyrightYear,Number,,Year,OTHER:NUMERIC,"serial number, order number, value"
+Book,copyrightYear,Number,,Year,OTHER:NUMERIC,"serial number, order number, value"
+Product,ratingValue,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Product,bestRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Product,worstRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Event,ratingValue,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Recipe,ratingValue,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Recipe,bestRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Recipe,worstRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+LocalBusiness,ratingValue,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+LocalBusiness,bestRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+LocalBusiness,worstRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+CreativeWork,ratingValue,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+CreativeWork,bestRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+CreativeWork,worstRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+CreativeWork,version,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Restaurant,ratingValue,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Restaurant,bestRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Restaurant,worstRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Place,ratingValue,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Place,bestRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Place,worstRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Movie,ratingValue,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Movie,bestRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Movie,worstRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Book,ratingValue,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Book,bestRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Book,worstRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+MusicRecording,ratingValue,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Hotel,ratingValue,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Hotel,bestRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Hotel,worstRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Hotel,ratingValue,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Hotel,bestRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+Hotel,worstRating,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+TVEpisode,ratingValue,"Number, Text",Number,"Ranking, Rank","OTHER:NUMERIC, OTHER:STRING","serial number, order number, description, text"
+JobPosting,experienceRequiments,OccupationalExperienceRequirements,,Industry,ATTRIBUTE:INDUSTRY,"manufacturer, producer"
+Product,offers,Offer,,Sales,OTHER:STRING,"text, description"
+Event,offers,Offer,,Sales,OTHER:STRING,"text, description"
+Person,makesOffer,Offer,,Sales,OTHER:STRING,"text, description"
+LocalBusiness,makesOffer,Offer,,Sales,OTHER:STRING,"text, description"
+CreativeWork,offers,Offer,,Sales,OTHER:STRING,"text, description"
+Book,offers,Offer,,Sales,OTHER:STRING,"text, description"
+Product,itemCondition,OfferItemCondition,,Category,OTHER:STRING,"text, description"
+Product,itemCondition,OfferItemCondition,,Category,OTHER:STRING,"text, description"
+Book,itemCondition,OfferItemCondition,,Category,OTHER:STRING,"text, description"
+Hotel,openingHours,openingHours,,Duration,DATE_TIME:TIME,time
+LocalBusiness,openingHours,openingHours,,Duration,DATE_TIME:TIME,time
+Restaurant,openingHours,openingHours,,Duration,DATE_TIME:TIME,time
+Product,manufacturer,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+Product,manufacturer,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+Recipe,publisher,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+Recipe,publisher,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+Person,worksFor,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+Person,worksFor,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+Person,affiliation,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+Person,affiliation,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+LocalBusiness,parentOrganization,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+JobPosting,hiringOrganization,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+JobPosting,hiringOrganization,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+CreativeWork,publisher,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+CreativeWork,publisher,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+Movie,productionCompany,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+Movie,productionCompany,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+Movie,publisher,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+Book,publisher,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+Book,publisher,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+MusicAlbum,publisher,Organization,,Organization,NAMED_ENTITY:ORGANIZATION,"manufacturer, producer"
+Event,performer,"Organization, Person",Organization,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+Event,performer,"Organization, Person",Organization,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+Event,organizer,"Organization, Person",Organization,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+Event,organizer,"Organization, Person",Organization,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+Recipe,author,"Organization, Person",Person,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+Recipe,author,"Organization, Person",Person,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+Recipe,copyrightHolder,"Organization, Person",Organization,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+CreativeWork,author,"Organization, Person",Person,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+CreativeWork,author,"Organization, Person",Person,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+CreativeWork,creator,"Organization, Person",Person,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+CreativeWork,creator,"Organization, Person",Person,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+CreativeWork,copyrightHolder,"Organization, Person",Organization,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+CreativeWork,copyrightHolder,"Organization, Person",Organization,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+CreativeWork,contributor,"Organization, Person",Person,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+Movie,author,"Organization, Person",Person,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+Movie,author,"Organization, Person",Person,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+Movie,creator,"Organization, Person",Person,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+Movie,creator,"Organization, Person",Person,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+Movie,producer,"Organization, Person",Person,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+Book,author,"Organization, Person",Person,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+Book,author,"Organization, Person",Person,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+SportsEvent,performer,"Organization, Person",Organization,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+SportsEvent,performer,"Organization, Person",Organization,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+SportsEvent,organizer,"Organization, Person",Organization,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+SportsEvent,organizer,"Organization, Person",Organization,"Organization, Person","NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+Person,memberOf,"Organization, ProgramMembership",Organization,Organization,"NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+Person,memberOf,"Organization, ProgramMembership",Organization,Organization,"NAMED_ENTITY:ORGANIZATION, NAMED_ENTITY:PERSON","manufacturer, producer, members"
+LocalBusiness,paymentAccepted,paymentAccepted,,Credit,OTHER:CATEGORICAL,category
+Restaurant,paymentAccepted,paymentAccepted,,Credit,OTHER:CATEGORICAL,category
+Hotel,paymentAccepted,paymentAccepted,,Credit,OTHER:CATEGORICAL,category
+TVEpisode,director,Person,,Person,NAMED_ENTITY:PERSON,members
+LocalBusiness,founder,Person,,Person,NAMED_ENTITY:PERSON,members
+LocalBusiness,founder,Person,,Person,NAMED_ENTITY:PERSON,members
+LocalBusiness,employee,Person,,Person,NAMED_ENTITY:PERSON,members
+LocalBusiness,employee,Person,,Person,NAMED_ENTITY:PERSON,members
+Movie,director,Person,,Person,NAMED_ENTITY:PERSON,members
+Movie,director,Person,,Person,NAMED_ENTITY:PERSON,members
+Movie,actor,Person,,Person,NAMED_ENTITY:PERSON,members
+Movie,actor,Person,,Person,NAMED_ENTITY:PERSON,members
+Book,editor,Person,,Person,NAMED_ENTITY:PERSON,members
+TVEpisode,director,Person,,Person,NAMED_ENTITY:PERSON,members
+Person,NONE,Person/name,,Person,NAMED_ENTITY:PERSON,members
+Hotel,photo,Photograph,,Description,"MEDIA:PHOTO, ID:URL",url
+LocalBusiness,photo,Photograph,,Description,"MEDIA:PHOTO, ID:URL",url
+Restaurant,photo,Photograph,,Description,"MEDIA:PHOTO, ID:URL",url
+Place,photo,Photograph,,Description,"MEDIA:PHOTO, ID:URL",url
+Event,location,Place,,Address,LOCATION:REGION,location
+Event,location,Place,,Address,LOCATION:REGION,location
+Person,homeLocation,Place,,Address,LOCATION:REGION,location
+Person,homeLocation,Place,,Address,LOCATION:REGION,location
+Person,workLocation,Place,,Address,LOCATION:REGION,location
+Person,workLocation,Place,,Address,LOCATION:REGION,location
+Person,birthPlace,Place,,Address,LOCATION:REGION,location
+Person,deathPlace,Place,,Address,LOCATION:REGION,location
+JobPosting,jobLocation,Place,,Address,LOCATION:REGION,location
+JobPosting,jobLocation,Place,,Address,LOCATION:REGION,location
+CreativeWork,contentLocation,Place,,Address,LOCATION:REGION,location
+CreativeWork,contentLocation,Place,,Address,LOCATION:REGION,location
+Restaurant,location,Place,,Address,LOCATION:REGION,location
+Restaurant,location,Place,,Address,LOCATION:REGION,location
+Hotel,containsPlace,Place,,Address,LOCATION:REGION,location
+Hotel,location,Place,,Address,LOCATION:REGION,location
+Hotel,location,Place,,Address,LOCATION:REGION,location
+SportsEvent,location,Place,,Address,LOCATION:REGION,location
+SportsEvent,location,Place,,Address,LOCATION:REGION,location
+Place,NONE,Place/name,,Address,LOCATION:REGION,location
+Event,address,PostalAddress,,Address,LOCATION:ADDRESS,location
+Person,address,PostalAddress,,Address,LOCATION:ADDRESS,location
+LocalBusiness,address,PostalAddress,,Address,LOCATION:ADDRESS,location
+JobPosting,address,PostalAddress,,Address,LOCATION:ADDRESS,location
+Restaurant,address,PostalAddress,,Address,LOCATION:ADDRESS,location
+Place,address,PostalAddress,,Address,LOCATION:ADDRESS,location
+Place,address,PostalAddress,,Address,LOCATION:ADDRESS,location
+Hotel,address,PostalAddress,,Address,LOCATION:ADDRESS,location
+Museum,address,PostalAddress,,Address,LOCATION:ADDRESS,location
+Museum,postalCode,postalCode,,Address,LOCATION:ZIP_CODE,location
+Person,postalCode,postalCode,,Address,LOCATION:ZIP_CODE,location
+LocalBusiness,postalCode,postalCode,,Address,LOCATION:ZIP_CODE,location
+Restaurant,postalCode,postalCode,,Address,LOCATION:ZIP_CODE,location
+Place,postalCode,postalCode,,Address,LOCATION:ZIP_CODE,location
+Hotel,postalCode,postalCode,,Address,LOCATION:ZIP_CODE,location
+Product,price,price,,Currency,PRICE:PURCHASE_PRICE,price
+Event,price,price,,Currency,PRICE:PURCHASE_PRICE,price
+CreativeWork,price,price,,Currency,PRICE:PURCHASE_PRICE,price
+Book,price,price,,Currency,PRICE:PURCHASE_PRICE,price
+SportsEvent,price,price,,Currency,PRICE:PURCHASE_PRICE,price
+MusicAlbum,price,price,,Currency,PRICE:PURCHASE_PRICE,price
+LocalBusiness,priceRange,priceRange,,Range,PRICE:PURCHASE_PRICE,price
+Restaurant,priceRange,priceRange,,Range,PRICE:PURCHASE_PRICE,price
+Hotel,priceRange,priceRange,,Range,PRICE:PURCHASE_PRICE,price
+Product,material,"Product, URL",Product,Description,NAMED_ENTITY:PRODUCT,product
+Product,NONE,Product/name,,Product,NAMED_ENTITY:PRODUCT,product
+Product,model,ProductModel,,Product,NAMED_ENTITY:PRODUCT,product
+Product,model,ProductModel,,Product,NAMED_ENTITY:PRODUCT,product
+Recipe,recipeYield,QuantitativeValue,,Capacity,OTHER:NUMERIC,"serial number, order number, value"
+Product,inventoryLevel,QuantitativeValue,,Capacity,OTHER:NUMERIC,"serial number, order number, value"
+Product,deliveryLeadTime,QuantitativeValue,,Capacity,OTHER:NUMERIC,"serial number, order number, value"
+Product,eligibleQuantity,QuantitativeValue,,Capacity,OTHER:NUMERIC,"serial number, order number, value"
+Product,size,QuantitativeValue,,Capacity,OTHER:NUMERIC,"serial number, order number, value"
+Movie,contentRating,Rating,,"Ranking, Rank",OTHER:ORDINAL,category
+Hotel,starRating,Rating,,"Ranking, Rank",OTHER:ORDINAL,category
+Recipe,NONE,Recipe/name,,Description,OTHER:STRING,"text, description"
+Restaurant,NONE,Restaurant/name,,Company,NAMED_ENTITY:COMPANY,"manufacturer, producer"
+Recipe,suitableForDiet,RestrictedDiet,,Description,OTHER:STRING,"text, description"
+Product,review,Review,,Description,OTHER:STRING,"text, description"
+Product,review,Review,,Description,DATE_TIME:EVENT,event
+Product,review,Review,,Description,DATE_TIME:EVENT,event
+Recipe,review,Review,,Description,DATE_TIME:EVENT,event
+LocalBusiness,review,Review,,Description,DATE_TIME:EVENT,event
+LocalBusiness,review,Review,,Description,DATE_TIME:EVENT,event
+LocalBusiness,review,Review,,Description,DATE_TIME:EVENT,event
+Restaurant,review,Review,,Description,DATE_TIME:EVENT,event
+Restaurant,review,Review,,Description,DATE_TIME:EVENT,event
+Movie,review,Review,,Description,DATE_TIME:EVENT,event
+Movie,review,Review,,Description,DATE_TIME:EVENT,event
+Book,review,Review,,Description,DATE_TIME:EVENT,event
+Book,review,Review,,Description,DATE_TIME:EVENT,event
+Hotel,review,Review,,Description,DATE_TIME:EVENT,event
+SportsEvent,NONE,SportsEvent/name,,Result,DATE_TIME:EVENT,event
+SportsEvent,competitor,SportsTeam,,Team,NAMED_ENTITY:SPORTS_TEAM,"school, event, category"
+SportsEvent,competitor,SportsTeam,,Team,NAMED_ENTITY:SPORTS_TEAM,"school, event, category"
+SportsEvent,awayTeam,SportsTeam,,Team,NAMED_ENTITY:SPORTS_TEAM,"school, event, category"
+SportsEvent,awayTeam,SportsTeam,,Team,NAMED_ENTITY:SPORTS_TEAM,"school, event, category"
+SportsEvent,homeTeam,SportsTeam,,Team,NAMED_ENTITY:SPORTS_TEAM,"school, event, category"
+SportsEvent,homeTeam,SportsTeam,,Team,NAMED_ENTITY:SPORTS_TEAM,"school, event, category"
+Museum,streetAddress,streetAddress,,Address,LOCATION:ADDRESS,location
+Event,streetAddress,streetAddress,,Address,LOCATION:ADDRESS,location
+Person,streetAddress,streetAddress,,Address,LOCATION:ADDRESS,location
+LocalBusiness,streetAddress,streetAddress,,Address,LOCATION:ADDRESS,location
+Restaurant,streetAddress,streetAddress,,Address,LOCATION:ADDRESS,location
+Place,streetAddress,streetAddress,,Address,LOCATION:ADDRESS,location
+Hotel,streetAddress,streetAddress,,Address,LOCATION:ADDRESS,location
+Event,telephone,telephone,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+Event,telephone,telephone,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+Person,telephone,telephone,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+Person,telephone,telephone,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+Person,telephone,telephone,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+LocalBusiness,telephone,telephone,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+LocalBusiness,telephone,telephone,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+LocalBusiness,telephone,telephone,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+CreativeWork,telephone,telephone,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+Restaurant,telephone,telephone,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+Restaurant,telephone,telephone,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+Place,telephone,telephone,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+Hotel,telephone,telephone,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+Hotel,telephone,telephone,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+Museum,telephone,telephone,,Symbol,ID:PHONE_NUMBER,"serial number, order number, value"
+Product,description,Text,,Description,OTHER:STRING,"text, description"
+Product,description,Text,,Description,OTHER:STRING,"text, description"
+Product,color,Text,,Description,OTHER:STRING,"text, description"
+Product,disambiguatingDescription,Text,,Description,OTHER:STRING,"text, description"
+Product,award,Text,,Description,OTHER:STRING,"text, description"
+Event,description,Text,,Description,OTHER:STRING,"text, description"
+Recipe,description,Text,,Description,OTHER:STRING,"text, description"
+Recipe,recipeIngredient,Text,,Description,OTHER:STRING,"text, description"
+Recipe,recipeCategory,Text,,Description,OTHER:STRING,"text, description"
+Recipe,recipeCuisine,Text,,Description,OTHER:STRING,"text, description"
+Recipe,servingSize,Text,,Description,OTHER:STRING,"text, description"
+Recipe,cookingMethod,Text,,Description,OTHER:STRING,"text, description"
+Recipe,headline,Text,,Description,OTHER:STRING,"text, description"
+Person,description,Text,,Description,OTHER:STRING,"text, description"
+Person,jobTitle,Text,,Description,OTHER:STRING,"text, description"
+Person,givenName,Text,,Description,OTHER:STRING,"text, description"
+Person,familyName,Text,,Description,OTHER:STRING,"text, description"
+Person,additionalName,Text,,Description,OTHER:STRING,"text, description"
+Person,contactType,Text,,Description,OTHER:STRING,"text, description"
+Person,alternateName,Text,,Description,OTHER:STRING,"text, description"
+Person,honorificSuffix,Text,,Description,OTHER:STRING,"text, description"
+Person,honorificPrefix,Text,,Description,OTHER:STRING,"text, description"
+Person,disambiguatingDescription,Text,,Description,OTHER:STRING,"text, description"
+Person,award,Text,,Description,OTHER:STRING,"text, description"
+LocalBusiness,description,Text,,Description,OTHER:STRING,"text, description"
+LocalBusiness,contactType,Text,,Description,OTHER:STRING,"text, description"
+LocalBusiness,legalName,Text,,Description,OTHER:STRING,"text, description"
+LocalBusiness,branchCode,Text,,Description,OTHER:STRING,"text, description"
+JobPosting,title,Text,,Description,OTHER:STRING,"text, description"
+JobPosting,description,Text,,Description,OTHER:STRING,"text, description"
+JobPosting,employmentType,Text,,Description,OTHER:STRING,"text, description"
+JobPosting,industry,Text,,Description,OTHER:STRING,"text, description"
+JobPosting,responsibilties,Text,,Description,OTHER:STRING,"text, description"
+JobPosting,skills,Text,,Description,OTHER:STRING,"text, description"
+JobPosting,jobBenefits,Text,,Description,OTHER:STRING,"text, description"
+JobPosting,jobLocationType,Text,,Description,OTHER:STRING,"text, description"
+JobPosting,incentiveCompensation,Text,,Description,OTHER:STRING,"text, description"
+JobPosting,specialCommitments,Text,,Description,OTHER:STRING,"text, description"
+CreativeWork,headline,Text,,Description,OTHER:STRING,"text, description"
+CreativeWork,text,Text,,Description,OTHER:STRING,"text, description"
+CreativeWork,description,Text,,Description,OTHER:STRING,"text, description"
+CreativeWork,alternativeHeadline,Text,,Description,OTHER:STRING,"text, description"
+CreativeWork,disambiguatingDescription,Text,,Description,OTHER:STRING,"text, description"
+CreativeWork,comment,Text,,Description,OTHER:STRING,"text, description"
+Restaurant,servesCuisine,Text,,Description,OTHER:STRING,"text, description"
+Restaurant,description,Text,,Description,OTHER:STRING,"text, description"
+Place,description,Text,,Description,OTHER:STRING,"text, description"
+Movie,description,Text,,Description,OTHER:STRING,"text, description"
+Movie,headline,Text,,Description,OTHER:STRING,"text, description"
+Movie,alternativeHeadline,Text,,Description,OTHER:STRING,"text, description"
+Movie,alternateName,Text,,Description,OTHER:STRING,"text, description"
+Book,description,Text,,Description,OTHER:STRING,"text, description"
+Book,bookEdition,Text,,Description,OTHER:STRING,"text, description"
+Book,text,Text,,Description,OTHER:STRING,"text, description"
+Book,alternativeHeadline,Text,,Description,OTHER:STRING,"text, description"
+Book,disambiguatingDescription,Text,,Description,OTHER:STRING,"text, description"
+Book,headline,Text,,Description,OTHER:STRING,"text, description"
+MusicRecording,description,Text,,Description,OTHER:STRING,"text, description"
+Hotel,description,Text,,Description,OTHER:STRING,"text, description"
+SportsEvent,description,Text,,Description,OTHER:STRING,"text, description"
+MusicAlbum,description,Text,,Description,OTHER:STRING,"text, description"
+TVEpisode,description,Text,,Description,OTHER:STRING,"text, description"
+Museum,description,Text,,Description,OTHER:STRING,"text, description"
+Recipe,keywords,"Text, URL",Text,Description,OTHER:STRING,"text, description, url"
+CreativeWork,keywords,"Text, URL",Text,Description,"OTHER:STRING, ID:URL","text, description, url"
+CreativeWork,genre,"Text, URL",,Description,"OTHER:STRING, ID:URL","text, description, url"
+Movie,genre,"Text, URL",,Description,"OTHER:STRING, ID:URL","text, description, url"
+Movie,keywords,"Text, URL",Text,Description,"OTHER:STRING, ID:URL","text, description, url"
+Book,genre,"Text, URL",Text,Description,"OTHER:STRING, ID:URL","text, description, url"
+Book,keywords,"Text, URL",Text,Description,"OTHER:STRING, ID:URL","text, description, url"
+MusicRecording,genre,"Text, URL",Text,Description,"OTHER:STRING, ID:URL","text, description, url"
+MusicAlbum,genre,"Text, URL",Text,Description,"OTHER:STRING, ID:URL","text, description, url"
+Product,itemReviewed,Thing,,Product,OTHER:STRING,"text, description"
+Event,about,Thing,,Description,OTHER:STRING,"text, description"
+CreativeWork,about,Thing,,Description,OTHER:STRING,"text, description"
+Book,about,Thing,,Description,OTHER:STRING,"text, description"
+Recipe,performTime,Time,,Duration,DATE_TIME:TIME,time
+LocalBusiness,opens,Time,,Duration,DATE_TIME:TIME,time
+LocalBusiness,closes,Time,,Duration,DATE_TIME:TIME,time
+Restaurant,opens,Time,,Duration,DATE_TIME:TIME,time
+Restaurant,closes,Time,,Duration,DATE_TIME:TIME,time
+Place,opens,Time,,Duration,DATE_TIME:TIME,time
+Place,closes,Time,,Duration,DATE_TIME:TIME,time
+TVEpisode,NONE,TVEpisode/name,,Album,NAMED_ENTITY:TV_EPISODE,"text, description, name"
+Event,typicalAgeRange,typicalAgeRange,,Age,ATTRIBUTE:AGE,
+Product,unitCode,unitCode,,Code,ID:NUMERIC_ID,"serial number, order number, value"
+Product,unitCode,unitCode,,Code,ID:NUMERIC_ID,"serial number, order number, value"
+Product,unitCode,unitCode,,Code,ID:NUMERIC_ID,"serial number, order number, value"
+Product,unitCode,unitCode,,Code,ID:NUMERIC_ID,"serial number, order number, value"
+Person,unitCode,unitCode,,Code,ID:NUMERIC_ID,"serial number, order number, value"
+Product,unitText,unitText,,Description,OTHER:STRING,"text, description, name"
+Product,unitText,unitText,,Description,OTHER:STRING,"text, description, name"
+Product,unitText,unitText,,Description,OTHER:STRING,"text, description, name"
+Product,unitText,unitText,,Description,OTHER:STRING,"text, description, name"
+Product,url,URL,,Description,ID:URL,url
+Product,image,URL,,Description,ID:URL,url
+Product,logo,URL,,Description,ID:URL,url
+Event,url,URL,,Description,ID:URL,url
+Event,image,URL,,Description,ID:URL,url
+Recipe,image,URL,,Description,ID:URL,url
+Recipe,url,URL,,Description,ID:URL,url
+Person,image,URL,,Description,ID:URL,url
+Person,url,URL,,Description,ID:URL,url
+Person,sameAs,URL,,Description,ID:URL,url
+LocalBusiness,url,URL,,Description,ID:URL,url
+LocalBusiness,image,URL,,Description,ID:URL,url
+LocalBusiness,logo,URL,,Description,ID:URL,url
+JobPosting,image,URL,,Description,ID:URL,url
+JobPosting,url,URL,,Description,ID:URL,url
+CreativeWork,image,URL,,Description,ID:URL,url
+CreativeWork,url,URL,,Description,ID:URL,url
+Restaurant,url,URL,,Description,ID:URL,url
+Restaurant,image,URL,,Description,ID:URL,url
+Place,url,URL,,Description,ID:URL,url
+Place,sameAs,URL,,Description,ID:URL,url
+Place,image,URL,,Description,ID:URL,url
+Place,logo,URL,,Description,ID:URL,url
+Movie,url,URL,,Description,ID:URL,url
+Movie,image,URL,,Description,ID:URL,url
+Movie,sameAs,URL,,Description,ID:URL,url
+Book,image,URL,,Description,ID:URL,url
+Book,url,URL,,Description,ID:URL,url
+MusicRecording,url,URL,,Description,ID:URL,url
+MusicRecording,image,URL,,Description,ID:URL,url
+Hotel,image,URL,,Description,ID:URL,url
+Hotel,url,URL,,Description,ID:URL,url
+SportsEvent,url,URL,,Description,ID:URL,url
+SportsEvent,image,URL,,Description,ID:URL,url
+MusicAlbum,url,URL,,Description,ID:URL,url
+MusicAlbum,image,URL,,Description,ID:URL,url
+TVEpisode,url,URL,,Description,ID:URL,url
+Product,warranty,WarrantyPromise,,Description,OTHER:STRING,"text, description"
+Product,weight,weight,,Weight,ATTRIBUTE:WEIGHT,size
+Product,weight,weight,,Weight,ATTRIBUTE:WEIGHT,size
+Person,weight,weight,,Weight,ATTRIBUTE:WEIGHT,size
+Person,weight,weight,,Weight,ATTRIBUTE:WEIGHT,size
+JobPosting,workHours,workHours,,Duration,DATE_TIME:RANGE,duration

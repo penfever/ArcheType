@@ -1,0 +1,16 @@
+setuptools
+wheel
+accelerate
+bitsandbytes
+transformers>=4.28.1
+tokenizers>=0.13.3
+langchain
+sentence-transformers
+torch
+openai
+requests
+retry
+pandas
+tqdm
+numpy
+python-dotenv
