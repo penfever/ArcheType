@@ -35,17 +35,17 @@ export ADDL_FLAGS=" --other_col --table_src --summ_stats --sample_size=15 "
 export FT_ADDL_FLAGS="--num_train_epochs 3 --per_device_train_batch_size 2 --per_device_eval_batch_size 2 --gradient_accumulation_steps 16 --evaluation_strategy "no" --save_strategy "steps" --save_steps 2000 --save_total_limit 1 --learning_rate 2e-5 --weight_decay 0. --warmup_ratio 0.03 --lr_scheduler_type "cosine" --logging_steps 1"
 
 
-cd /scratch/bf996/notebooks
+# cd /scratch/bf996/notebooks
 
-sed -e "s#%%GEN_MODEL_PATH%%#${GEN_MODEL_PATH}${ADDL_FLAGS}#g" \
-    -e "s#%%JSON_OUT_PATH%%#${JSON_OUT_PATH}#g" \
-    archetype/batch/make_archetype_dataset.batch > archetype/batch/make_archetype_dataset_mod.batch
+# sed -e "s#%%GEN_MODEL_PATH%%#${GEN_MODEL_PATH}${ADDL_FLAGS}#g" \
+#     -e "s#%%JSON_OUT_PATH%%#${JSON_OUT_PATH}#g" \
+#     archetype/batch/make_archetype_dataset.batch > archetype/batch/make_archetype_dataset_mod.batch
 
-job1=$(sbatch archetype/batch/make_archetype_dataset_mod.batch | awk '{print $4}')
+# job1=$(sbatch archetype/batch/make_archetype_dataset_mod.batch | awk '{print $4}')
 
-echo "Executing job 1"
+# echo "Executing job 1"
 
-echo $job1
+# echo $job1
 
 cd /scratch/bf996/stanford_alpaca
 
@@ -55,7 +55,7 @@ sed -e "s#%%BASE_WEIGHTS%%#${BASE_WEIGHTS}#g" \
     -e "s#%%ADDL_FLAGS%%#${FT_ADDL_FLAGS}#g" \
     batch/finetune_llama_ctabase.sbatch > batch/finetune_llama_ctabase_mod.sbatch
 
-job2=$(sbatch --dependency=afterok:$job1 batch/finetune_llama_ctabase_mod.sbatch | awk '{print $4}')
+job2=$(sbatch batch/finetune_llama_ctabase_mod.sbatch | awk '{print $4}')
 
 echo "Executing job 2"
 
