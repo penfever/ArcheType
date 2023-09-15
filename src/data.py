@@ -400,7 +400,7 @@ def prompt_context_insert(context_labels: str, context : str, max_len : int = 20
     s = f'Pick the column\'s class. I mean if you want to. It would be cool, I think. Anyway, give it a try, I guess? \n Here\'s the column itself! {context} \n And, um, here are some column names you could pick from ... {context_labels} \n Ok, go ahead! \n'
   elif "fozzieprompt" in model:
     s = f'Waka waka! This is Fozzie bear! I would totally ❤️ you if you would be my friend, and also pick a class for this column, before we end. \n Here\'s the column, waka waka! {context} \n If you get the right class, it\'ll be a real gas! {context_labels} \n What\'s the type? \n'
-  elif model == "gpt-3.5":
+  elif "gpt-3.5" in model:
     s = f'SYSTEM: Please select the field from {context_labels} which best describes the context. Respond only with the name of the field. \n CONTEXT: {context}'
   elif model == "llama-old":
     s = f'INSTRUCTION: Select the field from the category which matches the input. \n CATEGORIES: {context_labels} \n INPUT:{context} \n OUTPUT: '

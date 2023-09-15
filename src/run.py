@@ -41,7 +41,7 @@ def run(
   
   if model_name in ["llama", "llama-old", "sherlock"]:
     pass
-  elif model_name == "gpt-3.5":
+  elif "gpt-3.5" in model_name:
     load_dotenv(DOTENV_PATH)
     openai.api_key = os.getenv("OPENAI_API_KEY")
     assert openai.api_key != None, "api key did not load"

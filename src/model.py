@@ -222,7 +222,9 @@ def init_model(model, args):
         tokenizer = template = pt = MAX_LEN = params = None
     else:
         print("Sorry, I don't recognize model name {}. Please try again.".format(model))
-    if any(["flan-t5-xxl-zs" in model, "topp-zs" in model, "flan-ul2-zs" in model]):
+    if any(["flan-t5-xxl-zs" in model, "topp-zs" in model, "flan-ul2-zs" in model, \
+            "-chorus" in model, "-korini" in model, "-noisy" in model, \
+            "-short" in model, "-inverted" in model]):
         template = """{instruction}"""
     else:
         template = """Below is an instruction that describes a task. Write a response that appropriately completes the request.
