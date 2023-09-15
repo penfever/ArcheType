@@ -1,6 +1,14 @@
 
 #Project-specific
 logs/
+results/
+Test/
+CTA_test_corner_cases_gt.csv
+CTA_test_format_heterogeneity_gt.csv
+CTA_test_gt.csv
+CTA_test_missing_values_gt.csv
+CTA_test_random_gt.csv
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

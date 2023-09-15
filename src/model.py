@@ -23,13 +23,13 @@ except ImportError:
 def query_correct_model(model, prompt, context_labels, context, session, link, lsd, args):
     if "gpt" in model:
         orig_ans = call_gpt_model(prompt, lsd)
-    elif model in ["llama-zs", "opt-iml-max-30b-zs", "ArcheType-llama", "ArcheType-llama-oc"]:
+    elif any(["llama-zs" in model, "opt-iml-max-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
         try:
             orig_ans = args["llm_chain"].run(prompt)
         except NameError:
             set_pipeline(k=1, args=args)
             orig_ans = args["llm_chain"].run(prompt)
-    elif model in ["topp-zs", "flan-t5-xxl-zs", "flan-ul2-zs"]:
+    elif any(["topp-zs" in model, "flan-t5-xxl-zs" in model, "flan-ul2-zs" in model]):
         orig_ans = get_topp_resp(prompt, 1, args)
     else:
         orig_ans = call_llama_model(session, link, prompt, lsd, None, args)
@@ -62,6 +62,7 @@ def get_topp_resp(prompt, k, args):
                                   max_length=args["MAX_LEN"],
                                   temperature=0.1*k,
                                   top_p=0.90-(0.1 * k),
+                                  do_sample=True,
                                   repetition_penalty=1.3
                                   )
     orig_ans = args["tokenizer"].decode(outputs[0], skip_special_tokens=True)
@@ -80,6 +81,9 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
       fixed_labels = sotab_top_hier[dtype]
   else:
       fixed_labels = list(set([fix_labels(s, lsd) for s in lsd['label_set']]))
+      ground_truth = fix_labels(ground_truth, lsd)
+  if "check_labels" in method:
+    assert ground_truth in fixed_labels, f"Ground truth {ground_truth} not in label set {fixed_labels}"
   context_labels = ", ".join(fixed_labels)
   fixed_labels = sorted(fixed_labels, key=len, reverse=True)
   if model in ["llama-zs", "opt-iml-30b-zs", "ArcheType-llama", "ArcheType-llama-oc"]:
@@ -136,6 +140,7 @@ def set_pipeline(k=1, args=None):
         max_length=args["MAX_LEN"],
         temperature=0.5*k,
         top_p=0.80-(0.1 * k),
+        do_sample=True,
         repetition_penalty=1.3
     )
     args["local_llm"] = HuggingFacePipeline(pipeline=args["pipe"])
@@ -166,7 +171,7 @@ def init_model(model, args):
             LLAMA_PATH, 
             device_map=device_map
         )
-    elif model == "alpaca-7b-zs":
+    elif "alpaca-7b-zs" in model:
         args["MAX_LEN"]=2048
         tokenizer = LlamaTokenizer.from_pretrained("chavinlo/alpaca-native")
         base_model = LlamaForCausalLM.from_pretrained(
@@ -175,7 +180,7 @@ def init_model(model, args):
             load_in_8bit=True,
             device_map='auto',
         )
-    elif model == "vicuna-13b-zs":
+    elif "vicuna-13b-zs" in model:
         args["MAX_LEN"]=2048
         tokenizer = AutoTokenizer.from_pretrained("eachadea/vicuna-13b")
         base_model = AutoModelForCausalLM.from_pretrained(
@@ -184,27 +189,27 @@ def init_model(model, args):
             load_in_8bit=True,
             device_map='auto',
         )
-    elif model == "gpt4-x-alpaca-zs":
+    elif "gpt4-x-alpaca-zs" in model:
         args["MAX_LEN"]=2048
         tokenizer = AutoTokenizer.from_pretrained("chavinlo/gpt4-x-alpaca")
         base_model = AutoModelForCausalLM.from_pretrained("chavinlo/gpt4-x-alpaca", device_map="auto", load_in_8bit=True)
-    elif model == "topp-zs":
+    elif "topp-zs" in model:
         args["MAX_LEN"]=512
         tokenizer = AutoTokenizer.from_pretrained("bigscience/T0pp")
         base_model = AutoModelForSeq2SeqLM.from_pretrained("bigscience/T0pp", device_map="auto", torch_dtype=torch.float16, load_in_8bit=True)
-    elif model == "flan-t5-xxl-zs":
+    elif "flan-t5-xxl-zs" in model:
         args["MAX_LEN"]=512
         tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-xxl")
         base_model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-xxl", device_map="auto", torch_dtype=torch.float16, load_in_8bit=True)
-    elif model == "flan-ul2-zs":
+    elif "flan-ul2-zs" in model:
         args["MAX_LEN"]=512
         base_model = T5ForConditionalGeneration.from_pretrained("google/flan-ul2", torch_dtype=torch.bfloat16, device_map="auto")                                                                 
         tokenizer = AutoTokenizer.from_pretrained("google/flan-ul2")
-    elif model == "galpaca-30b-zs":
+    elif "galpaca-30b-zs" in model:
         args["MAX_LEN"]=2048
         tokenizer = AutoTokenizer.from_pretrained("GeorgiaTechResearchInstitute/galpaca-30b", device_map="auto", torch_dtype=torch.float16, load_in_8bit=True)
         base_model = AutoModelForCausalLM.from_pretrained("GeorgiaTechResearchInstitute/galpaca-30b")
-    elif model == "opt-iml-max-30b-zs":
+    elif "opt-iml-max-30b-zs" in model:
         args["MAX_LEN"]=2048
         tokenizer = AutoTokenizer.from_pretrained("facebook/opt-iml-max-30b", use_fast=False, padding_side='left')
         base_model = AutoModelForCausalLM.from_pretrained("facebook/opt-iml-max-30b", device_map="auto", torch_dtype=torch.float16)
@@ -217,7 +222,7 @@ def init_model(model, args):
         tokenizer = template = pt = MAX_LEN = params = None
     else:
         print("Sorry, I don't recognize model name {}. Please try again.".format(model))
-    if model in ["flan-t5-xxl-zs", "topp-zs", "flan-ul2-zs"]:
+    if any(["flan-t5-xxl-zs" in model, "topp-zs" in model, "flan-ul2-zs" in model]):
         template = """{instruction}"""
     else:
         template = """Below is an instruction that describes a task. Write a response that appropriately completes the request.

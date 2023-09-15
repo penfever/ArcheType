@@ -115,7 +115,7 @@ def run(
     json.dump(prompt_dict, my_f, ensure_ascii=False, indent=4)
   if results:
     if "skip-eval" in method:
-      print("Cannot evalute, no ground truth labels provided.")
+      print("Cannot evaluate, no ground truth labels provided.")
       return
     print("Run complete. Checking results...")
     if model_name == "doduo":
@@ -145,7 +145,7 @@ def main():
     parser.add_argument("--other_col", action='store_true', help="Other column")
     parser.add_argument("--skip_short", action='store_true', help="Skip short")
     parser.add_argument("--min_var", type=int, default=0, help="Columns which contain less than min_var unique values will not be evaluated")
-    parser.add_argument("--method", nargs='+', type=str, default=["similarity"], help="Sets label remapping strategy. skip-existing will skip columns which already have a prompt in the prompt_dict. similarity will use the similarity metric to find the closest label in the label set. ans_contains_gt and gt_contains_ans will use contains label remapping, and resample will call the LLM multiple times.")
+    parser.add_argument("--method", nargs='+', type=str, default=["similarity"], help="Sets label remapping strategy. skip-existing will skip columns which already have a prompt in the prompt_dict. If skip-eval is in method, then no evaluation will be performed. similarity will use the similarity metric to find the closest label in the label set. ans_contains_gt and gt_contains_ans will use contains label remapping, and resample will call the LLM multiple times. If check_labels is in method, then every ground truth label will be verified against the values in the label set.")
 
     args = parser.parse_args()
 

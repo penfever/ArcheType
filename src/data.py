@@ -249,7 +249,10 @@ label_dict_map_small = {'Location' : 'streetAddress', 'PostalAddress' : 'streetA
                         "Place" : "Organization", "WarrantyPromise" : "Text", "typicalAgeRange" : "Age",
                         "EducationalOccupationalCredential" : "JobRequirements", "EventStatusType" : "Event", 
                         "identifierNameAP" : "IdentifierAT", "ItemAvailability" : "category", "MusicGroup" : "Person",
-                        "SportsEvent" : "Event", "Audience" : "Person", "Energy" : "Number"}
+                        "SportsEvent" : "Event", "Audience" : "Person", "Energy" : "Number", "EventAttendanceModeEnumeration" : "Boolean", "url" : "URL",
+                        "OfferItemCondition" : "category", "MusicAlbum" : "creativework", "MusicRecording" : "creativework",
+                        "openingHours" : "Time", "Photograph" : "URL", "priceRange" : "price", "unitCode" : "category", "workHours" : "Time", "CategoryCode" : "category",
+                        "RestrictedDiet" : "category", "BookFormatType" : "category", "LocationFeatureSpecification" : "text", "audience" : "category"}
 
 context_labels_small = {"name" : "context_labels_small", "label_set" : cls, "dict_map" : label_dict_map_small, 'abbrev_map' : abbrev_map}
 
@@ -385,7 +388,19 @@ def make_json(prompt, var_params, args):
       }
 
 def prompt_context_insert(context_labels: str, context : str, max_len : int = 2000, model : str = "gpt-3.5"):
-  if model == "gpt-3.5":
+  if "chorusprompt" in model:
+    s = f'For the following table column, select a schema.org type annotation from {context_labels}. \n Input column: {context} \n Output: \n'
+  elif "koriniprompt" in model:
+    s = f'Answer the question based on the task below. If the question cannot be answered using the information provided, answer with "I don\'t know". \n Task: Classify the column given to you into only one of these types: {context_labels} \n Input column: {context} \n  Type: \n'
+  elif "invertedprompt" in model:
+    s = f'Here is a column from a table: {context} \n Please select the class from that best describes the column, from the following options. \n Options: {context_labels} \n Response: \n'
+  elif "shortprompt" in model:
+    s = f'Pick the column\'s class. \n Column: {context} \n Classes: {context_labels} \n Output: \n'
+  elif "noisyprompt" in model:
+    s = f'Pick the column\'s class. I mean if you want to. It would be cool, I think. Anyway, give it a try, I guess? \n Here\'s the column itself! {context} \n And, um, here are some column names you could pick from ... {context_labels} \n Ok, go ahead! \n'
+  elif "fozzieprompt" in model:
+    s = f'Waka waka! This is Fozzie bear! I would totally ❤️ you if you would be my friend, and also pick a class for this column, before we end. \n Here\'s the column, waka waka! {context} \n If you get the right class, it\'ll be a real gas! {context_labels} \n What\'s the type? \n'
+  elif model == "gpt-3.5":
     s = f'SYSTEM: Please select the field from {context_labels} which best describes the context. Respond only with the name of the field. \n CONTEXT: {context}'
   elif model == "llama-old":
     s = f'INSTRUCTION: Select the field from the category which matches the input. \n CATEGORIES: {context_labels} \n INPUT:{context} \n OUTPUT: '
@@ -400,7 +415,7 @@ def prompt_context_insert(context_labels: str, context : str, max_len : int = 20
   elif model in ["llama", "ArcheType-llama", "ArcheType-llama-oc"]:
     s = f'INSTRUCTION: Select the category which best matches the input. \n INPUT:{context} \n CATEGORY: '
   if len(s) > max_len:
-    s = s[:max_len - 3]
+    s = s[:max_len - 25]
   return s
 
 def derive_meta_features(col):
