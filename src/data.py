@@ -442,11 +442,17 @@ def insert_source(context, fname):
   context.insert(0, "SRC: " + addstr)
   return context    
     
-def get_df_sample(df, rand_seed, val_indices, len_context, min_variance=1, replace=False, full=False, other_col=False, max_len=8000):
+def get_df_sample(df, rand_seed, val_indices, len_context, min_variance=1, replace=False, full=False, other_col=False, max_len=8000, method=[], coherence_scores=None):
     column_samples = {}
     ignore_list = ["None", 'none', 'NaN', 'nan', 'N/A', 'na', '']
-    for col in df.columns:
-      sample_list = list(set(p[:max_len//(len_context*3)] for p in pd.unique(df.astype(str)[col]) if p not in ignore_list))
+    for idx, col in enumerate(df.columns):
+      colvals = df.astype(str)[col]
+      if "simple_random_sampling" in method:
+        sample_list = colvals.sample(n=max_len//(len_context*3), replace=replace, random_state=rand_seed).tolist()
+      elif "coherence_sampling" in method:
+        sample_list = colvals.sample(n=max_len//(len_context*3), replace=replace, random_state=rand_seed, weights=coherence_scores[idx]).tolist()
+      else:
+        sample_list = list(set(p[:max_len//(len_context*3)] for p in pd.unique(colvals) if p not in ignore_list))
       #reformat integer samples
       sl_mod = []
       # Meta-features
@@ -487,6 +493,18 @@ relative_path_to_csv = os.path.join(current_script_dir, 'metadata', 'wotab-mappi
 csv_path = os.path.normpath(relative_path_to_csv)
 
 mappings = pd.read_csv(csv_path)
+
+#SCHEMA ORG
+relative_path_to_csv = os.path.join(current_script_dir, 'metadata', 'schemaorg-current-https-types.csv')
+
+# Normalize the path to handle any inconsistencies in the directory separators
+csv_path = os.path.normpath(relative_path_to_csv)
+
+schema_df = pd.read_csv(csv_path)
+
+def get_schema_df():
+  return schema_df
+
 
 sherlock_to_cta = {}
 cta_list = list(set(mappings['Sherlock CTA'].tolist()))

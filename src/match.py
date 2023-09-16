@@ -5,8 +5,10 @@ import re
 
 try:
   from .const import INTEGER_SET, BOOLEAN_SET
+  from .data import get_schema_df, fix_labels
 except ImportError:
   from const import INTEGER_SET, BOOLEAN_SET
+  from data import get_schema_df, fix_labels
 
 def ans_contains_gt(ans_n, fixed_labels):
     for fixed_label in fixed_labels:
@@ -59,12 +61,41 @@ def get_base_dtype(context):
           dtype = "float"
     return dtype    
 
-def apply_basic_rules(context, lbl):
+def check_contains(s1, s2):
+    if s1 in s2:
+        return True
+    if s2 in s1:
+        return True
+    return False
+
+def apply_basic_rules(context, lbl, lsd):
   if not context:
     return lbl
   if not isinstance(context, list):
     return lbl
+  schema_df = get_schema_df()
+  schema_ids = schema_df["id"].tolist()
   try:
+      for s in context:
+        in_rel = False
+        cont_rel = False
+        if s in schema_ids:
+          in_rel = True
+        elif any([sid in s for sid in schema_ids]):
+          cont_rel = True
+        if in_rel or cont_rel:
+          if in_rel:
+            ss = schema_df[schema_df['id'] == s]
+          elif cont_rel:
+            schema_df['cont'] = schema_df['id'].apply(lambda x: check_contains(x, s))
+            ss = schema_df[schema_df['cont'] == True]
+          enumtype = str(ss.iloc[0]["enumerationtype"])
+          if enumtype != "":
+            lbl = enumtype.split("/")[-1]
+          else:
+            lbl = ss["label"].tolist()[0]
+          lbl = fix_labels(lbl, lsd)
+          return lbl
       if all(s.endswith(" g") for s in context):
         lbl = "weight"
       if all(s.endswith(" kg") for s in context):

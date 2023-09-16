@@ -20,6 +20,23 @@ except ImportError:
     from data import *
     from match import *
 
+def model_coherence_call(s, model_name):
+    prompt = f'On an integer scale of 1 to 10, please score how coherent the following English text is. TEXT: {s} \n'
+    res = query_correct_model(model_name, prompt, "", "", None, "", None, args="")
+    if res in range(1,11):
+        return res
+    return 1
+
+def get_coherence_scores(f_df, model_name):
+    coherence_scores = []
+    for col in f_df.columns:
+        colvals = f_df[col]
+        if all(colvals.astype(str).apply(str.isnumeric)):
+            coherence_scores.append(pd.Series([1 for i in range(len(colvals))]))
+        else:
+            coherence_scores.append(pd.Series([model_coherence_call(s, model_name) for s in colvals.tolist()]))
+    return coherence_scores
+
 def query_correct_model(model, prompt, context_labels, context, session, link, lsd, args):
     if "gpt" in model:
         orig_ans = call_gpt_model(prompt, lsd)
@@ -101,7 +118,7 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
   if not response:
     orig_ans = ans_n = ""
   else:
-    orig_ans = apply_basic_rules(limited_context, None)
+    orig_ans = apply_basic_rules(limited_context, None, lsd)
     if orig_ans is None:
         orig_ans = query_correct_model(model, prompt, context_labels, context, session, link, lsd, args)
         #hierarchical matching logic

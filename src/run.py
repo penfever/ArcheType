@@ -7,12 +7,12 @@ import argparse
 import openai
 
 try:
-  from .model import init_model, get_sent_model, get_model_resp, get_sherlock_resp
+  from .model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores
   from .data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any
   from .metrics import results_checker, results_checker_doduo
   from .const import DOTENV_PATH, MAX_LEN
 except ImportError:
-  from model import init_model, get_sent_model, get_model_resp, get_sherlock_resp
+  from model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores
   from data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any
   from metrics import results_checker, results_checker_doduo
   from const import DOTENV_PATH, MAX_LEN
@@ -85,7 +85,11 @@ def run(
         # label_indices = ["values"]
         key = get_sherlock_resp(f_df, gt_labels, prompt_dict, model_name, label_indices, str(f), label_set, args)
         continue
-    sample_df = get_df_sample(f_df, rand_seed, label_indices, sample_size, full=summ_stats, other_col=other_col, max_len=args["MAX_LEN"])
+    if "coherence_sampling" in method:
+        coherence_scores = get_coherence_scores(f_df, model_name)
+    else:
+        coherence_scores = None
+    sample_df = get_df_sample(f_df, rand_seed, label_indices, sample_size, full=summ_stats, other_col=other_col, max_len=args["MAX_LEN"], method=method, coherence=coherence_scores)
     f_df_cols = f_df.columns
     for idx, col in enumerate(f_df_cols):
       if idx not in label_indices:
