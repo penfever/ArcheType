@@ -448,9 +448,9 @@ def get_df_sample(df, rand_seed, val_indices, len_context, min_variance=1, repla
     for idx, col in enumerate(df.columns):
       colvals = df.astype(str)[col]
       if "simple_random_sampling" in method:
-        sample_list = colvals.sample(n=max_len//(len_context*3), replace=replace, random_state=rand_seed).tolist()
+        sample_list = colvals.sample(n=max_len//(len_context*3), replace=True, random_state=rand_seed).tolist()
       elif "coherence_sampling" in method:
-        sample_list = colvals.sample(n=max_len//(len_context*3), replace=replace, random_state=rand_seed, weights=coherence_scores[idx]).tolist()
+        sample_list = colvals.sample(n=max_len//(len_context*3), replace=True, random_state=rand_seed, weights=coherence_scores[idx]).tolist()
       else:
         sample_list = list(set(p[:max_len//(len_context*3)] for p in pd.unique(colvals) if p not in ignore_list))
       #reformat integer samples
