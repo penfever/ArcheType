@@ -89,7 +89,7 @@ def run(
         coherence_scores = get_coherence_scores(f_df, model_name)
     else:
         coherence_scores = None
-    sample_df = get_df_sample(f_df, rand_seed, label_indices, sample_size, full=summ_stats, other_col=other_col, max_len=args["MAX_LEN"], method=method, coherence=coherence_scores)
+    sample_df = get_df_sample(f_df, rand_seed, label_indices, sample_size, full=summ_stats, other_col=other_col, max_len=args["MAX_LEN"], method=method, coherence_scores=coherence_scores)
     f_df_cols = f_df.columns
     for idx, col in enumerate(f_df_cols):
       if idx not in label_indices:
