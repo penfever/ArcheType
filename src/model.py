@@ -20,21 +20,23 @@ except ImportError:
     from data import *
     from match import *
 
-def model_coherence_call(s, model_name):
-    prompt = f'On an integer scale of 1 to 10, please score how coherent the following English text is. TEXT: {s} \n'
-    res = query_correct_model(model_name, prompt, "", "", None, "", None, args="")
+def model_coherence_call(s, model_name, args):
+    if not s or s == "" or not isinstance(s, str):
+        return 1
+    prompt = f'On an integer scale of 1 to 10, please score how coherent the following English text is. TEXT: {s[:256]} \n'
+    res = query_correct_model(model_name, prompt, "", "", None, "", None, args=args)
     if res in range(1,11):
         return res
     return 1
 
-def get_coherence_scores(f_df, model_name):
+def get_coherence_scores(f_df, model_name, args):
     coherence_scores = []
     for col in f_df.columns:
         colvals = f_df[col]
         if all(colvals.astype(str).apply(str.isnumeric)):
             coherence_scores.append(pd.Series([1 for i in range(len(colvals))]))
         else:
-            coherence_scores.append(pd.Series([model_coherence_call(s, model_name) for s in colvals.tolist()]))
+            coherence_scores.append(pd.Series([model_coherence_call(s, model_name, args) for s in colvals.tolist()]))
     return coherence_scores
 
 def query_correct_model(model, prompt, context_labels, context, session, link, lsd, args):
