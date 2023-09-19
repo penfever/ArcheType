@@ -77,9 +77,7 @@ def run_special_cases(s, d, lsd):
       "Doctoral degree or equivalent" in s,
     ]):
       lbl = fix_labels("EducationalOccupationalCredential", lsd)
-      d['response'] = lbl
-      d['correct'] = (d['response'] == d['ground_truth'])
-      return d
+      return lbl
     #Photograph is usually a web url which ends in image file extension
     if any([
       s.startswith("https://"), s.startswith("http://")
@@ -88,15 +86,11 @@ def run_special_cases(s, d, lsd):
       s.endswith(".jpg"), s.endswith(".png"), s.endswith(".jpeg"), s.endswith(".gif"), s.endswith(".svg"), s.endswith(".bmp")
     ]):
       lbl = fix_labels("Photograph", lsd)
-      d['response'] = lbl
-      d['correct'] = (d['response'] == d['ground_truth'])
-      return d
+      return lbl
     #Action refers generally to website actions  
     if any(["https://schema.org/CommentAction" in s, "https://schema.org/ViewAction" in s, "https://schema.org/LikeAction" in s, "https://schema.org/InsertAction" in s]):
       lbl = fix_labels("Action", lsd)
-      d['response'] = lbl
-      d['correct'] = (d['response'] == d['ground_truth'])
-      return d
+      return lbl
     #ItemList is actually just recipe steps
     if any([
       "whisk" in s.lower(),
@@ -108,9 +102,7 @@ def run_special_cases(s, d, lsd):
       "Let stand" in s.lower(),
     ]):
       lbl = fix_labels("ItemList", lsd)
-      d['response'] = lbl
-      d['correct'] = (d['response'] == d['ground_truth'])
-      return d
+      return lbl
     return False
 
 def apply_basic_rules(context, lbl, lsd):
@@ -124,7 +116,7 @@ def apply_basic_rules(context, lbl, lsd):
       for s in context:
         if any([s.startswith(s1) for s1 in ["OC_", "SRC", "std:", "mean:", "mode:", "median:", "max:", "min:"]]):
             continue
-        special_case = run_special_cases(s, d, lsd)
+        special_case = run_special_cases(s, lbl, lsd)
         if special_case:
           return special_case
         in_rel = False
