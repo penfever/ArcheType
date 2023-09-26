@@ -31,7 +31,7 @@ def results_checker_doduo(file_name):
 
     print(f"Total entries: {n} \n Accuracy: {round(correct/n, 4)} \n Weighted F1: {round(weighted_f1, 4)} \n Unweighted F1: {round(unweighted_f1, 4)}")
 
-def results_checker(file_name, skip_duplicates = True):
+def results_checker(file_name, skip_duplicates = True, naive_score = False):
     with open(file_name, "r") as f:
       d = json.load(f)
     if skip_duplicates:
@@ -45,6 +45,9 @@ def results_checker(file_name, skip_duplicates = True):
     per_class_results = dict()
 
     for k, v in d.items():
+        if naive_score:
+            v['response'] = v['original_model_answer']
+            v['correct'] = (v['response'] == v['ground_truth'])
         truncated_flag = True
         for ending in ENDINGS:
             if ending in str(k):

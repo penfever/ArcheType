@@ -7,12 +7,12 @@ import argparse
 import openai
 
 try:
-  from .model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores
+  from .model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all
   from .data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any
   from .metrics import results_checker, results_checker_doduo
   from .const import DOTENV_PATH, MAX_LEN
 except ImportError:
-  from model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores
+  from model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all
   from data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any
   from metrics import results_checker, results_checker_doduo
   from const import DOTENV_PATH, MAX_LEN
@@ -39,6 +39,9 @@ def run(
     method : list = ["similarity"],
     args : dict = dict()):
   
+  seed_all(rand_seed)
+  args['context_is_numeric'] = False
+
   if model_name in ["llama", "llama-old", "sherlock"]:
     pass
   elif "gpt-3.5" in model_name:
@@ -89,7 +92,7 @@ def run(
         coherence_scores = get_coherence_scores(f_df, model_name, args)
     else:
         coherence_scores = None
-    sample_df = get_df_sample(f_df, rand_seed, label_indices, sample_size, full=summ_stats, other_col=other_col, max_len=args["MAX_LEN"], method=method, coherence_scores=coherence_scores)
+    sample_df = get_df_sample(f_df, rand_seed, label_indices, sample_size, full=summ_stats, other_col=other_col, max_len=args["MAX_LEN"], method=method, coherence_scores=coherence_scores, args=args)
     f_df_cols = f_df.columns
     for idx, col in enumerate(f_df_cols):
       if idx not in label_indices:
@@ -109,7 +112,12 @@ def run(
       #NOTE: could consider using min_var here
       #if full and len(pd.unique(sample_df[col].tolist())) < 3:
       if table_src:
-        context = insert_source(sample_df[col].tolist(), f.name)
+        if "zs" in model_name:
+          context_n = insert_source(sample_df[col].tolist(), f.name, zs="zs" in model_name)
+          args["table_name"] = context_n
+          context = sample_df[col].tolist()
+        else:
+          context = insert_source(sample_df[col].tolist(), f.name, zs="zs" in model_name)
       else:
         context = sample_df[col].tolist()      
       key = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
@@ -125,7 +133,7 @@ def run(
     if model_name == "doduo":
       results_checker_doduo(save_path)
     else:
-      results_checker(save_path, skip_duplicates = False)
+      results_checker(save_path, skip_duplicates = False, naive_score = False)
 
 def main():
     parser = argparse.ArgumentParser(description="Takes input parameters for the 'run' function.")
@@ -140,7 +148,7 @@ def main():
     parser.add_argument("--resume", action='store_true', help="Resume")
     parser.add_argument("--results", action='store_true', help="Results")
     parser.add_argument("--stop_early", type=int, default=-1, help="Stop early")
-    parser.add_argument("--rand_seed", type=int, default=13, help="Random seed")
+    parser.add_argument("--rand_seed", type=int, default=1902582, help="Random seed")
     parser.add_argument("--sample_size", type=int, default=5, help="Sample size")
     parser.add_argument("--link", type=str, help="Link")
     parser.add_argument("--response", action='store_true', help="If this flag is not called, the model will not provide a prediction. No response is useful for generating training datasets or testing workflows.")

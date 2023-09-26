@@ -65,9 +65,43 @@ def run_special_cases(s, d, lsd):
       return d
     return False
 
+def run_comprehensive_cases(context, lsd):
+  lbl = None
+  if all(s.endswith(" g") for s in context):
+    lbl = "weight"
+  if all(s.endswith(" kg") for s in context):
+    lbl = "weight"
+  if all(s.endswith(" lb") for s in context):
+    lbl = "weight"
+  if all(s.endswith(" lbs") for s in context):
+    lbl = "weight"
+  if all(s.endswith(" pounds") for s in context):
+    lbl = "weight"
+  if all(s.endswith(" cal") for s in context):
+    lbl = "calories"
+  if all(s.endswith(" kcal") for s in context):
+    lbl = "calories"
+  if all(s.endswith(" calories") for s in context):
+    lbl = "calories"
+  if all("review" in s.lower() for s in context):
+    lbl = "review"
+  if all("recipe" in s.lower() for s in context):
+    lbl = "recipe"
+  if all(s in BOOLEAN_SET for s in context):
+    lbl = "boolean"
+  if lbl:
+    return fix_labels(lbl, lsd)
+  else:
+    return None
+
 def schema_match_fix(d, schema_df, lsd):
     context = d["context"]
     schema_ids = schema_df["id"].tolist()
+    cc_res = run_comprehensive_cases(context, lsd)
+    if cc_res:
+        d['response'] = cc_res
+        d['correct'] = (d['response'] == d['ground_truth'])
+        return d
     for s in context:
         if any([s.startswith(s1) for s1 in ["OC_", "SRC", "std:", "mean:", "mode:", "median:", "max:", "min:"]]):
             continue
@@ -101,6 +135,7 @@ if __name__ == "__main__":
     parser.add_argument("--input_path", type=str, help="Input path", required=True)
     parser.add_argument("--save_path", type=str, help="Save path", required=True)
     parser.add_argument("--label_set", type=str, help="Name of label set (SOTAB-91, SOTAB-55, SOTAB-27, D4-ZS, D4-DoDuo, custom)", required=True)
+    parser.add_argument("--apply_fix", type=bool, help="Apply schema match fix", default=True)
     args = parser.parse_args()
     if os.path.isfile(args.input_path):
         with open(args.input_path, 'r', encoding='utf-8') as f:
@@ -111,9 +146,10 @@ if __name__ == "__main__":
       label_set = {"name" : "custom", "label_set" : args.custom_labels, "dict_map" : {c : c for c in args.custom_labels}, 'abbrev_map' : {c : c for c in args.custom_labels}}
     else:
       label_set = get_lsd(args.label_set)
-    for key in tqdm(prompt_dict.keys(), total=len(prompt_dict.keys())):
-        schema_df = get_schema_df()
-        prompt_dict[key] = schema_match_fix(prompt_dict[key], schema_df, label_set)
-    with open(args.save_path, 'w', encoding='utf-8') as my_f:
-        json.dump(prompt_dict, my_f, ensure_ascii=False, indent=4)
+    schema_df = get_schema_df()
+    if args.apply_fix:
+      for key in tqdm(prompt_dict.keys(), total=len(prompt_dict.keys())):
+          prompt_dict[key] = schema_match_fix(prompt_dict[key], schema_df, label_set)
+      with open(args.save_path, 'w', encoding='utf-8') as my_f:
+          json.dump(prompt_dict, my_f, ensure_ascii=False, indent=4)
     print("Updated scores: \n", results_checker(args.save_path, skip_duplicates = False))

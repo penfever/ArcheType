@@ -7,6 +7,9 @@ import torch
 import openai
 import requests
 from retry import retry
+import random
+import torch
+import numpy as np
 
 import os
 import argparse
@@ -19,6 +22,14 @@ except ImportError:
     from const import *
     from data import *
     from match import *
+
+def seed_all(seed = 0):
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    # torch.use_deterministic_algorithms(True, warn_only=True)
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
 
 def model_coherence_call(s, model_name, args):
     if not s or s == "" or not isinstance(s, str):
@@ -77,7 +88,7 @@ def call_gpt_model(prompt, lsd):
 
 def get_topp_resp(prompt, k, args):
     inputs = args["tokenizer"].encode(prompt, return_tensors="pt").cuda()
-    outputs = args["base_model"].generate(inputs, 
+    outputs = args["base_model"].generate(inputs[:,:args["MAX_LEN"]], 
                                   max_length=args["MAX_LEN"],
                                   temperature=0.1*k,
                                   top_p=0.90-(0.1 * k),
@@ -99,15 +110,26 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
       dtype = get_base_dtype(limited_context)
       fixed_labels = sotab_top_hier[dtype]
   else:
-      fixed_labels = list(set([fix_labels(s, lsd) for s in lsd['label_set']]))
+    if (lsd['name'] in ['context_labels', 'context_labels_trim', 'context_labels_small']):
+      if len(limited_context) > 1 and all([re.sub('[\W_]+', '', s).isdigit() for s in limited_context]):
+        if args.get("numeric_labels", -1) == -1:
+            args['numeric_labels'] = sorted(list(set([fix_labels(s, lsd) for s in numeric_labels])), key=len, reverse=True)
+        fixed_labels = args['numeric_labels']
+      else:
+        if args.get("non_numeric_labels", -1) == -1:
+            num_labs = set([fix_labels(s, lsd) for s in always_numeric_labels])
+            all_labels = set([fix_labels(s, lsd) for s in lsd['label_set']])
+            args['non_numeric_labels'] = sorted(list(all_labels.difference(num_labs)))
+        fixed_labels = args['non_numeric_labels']
+    else:
+      fixed_labels = sorted(list(set([fix_labels(s, lsd) for s in lsd['label_set']])), key=len, reverse=True)
       ground_truth = fix_labels(ground_truth, lsd)
   if "check_labels" in method:
     assert ground_truth in fixed_labels, f"Ground truth {ground_truth} not in label set {fixed_labels}"
   context_labels = ", ".join(fixed_labels)
-  fixed_labels = sorted(fixed_labels, key=len, reverse=True)
   if model in ["llama-zs", "opt-iml-30b-zs", "ArcheType-llama", "ArcheType-llama-oc"]:
     set_pipeline(k=1, args=args)
-  prompt = prompt_context_insert(context_labels, context, args["MAX_LEN"], model)
+  prompt = prompt_context_insert(context_labels, context, args["MAX_LEN"], model, args)
   d_p = prompt_dict.get(prompt, -1)
   #skip existing logic
   if d_p != -1 and "skip-existing" in method:
@@ -226,12 +248,12 @@ def init_model(model, args):
         tokenizer = AutoTokenizer.from_pretrained("google/flan-ul2")
     elif "galpaca-30b-zs" in model:
         args["MAX_LEN"]=2048
-        tokenizer = AutoTokenizer.from_pretrained("GeorgiaTechResearchInstitute/galpaca-30b", device_map="auto", torch_dtype=torch.float16, load_in_8bit=True)
-        base_model = AutoModelForCausalLM.from_pretrained("GeorgiaTechResearchInstitute/galpaca-30b")
+        tokenizer = AutoTokenizer.from_pretrained("GeorgiaTechResearchInstitute/galpaca-30b")
+        base_model = AutoModelForCausalLM.from_pretrained("GeorgiaTechResearchInstitute/galpaca-30b", device_map="auto", torch_dtype=torch.float16, load_in_8bit=True)
     elif "opt-iml-max-30b-zs" in model:
         args["MAX_LEN"]=2048
         tokenizer = AutoTokenizer.from_pretrained("facebook/opt-iml-max-30b", use_fast=False, padding_side='left')
-        base_model = AutoModelForCausalLM.from_pretrained("facebook/opt-iml-max-30b", device_map="auto", torch_dtype=torch.float16)
+        base_model = AutoModelForCausalLM.from_pretrained("facebook/opt-iml-max-30b", device_map="auto", torch_dtype=torch.float16, load_in_8bit=True)
     elif model == "doduo":
         print("Loading Doduo model")
         args_doduo = argparse.Namespace
@@ -304,10 +326,10 @@ def fuzzy_label_match(orig_ans, fixed_labels, session, link, prompt, lsd, model,
                     ],
                     temperature=0 + k/10,
                 ).choices[0]['message']['content'].lower()
-            elif model in ["llama-zs", "opt-iml-30b-zs", "ArcheType-llama", "ArcheType-llama-oc"]:
+            elif any(["llama-zs" in model, "opt-iml-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
                 set_pipeline(k=k, args=args)
                 ans_n = args['llm_chain'].run(prompt)
-            elif model in ["topp-zs", "flan-t5-xxl-zs", "flan-ul2-zs"]:
+            elif any(["topp-zs" in model, "flan-t5-xxl-zs" in model, "flan-ul2-zs" in model]):
                 ans_n = get_topp_resp(prompt, k, args)
             else:
                 top_p = args['params']['top_p']

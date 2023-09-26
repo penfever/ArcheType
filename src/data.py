@@ -206,7 +206,7 @@ cls = [
  'SportsTeam',
  'Text',
  'Time',
- 'URL',
+ #'URL',
  'category',
  'currency',
  'email',
@@ -229,13 +229,15 @@ numeric_labels = ['currency', 'price', 'Number',
        'priceRange', 'postalCode', 'MonetaryAmount', 'Mass', 'CategoryCode',
         'weight',
        'unitCode', 'Energy', 'Distance',
-       'workHours', 'typicalAgeRange']
+       'workHours', 'typicalAgeRange', 'telephone', 'faxNumber', 'zipCode', 'DateTime', 'Date', 'Time', 'PostalAddress', 'openingHours']
+
+always_numeric_labels = ['Number', 'Integer', 'IdentifierAT', 'QuantitativeValue', 'unitCode']
 
 label_dict_map_small = {'Location' : 'streetAddress', 'PostalAddress' : 'streetAddress', 
                         'CreativeWorkSeries' : 'CreativeWork', 'Book' : 'CreativeWork', 'DateTime' : 'Date', 
                         'QuantitativeValue' : "Number", "Integer" : "Number", "GenderType" : "Gender", "IdentifierAT" : "Text",
                         "Hotel" : "Company", "ItemList" : "category", "Movie" : "CreativeWork", "Museum" : "Organization",
-                        "JobRequirements" : "category", "Offer" : "Text", "Location" : "streetAddress", "PostalAddress" : "streetAddress",
+                        "JobRequirements" : "category", "calories" : "Number", "Offer" : "Text", "Location" : "streetAddress", "PostalAddress" : "streetAddress",
                         "Rating" : "category", "Restaurant" : "Company", "Review" : "Text", "Recipe" : "Text",
                         "TVEpisode" : "CreativeWork", "paymentAccepted" : "category",
                         "faxNumber" : "telephone", "Email" : "email", "unitText" : "Text", "Mass" : "weight", 
@@ -387,35 +389,43 @@ def make_json(prompt, var_params, args):
           ]
       }
 
-def prompt_context_insert(context_labels: str, context : str, max_len : int = 2000, model : str = "gpt-3.5"):
+def prompt_context_insert(context_labels: str, context : str, max_len : int = 2000, model : str = "gpt-3.5", args : dict = dict()):
+  if args.get("table_name", -1) != -1:
+    table_src_str = " sourced from the table named " + args["table_name"]
+  else:
+    table_src_str = ""
+  if args.get("other_context_samples", -1) != -1:
+    ocs = "For additional context, here are some entries from other columns in the table: " + ", ".join(args["other_context_samples"]) + "\n"
+  else:
+    ocs = ""
   if "chorusprompt" in model:
-    s = f'For the following table column, select a schema.org type annotation from {context_labels}. \n Input column: {context} \n Output: \n'
+    s = f'For the following table column{table_src_str}, select a schema.org type annotation from {context_labels}. \n Input column: {context} \n{ocs} Output: \n'
   elif "koriniprompt" in model:
-    s = f'Answer the question based on the task below. If the question cannot be answered using the information provided, answer with "I don\'t know". \n Task: Classify the column given to you into only one of these types: {context_labels} \n Input column: {context} \n  Type: \n'
+    s = f'Answer the question based on the task below. If the question cannot be answered using the information provided, answer with "I don\'t know". \n Task: Classify the column{table_src_str} given to you into only one of these types: {context_labels} \n Input column: {context} \n{ocs}  Type: \n'
   elif "invertedprompt" in model:
-    s = f'Here is a column from a table: {context} \n Please select the class from that best describes the column, from the following options. \n Options: {context_labels} \n Response: \n'
+    s = f'Here is a column from a table{table_src_str}: {context} \n{ocs} Please select the class from that best describes the column, from the following options. \n Options: {context_labels} \n Response: \n'
   elif "shortprompt" in model:
-    s = f'Pick the column\'s class. \n Column: {context} \n Classes: {context_labels} \n Output: \n'
+    s = f'Pick the column\'s class{table_src_str}. \n Column: {context} \n{ocs} Classes: {context_labels} \n Output: \n'
   elif "noisyprompt" in model:
-    s = f'Pick the column\'s class. I mean if you want to. It would be cool, I think. Anyway, give it a try, I guess? \n Here\'s the column itself! {context} \n And, um, here are some column names you could pick from ... {context_labels} \n Ok, go ahead! \n'
+    s = f'Pick the column\'s class{table_src_str}. I mean if you want to. It would be cool, I think. Anyway, give it a try, I guess? \n Here\'s the column itself! {context} \n{ocs} And, um, here are some column names you could pick from ... {context_labels} \n Ok, go ahead! \n'
   elif "fozzieprompt" in model:
-    s = f'Waka waka! This is Fozzie bear! I would totally ❤️ you if you would be my friend, and also pick a class for this column, before we end. \n Here\'s the column, waka waka! {context} \n If you get the right class, it\'ll be a real gas! {context_labels} \n What\'s the type? \n'
+    s = f'Waka waka! This is Fozzie bear! I would totally ❤️ you if you would be my friend, and also pick a class for this column{table_src_str}, before we end. \n Here\'s the column, waka waka! {context} \n{ocs} If you get the right class, it\'ll be a real gas! {context_labels} \n What\'s the type? \n'
   elif "gpt-3.5" in model:
-    s = f'SYSTEM: Please select the field from {context_labels} which best describes the context. Respond only with the name of the field. \n CONTEXT: {context}'
+    s = f'SYSTEM: Please select the field from {context_labels} which best describes the context{table_src_str}. Respond only with the name of the field. \n CONTEXT: {context} \n{ocs} RESPONSE: \n'
   elif model == "llama-old":
-    s = f'INSTRUCTION: Select the field from the category which matches the input. \n CATEGORIES: {context_labels} \n INPUT:{context} \n OUTPUT: '
+    s = f'INSTRUCTION: Select the field{table_src_str} from the category which matches the input. \n CATEGORIES: {context_labels} \n INPUT:{context} \n{ocs} OUTPUT: '
   elif "-zs" in model:
     ct = "[" + ", ".join(context).replace("[", "").replace("]", "").replace("'", "")[:max_len - 100 - len(context_labels)] + "]"
     lb = "\n".join(["- " + c for c in context_labels.split(", ")])
     #s = f'How might one classify the following input? \n INPUT: {ct} .\n OPTIONS:\n {lb} \n ANSWER:'
     if model == "opt-iml-max-30b-zs":
-        s = f'Select the option which best describes the input. \n INPUT: {ct} .\n OPTIONS:\n {lb} \n'
+        s = f'Select the option{table_src_str} which best describes the input. \n INPUT: {ct} .\n{ocs} OPTIONS:\n {lb} \n'
     else:
-        s = f'INSTRUCTION: Select the option which best describes the input. \n INPUT: {ct} .\n OPTIONS:\n {lb} \n ANSWER:'
+        s = f'INSTRUCTION: Select the option{table_src_str} which best describes the input. \n INPUT: {ct} .\n{ocs} OPTIONS:\n {lb} \n ANSWER: '
   elif model in ["llama", "ArcheType-llama", "ArcheType-llama-oc"]:
-    s = f'INSTRUCTION: Select the category which best matches the input. \n INPUT:{context} \n CATEGORY: '
+    s = f'INSTRUCTION: Select the category{table_src_str} which best matches the input. \n INPUT:{context} \n{ocs} CATEGORY: '
   if len(s) > max_len:
-    s = s[:max_len - 25]
+    s = s[:max_len - 10] + "\n RESPONSE: "
   return s
 
 def derive_meta_features(col):
@@ -435,24 +445,39 @@ def derive_meta_features(col):
   features['rolling-mean-window-4'] = list(col.rolling(window=indexer, min_periods=1).mean())
   return features
 
-def insert_source(context, fname):
+def insert_source(context, fname, zs=False):
   pattern = r"_([^_]*)_" # Matches substrings that start and end with "_"
   matcher = re.search(pattern, fname)
   addstr = str(matcher.group()).replace("_", "").split(".")[0]
-  context.insert(0, "SRC: " + addstr)
-  return context    
+  if zs:
+    return addstr
+  else:
+    context.insert(0, "SRC: " + addstr)
+    return context    
     
-def get_df_sample(df, rand_seed, val_indices, len_context, min_variance=1, replace=False, full=False, other_col=False, max_len=8000, method=[], coherence_scores=None):
+def get_df_sample(df, rand_seed, val_indices, len_context, min_variance=1, replace=False, full=False, other_col=False, max_len=8000, method=[], coherence_scores=None, args=dict()):
     column_samples = {}
     ignore_list = ["None", 'none', 'NaN', 'nan', 'N/A', 'na', '']
     for idx, col in enumerate(df.columns):
       colvals = df.astype(str)[col]
+      ss_orig = max_len//(len_context*3)
       if "simple_random_sampling" in method:
-        sample_list = colvals.sample(n=max_len//(len_context*3), replace=True, random_state=rand_seed).tolist()
+        sample_list = colvals.sample(n=ss_orig, replace=True, random_state=rand_seed).tolist()
+      elif "first_sampling" in method:
+        colvalsl = colvals.tolist()
+        sample_list = colvalsl[:ss_orig]
       elif "coherence_sampling" in method:
-        sample_list = colvals.sample(n=max_len//(len_context*3), replace=True, random_state=rand_seed, weights=coherence_scores[idx]).tolist()
+        sample_list = colvals.sample(n=ss_orig, replace=True, random_state=rand_seed, weights=coherence_scores[idx]).tolist()
       else:
-        sample_list = list(set(p[:max_len//(len_context*3)] for p in pd.unique(colvals) if p not in ignore_list))
+        #archetype sampling
+        sample_list = list(set(p for p in pd.unique(colvals) if p not in ignore_list))
+        sample_list = sorted(sample_list, key=len, reverse=True)
+        weights = np.linspace(1, 0.1, len(sample_list))
+        weights = weights / np.sum(weights)
+        if len(sample_list) > ss_orig:
+          sample_list = np.array(sample_list)
+          indices = np.random.choice(np.arange(len(sample_list)), size=ss_orig, replace=replace, p=weights)
+          sample_list = sample_list[indices].tolist()
       #reformat integer samples
       sl_mod = []
       # Meta-features
@@ -466,7 +491,13 @@ def get_df_sample(df, rand_seed, val_indices, len_context, min_variance=1, repla
         per_column_context = max(1, sample_list_fill_size // nc)
         for idx, oc in enumerate(df.columns):
           items = df[oc].astype(str).iloc[0:per_column_context].tolist()
-          sample_list = sample_list + [f"OC_{idx}: " + str(item) for item in items]
+          model_name = args.get("model_name", "")
+          if "zs" not in model_name:
+            sample_list = sample_list + [f"OC_{idx}: " + str(item) for item in items]
+          else:
+            if args.get("other_context_samples", -1) == -1:
+              args["other_context_samples"] = []
+            args["other_context_samples"] = args["other_context_samples"] + [str(item) for item in items]
       if not sample_list:
         sample_list = ["None"]
       if len(sample_list) < len_context:
