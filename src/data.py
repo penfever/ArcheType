@@ -654,6 +654,44 @@ d4_sotab_labels = {"name" : "d4_sotab", "label_set" : cll, "dict_map" : {c : c f
 
 d4_sherlock_labels = {"name" : "d4_sherlock", "label_set" : sherlock_labels, "dict_map" : {c : c for c in sherlock_labels}, "d4_map" : sherlock_D4_map}
 
+
+# amstr_tables
+
+amstr_path = Path("./metadata/amstr_tables")
+amstr_files = list(amstr_path.rglob("*.csv"))
+
+def get_amstr_dfs():
+  # NUM_SAMPLES = 100
+  amstr_dfs = {}
+  for file in amstr_files:
+    df = pd.read_csv(file)
+    for column_name, column_data in df.items():
+      # for k in range(NUM_SAMPLES):
+      dfs = column_data.sample(5, replace=True)
+      dfs = pd.DataFrame(dfs)
+      amstr_dfs[str(column_name).lower() + "_" + str(file.stem).split('_')[-1]] = dfs
+  return amstr_dfs
+
+amstr_classes = pd.read_csv("./metadata/amstr_tables/table_0.csv").columns.tolist()
+  
+# amstr_renamed_class = ['Title','ISSN','Town','State','Headline','Byline',
+# 'Article from Alaska','Article from Alabama','Article from Arkansas',
+# 'Article from Arizona','Article from California','Article from Colorado',
+# 'Article from Connecticut','Article from Delaware','Article from Florida',
+# 'Article from Georgia','Article from Iowa','Article from Idaho','Article from Indiana',
+# 'Article from Kansas','Article from Kentucky','Article from Louisiana',
+# 'Article from Maryland','Article from Maine','Article from Michigan',
+# 'Article from Minnesota','Article from Missouri','Article from Mississippi',
+# 'Article from Montana','Article from Nebraska','Article from Nevada','Article from Hawaii',
+# 'Article from Massachusetts','Article from Texas','Article from Illinois','Article from Ohio']
+
+amstr_renamed_class = amstr_classes
+
+amstr_classname_map = {k1 : k2 for (k1, k2) in zip(amstr_classes, amstr_renamed_class)}
+
+amstr_zs_context_labels = {"name" : "amstr_zs", "label_set" : amstr_renamed_class, "dict_map" : {c : c for c in amstr_renamed_class}, "amstr_map" : amstr_classname_map}
+
+
 def get_lsd(s):
   if s == "SOTAB-91":
     return context_labels
@@ -665,6 +703,8 @@ def get_lsd(s):
     return d4_zs_context_labels
   elif s == "D4-DoDuo":
     return d4_sherlock_labels
+  elif s == "amstr-ZS":
+    return amstr_zs_context_labels
   print("Label set not found")
   return None
 

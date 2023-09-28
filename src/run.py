@@ -6,16 +6,10 @@ from pathlib import Path
 import argparse
 import openai
 
-try:
-  from .model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all
-  from .data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any
-  from .metrics import results_checker, results_checker_doduo
-  from .const import DOTENV_PATH, MAX_LEN
-except ImportError:
-  from model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all
-  from data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any
-  from metrics import results_checker, results_checker_doduo
-  from const import DOTENV_PATH, MAX_LEN
+from model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all
+from data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs
+from metrics import results_checker, results_checker_doduo
+from const import DOTENV_PATH, MAX_LEN
 
 
 def run(
@@ -52,6 +46,7 @@ def run(
     init_model(model_name, args)
   infmods = "sherlock" in model_name or "doduo" in model_name
   isd4 = "d4" in label_set['name']
+  isAmstr = "amstr" in label_set['name']
   if "similarity" in method:
     get_sent_model(args)
   if resume and os.path.isfile(save_path):
@@ -63,7 +58,10 @@ def run(
   if "-zs" in model_name:
     args["base_model"].eval()
   if isinstance(inputs, dict):
-    labels = ["_".join(k.split("_")[:-1]) for k in inputs.keys()]
+    if isAmstr:
+      labels = ['_'.join(k.split('_')[:-1]) for k in inputs.keys()]
+    elif isd4:
+      labels = ["_".join(k.split("_")[:-1]) for k in inputs.keys()]
     inputs = list(inputs.values())
   for idx, f in tqdm(enumerate(inputs), total=len(inputs)):
     if idx % 100 == 0:
@@ -74,6 +72,10 @@ def run(
     if isd4:
         f_df = f
         label_indices=[2]
+        gt_labels = labels[idx]
+    if isAmstr:
+        f_df = f
+        label_indices=[0]
         gt_labels = labels[idx]
     elif "skip-eval" in method:
         f_df = pd_read_any(f)
@@ -102,6 +104,8 @@ def run(
         continue
       if isd4:
         orig_label = gt_labels
+      if isAmstr:
+        orig_label = gt_labels
       elif "skip-eval" in method:
         orig_label = ""
       else:
@@ -122,6 +126,7 @@ def run(
         context = sample_df[col].tolist()      
       key = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
       prompt_dict[key]['original_label'] = orig_label
+      # print("original_label: ", orig_label)
       prompt_dict[key]['file+idx'] = str(f) + "_" + str(idx)
   with open(save_path, 'w', encoding='utf-8') as my_f:
     json.dump(prompt_dict, my_f, ensure_ascii=False, indent=4)
@@ -142,7 +147,7 @@ def main():
     parser.add_argument("--model_path", type=str, help="Path to ArcheType-LLAMA or zs-LLAMA model weights", default="")
     parser.add_argument("--save_path", type=str, help="Save path", required=True)
     parser.add_argument("--input_files", type=str, help="Path to input CSV files", required=True)
-    parser.add_argument("--label_set", type=str, help="Name of label set (SOTAB-91, SOTAB-55, SOTAB-27, D4-ZS, D4-DoDuo, custom)", required=True)
+    parser.add_argument("--label_set", type=str, help="Name of label set (SOTAB-91, SOTAB-55, SOTAB-27, D4-ZS, D4-DoDuo, amstr-ZS, custom)", required=True)
     parser.add_argument("--custom-labels", nargs='+', type=str, help="Custom labels", required=False)
     parser.add_argument("--input_labels", type=str, help="Path to input DataFrame (CSV file) for SOTAB. skip-eval will generate predictions but will not compare them to anything. D4 will use (internal) D4 ground-truth labels.", required=True)
     parser.add_argument("--resume", action='store_true', help="Resume")
@@ -163,6 +168,9 @@ def main():
 
     if args.input_files == "D4":
       input_files = get_d4_dfs()
+    elif args.input_files == "amstr":
+      input_files = get_amstr_dfs()
+      # print("input_files: ", input_files)
     else:
       # Define the file extensions to search for
       extensions = ('.json', '.csv', '.json.gz', '.parquet', '.xlsx', '.xls', '.tsv')
@@ -171,6 +179,8 @@ def main():
         input_files = input_files + list(Path(args.input_files).rglob(f"**/*{extension}"))
     
     if args.input_labels == "D4":
+      input_df = None
+    elif args.input_labels == "amstr":
       input_df = None
     elif args.input_labels == "skip-eval":
       input_df = None
