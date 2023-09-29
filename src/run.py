@@ -7,7 +7,7 @@ import argparse
 import openai
 
 from model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all
-from data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs
+from data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs, get_amstr_classname_map, get_pubchem_dfs, get_pubchem_classname_map
 from metrics import results_checker, results_checker_doduo
 from const import DOTENV_PATH, MAX_LEN
 
@@ -47,6 +47,7 @@ def run(
   infmods = "sherlock" in model_name or "doduo" in model_name
   isd4 = "d4" in label_set['name']
   isAmstr = "amstr" in label_set['name']
+  isPubchem = "pubchem" in label_set['name']
   if "similarity" in method:
     get_sent_model(args)
   if resume and os.path.isfile(save_path):
@@ -58,10 +59,7 @@ def run(
   if "-zs" in model_name:
     args["base_model"].eval()
   if isinstance(inputs, dict):
-    if isAmstr:
-      labels = ['_'.join(k.split('_')[:-1]) for k in inputs.keys()]
-    elif isd4:
-      labels = ["_".join(k.split("_")[:-1]) for k in inputs.keys()]
+    labels = ['_'.join(k.split('_')[:-1]) for k in inputs.keys()]
     inputs = list(inputs.values())
   for idx, f in tqdm(enumerate(inputs), total=len(inputs)):
     if idx % 100 == 0:
@@ -73,7 +71,11 @@ def run(
         f_df = f
         label_indices=[2]
         gt_labels = labels[idx]
-    if isAmstr:
+    elif isAmstr:
+        f_df = f
+        label_indices=[0]
+        gt_labels = labels[idx]
+    elif isPubchem:
         f_df = f
         label_indices=[0]
         gt_labels = labels[idx]
@@ -104,8 +106,13 @@ def run(
         continue
       if isd4:
         orig_label = gt_labels
-      if isAmstr:
-        orig_label = gt_labels
+      elif isAmstr:
+        amstr_classname_map = get_amstr_classname_map()
+        orig_label = amstr_classname_map[gt_labels]
+        # print("orig_label: ", orig_label)
+      elif isPubchem:
+        pubchem_classname_map = get_pubchem_classname_map()
+        orig_label = pubchem_classname_map[gt_labels]
       elif "skip-eval" in method:
         orig_label = ""
       else:
@@ -147,7 +154,7 @@ def main():
     parser.add_argument("--model_path", type=str, help="Path to ArcheType-LLAMA or zs-LLAMA model weights", default="")
     parser.add_argument("--save_path", type=str, help="Save path", required=True)
     parser.add_argument("--input_files", type=str, help="Path to input CSV files", required=True)
-    parser.add_argument("--label_set", type=str, help="Name of label set (SOTAB-91, SOTAB-55, SOTAB-27, D4-ZS, D4-DoDuo, amstr-ZS, custom)", required=True)
+    parser.add_argument("--label_set", type=str, help="Name of label set (SOTAB-91, SOTAB-55, SOTAB-27, D4-ZS, D4-DoDuo, amstr-ZS, pubchem-ZS, custom)", required=True)
     parser.add_argument("--custom-labels", nargs='+', type=str, help="Custom labels", required=False)
     parser.add_argument("--input_labels", type=str, help="Path to input DataFrame (CSV file) for SOTAB. skip-eval will generate predictions but will not compare them to anything. D4 will use (internal) D4 ground-truth labels.", required=True)
     parser.add_argument("--resume", action='store_true', help="Resume")
@@ -171,6 +178,8 @@ def main():
     elif args.input_files == "amstr":
       input_files = get_amstr_dfs()
       # print("input_files: ", input_files)
+    elif args.input_files == "pubchem":
+      input_files = get_pubchem_dfs()
     else:
       # Define the file extensions to search for
       extensions = ('.json', '.csv', '.json.gz', '.parquet', '.xlsx', '.xls', '.tsv')
@@ -181,6 +190,8 @@ def main():
     if args.input_labels == "D4":
       input_df = None
     elif args.input_labels == "amstr":
+      input_df = None
+    elif args.input_labels == "pubchem":
       input_df = None
     elif args.input_labels == "skip-eval":
       input_df = None
