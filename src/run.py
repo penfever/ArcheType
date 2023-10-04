@@ -7,12 +7,12 @@ import argparse
 import openai
 
 try:
-  from .model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all
+  from .model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all, free_memory
   from .data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any
   from .metrics import results_checker, results_checker_doduo
   from .const import DOTENV_PATH, MAX_LEN
 except ImportError:
-  from model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all
+  from model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all, free_memory
   from data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any
   from metrics import results_checker, results_checker_doduo
   from const import DOTENV_PATH, MAX_LEN
@@ -66,7 +66,11 @@ def run(
     labels = ["_".join(k.split("_")[:-1]) for k in inputs.keys()]
     inputs = list(inputs.values())
   for idx, f in tqdm(enumerate(inputs), total=len(inputs)):
-    if idx % 100 == 0:
+    try:
+        free_memory()
+    except Exception as e:
+        print(f"Failed to free memory, error message was: \n {e}")
+    if idx % 10 == 0:
       with open(save_path, 'w', encoding='utf-8') as alt_f:
         json.dump(prompt_dict, alt_f, ensure_ascii=False, indent=4)
     if stop_early > -1 and idx == stop_early:
