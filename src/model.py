@@ -13,6 +13,8 @@ import numpy as np
 
 import os
 import argparse
+import gc
+import time
 
 try:
     from .const import *
@@ -22,6 +24,15 @@ except ImportError:
     from const import *
     from data import *
     from match import *
+
+def free_memory(sleep_time=0.1):
+    """ Black magic function to free torch memory and some jupyter whims """
+    import torch
+    gc.collect()
+    torch.cuda.synchronize()
+    gc.collect()
+    torch.cuda.empty_cache()
+    time.sleep(sleep_time)
 
 def seed_all(seed = 0):
     torch.backends.cudnn.deterministic = True
@@ -53,12 +64,18 @@ def get_coherence_scores(f_df, model_name, args):
 def query_correct_model(model, prompt, context_labels, context, session, link, lsd, args):
     if "gpt" in model:
         orig_ans = call_gpt_model(prompt, lsd)
-    elif any(["llama-zs" in model, "opt-iml-max-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
-        # try:
-        #     orig_ans = args["llm_chain"].run(prompt)
-        # except NameError:
-        set_pipeline(k=1, args=args)
-        orig_ans = args["llm_chain"].run(prompt)
+    elif any(["speechless-llama2" in model, "llama-zs" in model, "opt-iml-max-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
+        # prompt = cutoff_prompt_length(prompt, args["MAX_LEN"])
+        end_of_sentence = prompt[-15:]
+        try:
+            orig_ans = args["llm_chain"].run(prompt)
+        except NameError:
+            set_pipeline(k=1, args=args)
+            orig_ans = args["llm_chain"].run(prompt)
+        if "speechless-llama2" in model:
+            orig_ans = orig_ans.split(end_of_sentence)[-1]
+    elif "internlm" in model:
+        orig_ans = get_internlm_resp(prompt, 1, args)
     elif any(["topp-zs" in model, "flan-t5-xxl-zs" in model, "flan-ul2-zs" in model]):
         orig_ans = get_topp_resp(prompt, 1, args)
     else:
@@ -88,7 +105,8 @@ def call_gpt_model(prompt, lsd):
 
 def get_topp_resp(prompt, k, args):
     inputs = args["tokenizer"].encode(prompt, return_tensors="pt").cuda()
-    outputs = args["base_model"].generate(inputs[:,:args["MAX_LEN"]], 
+    inputs = inputs[:,:args["MAX_LEN"]-1]
+    outputs = args["base_model"].generate(inputs, 
                                   max_length=args["MAX_LEN"],
                                   temperature=0.1*k,
                                   top_p=0.90-(0.1 * k),
@@ -96,6 +114,23 @@ def get_topp_resp(prompt, k, args):
                                   repetition_penalty=1.3
                                   )
     orig_ans = args["tokenizer"].decode(outputs[0], skip_special_tokens=True)
+    return orig_ans
+
+def get_internlm_resp(prompt, k, args):
+    end_of_sentence = prompt[-15:]
+    inputs = args["tokenizer"].encode(prompt, return_tensors="pt").cuda()
+    inputs = inputs[:,:args["MAX_LEN"]-1]
+    outputs = args["base_model"].generate(inputs, 
+                                  max_length=args["MAX_LEN"],
+                                  temperature=0.1*k,
+                                  top_p=0.90-(0.1 * k),
+                                  do_sample=True,
+                                  repetition_penalty=1.3
+                                  )
+
+    orig_ans = args["tokenizer"].decode(outputs[0], skip_special_tokens=True)
+    split_sent = orig_ans.split(end_of_sentence)
+    orig_ans = split_sent[-1]
     return orig_ans
 
 @retry(Exception, tries=3, delay=3)
@@ -110,7 +145,8 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
       dtype = get_base_dtype(limited_context)
       fixed_labels = sotab_top_hier[dtype]
   else:
-    if (lsd['name'] in ['context_labels', 'context_labels_trim', 'context_labels_small']):
+    if (lsd['name'] in ['context_labels', 'context_labels_trim', 'context_labels_small']) and \
+    "gpt" not in model:
       if len(limited_context) > 1 and all([re.sub('[\W_]+', '', s).isdigit() for s in limited_context]):
         if args.get("numeric_labels", -1) == -1:
             args['numeric_labels'] = sorted(list(set([fix_labels(s, lsd) for s in numeric_labels])), key=len, reverse=True)
@@ -127,7 +163,7 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
   if "check_labels" in method:
     assert ground_truth in fixed_labels, f"Ground truth {ground_truth} not in label set {fixed_labels}"
   context_labels = ", ".join(fixed_labels)
-  if model in ["llama-zs", "opt-iml-30b-zs", "ArcheType-llama", "ArcheType-llama-oc"]:
+  if any(["speechless-llama2" in model, "llama-zs" in model, "opt-iml-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
     set_pipeline(k=1, args=args)
   prompt = prompt_context_insert(context_labels, context, args["MAX_LEN"], model, args)
   d_p = prompt_dict.get(prompt, -1)
@@ -183,6 +219,10 @@ def get_sent_model(args):
     return
 
 def set_pipeline(k=1, args=None):
+    if getattr(args['tokenizer'], 'pad_token_id', None) is None:
+        pad_token_id = args['tokenizer'].eos_token_id
+    else:
+        pad_token_id = args['tokenizer'].pad_token_id
     args["pipe"] = pipeline(
         "text-generation",
         model=args["base_model"], 
@@ -191,7 +231,8 @@ def set_pipeline(k=1, args=None):
         temperature=0.5*k,
         top_p=0.80-(0.1 * k),
         do_sample=True,
-        repetition_penalty=1.3
+        repetition_penalty=1.3,
+        pad_token_id=pad_token_id,
     )
     args["local_llm"] = HuggingFacePipeline(pipeline=args["pipe"])
     args["llm_chain"] = LLMChain(
@@ -205,7 +246,12 @@ def init_model(model, args):
         from doduo.doduo import Doduo
     with torch.no_grad():
         torch.cuda.empty_cache()
-    if "llama" in model: 
+    if "speechless-llama2" in model:
+        args["MAX_LEN"]=2048
+        tokenizer = AutoTokenizer.from_pretrained("uukuguy/speechless-llama2-13b")
+        tokenizer.add_special_tokens({'pad_token': '[PAD]'})
+        base_model = AutoModelForCausalLM.from_pretrained("uukuguy/speechless-llama2-13b", torch_dtype=torch.float16, load_in_8bit=True, device_map="auto")
+    elif "llama" in model: 
         LLAMA_PATH = args["model_path"]
         args["MAX_LEN"]=2048
         tokenizer = LlamaTokenizer.from_pretrained(LLAMA_PATH)
@@ -239,6 +285,10 @@ def init_model(model, args):
             load_in_8bit=True,
             device_map='auto',
         )
+    elif "internlm-20b" in model:
+        args["MAX_LEN"]=2048
+        tokenizer = AutoTokenizer.from_pretrained("internlm/internlm-20b", trust_remote_code=True)
+        base_model = AutoModelForCausalLM.from_pretrained("internlm/internlm-20b", trust_remote_code=True, device_map="auto", torch_dtype=torch.float16, load_in_8bit=True)
     elif "gpt4-x-alpaca-zs" in model:
         args["MAX_LEN"]=2048
         tokenizer = AutoTokenizer.from_pretrained("chavinlo/gpt4-x-alpaca")
@@ -273,6 +323,7 @@ def init_model(model, args):
     else:
         print("Sorry, I don't recognize model name {}. Please try again.".format(model))
     if any(["flan-t5-xxl-zs" in model, "topp-zs" in model, "flan-ul2-zs" in model, \
+            "internlm" in model, \
             "-chorus" in model, "-korini" in model, "-noisy" in model, \
             "-short" in model, "-inverted" in model]):
         template = """{instruction}"""
@@ -309,9 +360,20 @@ def init_model(model, args):
     args["template"] = template
     args["pt"] = pt
     #Convert length from tokens to characters, leave room for model response
-    args["MAX_LEN"] = args["MAX_LEN"] * EST_CHARS_PER_TOKEN - 200
+    # args["MAX_LEN"] = args["MAX_LEN"] * EST_CHARS_PER_TOKEN - 300
     args["params"] = params
     return
+
+# def cutoff_prompt_length(prompt, max_len):
+#     if len(prompt) > 20000:
+#         prompt = prompt[:20000] + "Response: "
+#     approx_cutoff = max_len-1 // 3
+#     word_split = prompt.split(" ")
+#     if len(word_split) > approx_cutoff:
+#         word_split = word_split[:approx_cutoff] + ["Response: "]
+#         return " ".join(s for s in word_split if len(s) < 30)
+#     else:
+#         return prompt
 
 def fuzzy_label_match(orig_ans, fixed_labels, session, link, prompt, lsd, model, method=["ans_contains_gt", "gt_contains_ans", "resample"], args=dict()):
     #answer is already in label set, no fuzzy match needed
@@ -335,9 +397,15 @@ def fuzzy_label_match(orig_ans, fixed_labels, session, link, prompt, lsd, model,
                     ],
                     temperature=0 + k/10,
                 ).choices[0]['message']['content'].lower()
-            elif any(["llama-zs" in model, "opt-iml-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
+            elif "internlm" in model:
+                ans_n = get_internlm_resp(prompt, k, args)
+            elif any(["speechless-llama2" in model, "llama-zs" in model, "opt-iml-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
+                # prompt = cutoff_prompt_length(prompt, args["MAX_LEN"])
+                end_of_sentence = prompt[-15:]
                 set_pipeline(k=k, args=args)
                 ans_n = args['llm_chain'].run(prompt)
+                if "speechless-llama2" in model:
+                    ans_n = ans_n.split(end_of_sentence)[-1]
             elif any(["topp-zs" in model, "flan-t5-xxl-zs" in model, "flan-ul2-zs" in model]):
                 ans_n = get_topp_resp(prompt, k, args)
             else:

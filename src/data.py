@@ -390,6 +390,10 @@ def make_json(prompt, var_params, args):
       }
 
 def prompt_context_insert(context_labels: str, context : str, max_len : int = 2000, model : str = "gpt-3.5", args : dict = dict()):
+  if "gpt" in model:
+    addl_instr = "Please respond only with the name of the class."
+  else:
+    addl_instr = ""
   if args.get("table_name", -1) != -1:
     table_src_str = " sourced from the table named " + args["table_name"]
   else:
@@ -402,33 +406,40 @@ def prompt_context_insert(context_labels: str, context : str, max_len : int = 20
     context_labels = "massachusetts, pennsylvania, connecticut, mississippi, washington, california, minnesota, louisiana, tennessee, wisconsin, nebraska, missouri, michigan, kentucky, arkansas, delaware, illinois, colorado, virginia, oklahoma, maryland, indiana, alabama, arizona, georgia, montana, florida, nevada, kansas, alaska, oregon, hawaii, maine, texas, idaho, iowa, ohio"
     s = f'Select the state the articles in the following column are from from {context_labels}. \n Input column: {context} \n{ocs} Output: \n'
   if "chorusprompt" in model:
-    s = f'For the following table column{table_src_str}, select a schema.org type annotation from {context_labels}. \n Input column: {context} \n{ocs} Output: \n'
+    s = f'For the following table column{table_src_str}, select a schema.org type annotation from {context_labels}. {addl_instr} \n Input column: {context} \n{ocs} Output: \n'
   elif "koriniprompt" in model:
-    s = f'Answer the question based on the task below. If the question cannot be answered using the information provided, answer with "I don\'t know". \n Task: Classify the column{table_src_str} given to you into only one of these types: {context_labels} \n Input column: {context} \n{ocs}  Type: \n'
+    s = f'Answer the question based on the task below. If the question cannot be answered using the information provided, answer with "I don\'t know". \n Task: Classify the column{table_src_str} given to you into only one of these types: {context_labels} \n {addl_instr} \n Input column: {context} \n{ocs} Type: \n'
   elif "invertedprompt" in model:
-    s = f'Here is a column from a table{table_src_str}: {context} \n{ocs} Please select the class from that best describes the column, from the following options. \n Options: {context_labels} \n Response: \n'
+    s = f'Here is a column from a table{table_src_str}: {context} \n{ocs} Please select the class from that best describes the column, from the following options. \n Options: {context_labels} \n {addl_instr} \n Response: \n'
   elif "shortprompt" in model:
-    s = f'Pick the column\'s class{table_src_str}. \n Column: {context} \n{ocs} Classes: {context_labels} \n Output: \n'
+    s = f'Pick the column\'s class{table_src_str}. {addl_instr} \n Column: {context} \n{ocs} Classes: {context_labels} \n Output: \n'
   elif "noisyprompt" in model:
-    s = f'Pick the column\'s class{table_src_str}. I mean if you want to. It would be cool, I think. Anyway, give it a try, I guess? \n Here\'s the column itself! {context} \n{ocs} And, um, here are some column names you could pick from ... {context_labels} \n Ok, go ahead! \n'
+    s = f'Pick the column\'s class{table_src_str}. I mean if you want to. It would be cool, I think. Anyway, give it a try, I guess? \n Here\'s the column itself! {context} \n{ocs} And, um, here are some column names you could pick from ... {context_labels} \n {addl_instr} \n Ok, go ahead! \n'
   elif "fozzieprompt" in model:
-    s = f'Waka waka! This is Fozzie bear! I would totally ❤️ you if you would be my friend, and also pick a class for this column{table_src_str}, before we end. \n Here\'s the column, waka waka! {context} \n{ocs} If you get the right class, it\'ll be a real gas! {context_labels} \n What\'s the type? \n'
+    s = f'Waka waka! This is Fozzie bear! I would totally ❤️ you if you would be my friend, and also pick a class for this column{table_src_str}, before we end. \n Here\'s the column, waka waka! {context} \n{ocs} If you get the right class, it\'ll be a real gas! {context_labels} \n {addl_instr} \n What\'s the type? \n'
   elif "gpt-3.5" in model:
-    s = f'SYSTEM: Please select the field from {context_labels} which best describes the context{table_src_str}. Respond only with the name of the field. \n CONTEXT: {context} \n{ocs} RESPONSE: \n'
+    s = f'SYSTEM: Please select the class from {context_labels} which best describes the context{table_src_str}. {addl_instr} \n CONTEXT: {context} \n{ocs} \n RESPONSE: \n'
   elif model == "llama-old":
-    s = f'INSTRUCTION: Select the field{table_src_str} from the category which matches the input. \n CATEGORIES: {context_labels} \n INPUT:{context} \n{ocs} OUTPUT: '
+    s = f'INSTRUCTION: Select the class{table_src_str} from the category which matches the input. \n CATEGORIES: {context_labels} \n INPUT:{context} \n{ocs} {addl_instr} \n OUTPUT: '
   elif "-zs" in model:
-    ct = "[" + ", ".join(context).replace("[", "").replace("]", "").replace("'", "")[:max_len - 100 - len(context_labels)] + "]"
+    ct = "[" + ", ".join(context).replace("[", "").replace("]", "").replace("'", "") + "]"
     lb = "\n".join(["- " + c for c in context_labels.split(", ")])
-    #s = f'How might one classify the following input? \n INPUT: {ct} .\n OPTIONS:\n {lb} \n ANSWER:'
     if model == "opt-iml-max-30b-zs":
-        s = f'Select the option{table_src_str} which best describes the input. \n INPUT: {ct} .\n{ocs} OPTIONS:\n {lb} \n'
+        s = f'Select the option{table_src_str} which best describes the input. \n INPUT: {ct} .\n{ocs} {addl_instr} \n OPTIONS:\n {lb} \n'
     else:
-        s = f'INSTRUCTION: Select the option{table_src_str} which best describes the input. \n INPUT: {ct} .\n{ocs} OPTIONS:\n {lb} \n ANSWER: '
+        s = f'INSTRUCTION: Select the option{table_src_str} which best describes the input. \n INPUT: {ct} .\n{ocs} {addl_instr} \n OPTIONS:\n {lb} \n ANSWER: '
   elif model in ["llama", "ArcheType-llama", "ArcheType-llama-oc"]:
-    s = f'INSTRUCTION: Select the category{table_src_str} which best matches the input. \n INPUT:{context} \n{ocs} CATEGORY: '
-  if len(s) > max_len:
-    s = s[:max_len - 10] + "\n RESPONSE: "
+    s = f'INSTRUCTION: Select the category{table_src_str} which best matches the input. \n INPUT:{context} \n{ocs} {addl_instr} \n CATEGORY: '
+  if "internlm" in model or "speechless" in model:
+    s = s.replace("[", "").replace("]", "").replace("'", "")
+  if args.get('tokenizer', None) is not None and len(s) > max_len * 3:
+    inputs = args["tokenizer"].encode(s, return_tensors="pt")
+    target_len = len(inputs[0])
+    if target_len > max_len:
+      print(f"Trimming prompt of token length {target_len}")
+      inputs = inputs[:,:max_len-100]
+      print(f"Length is now {len(inputs[0])}")
+      s = args["tokenizer"].decode(inputs[0]) + "Response: "
   return s
 
 def prompt_2step_context_insert(context : str, max_len : int = 2000, model : str = "gpt-3.5", args : dict = dict()):

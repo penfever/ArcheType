@@ -3,6 +3,7 @@
 logs/
 results/
 Test/
+profiling/
 CTA_test_corner_cases_gt.csv
 CTA_test_format_heterogeneity_gt.csv
 CTA_test_gt.csv
