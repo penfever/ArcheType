@@ -181,18 +181,27 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
     orig_ans = apply_basic_rules(limited_context, None, lsd)
     if orig_ans is None:
         orig_ans = query_correct_model(model, prompt, context_labels, context, session, link, lsd, args)
+        # ------------------------ 2step ------------------------
+        if orig_ans == 'article' and "2step" in lsd['name']:
+            context_labels = '2step'
+            prompt = prompt_context_insert(context_labels, context, args["MAX_LEN"], model, args)
+            orig_ans = query_correct_model(model, prompt, context_labels, context, session, link, lsd, args)
+            orig_ans = 'article from ' + orig_ans
+            ans_n = orig_ans.lower()
+        # ------------------------ 2step ------------------------
         #hierarchical matching logic
-        if "hierarchical" in method and dtype == "other" and orig_ans not in ['email', 'URL', 'WebHTMLAction', 'Photograph']:
-            next_label_set = sotab_other_hier.get(orig_ans, -1)
-            if next_label_set == -1:
-                print(f"Original answer {orig_ans} not found in hierarchy")
-                next_label_set = sotab_other_hier['text']
-            fixed_labels = list(set([fix_labels(s, lsd) for s in next_label_set])) 
-            context_labels = ", ".join(fixed_labels)
-            fixed_labels = sorted(fixed_labels, key=len, reverse=True)
-            orig_ans = query_correct_model(model, prompt, context_labels, context, session, link, lsd, args)  
-        #fuzzy matching logic
-        ans_n = fuzzy_label_match(orig_ans, fixed_labels, session, link, prompt, lsd, model, method=method, args=args).lower()
+        else: 
+            if "hierarchical" in method and dtype == "other" and orig_ans not in ['email', 'URL', 'WebHTMLAction', 'Photograph']:
+                next_label_set = sotab_other_hier.get(orig_ans, -1)
+                if next_label_set == -1:
+                    print(f"Original answer {orig_ans} not found in hierarchy")
+                    next_label_set = sotab_other_hier['text']
+                fixed_labels = list(set([fix_labels(s, lsd) for s in next_label_set])) 
+                context_labels = ", ".join(fixed_labels)
+                fixed_labels = sorted(fixed_labels, key=len, reverse=True)
+                orig_ans = query_correct_model(model, prompt, context_labels, context, session, link, lsd, args)  
+            #fuzzy matching logic
+            ans_n = fuzzy_label_match(orig_ans, fixed_labels, session, link, prompt, lsd, model, method=method, args=args).lower()
     else:
         ans_n = orig_ans.lower()
   if isd4:
@@ -301,7 +310,7 @@ def init_model(model, args):
         tokenizer = AutoTokenizer.from_pretrained("GeorgiaTechResearchInstitute/galpaca-30b")
         base_model = AutoModelForCausalLM.from_pretrained("GeorgiaTechResearchInstitute/galpaca-30b", device_map="auto", torch_dtype=torch.float16, load_in_8bit=True)
     elif "opt-iml-max-30b-zs" in model:
-        args["MAX_LEN"]=2048
+        args["MAX_LEN"] = 2048
         tokenizer = AutoTokenizer.from_pretrained("facebook/opt-iml-max-30b", use_fast=False, padding_side='left')
         base_model = AutoModelForCausalLM.from_pretrained("facebook/opt-iml-max-30b", device_map="auto", torch_dtype=torch.float16, load_in_8bit=True)
     elif model == "doduo":
