@@ -66,10 +66,10 @@ def run(
     labels = ["_".join(k.split("_")[:-1]) for k in inputs.keys()]
     inputs = list(inputs.values())
   for idx, f in tqdm(enumerate(inputs), total=len(inputs)):
-    try:
-        free_memory()
-    except Exception as e:
-        print(f"Failed to free memory, error message was: \n {e}")
+    # try:
+    #     free_memory()
+    # except Exception as e:
+    #     print(f"Failed to free memory, error message was: \n {e}")
     if idx % 10 == 0:
       with open(save_path, 'w', encoding='utf-8') as alt_f:
         json.dump(prompt_dict, alt_f, ensure_ascii=False, indent=4)

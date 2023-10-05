@@ -65,7 +65,7 @@ def query_correct_model(model, prompt, context_labels, context, session, link, l
     if "gpt" in model:
         orig_ans = call_gpt_model(prompt, lsd)
     elif any(["speechless-llama2" in model, "llama-zs" in model, "opt-iml-max-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
-        prompt = cutoff_prompt_length(prompt, args["MAX_LEN"])
+        # prompt = cutoff_prompt_length(prompt, args["MAX_LEN"])
         end_of_sentence = prompt[-15:]
         try:
             orig_ans = args["llm_chain"].run(prompt)
@@ -355,16 +355,16 @@ def init_model(model, args):
     args["params"] = params
     return
 
-def cutoff_prompt_length(prompt, max_len):
-    if len(prompt) > 20000:
-        prompt = prompt[:20000]
-    approx_cutoff = max_len-1 // 3
-    word_split = prompt.split(" ")
-    if len(word_split) > approx_cutoff:
-        word_split = word_split[:approx_cutoff] + ["Response: "]
-        return " ".join(s for s in word_split if len(s) < 30)
-    else:
-        return prompt
+# def cutoff_prompt_length(prompt, max_len):
+#     if len(prompt) > 20000:
+#         prompt = prompt[:20000] + "Response: "
+#     approx_cutoff = max_len-1 // 3
+#     word_split = prompt.split(" ")
+#     if len(word_split) > approx_cutoff:
+#         word_split = word_split[:approx_cutoff] + ["Response: "]
+#         return " ".join(s for s in word_split if len(s) < 30)
+#     else:
+#         return prompt
 
 def fuzzy_label_match(orig_ans, fixed_labels, session, link, prompt, lsd, model, method=["ans_contains_gt", "gt_contains_ans", "resample"], args=dict()):
     #answer is already in label set, no fuzzy match needed
@@ -391,7 +391,7 @@ def fuzzy_label_match(orig_ans, fixed_labels, session, link, prompt, lsd, model,
             elif "internlm" in model:
                 ans_n = get_internlm_resp(prompt, k, args)
             elif any(["speechless-llama2" in model, "llama-zs" in model, "opt-iml-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
-                prompt = cutoff_prompt_length(prompt, args["MAX_LEN"])
+                # prompt = cutoff_prompt_length(prompt, args["MAX_LEN"])
                 end_of_sentence = prompt[-15:]
                 set_pipeline(k=k, args=args)
                 ans_n = args['llm_chain'].run(prompt)

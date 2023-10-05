@@ -427,8 +427,16 @@ def prompt_context_insert(context_labels: str, context : str, max_len : int = 20
         s = f'INSTRUCTION: Select the option{table_src_str} which best describes the input. \n INPUT: {ct} .\n{ocs} {addl_instr} \n OPTIONS:\n {lb} \n ANSWER: '
   elif model in ["llama", "ArcheType-llama", "ArcheType-llama-oc"]:
     s = f'INSTRUCTION: Select the category{table_src_str} which best matches the input. \n INPUT:{context} \n{ocs} {addl_instr} \n CATEGORY: '
-  if "internlm" in model:
+  if "internlm" in model or "speechless" in model:
     s = s.replace("[", "").replace("]", "").replace("'", "")
+  if args.get('tokenizer', None) is not None and len(s) > max_len * 3:
+    inputs = args["tokenizer"].encode(s, return_tensors="pt")
+    target_len = len(inputs[0])
+    if target_len > max_len:
+      print(f"Trimming prompt of token length {target_len}")
+      inputs = inputs[:,:max_len-100]
+      print(f"Length is now {len(inputs[0])}")
+      s = args["tokenizer"].decode(inputs[0]) + "Response: "
   return s
 
 def derive_meta_features(col):
