@@ -433,10 +433,8 @@ def prompt_context_insert(context_labels: str, context : str, max_len : int = 20
     inputs = args["tokenizer"].encode(s, return_tensors="pt")
     target_len = len(inputs[0])
     if target_len > max_len:
-      print(f"Trimming prompt of token length {target_len}")
-      inputs = inputs[:,:max_len-100]
-      print(f"Length is now {len(inputs[0])}")
-      s = args["tokenizer"].decode(inputs[0]) + "Response: "
+      inputs = inputs[:,:max_len-len(context_labels)-100]
+      s = args["tokenizer"].decode(inputs[0]) + f"Classes: {context_labels} \n Output: \n"
   return s
 
 def derive_meta_features(col):
