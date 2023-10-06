@@ -402,6 +402,9 @@ def prompt_context_insert(context_labels: str, context : str, max_len : int = 20
     ocs = "For additional context, here are some entries from other columns in the table: " + ", ".join(args["other_context_samples"]) + "\n"
   else:
     ocs = ""
+  if context_labels == "2step":
+    context_labels = "massachusetts, pennsylvania, connecticut, mississippi, washington, california, minnesota, louisiana, tennessee, wisconsin, nebraska, missouri, michigan, kentucky, arkansas, delaware, illinois, colorado, virginia, oklahoma, maryland, indiana, alabama, arizona, georgia, montana, florida, nevada, kansas, alaska, oregon, hawaii, maine, texas, idaho, iowa, ohio"
+    s = f'Select the state the articles in the following column are from from {context_labels}. \n Input column: {context} \n{ocs} Output: \n'
   if "chorusprompt" in model:
     s = f'For the following table column{table_src_str}, select a schema.org type annotation from {context_labels}. {addl_instr} \n Input column: {context} \n{ocs} Output: \n'
   elif "koriniprompt" in model:
@@ -436,6 +439,9 @@ def prompt_context_insert(context_labels: str, context : str, max_len : int = 20
       inputs = inputs[:,:max_len-len(context_labels)-100]
       s = args["tokenizer"].decode(inputs[0]) + f"Classes: {context_labels} \n Output: \n"
   return s
+
+def prompt_2step_context_insert(context : str, max_len : int = 2000, model : str = "gpt-3.5", args : dict = dict()):
+  contexr_labels = "massachusetts, pennsylvania, connecticut, mississippi, washington, california, minnesota, louisiana, tennessee, wisconsin, nebraska, missouri, michigan, kentucky, arkansas, delaware, illinois, colorado, virginia, oklahoma, maryland, indiana, alabama, arizona, georgia, montana, florida, nevada, kansas, alaska, oregon, hawaii, maine, texas, idaho, iowa, ohio"
 
 def derive_meta_features(col):
   features = {}
@@ -663,6 +669,95 @@ d4_sotab_labels = {"name" : "d4_sotab", "label_set" : cll, "dict_map" : {c : c f
 
 d4_sherlock_labels = {"name" : "d4_sherlock", "label_set" : sherlock_labels, "dict_map" : {c : c for c in sherlock_labels}, "d4_map" : sherlock_D4_map}
 
+
+# amstr_tables
+
+amstr_path = Path("./metadata/amstr_tables")
+amstr_files = list(amstr_path.rglob("*.csv"))
+
+def get_amstr_dfs():
+  # NUM_SAMPLES = 100
+  amstr_dfs = {}
+  for file in amstr_files:
+    df = pd.read_csv(file)
+    for column_name, column_data in df.items():
+      # for k in range(NUM_SAMPLES):
+      dfs = column_data.sample(15, replace=True)
+      dfs = pd.DataFrame(dfs)
+      amstr_dfs[str(column_name) + "_" + str(file.stem).split('_')[-1]] = dfs
+  return amstr_dfs
+
+
+amstr_classes = ['title', 'issn', 'town', 'state', 'headline', 'byline',
+                 'Iowa_article', 'Minnesota_article', 'Alabama_article', 'Florida_article', 'Massachusetts_article', 
+                 'Montana_article', 'Georgia_article', 'Hawaii_article', 'Kansas_article', 'Illinois_article', 
+                 'Arizona_article', 'Nebraska_article', 'Pennsylvania_article', 'Texas_article', 'Alaska_article', 
+                 'Mississippi_article', 'Tennessee_article', 'Washington_article', 'Kentucky_article', 'California_article', 
+                 'Maine_article', 'Virginia_article', 'Oregon_article', 'Wisconsin_article', 'Colorado_article', 
+                 'Delaware_article', 'Louisiana_article', 'Idaho_article', 'Indiana_article', 'Oklahoma_article', 
+                 'Maryland_article', 'Arkansas_article', 'Michigan_article', 'Missouri_article', 'Ohio_article', 
+                 'Connecticut_article', 'Nevada_article' ]
+
+
+amstr_renamed_class = ['Newspaper or Publication','Numeric Identifier','Town','State','Headline','Author Byline',
+'Article from Iowa', 'Article from Minnesota', 'Article from Alabama', 'Article from Florida', 'Article from Massachusetts', 
+ 'Article from Montana', 'Article from Georgia', 'Article from Hawaii', 'Article from Kansas', 'Article from Illinois', 
+ 'Article from Arizona', 'Article from Nebraska', 'Article from Pennsylvania', 'Article from Texas', 'Article from Alaska', 
+ 'Article from Mississippi', 'Article from Tennessee', 'Article from Washington', 'Article from Kentucky', 'Article from California', 
+ 'Article from Maine', 'Article from Virginia', 'Article from Oregon', 'Article from Wisconsin', 'Article from Colorado', 
+ 'Article from Delaware', 'Article from Louisiana', 'Article from Idaho', 'Article from Indiana', 'Article from Oklahoma', 
+ 'Article from Maryland', 'Article from Arkansas', 'Article from Michigan', 'Article from Missouri', 'Article from Ohio', 
+ 'Article from Connecticut', 'Article from Nevada']
+
+amstr_classname_map = {k1 : k2 for (k1, k2) in zip(amstr_classes, amstr_renamed_class)}
+
+def get_amstr_classname_map():
+  return amstr_classname_map
+
+amstr_zs_context_labels = {"name" : "amstr_zs", "label_set" : amstr_renamed_class, "dict_map" : {c : c for c in amstr_renamed_class}, "amstr_map" : amstr_classname_map}
+
+amstr_2step_renamed_classes = ['Newspaper or Publication','Numeric Identifier','Town','State','Headline','Author Byline', 'Article']
+amstr_zs_2step_context_labels = {"name" : "amstr_zs_2step", "label_set" : amstr_2step_renamed_classes, "dict_map" : {c : c for c in amstr_renamed_class}, "amstr_map" : amstr_classname_map}
+
+
+# pubchem
+
+pubchem_path = Path("./metadata/pubchem")
+pubchem_files = list(pubchem_path.rglob("*.csv"))
+
+def get_pubchem_dfs():
+  # NUM_SAMPLES = 100
+  pubchem_dfs = {}
+  for file in pubchem_files:
+    df = pd.read_csv(file)
+    for column_name, column_data in df.items():
+      # for k in range(NUM_SAMPLES):
+      dfs = column_data.sample(15, replace=True)
+      dfs = pd.DataFrame(dfs)
+      pubchem_dfs[str(column_name) + "_" + str(file.stem).split('_')[-1]] = dfs
+  return pubchem_dfs
+
+pubchem_classes = ['author_given_name', 'Molecular_Formula', 'book_title', 'cell_altlabel', 'book_subtitle', 
+                   'disease_altlabel', 'book_creator', 'author_family_name', 'IUPAC_name', 'taxonomy_label', 
+                   'InChI', 'SMILES', 'patent_abstract', 
+                   'organization_fn', 'book_isbn', 'concept_broader', 'journal_title', 'concept_preflabel', 
+                   'author_fn', 'journal_issn', 'patent_title']
+
+
+pubchem_renamed_class = ['Author First Name', 'Molecular Formula', 'Book Title', 'Cell Alternative Label', 'Book Subtitle',
+                        'Disease Alternative Label', 'Book Creator', 'Author Last Name', 'IUPAC Name', 'Taxonomy Label',
+                        'International Chemical Identifier (InChI)', 'Simplified Molecular Input Line Entry System (SMILES)', 'Patent Abstract', 
+                        'Organization Name', 'Book ISBN', 'Concept Broader Term', 'Journal Title', 'Concept Preferred Label',
+                        'Author Full Name', 'Journal ISSN', 'Patent Title']
+
+pubchem_classname_map = {k1 : k2 for (k1, k2) in zip(pubchem_classes, pubchem_renamed_class)}
+
+def get_pubchem_classname_map():
+  return pubchem_classname_map
+
+pubchem_zs_context_labels = {"name" : "pubchem_zs", "label_set" : pubchem_renamed_class, "dict_map" : {c : c for c in pubchem_renamed_class}, "pubchem_map" : pubchem_classname_map}
+
+
 def get_lsd(s):
   if s == "SOTAB-91":
     return context_labels
@@ -674,6 +769,12 @@ def get_lsd(s):
     return d4_zs_context_labels
   elif s == "D4-DoDuo":
     return d4_sherlock_labels
+  elif s == "amstr-ZS":
+    return amstr_zs_context_labels
+  elif s == "amstr-ZS-2step":
+    return amstr_zs_2step_context_labels
+  elif s == "pubchem-ZS":
+    return pubchem_zs_context_labels
   print("Label set not found")
   return None
 
