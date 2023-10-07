@@ -140,7 +140,7 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
       gtv = lsd['d4_map'][ground_truth]
       if isinstance(gtv, str):
         gtv = [gtv]
-      ground_truth = [s.lower() for s in gtv]
+      fixed_labels = ground_truth = [s.lower() for s in gtv]
   elif "hierarchical" in method and not isd4:
       dtype = get_base_dtype(limited_context)
       fixed_labels = sotab_top_hier[dtype]
