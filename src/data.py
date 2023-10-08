@@ -582,7 +582,6 @@ relative_path_to_d4 = os.path.join(current_script_dir, 'metadata', 'D4')
 d4p = os.path.normpath(relative_path_to_d4)
 D4_PATH = Path(d4p)
 D4_files = list(D4_PATH.rglob("**/*.silver"))
-D4_classes = list(f.stem.lower() for f in D4_files)
 
 def get_d4_dfs():
   NUM_SAMPLES = 100
@@ -599,14 +598,14 @@ D4_renamed_classes = ['School ID',
  'Letter Grade',
  'Educational Organization',
  'School DBN',
+ 'Elevator or Staircase',
  'Region in Brooklyn',
  'Region in Bronx',
- 'Permit Type',
  'Region in Queens',
  'Region in Manhattan',
  'Region in Staten Island',
+ 'Permit Type',
  'County',
- 'Elevator or Staircase',
  'Short City Agency Name',
  'Color',
  'Full City Agency Name',
@@ -614,6 +613,27 @@ D4_renamed_classes = ['School ID',
  'State',
  'Month',
  'License plate type']
+
+D4_classes = ['school-number', 
+              'ethnicity', 
+              'school-grades', 
+              'school-name', 
+              'school-dbn', 
+              'rental-building-class', 
+              'brooklyn', 
+              'bronx', 
+              'queens', 
+              'manhattan', 
+              'staten_island', 
+              'permit-types',
+              'borough',  
+              'agency-short', 
+              'color', 
+              'agency-full', 
+              'other-states', 
+              'us-state', 
+              'month',
+              'plate-type']
 
 D4_classname_map = {k1 : k2 for (k1, k2) in zip(D4_classes, D4_renamed_classes)}
 
@@ -663,7 +683,9 @@ sotab_D4_map = {
   'plate-type' : ['Text', 'category', 'CategoryCode', 'Offer'],
 }
 
-d4_zs_context_labels = {"name" : "d4_zs", "label_set" : D4_renamed_classes, "dict_map" : {c : c for c in D4_renamed_classes}, "d4_map" : D4_classname_map}
+# d4_zs_context_labels = {"name" : "d4_zs", "label_set" : D4_renamed_classes, "dict_map" : {c : c for c in D4_renamed_classes}, "d4_map" : D4_classname_map}
+
+d4_zs_context_labels = {"name" : "d4_zs", "label_set" : D4_renamed_classes, "dict_map" : D4_classname_map}
 
 d4_sotab_labels = {"name" : "d4_sotab", "label_set" : cll, "dict_map" : {c : c for c in cll}, "d4_map" : sotab_D4_map}
 

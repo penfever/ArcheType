@@ -71,7 +71,7 @@ def run(
     #     free_memory()
     # except Exception as e:
     #     print(f"Failed to free memory, error message was: \n {e}")
-    if idx % 10 == 0:
+    if idx % 100 == 0:
       with open(save_path, 'w', encoding='utf-8') as alt_f:
         json.dump(prompt_dict, alt_f, ensure_ascii=False, indent=4)
     if stop_early > -1 and idx == stop_early:
@@ -139,7 +139,7 @@ def run(
         else:
           context = insert_source(sample_df[col].tolist(), f.name, zs="zs" in model_name)
       else:
-        context = sample_df[col].tolist()      
+        context = sample_df[col].tolist()
       key = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
       prompt_dict[key]['original_label'] = orig_label
       # print("original_label: ", orig_label)
