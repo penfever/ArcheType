@@ -38,7 +38,6 @@ def run(
     method : list = ["similarity"],
     args : dict = dict()):
   
-  seed_all(rand_seed)
   args['context_is_numeric'] = False
 
   if model_name in ["llama", "llama-old", "sherlock"]:
@@ -181,7 +180,7 @@ def main():
     parser.add_argument("--method", nargs='+', type=str, default=["similarity"], help="Sets label remapping strategy. skip-existing will skip columns which already have a prompt in the prompt_dict. If skip-eval is in method, then no evaluation will be performed. similarity will use the similarity metric to find the closest label in the label set. ans_contains_gt and gt_contains_ans will use contains label remapping, and resample will call the LLM multiple times. If check_labels is in method, then every ground truth label will be verified against the values in the label set.")
 
     args = parser.parse_args()
-
+    seed_all(args.rand_seed)
     if args.input_files == "D4":
       input_files = get_d4_dfs()
     elif args.input_files == "amstr":

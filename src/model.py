@@ -203,12 +203,9 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
             ans_n = fuzzy_label_match(orig_ans, fixed_labels, session, link, prompt, lsd, model, method=method, args=args).lower()
     else:
         ans_n = orig_ans.lower()
-  if isd4:
-    res = ans_n in ground_truth
-  elif "skip-eval" in method:
-    res = False
-  else:
-    res = ans_n == ground_truth
+  if "skip-eval" in method:
+    ans_n = None
+  res = ans_n == ground_truth
   ans_dict = {"response" : ans_n, "context" : context, "ground_truth" : ground_truth, "correct" : res, "original_model_answer" : orig_ans}
   prompt_dict[prompt] = ans_dict
   return prompt

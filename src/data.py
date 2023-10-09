@@ -485,12 +485,18 @@ def get_df_sample(df, rand_seed, val_indices, len_context, min_variance=1, repla
         sample_list = colvals.sample(n=ss_orig, replace=True, random_state=rand_seed, weights=coherence_scores[idx]).tolist()
       else:
         #archetype sampling
-        sample_list = list(set(p for p in pd.unique(colvals) if p not in ignore_list))
+        sample_list = []
+        for p in sorted(pd.unique(colvals).tolist()):
+          if p in sample_list or p in ignore_list:
+            continue
+          sample_list.append(p)
+        #sort the list twice, first alphabetically, then by length (in case of ties)
         sample_list = sorted(sample_list, key=len, reverse=True)
         weights = np.linspace(1, 0.1, len(sample_list))
         weights = weights / np.sum(weights)
         if len(sample_list) > ss_orig:
           sample_list = np.array(sample_list)
+          np.random.seed(rand_seed)
           indices = np.random.choice(np.arange(len(sample_list)), size=ss_orig, replace=replace, p=weights)
           sample_list = sample_list[indices].tolist()
       #reformat integer samples
@@ -581,9 +587,9 @@ relative_path_to_d4 = os.path.join(current_script_dir, 'metadata', 'D4')
 # Normalize the path to handle any inconsistencies in the directory separators
 d4p = os.path.normpath(relative_path_to_d4)
 D4_PATH = Path(d4p)
-D4_files = list(D4_PATH.rglob("**/*.silver"))
 
 def get_d4_dfs():
+  D4_files = sorted(list(D4_PATH.rglob("**/*.silver")))
   NUM_SAMPLES = 100
   d4_dfs = {}
   for file in D4_files:
