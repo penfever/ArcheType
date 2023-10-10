@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from pathlib import Path
 import argparse
 import openai
+from transformers import AutoTokenizer
 
 try:
   from .model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all, free_memory
@@ -13,7 +14,7 @@ try:
   from .const import DOTENV_PATH, MAX_LEN
 except ImportError:
   from model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all, free_memory
-  from data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any
+  from data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs, get_amstr_classname_map, get_pubchem_dfs, get_pubchem_classname_map
   from metrics import results_checker, results_checker_doduo
   from const import DOTENV_PATH, MAX_LEN
 
@@ -42,10 +43,12 @@ def run(
 
   if model_name in ["llama", "llama-old", "sherlock"]:
     pass
-  elif "gpt-3.5" in model_name:
+  elif "gpt" in model_name:
     load_dotenv(DOTENV_PATH)
     openai.api_key = os.getenv("OPENAI_API_KEY")
     assert openai.api_key != None, "api key did not load"
+    args['tokenizer'] = AutoTokenizer.from_pretrained("openai-gpt")
+    args['MAX_LEN'] = 4096
   else:
     init_model(model_name, args)
   infmods = "sherlock" in model_name or "doduo" in model_name
@@ -139,10 +142,14 @@ def run(
           context = insert_source(sample_df[col].tolist(), f.name, zs="zs" in model_name)
       else:
         context = sample_df[col].tolist()
-      key = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
-      prompt_dict[key]['original_label'] = orig_label
-      # print("original_label: ", orig_label)
-      prompt_dict[key]['file+idx'] = str(f) + "_" + str(idx)
+      try:
+        key = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
+        prompt_dict[key]['original_label'] = orig_label
+        # print("original_label: ", orig_label)
+        prompt_dict[key]['file+idx'] = str(f) + "_" + str(idx)
+      except Exception as e:
+        print(e)
+        prompt_dict[key] = {"response" : e, 'context' : "", "ground_truth" : "", "correct" : False, "original_label" : orig_label, "file+idx" : str(f) + "_" + str(idx)}
   with open(save_path, 'w', encoding='utf-8') as my_f:
     json.dump(prompt_dict, my_f, ensure_ascii=False, indent=4)
   if results:
@@ -183,11 +190,10 @@ def main():
     seed_all(args.rand_seed)
     if args.input_files == "D4":
       input_files = get_d4_dfs()
-    elif args.input_files == "amstr":
-      input_files = get_amstr_dfs()
-      # print("input_files: ", input_files)
-    elif args.input_files == "pubchem":
-      input_files = get_pubchem_dfs()
+    elif args.input_labels == "amstr":
+      input_files = get_amstr_dfs(args.input_files, args.rand_seed)
+    elif args.input_labels == "pubchem":
+      input_files = get_pubchem_dfs(args.input_files, args.rand_seed)
     else:
       # Define the file extensions to search for
       extensions = ('.json', '.csv', '.json.gz', '.parquet', '.xlsx', '.xls', '.tsv')
@@ -195,15 +201,13 @@ def main():
       for extension in extensions:
         input_files = input_files + list(Path(args.input_files).rglob(f"**/*{extension}"))
     
-    if args.input_labels == "D4":
+    if args.input_labels == "D4" or \
+      "amstr" in args.input_labels or \
+      "pubchem" in args.input_labels or \
+      args.input_labels == "skip-eval":
       input_df = None
-    elif args.input_labels == "amstr":
-      input_df = None
-    elif args.input_labels == "pubchem":
-      input_df = None
-    elif args.input_labels == "skip-eval":
-      input_df = None
-      args.method = args.method + ["skip-eval"]
+      if args.input_labels == "skip-eval":
+        args.method = args.method + ["skip-eval"]
     else:
       input_df = pd.read_csv(args.input_labels)
 

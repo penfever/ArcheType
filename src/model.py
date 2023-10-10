@@ -104,8 +104,9 @@ def call_gpt_model(prompt, lsd):
     return ans_n
 
 def get_topp_resp(prompt, k, args):
+    # print("starting generate")
     inputs = args["tokenizer"].encode(prompt, return_tensors="pt").cuda()
-    inputs = inputs[:,:args["MAX_LEN"]-1]
+    # inputs = inputs[:,:args["MAX_LEN"]-100]
     outputs = args["base_model"].generate(inputs, 
                                   max_length=args["MAX_LEN"],
                                   temperature=0.1*k,
@@ -114,12 +115,13 @@ def get_topp_resp(prompt, k, args):
                                   repetition_penalty=1.3
                                   )
     orig_ans = args["tokenizer"].decode(outputs[0], skip_special_tokens=True)
+    # print("finished generate")
     return orig_ans
 
 def get_internlm_resp(prompt, k, args):
     end_of_sentence = prompt[-15:]
     inputs = args["tokenizer"].encode(prompt, return_tensors="pt").cuda()
-    inputs = inputs[:,:args["MAX_LEN"]-1]
+    #inputs = inputs[:,:args["MAX_LEN"]-100]
     outputs = args["base_model"].generate(inputs, 
                                   max_length=args["MAX_LEN"],
                                   temperature=0.1*k,

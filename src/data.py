@@ -417,7 +417,7 @@ def prompt_context_insert(context_labels: str, context : str, max_len : int = 20
     s = f'Pick the column\'s class{table_src_str}. I mean if you want to. It would be cool, I think. Anyway, give it a try, I guess? \n Here\'s the column itself! {context} \n{ocs} And, um, here are some column names you could pick from ... {context_labels} \n {addl_instr} \n Ok, go ahead! \n'
   elif "fozzieprompt" in model:
     s = f'Waka waka! This is Fozzie bear! I would totally ❤️ you if you would be my friend, and also pick a class for this column{table_src_str}, before we end. \n Here\'s the column, waka waka! {context} \n{ocs} If you get the right class, it\'ll be a real gas! {context_labels} \n {addl_instr} \n What\'s the type? \n'
-  elif "gpt-3.5" in model:
+  elif "gpt" in model:
     s = f'SYSTEM: Please select the class from {context_labels} which best describes the context{table_src_str}. {addl_instr} \n CONTEXT: {context} \n{ocs} \n RESPONSE: \n'
   elif model == "llama-old":
     s = f'INSTRUCTION: Select the class{table_src_str} from the category which matches the input. \n CATEGORIES: {context_labels} \n INPUT:{context} \n{ocs} {addl_instr} \n OUTPUT: '
@@ -432,7 +432,7 @@ def prompt_context_insert(context_labels: str, context : str, max_len : int = 20
     s = f'INSTRUCTION: Select the category{table_src_str} which best matches the input. \n INPUT:{context} \n{ocs} {addl_instr} \n CATEGORY: '
   if "internlm" in model or "speechless" in model:
     s = s.replace("[", "").replace("]", "").replace("'", "")
-  if args.get('tokenizer', None) is not None and len(s) > max_len * 3:
+  if args.get('tokenizer', None) is not None and len(s) > max_len:
     inputs = args["tokenizer"].encode(s, return_tensors="pt")
     target_len = len(inputs[0])
     if target_len > max_len:
@@ -592,11 +592,11 @@ def get_d4_dfs():
   D4_files = sorted(list(D4_PATH.rglob("**/*.silver")))
   NUM_SAMPLES = 100
   d4_dfs = {}
-  for file in D4_files:
-      df = pd.read_csv(file, sep='\t', names=["ID1", "ID2", "values"])
+  for f in D4_files:
+      df = pd.read_csv(f, sep='\t', names=["ID1", "ID2", "values"])
       for k in range(NUM_SAMPLES):
           dfs = df.sample(n=1 + np.random.randint(100), replace=True, random_state=k)
-          d4_dfs[str(file.stem).lower() + "_" + str(k)] = dfs
+          d4_dfs[str(f.stem).lower() + "_" + str(k)] = dfs
   return d4_dfs
 
 D4_renamed_classes = ['School ID',
@@ -700,42 +700,27 @@ d4_sherlock_labels = {"name" : "d4_sherlock", "label_set" : sherlock_labels, "di
 
 # amstr_tables
 
-amstr_path = Path("./metadata/amstr_tables")
-amstr_files = list(amstr_path.rglob("*.csv"))
-
-def get_amstr_dfs():
-  # NUM_SAMPLES = 100
+def get_amstr_dfs(amstr_path, rand_seed):
+  amstr_files = sorted(list(Path(amstr_path).rglob("*.csv")))
   amstr_dfs = {}
-  for file in amstr_files:
-    df = pd.read_csv(file)
+  for f in amstr_files:
+    df = pd.read_csv(f)
     for column_name, column_data in df.items():
-      # for k in range(NUM_SAMPLES):
-      dfs = column_data.sample(15, replace=True)
+      dfs = column_data.sample(15, replace=True, random_state=rand_seed)
       dfs = pd.DataFrame(dfs)
-      amstr_dfs[str(column_name) + "_" + str(file.stem).split('_')[-1]] = dfs
+      amstr_dfs[str(column_name) + "_" + str(f.stem).split('_')[-1]] = dfs
   return amstr_dfs
 
+state_names=["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
 
-amstr_classes = ['title', 'issn', 'town', 'state', 'headline', 'byline',
-                 'Iowa_article', 'Minnesota_article', 'Alabama_article', 'Florida_article', 'Massachusetts_article', 
-                 'Montana_article', 'Georgia_article', 'Hawaii_article', 'Kansas_article', 'Illinois_article', 
-                 'Arizona_article', 'Nebraska_article', 'Pennsylvania_article', 'Texas_article', 'Alaska_article', 
-                 'Mississippi_article', 'Tennessee_article', 'Washington_article', 'Kentucky_article', 'California_article', 
-                 'Maine_article', 'Virginia_article', 'Oregon_article', 'Wisconsin_article', 'Colorado_article', 
-                 'Delaware_article', 'Louisiana_article', 'Idaho_article', 'Indiana_article', 'Oklahoma_article', 
-                 'Maryland_article', 'Arkansas_article', 'Michigan_article', 'Missouri_article', 'Ohio_article', 
-                 'Connecticut_article', 'Nevada_article' ]
+amstr_classes = ['title', 'issn', 'town', 'state', 'headline', 'byline'] + \
+                [state.replace(" ", "_") + "_article" for state in state_names] + \
+                [state + "_article" for state in state_names]
 
 
-amstr_renamed_class = ['Newspaper or Publication','Numeric Identifier','Town','State','Headline','Author Byline',
-'Article from Iowa', 'Article from Minnesota', 'Article from Alabama', 'Article from Florida', 'Article from Massachusetts', 
- 'Article from Montana', 'Article from Georgia', 'Article from Hawaii', 'Article from Kansas', 'Article from Illinois', 
- 'Article from Arizona', 'Article from Nebraska', 'Article from Pennsylvania', 'Article from Texas', 'Article from Alaska', 
- 'Article from Mississippi', 'Article from Tennessee', 'Article from Washington', 'Article from Kentucky', 'Article from California', 
- 'Article from Maine', 'Article from Virginia', 'Article from Oregon', 'Article from Wisconsin', 'Article from Colorado', 
- 'Article from Delaware', 'Article from Louisiana', 'Article from Idaho', 'Article from Indiana', 'Article from Oklahoma', 
- 'Article from Maryland', 'Article from Arkansas', 'Article from Michigan', 'Article from Missouri', 'Article from Ohio', 
- 'Article from Connecticut', 'Article from Nevada']
+amstr_renamed_class = ['Newspaper or Publication','Numeric Identifier','Town','State','Headline','Author Byline'] + \
+                      ["Article from " + state for state in state_names] + \
+                      ["Article from " + state for state in state_names]
 
 amstr_classname_map = {k1 : k2 for (k1, k2) in zip(amstr_classes, amstr_renamed_class)}
 
@@ -750,19 +735,15 @@ amstr_zs_2step_context_labels = {"name" : "amstr_zs_2step", "label_set" : amstr_
 
 # pubchem
 
-pubchem_path = Path("./metadata/pubchem")
-pubchem_files = list(pubchem_path.rglob("*.csv"))
-
-def get_pubchem_dfs():
-  # NUM_SAMPLES = 100
+def get_pubchem_dfs(pubchem_path, random_seed):
+  pubchem_files = sorted(list(Path(pubchem_path).rglob("*.csv")))
   pubchem_dfs = {}
-  for file in pubchem_files:
-    df = pd.read_csv(file)
+  for f in pubchem_files:
+    df = pd.read_csv(f)
     for column_name, column_data in df.items():
-      # for k in range(NUM_SAMPLES):
-      dfs = column_data.sample(15, replace=True)
+      dfs = column_data.sample(15, replace=True, random_state=random_seed)
       dfs = pd.DataFrame(dfs)
-      pubchem_dfs[str(column_name) + "_" + str(file.stem).split('_')[-1]] = dfs
+      pubchem_dfs[str(column_name) + "_" + str(f.stem).split('_')[-1]] = dfs
   return pubchem_dfs
 
 pubchem_classes = ['author_given_name', 'Molecular_Formula', 'book_title', 'cell_altlabel', 'book_subtitle', 
