@@ -1,13 +1,14 @@
-setuptools
-wheel
+--extra-index-url https://download.pytorch.org/whl/cu116
+torch<=1.13.1
+torchvision
+torchaudio
 accelerate
-bitsandbytes
-transformers>=4.28.1
-tokenizers>=0.13.3
-langchain
+bitsandbytes==0.40.2
+transformers==4.28.1
+tokenizers==0.13.3
+langchain==0.0.2
 sentence-transformers
-torch
-openai
+openai==0.28.1
 requests
 retry
 pandas

@@ -69,10 +69,10 @@ def run(
     labels = ['_'.join(k.split('_')[:-1]) for k in inputs.keys()]
     inputs = list(inputs.values())
   for idx, f in tqdm(enumerate(inputs), total=len(inputs)):
-    # try:
-    #     free_memory()
-    # except Exception as e:
-    #     print(f"Failed to free memory, error message was: \n {e}")
+    try:
+        free_memory()
+    except Exception as e:
+        print(f"Failed to free memory, error message was: \n {e}")
     if idx % 100 == 0:
       with open(save_path, 'w', encoding='utf-8') as alt_f:
         json.dump(prompt_dict, alt_f, ensure_ascii=False, indent=4)
@@ -144,12 +144,11 @@ def run(
         context = sample_df[col].tolist()
       try:
         key = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
-        prompt_dict[key]['original_label'] = orig_label
-        # print("original_label: ", orig_label)
-        prompt_dict[key]['file+idx'] = str(f) + "_" + str(idx)
-      except Exception as e:
-        print(e)
-        prompt_dict[key] = {"response" : e, 'context' : "", "ground_truth" : "", "correct" : False, "original_label" : orig_label, "file+idx" : str(f) + "_" + str(idx)}
+      except RuntimeError:
+        context = [str(c)[:args["MAX_LEN"]//(len(context)*2)] for c in context]
+        key = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
+      prompt_dict[key]['original_label'] = orig_label
+      prompt_dict[key]['file+idx'] = str(f) + "_" + str(idx)
   with open(save_path, 'w', encoding='utf-8') as my_f:
     json.dump(prompt_dict, my_f, ensure_ascii=False, indent=4)
   if results:

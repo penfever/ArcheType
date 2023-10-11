@@ -65,7 +65,6 @@ def query_correct_model(model, prompt, context_labels, context, session, link, l
     if "gpt" in model:
         orig_ans = call_gpt_model(prompt, lsd)
     elif any(["speechless-llama2" in model, "llama-zs" in model, "opt-iml-max-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
-        # prompt = cutoff_prompt_length(prompt, args["MAX_LEN"])
         end_of_sentence = prompt[-15:]
         try:
             orig_ans = args["llm_chain"].run(prompt)
