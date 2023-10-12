@@ -145,8 +145,11 @@ def run(
       try:
         key = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
       except RuntimeError:
-        context = [str(c)[:args["MAX_LEN"]//(len(context)*2)] for c in context]
-        key = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
+        try:
+          context = [str(c)[:args["MAX_LEN"]//(len(context)*2)] for c in context]
+          key = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
+        except RuntimeError:
+          prompt_dict[key] = {"response" : "RuntimeError", "context" : context, "ground_truth" : orig_label, "correct" : False, "original_model_answer" : "RuntimeError"}
       prompt_dict[key]['original_label'] = orig_label
       prompt_dict[key]['file+idx'] = str(f) + "_" + str(idx)
   with open(save_path, 'w', encoding='utf-8') as my_f:
