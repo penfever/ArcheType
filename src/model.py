@@ -373,16 +373,19 @@ def init_model(model, args):
 #         return prompt
 
 def fuzzy_label_match(orig_ans, fixed_labels, session, link, prompt, lsd, model, method=["ans_contains_gt", "gt_contains_ans", "resample"], args=dict()):
-    #answer is already in label set, no fuzzy match needed
+    #basic_contains checks whether is already in label set; depending on the options passed in, it may also check for contains relationship
     ans_n = fix_labels(orig_ans, lsd)
     res = basic_contains(ans_n, fixed_labels, method)
     if res:
         return res
+    #if not found, try similarity matching (if in method)
     if "similarity" in method:
         ans_embedding = args["sent_model"].encode(ans_n)
-        lbl_embeddings = args["sent_model"].encode(fixed_labels)
+        args["lbl_embeddings"] = args["sent_model"].encode(fixed_labels)
+        lbl_embeddings = args["lbl_embeddings"]
         sims = {lbl : util.pytorch_cos_sim(ans_embedding, le) for lbl, le in zip(fixed_labels, lbl_embeddings)}
         return max(sims, key=sims.get)
+    #if not found, try resampling (if in method); these are usually mutually exclusive
     if "resample" in method:
         #fuzzy label matching strategy
         for k in range(2,6):
@@ -414,7 +417,9 @@ def fuzzy_label_match(orig_ans, fixed_labels, session, link, prompt, lsd, model,
             res = basic_contains(ans_n, fixed_labels, method)
             if res:
                 return res
-    return 'text'
+    # Finally, return default answer
+    default_ans = fix_labels(lsd['label_set'][-1], lsd)
+    return default_ans
 
 def get_sherlock_resp(df, gt_df, prompt_dict, model, label_indices, base_prompt, lsd, args):
   isd4 = "d4" in lsd['name']

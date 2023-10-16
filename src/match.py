@@ -142,6 +142,8 @@ def apply_basic_rules(context, lbl, lsd):
           lbl = ss["label"].tolist()[0]
         lbl = fix_labels(lbl, lsd)
         return lbl
+    if all(("ATC_" in s) for s in context):
+      lbl = "concept broader term"
     if all(s.endswith(" g") for s in context):
       lbl = "weight"
     if all(s.endswith(" kg") for s in context):

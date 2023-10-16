@@ -754,8 +754,8 @@ pubchem_classes = ['author_given_name', 'Molecular_Formula', 'book_title', 'cell
 
 
 pubchem_renamed_class = ['Author First Name', 'Molecular Formula', 'Book Title', 'Cell Alternative Label', 'Book Subtitle',
-                        'Disease Alternative Label', 'Book Creator', 'Author Last Name', 'IUPAC Name', 'Taxonomy Label',
-                        'International Chemical Identifier (InChI)', 'Simplified Molecular Input Line Entry System (SMILES)', 'Patent Abstract', 
+                        'Disease Alternative Label', 'MD5 Hash', 'Author Last Name', 'IUPAC Name', 'Taxonomy Label',
+                        'InChI (International Chemical Identifier)', 'SMILES (Simplified Molecular Input Line Entry System)', 'Patent Abstract', 
                         'Organization Name', 'Book ISBN', 'Concept Broader Term', 'Journal Title', 'Concept Preferred Label',
                         'Author Full Name', 'Journal ISSN', 'Patent Title']
 
