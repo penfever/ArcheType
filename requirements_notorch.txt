@@ -1,13 +1,9 @@
---extra-index-url https://download.pytorch.org/whl/cu116
-torch<=1.13.1
-torchvision
-torchaudio
 accelerate
 bitsandbytes==0.40.2
 transformers==4.28.1
 tokenizers==0.13.3
 langchain==0.0.305
-sentence-transformers
+sentence-transformers==2.2.2
 openai==0.28.1
 requests
 retry
@@ -16,5 +12,4 @@ tqdm
 numpy
 python-dotenv
 fuzzywuzzy
-chardet
 python-Levenshtein
