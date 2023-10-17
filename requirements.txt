@@ -15,3 +15,5 @@ pandas
 tqdm
 numpy
 python-dotenv
+fuzzywuzzy
+python-Levenshtein

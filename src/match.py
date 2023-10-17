@@ -5,10 +5,10 @@ import re
 
 try:
   from .const import INTEGER_SET, BOOLEAN_SET
-  from .data import get_schema_df, fix_labels
+  from .data import get_schema_df, fix_labels, state_names, get_all_substrings
 except ImportError:
   from const import INTEGER_SET, BOOLEAN_SET
-  from data import get_schema_df, fix_labels
+  from data import get_schema_df, fix_labels, state_names, get_all_substrings
 
 def ans_contains_gt(ans_n, fixed_labels):
     for fixed_label in fixed_labels:
@@ -108,11 +108,39 @@ def run_special_cases(s, d, lsd):
       return lbl
     return False
 
+def apply_amstr_rules(context, lbl, lsd):
+  #if all characters are either numeric or dashes
+  if all(all(char in INTEGER_SET for char in item) for item in context):
+    lbl = "numeric identifier"
+  state_words = []
+  for item in state_names:
+    state_words += get_all_substrings(item, [" ", "-", "_"])
+  state_words = set(s.lower() for s in state_words)
+  context_words = []
+  for item in context:
+    new_words = get_all_substrings(item, [" ", "-", "_"])
+    if len(new_words) > 5:
+      return lbl
+    context_words += new_words
+  context_words = set(s.lower() for s in context_words)
+  if context_words.issubset(state_words):
+    lbl = "state"
+  return lbl
+
+def apply_pubchem_rules(context, lbl, lsd):
+  if all(("ATC_" in s) for s in context):
+    lbl = "concept broader term"
+  return lbl
+
 def apply_basic_rules(context, lbl, lsd):
-  if not context:
+  if "amstr" in lsd['name']:
+    return apply_amstr_rules(context, lbl, lsd)
+  elif "pubchem" in lsd['name']:
+    return apply_pubchem_rules(context, lbl, lsd)
+  elif not context \
+    or not isinstance(context, list):
     return lbl
-  if not isinstance(context, list):
-    return lbl
+
   schema_df = get_schema_df()
   schema_ids = schema_df["id"].tolist()
   try:
@@ -142,8 +170,6 @@ def apply_basic_rules(context, lbl, lsd):
           lbl = ss["label"].tolist()[0]
         lbl = fix_labels(lbl, lsd)
         return lbl
-    if all(("ATC_" in s) for s in context):
-      lbl = "concept broader term"
     if all(s.endswith(" g") for s in context):
       lbl = "weight"
     if all(s.endswith(" kg") for s in context):

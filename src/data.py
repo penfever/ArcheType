@@ -11,7 +11,13 @@ try:
 except ImportError:
   from const import *
 
+from fuzzywuzzy import fuzz
+
+import itertools
+
 #MAPPINGS
+
+state_names = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
 
 label_dict_map = {'Location' : 'streetAddress', 'PostalAddress' : 'streetAddress', 'CreativeWorkSeries' : 'CreativeWork', 'DateTime' : 'Date', 'QuantitativeValue' : "Number", "Integer" : "Number", 
                   "faxNumber" : "telephone", "Email" : "email", "unitText" : "Text", "Mass" : "weight", "MusicRecording" : "MusicAlbum",
@@ -469,7 +475,55 @@ def insert_source(context, fname, zs=False):
   else:
     context.insert(0, "SRC: " + addstr)
     return context    
+
+def get_all_substrings(input_list, chars=None):
+    """
+    Given a list of strings, returns a flat list of all substrings split on " ".
     
+    Parameters:
+        input_list (list of str): A list of strings
+    
+    Returns:
+        list of str: A flattened list of all substrings.
+    """
+    # Split each string in input_list and chain them to create a flat list
+    if isinstance(input_list, str):
+      input_list = [input_list]
+    if chars:
+      for c in chars:
+        input_list = [s.replace(c, " ") for s in input_list]
+    return list(itertools.chain.from_iterable([s.split(" ") for s in input_list]))
+
+def fuzzy_substring(sub, s, threshold=85):
+    """
+    Check if a substring approximately exists in a string.
+    
+    Parameters:
+    - sub (str): The substring to find.
+    - s (str): The string to search within.
+    - threshold (int): The minimum similarity ratio.
+
+    Returns:
+    - bool: True if there's a fuzzy match, False otherwise.
+    """
+    # Make the search case-insensitive
+    sub = sub.lower()
+    s = s.lower()
+
+    threshold_max = 0
+
+    surrounding_words = ""
+
+    # We'll search every contiguous substring of length len(sub) in s
+    for i in range(len(s) - len(sub) + 1):
+        new_thresh = fuzz.ratio(sub, s[i:i+len(sub)])
+        if new_thresh >= threshold_max:
+            threshold_max = new_thresh
+            start_pos = max(i - 300, 0)
+            end_pos = min(i + len(sub) + 300, len(s))
+            surrounding_words = s[start_pos:end_pos]
+    return threshold_max, surrounding_words
+
 def get_df_sample(df, rand_seed, val_indices, len_context, min_variance=1, replace=False, full=False, other_col=False, max_len=8000, method=[], coherence_scores=None, args=dict()):
     column_samples = {}
     ignore_list = ["None", 'none', 'NaN', 'nan', 'N/A', 'na', '']
@@ -492,7 +546,24 @@ def get_df_sample(df, rand_seed, val_indices, len_context, min_variance=1, repla
           sample_list.append(p)
         #sort the list twice, first alphabetically, then by length (in case of ties)
         sample_list = sorted(sample_list, key=len, reverse=True)
-        weights = np.linspace(1, 0.1, len(sample_list))
+        if "amstr_weighted_sampling" in method:
+          if all([len(s) < 600 for s in sample_list]):
+            weights = np.linspace(1, 0.1, len(sample_list))
+          else:
+            weights = np.zeros(len(sample_list))
+            for i, s in enumerate(sample_list):
+              s = s.replace("<unk>", " ")
+              max_thresh = 0
+              ret_words = ""
+              for k in state_names:
+                thresh, words = fuzzy_substring(k, s)
+                if thresh > max_thresh:
+                  max_thresh = thresh
+                  ret_words = words
+              s = ret_words
+              weights[i] = max_thresh
+        else:
+          weights = np.linspace(1, 0.1, len(sample_list))
         weights = weights / np.sum(weights)
         if len(sample_list) > ss_orig:
           sample_list = np.array(sample_list)
@@ -710,8 +781,6 @@ def get_amstr_dfs(amstr_path, rand_seed):
       dfs = pd.DataFrame(dfs)
       amstr_dfs[str(column_name) + "_" + str(f.stem).split('_')[-1]] = dfs
   return amstr_dfs
-
-state_names=["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
 
 amstr_classes = ['title', 'issn', 'town', 'state', 'headline', 'byline'] + \
                 [state.replace(" ", "_") + "_article" for state in state_names] + \
