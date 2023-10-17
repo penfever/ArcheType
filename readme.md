@@ -1,4 +1,4 @@
-# ArcheType: A novel framework for open-set column type annotation using large language models 
+# ArcheType: A novel framework for open-source column type annotation using large language models 
 
 This repository contains the codebase of our paper ArcheType: A novel framework for open-set column type annotation using large language models, available at arXiv.
 
