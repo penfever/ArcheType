@@ -13,3 +13,7 @@ numpy
 python-dotenv
 fuzzywuzzy
 python-Levenshtein
+scikit-learn
+seaborn
+matplotlib
+scipy

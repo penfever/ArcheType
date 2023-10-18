@@ -18,3 +18,7 @@ python-dotenv
 fuzzywuzzy
 chardet
 python-Levenshtein
+scikit-learn
+seaborn
+matplotlib
+scipy

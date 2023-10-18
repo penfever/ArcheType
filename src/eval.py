@@ -14,10 +14,11 @@ except ImportError:
   from metrics import results_checker, results_checker_doduo
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Takes input parameters for the 'schema match fix' function.")
+    parser = argparse.ArgumentParser(description="Takes input parameters for the 'eval' function.")
     parser.add_argument("--input_path", type=str, help="Input path", required=True)
     parser.add_argument("--label_set", type=str, help="Name of label set (SOTAB-91, SOTAB-55, SOTAB-27, D4-ZS, D4-DoDuo, custom)", required=True)
     parser.add_argument("--naive_score", action="store_true", help="Use naive scoring (i.e. original model answer)", default=False)
+    parser.add_argument("--confusion_matrix", action="store_true", help="Show confusion matrix", default=False)
     args = parser.parse_args()
     if os.path.isfile(args.input_path):
         with open(args.input_path, 'r', encoding='utf-8') as f:
@@ -29,4 +30,4 @@ if __name__ == "__main__":
     else:
       label_set = get_lsd(args.label_set)
     schema_df = get_schema_df()
-    print("Updated scores: \n", results_checker(args.input_path, skip_duplicates = False, naive_score = args.naive_score))
+    print("Updated scores: \n", results_checker(args.input_path, skip_duplicates = False, naive_score = args.naive_score, confusion_matrix = args.confusion_matrix))
