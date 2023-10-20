@@ -6,6 +6,7 @@ from pathlib import Path
 import argparse
 import openai
 from transformers import AutoTokenizer
+import numpy as np
 
 try:
   from .model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all, free_memory
@@ -66,13 +67,22 @@ def run(
   if "-zs" in model_name:
     args["base_model"].eval()
   if isinstance(inputs, dict):
-    labels = ['_'.join(k.split('_')[:-1]) for k in inputs.keys()]
-    inputs = list(inputs.values())
+    labels = np.array(['_'.join(k.split('_')[:-1]) for k in inputs.keys()])
+    inputs = [v for v in inputs.values()]
+    np.random.seed(rand_seed)
+    indices = np.arange(len(labels))
+    np.random.shuffle(indices) 
+    labels = labels[indices].tolist()
+    new_inputs = []
+    for i in indices:
+      new_inputs.append(inputs[i])
+    inputs = new_inputs
+
   for idx, f in tqdm(enumerate(inputs), total=len(inputs)):
-    try:
-        free_memory()
-    except Exception as e:
-        print(f"Failed to free memory, error message was: \n {e}")
+    # try:
+    #     free_memory()
+    # except Exception as e:
+    #     print(f"Failed to free memory, error message was: \n {e}")
     if idx % 100 == 0:
       with open(save_path, 'w', encoding='utf-8') as alt_f:
         json.dump(prompt_dict, alt_f, ensure_ascii=False, indent=4)
@@ -218,7 +228,7 @@ def main():
     else:
       label_set = get_lsd(args.label_set)
 
-    arg_dict = {"MAX_LEN" : MAX_LEN, "model_path" : args.model_path}
+    arg_dict = {"MAX_LEN" : MAX_LEN, "model_path" : args.model_path, "lsd" : label_set}
 
     run(
         args.model_name,

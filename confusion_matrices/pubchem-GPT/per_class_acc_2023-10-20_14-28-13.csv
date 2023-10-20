@@ -1,0 +1,21 @@
+class,accuracy,freq
+abstract for patent,0.97,64
+biological formula,0.0,81
+book isbn,1.0,91
+book title,0.29,136
+cell alternative label,0.63,84
+chemical,0.72,72
+concept broader term,1.0,75
+disease alternative label,1.0,73
+inchi (international chemical identifier),1.0,83
+journal issn,1.0,79
+journal title,0.98,87
+md5 hash,1.0,69
+molecular formula,1.0,115
+organization,0.99,98
+patent title,0.54,74
+person's first name and middle initials,0.0,92
+person's full name,1.0,92
+person's last name,0.78,63
+smiles (simplified molecular input line entry system),0.17,75
+taxonomy label,1.0,97

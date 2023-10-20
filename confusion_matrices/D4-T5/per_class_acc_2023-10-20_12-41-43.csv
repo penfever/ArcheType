@@ -1,0 +1,21 @@
+class,accuracy,freq
+abbreviation of agency,0.87,100
+borough,1.0,100
+color,1.0,100
+elevator or staircase,1.0,100
+ethnicity,0.99,100
+month,0.99,100
+nyc agency name,1.0,100
+other-states,1.0,100
+permit-types,0.79,100
+plate-type,1.0,100
+region in bronx,0.46,100
+region in brooklyn,0.26,100
+region in manhattan,0.99,100
+region in queens,0.94,100
+region in staten island,0.0,100
+school name,1.0,100
+school-dbn,1.0,100
+school-grades,1.0,100
+school-number,1.0,100
+us-state,1.0,100

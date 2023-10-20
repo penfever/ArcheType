@@ -5,10 +5,10 @@ import re
 
 try:
   from .const import INTEGER_SET, BOOLEAN_SET
-  from .data import get_schema_df, fix_labels, state_names, get_all_substrings
+  from .data import get_schema_df, fix_labels, state_names, get_all_substrings, state_abbreviations, country_codes
 except ImportError:
   from const import INTEGER_SET, BOOLEAN_SET
-  from data import get_schema_df, fix_labels, state_names, get_all_substrings
+  from data import get_schema_df, fix_labels, state_names, get_all_substrings, state_abbreviations, country_codes
 
 def ans_contains_gt(ans_n, fixed_labels):
     for fixed_label in fixed_labels:
@@ -128,8 +128,48 @@ def apply_amstr_rules(context, lbl, lsd):
   return lbl
 
 def apply_pubchem_rules(context, lbl, lsd):
+  pattern_a = r"^[0-9A-Za-z]{4}-[0-9A-Za-z]{4}$"
+  #"978-0-309-43738-7"
+  def match_condition(p, text):
+    return (re.search(p, text)) 
   if all(("ATC_" in s) for s in context):
     lbl = "concept broader term"
+  elif all(("MD5_" in s) for s in context):
+    lbl = "md5 hash"
+  elif all(match_condition(pattern_a, s) for s in context):
+    lbl = 'journal issn'
+  elif all(re.sub('[0-9\- ]', '', s) == '' for s in context):
+    lbl = 'book isbn'
+  elif all(s.startswith("InChI=") for s in context):
+    lbl = "inchi (international chemical identifier)"
+  
+  return lbl
+
+def apply_d4_rules(context, lbl, lsd):
+  pattern_a = r"^[A-Z]{2}/[A-Z]{2}$"
+  def match_condition(text):
+    return (re.search(pattern_a, text)) or (len(text) == 2)
+
+  if all(len(s)==6 for s in context):
+    lbl = 'school-dbn'
+  elif all(len(s)==4 for s in context):
+    lbl = 'school-number'
+  elif all(len(s)==3 for s in context):
+    lbl = 'plate-type'
+  elif all(s in state_abbreviations for s in context):
+    lbl = 'us-state'
+  elif all(s in country_codes for s in context):
+    lbl = 'other-states'
+  elif all(match_condition(s) for s in context):
+    lbl = 'permit-types'
+  elif all(s in ['A', 'B', 'C', 'D', 'F'] for s in context):
+    lbl = 'school-grades'
+  elif all(s in ["STATEN ISLAND",
+            "MANHATTAN",
+            "BROOKLYN",
+            "QUEENS",
+            "BRONX"] for s in context):
+    lbl = 'borough'
   return lbl
 
 def apply_basic_rules(context, lbl, lsd):
@@ -137,6 +177,8 @@ def apply_basic_rules(context, lbl, lsd):
     return apply_amstr_rules(context, lbl, lsd)
   elif "pubchem" in lsd['name']:
     return apply_pubchem_rules(context, lbl, lsd)
+  elif "d4" in lsd['name']:
+    return apply_d4_rules(context, lbl, lsd)
   elif not context \
     or not isinstance(context, list):
     return lbl

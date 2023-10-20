@@ -10,6 +10,7 @@ from retry import retry
 import random
 import torch
 import numpy as np
+import re
 
 import os
 import argparse
@@ -136,16 +137,23 @@ def get_internlm_resp(prompt, k, args):
 
 @retry(Exception, tries=3, delay=3)
 def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : dict, link : str, response = True, session=None, cbc=None, model="llama", limited_context=None, method = ["ans_contains_gt", "gt_contains_ans", "resample"], args = dict()):
+  ground_truth = fix_labels(ground_truth, lsd)
   isd4 = "d4" in lsd['name']
+  ispubchem = "pubchem" in lsd['name']
   if isd4:
-    ground_truth = fix_labels(ground_truth, lsd)
-    context_labels = ", ".join(lsd['label_set'])
-    fixed_labels = sorted(list(set([fix_labels(s, lsd) for s in lsd['label_set']])))
+    target_labels = set(lsd['label_set'])
+    drop_labels = set(['school-dbn', 'school-number', 'permit-types', 'us-state', 'school-grades', 'other-states', 'plate-type', 'borough'])
+    target_labels = target_labels - drop_labels
+    fixed_labels = sorted(list(set([fix_labels(s, lsd) for s in target_labels])))
+  elif ispubchem:
+    target_labels = set(lsd['label_set'])
+    drop_labels = set(['Concept Broader Term', 'Journal ISSN', 'InChI (International Chemical Identifier)', "Book ISBN", 'MD5 Hash'])
+    target_labels = target_labels - drop_labels
+    fixed_labels = sorted(list(set([fix_labels(s, lsd) for s in target_labels])))
   elif "hierarchical" in method and not isd4:
     dtype = get_base_dtype(limited_context)
     fixed_labels = sotab_top_hier[dtype]
-  else:
-    if (lsd['name'] in ['context_labels', 'context_labels_trim', 'context_labels_small']) and \
+  elif (lsd['name'] in ['context_labels', 'context_labels_trim', 'context_labels_small']) and \
     "gpt" not in model:
       if len(limited_context) > 1 and all([re.sub('[\W_]+', '', s).isdigit() for s in limited_context]):
         if args.get("numeric_labels", -1) == -1:
@@ -157,10 +165,12 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
             all_labels = set([fix_labels(s, lsd) for s in lsd['label_set']])
             args['non_numeric_labels'] = sorted(list(all_labels.difference(num_labs)))
         fixed_labels = args['non_numeric_labels']
-    else:
-      fixed_labels = sorted(list(set([fix_labels(s, lsd) for s in lsd['label_set']])), key=len, reverse=True)
-      ground_truth = fix_labels(ground_truth, lsd)
-    context_labels = ", ".join(fixed_labels)
+  else:
+    target_labels = set(lsd['label_set'])
+    fixed_labels = sorted(list(set([fix_labels(s, lsd) for s in target_labels])), key=len, reverse=True)
+
+  context_labels = ", ".join(fixed_labels)
+
   if "check_labels" in method:
     assert ground_truth in fixed_labels, f"Ground truth {ground_truth} not in label set {fixed_labels}"
   if any(["speechless-llama2" in model, "llama-zs" in model, "opt-iml-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
@@ -181,8 +191,14 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
     orig_ans = apply_basic_rules(limited_context, None, lsd)
     if orig_ans is None:
         orig_ans = query_correct_model(model, prompt, context_labels, context, session, link, lsd, args)
+        # ---------- d4 ------
+        if orig_ans == 'abbreviation of agency' and any(len(s) > 15 for s in limited_context):
+            ans_n = "nyc agency name"
+        # ---------- pubchem ------
+        elif orig_ans == 'patent title' and any(len(s) > 1000 for s in limited_context):
+            ans_n = "abstract for patent"
         # ------------------------ 2step ------------------------
-        if orig_ans == 'article' and "2step" in lsd['name']:
+        elif orig_ans == 'article' and "2step" in lsd['name']:
             context_labels = '2step'
             prompt = prompt_context_insert(context_labels, context, args["MAX_LEN"], model, args)
             orig_ans = query_correct_model(model, prompt, context_labels, context, session, link, lsd, args)

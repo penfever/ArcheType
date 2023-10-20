@@ -43,7 +43,7 @@ def show_matrix(args, mat, title):
     save_path = os.path.join(conf_path, 'clustered_confusion_matrix_{}.svg'.format(res))
     fig.savefig(save_path, format='svg', dpi=200)
 
-def write_confusion_matrix(log_base_path, file_name, output, labels, classes):
+def write_confusion_matrix(log_base_path, file_name, output, labels, classes, per_class_results):
     #confusion matrix
     cf_matrix = confusion_matrix(labels, output)
     df_cm = pd.DataFrame(cf_matrix/np.sum(cf_matrix) * 10, index = [i for i in classes],
@@ -59,6 +59,11 @@ def write_confusion_matrix(log_base_path, file_name, output, labels, classes):
     per_class_acc = pd.Series(np.diag(df_cm), index=[df_cm.index, df_cm.columns]).round(2)
     per_class_acc = pd.DataFrame(per_class_acc).transpose()
     per_class_acc.columns = [''.join(col[1:]) for idx, col in enumerate(per_class_acc.columns.values)]
+    per_class_acc = per_class_acc.transpose()
+    #pop index to a column
+    per_class_acc.reset_index(level=0, inplace=True)
+    per_class_acc.columns = ['class', 'accuracy']
+    per_class_acc['freq'] = per_class_acc['class'].apply(lambda x: per_class_results[x]['Total'])
     per_class_acc.to_csv(os.path.join(conf_path, "per_class_acc_{}.csv".format(res)), index=False)
     font_size = round(1 * 100//len(classes), 2)
     if font_size < 0.1:
@@ -140,7 +145,7 @@ def results_checker(file_name, skip_duplicates = True, naive_score = False, conf
             try:
                 pred_index = class_names.index(v["response"])
             except ValueError:
-                options = np.arange(0, gt_index) + np.arange(gt_index + 1, len(class_names))
+                options = np.concatenate((np.arange(0, gt_index), np.arange(gt_index + 1, len(class_names))))
                 rand_seed = 0
                 pred_index = np.random.choice(options, 1, replace = False)
             logits[idx] = pred_index
@@ -176,7 +181,7 @@ def results_checker(file_name, skip_duplicates = True, naive_score = False, conf
         base_path = str(Path(file_name).parent)
         file_name = str(Path(file_name).name)
         print("Saving confusion matrix ...")
-        write_confusion_matrix(base_path, file_name, logits, labels, class_names)
+        write_confusion_matrix(base_path, file_name, logits, labels, class_names, per_class_results)
         print("Done")
 def missing_entries(f1, f2):
     with open(f1, "r") as file1:

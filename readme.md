@@ -110,6 +110,14 @@ This example uses ArcheType-gpt-3.5, and has a set of four custom labels: text n
 $ python archetype/src/run.py --model_name="gpt-3.5" --save_path="<SAVE_PATH>/results.json" --input_files="<CUSTOM_PATH>/Test" --input_labels="skip-eval" --label_set="custom" --custom-labels text number id place --method ans_contains_gt gt_contains_ans resample --response
 ```
 
+## Evaluation
+
+You can evaluate a results json using eval.py. Add --confusion_matrix to generate confusion matrices at the same time.
+
+```
+python archetype/src/eval.py --input_path "results/flan-ul2-zs-shortprompt-pubchem-mod.json" --label_set "pubchem-ZS" --confusion_matrix
+```
+
 ## Label Sets in our Paper
 
 SOTAB-27: 
@@ -168,6 +176,45 @@ D4Tables:
  'State',
  'Month',
  'License plate type']
+```
+
+PubChemTables:
+```
+['Person\'s First Name and Middle Initials', 
+'Molecular Formula', 
+'Book Title', 
+'Cell Alternative Label', 
+'Book Title',
+'Disease Alternative Label', 
+'MD5 Hash', 
+'Person\'s Last Name', 
+'Biological Formula', 
+'Taxonomy Label',
+'InChI (International Chemical Identifier)', 
+'SMILES (Simplified Molecular Input Line Entry System)', 
+'Abstract for Patent', 
+'Organization', 
+'Book ISBN', 
+'Concept Broader Term', 
+'Journal Title', 
+'Chemical',
+'Person\'s Full Name', 
+'Journal ISSN', 
+'Patent Title']
+```
+
+AmstrTables
+
+Here, `<STATE_NAME>` stands in for all fifty U.S. states.
+
+```
+['Newspaper or Publication',
+'Numeric Identifier',
+'Town',
+'State',
+'Headline',
+'Author Byline',
+'Article from <STATE_NAME>]
 ```
 
 ## Citation
