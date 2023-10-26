@@ -41,6 +41,7 @@ def run(
     args : dict = dict()):
   
   args['context_is_numeric'] = False
+  args['rand_seed'] = rand_seed
 
   if model_name in ["llama", "llama-old", "sherlock"]:
     pass
@@ -197,6 +198,7 @@ def main():
     parser.add_argument("--skip_short", action='store_true', help="Skip short")
     parser.add_argument("--min_var", type=int, default=0, help="Columns which contain less than min_var unique values will not be evaluated")
     parser.add_argument("--method", nargs='+', type=str, default=["similarity"], help="Sets label remapping strategy. skip-existing will skip columns which already have a prompt in the prompt_dict. If skip-eval is in method, then no evaluation will be performed. similarity will use the similarity metric to find the closest label in the label set. ans_contains_gt and gt_contains_ans will use contains label remapping, and resample will call the LLM multiple times. If check_labels is in method, then every ground truth label will be verified against the values in the label set.")
+    parser.add_argument("--rules", type=bool, help="Apply basic remapping rules", default=True)
 
     args = parser.parse_args()
     seed_all(args.rand_seed)
@@ -228,7 +230,7 @@ def main():
     else:
       label_set = get_lsd(args.label_set)
 
-    arg_dict = {"MAX_LEN" : MAX_LEN, "model_path" : args.model_path, "lsd" : label_set}
+    arg_dict = {"MAX_LEN" : MAX_LEN, "model_path" : args.model_path, "lsd" : label_set, "rules" : args.rules}
 
     run(
         args.model_name,

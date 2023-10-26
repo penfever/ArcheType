@@ -138,6 +138,7 @@ def get_internlm_resp(prompt, k, args):
 @retry(Exception, tries=3, delay=3)
 def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : dict, link : str, response = True, session=None, cbc=None, model="llama", limited_context=None, method = ["ans_contains_gt", "gt_contains_ans", "resample"], args = dict()):
   ground_truth = fix_labels(ground_truth, lsd)
+  all_labels = set([fix_labels(s, lsd) for s in lsd['label_set']])
   isd4 = "d4" in lsd['name']
   ispubchem = "pubchem" in lsd['name']
   if isd4:
@@ -167,6 +168,7 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
         fixed_labels = args['non_numeric_labels']
   else:
     target_labels = set(lsd['label_set'])
+    lsd['label_set'] = lsd['label_set'] + addl_labels
     fixed_labels = sorted(list(set([fix_labels(s, lsd) for s in target_labels])), key=len, reverse=True)
 
   context_labels = ", ".join(fixed_labels)
@@ -188,41 +190,52 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
   if not response:
     orig_ans = ans_n = ""
   else:
-    orig_ans = apply_basic_rules(limited_context, None, lsd)
+    if args['rules']:
+        orig_ans = apply_basic_rules(limited_context, None, lsd)
+    else:
+        orig_ans = None
     if orig_ans is None:
+        #model query
         orig_ans = query_correct_model(model, prompt, context_labels, context, session, link, lsd, args)
+        
+    #special cases
+    if args['rules']:
         # ---------- d4 ------
         if orig_ans == 'abbreviation of agency' and any(len(s) > 15 for s in limited_context):
             ans_n = "nyc agency name"
         # ---------- pubchem ------
         elif orig_ans == 'patent title' and any(len(s) > 1000 for s in limited_context):
             ans_n = "abstract for patent"
-        # ------------------------ 2step ------------------------
-        elif orig_ans == 'article' and "2step" in lsd['name']:
-            context_labels = '2step'
-            prompt = prompt_context_insert(context_labels, context, args["MAX_LEN"], model, args)
-            orig_ans = query_correct_model(model, prompt, context_labels, context, session, link, lsd, args)
-            orig_ans = 'article from ' + orig_ans
-            ans_n = orig_ans.lower()
-        # ------------------------ 2step ------------------------
-        #hierarchical matching logic
-        else: 
-            if "hierarchical" in method and dtype == "other" and orig_ans not in ['email', 'URL', 'WebHTMLAction', 'Photograph']:
-                next_label_set = sotab_other_hier.get(orig_ans, -1)
-                if next_label_set == -1:
-                    print(f"Original answer {orig_ans} not found in hierarchy")
-                    next_label_set = sotab_other_hier['text']
-                fixed_labels = list(set([fix_labels(s, lsd) for s in next_label_set])) 
-                context_labels = ", ".join(fixed_labels)
-                fixed_labels = sorted(fixed_labels, key=len, reverse=True)
-                orig_ans = query_correct_model(model, prompt, context_labels, context, session, link, lsd, args)  
-            #fuzzy matching logic
-            ans_n = fuzzy_label_match(orig_ans, fixed_labels, session, link, prompt, lsd, model, method=method, args=args).lower()
+    # ------------------------ 2step ------------------------
+    if orig_ans == 'article' and "2step" in lsd['name']:
+        context_labels = '2step'
+        prompt = prompt_context_insert(context_labels, context, args["MAX_LEN"], model, args)
+        orig_ans = query_correct_model(model, prompt, context_labels, context, session, link, lsd, args)
+        orig_ans = 'article from ' + orig_ans
+        ans_n = orig_ans.lower()
+    # ------------------------ 2step ------------------------
+    #hierarchical matching logic
+    else: 
+        if "hierarchical" in method and dtype == "other" and orig_ans not in ['email', 'URL', 'WebHTMLAction', 'Photograph']:
+            next_label_set = sotab_other_hier.get(orig_ans, -1)
+            if next_label_set == -1:
+                print(f"Original answer {orig_ans} not found in hierarchy")
+                next_label_set = sotab_other_hier['text']
+            fixed_labels = list(set([fix_labels(s, lsd) for s in next_label_set])) 
+            context_labels = ", ".join(fixed_labels)
+            fixed_labels = sorted(fixed_labels, key=len, reverse=True)
+            orig_ans = query_correct_model(model, prompt, context_labels, context, session, link, lsd, args)  
+    #fuzzy matching logic
+    if orig_ans.lower() not in all_labels:
+        # print(f"Original answer was {orig_ans.lower()}")
+        # print(f"{len(all_labels)} labels are {all_labels}")
+        # print("Fuzzy matching")
+        ans_n = fuzzy_label_match(orig_ans, fixed_labels, session, link, prompt, lsd, model, method=method, args=args).lower()
     else:
         ans_n = orig_ans.lower()
   if "skip-eval" in method:
     ans_n = None
-  res = ans_n == ground_truth
+  res = (ans_n == ground_truth)
   ans_dict = {"response" : ans_n, "context" : context, "ground_truth" : ground_truth, "correct" : res, "original_model_answer" : orig_ans}
   prompt_dict[prompt] = ans_dict
   return prompt
@@ -263,23 +276,29 @@ def init_model(model, args):
         args["MAX_LEN"]=2048
         tokenizer = AutoTokenizer.from_pretrained("uukuguy/speechless-llama2-13b")
         tokenizer.add_special_tokens({'pad_token': '[PAD]'})
-        base_model = AutoModelForCausalLM.from_pretrained("uukuguy/speechless-llama2-13b", torch_dtype=torch.float16, load_in_8bit=True, device_map="auto")
+        base_model = AutoModelForCausalLM.from_pretrained("uukuguy/speechless-llama2-13b", torch_dtype=torch.float16, load_in_8bit=True, device_map="auto")        
     elif "llama" in model: 
         LLAMA_PATH = args["model_path"]
         args["MAX_LEN"]=2048
         tokenizer = LlamaTokenizer.from_pretrained(LLAMA_PATH)
-        config = AutoConfig.from_pretrained(LLAMA_PATH,
-                                            torch_dtype=torch.float16,
-                                            load_in_8bit=True)
-        with init_empty_weights():
-            base_model = AutoModelForCausalLM.from_config(config)
-        base_model.tie_weights()
-        device_map = infer_auto_device_map(base_model, max_memory={0: "60GiB", "cpu": "96GiB"})
-        base_model = load_checkpoint_and_dispatch(
-            base_model, 
-            LLAMA_PATH, 
-            device_map=device_map
-        )
+        if "ArcheType-llama" in model:
+            base_model = AutoModelForCausalLM.from_pretrained(LLAMA_PATH,
+                                                torch_dtype=torch.float16,
+                                                load_in_8bit=True,
+                                                device_map='auto')
+        else:
+            config = AutoConfig.from_pretrained(LLAMA_PATH,
+                                                torch_dtype=torch.float16,
+                                                load_in_8bit=True)
+            with init_empty_weights():
+                base_model = AutoModelForCausalLM.from_config(config)
+            base_model.tie_weights()
+            device_map = infer_auto_device_map(base_model, max_memory={0: "60GiB", "cpu": "96GiB"})
+            base_model = load_checkpoint_and_dispatch(
+                base_model, 
+                LLAMA_PATH, 
+                device_map=device_map
+            )
     elif "alpaca-7b-zs" in model:
         args["MAX_LEN"]=2048
         tokenizer = LlamaTokenizer.from_pretrained("chavinlo/alpaca-native")
@@ -364,7 +383,7 @@ def init_model(model, args):
             'penalty_alpha': 0,
             'length_penalty': 1,
             'early_stopping': False,
-            'seed': rand_seed,
+            'seed': args["rand_seed"],
         }
     else:
         params = None

@@ -672,7 +672,7 @@ D4_PATH = Path(d4p)
 
 def get_d4_dfs():
   D4_files = sorted(list(D4_PATH.rglob("**/*.silver")))
-  NUM_SAMPLES = 100
+  NUM_SAMPLES = 400
   d4_dfs = {}
   for f in D4_files:
       df = pd.read_csv(f, sep='\t', names=["ID1", "ID2", "values"])

@@ -95,6 +95,9 @@ def run_comprehensive_cases(context, lsd):
     return None
 
 def schema_match_fix(d, schema_df, lsd):
+    if d['original_label'] == d['ground_truth']:
+        d['correct'] = True
+        return d
     d['ground_truth'] = fix_labels(d['original_label'], lsd)
     context = d["context"]
     schema_ids = schema_df["id"].tolist()
