@@ -219,8 +219,17 @@ Here, `<STATE_NAME>` stands in for all fifty U.S. states.
 
 ## Citation
 
+If you find this useful, please cite our work --
+
 ```
-TBD
+@misc{feuer2023archetype,
+      title={ArcheType: A Novel Framework for Open-Source Column Type Annotation using Large Language Models}, 
+      author={Benjamin Feuer and Yurong Liu and Chinmay Hegde and Juliana Freire},
+      year={2023},
+      eprint={2310.18208},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
 ```
 
 ## Acknowledgments
