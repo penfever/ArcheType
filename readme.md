@@ -38,15 +38,23 @@ $export PYTHONPATH=<DODUO_PATH>:$PYTHONPATH
 In const.py, replace the ARCHETYPE_PATH variable with the absolute path to your ArcheType installation.
 In const.py, replace the DOTENV_PATH variable with the absolute path to the directory containing your dotenv with your OpenAI API key.
   
-## Data Preparation
+## Benchmarks
 
-### SOTAB
+### SOTAB-27 and SOTAB-91
 
-The SOTAB train, validation and test files, as well as instructions for their use, can be acquired via [their website.](http://webdatacommons.org/structureddata/sotab/)
+The SOTAB-27 and SOTAB-91 benchmarks were constructed from the SOTAB dataset. The SOTAB train, validation and test files, as well as instructions for their use, can be acquired via [their website.](http://webdatacommons.org/structureddata/sotab/)
 
-### D4 Tables
+### D4-20
 
-The D4 dataset can be acquired [here](https://zenodo.org/record/3647613).
+The D4 data originated [here](https://zenodo.org/record/3647613), but our codebase includes all the necessary metadata to reconstruct the benchmark -- you can run D4Tables without any additional downloads.
+
+### Amstr-56
+
+The Amstr-56 evaluation CSVs can be downloaded from [here](https://drive.google.com/drive/folders/1sDWIk7ld5YaC-n9kFFCXmK8TS2FBJCd8?usp=sharing).
+
+### PubChem-20
+
+The PubChem-20 evaluation CSVs can be downloaded from [here](https://drive.google.com/drive/folders/1sDWIk7ld5YaC-n9kFFCXmK8TS2FBJCd8?usp=sharing).
 
 ## Training
 
@@ -59,44 +67,66 @@ We used the following command to train our models --
 ```console
 torchrun --nproc_per_node=4 --rdzv_backend=c10d --rdzv_endpoint=<MASTER_ADDR>:<MASTER_PORT> train.py --model_name_or_path <ALPACA_WEIGHTS> --data_path <TRAINING_JSON> --bf16 True --output_dir <SAVE_DIR --num_train_epochs 3 --per_device_train_batch_size 2 --per_device_eval_batch_size 2 --gradient_accumulation_steps 16 --evaluation_strategy "no" --save_strategy "steps" --save_steps 2000 --save_total_limit 1 --learning_rate 2e-5 --weight_decay 0. --warmup_ratio 0.03 --lr_scheduler_type "cosine" --logging_steps 1 --fsdp "full_shard auto_wrap" --fsdp_transformer_layer_cls_to_wrap 'LlamaDecoderLayer' --tf32 True
 ```
-  
-## Inference
-
-We provide a command line interface to reproduce the experimental results described in the paper.
-
-The inference code will produce a JSON file at the output path you specify using --save_path containing model responses, ground-truth responses and metadata.
 
 ### Usage Examples
 
-To reproduce the ArcheType-T5 experiment on SOTAB-27, use the following command;
+To reproduce our zero-shot SOTAB results using the flan-t5 architecture and S prompt, use the following command --
 
 ```console
-$ python archetype/src/run.py --model_name="flan-t5-xxl-zs" --save_path="<SAVE_PATH>/results.json" --input_files="<SOTAB_PATH>/Test" --input_labels="<SOTAB_PATH>/CTA_test_gt.csv" --label_set="SOTAB-27" --method ans_contains_gt gt_contains_ans resample --results --response
+python src/run.py --model_name="flan-t5-xxl-zs-shortprompt" --save_path=<SAVE_PATH> --input_files="<PATH>/Test" --input_labels="<PATH>/CTA_test_gt.csv" --label_set="SOTAB-91" --method ans_contains_gt gt_contains_ans resample --results --rules --response;
 ```
 
-To reproduce our fine-tuned model experiments, you must also provide the path to model weights and change the label set.
+To reproduce our fine-tuned model experiments, you must also provide the path to model weights.
 
 ```console
---model_name="ArcheType-llama" --model_path=<WEIGHTS_PATH> --label_set="SOTAB-91"
+--model_name="ArcheType-llama" --model_path=<WEIGHTS_PATH>
 ```
 
-To reproduce the D4Tables results:
+To reproduce the D4-20 results, make the following substitutions --
 
 ```console
-$ python archetype/src/run.py --model_name="flan-t5-xxl-zs" --save_path="<SAVE_PATH>/results.json" --input_files="D4" --input_labels="D4" --label_set="D4-ZS" --method ans_contains_gt gt_contains_ans resample --results --response
+--input_files="D4" --input_labels="D4" --label_set="D4-ZS"
 ```
 
-To reproduce the DoDuo results on SOTAB-27:
+For Amstr-56 --
 
 ```console
-$ python archetype/src/run.py --model_name="doduo" --save_path="<SAVE_PATH>/results.json" --input_files="<SOTAB_PATH>/Test" --input_labels="<SOTAB_PATH>/CTA_test_gt.csv" --label_set="SOTAB-27" --results --response
+--input_files="<PATH>/amstr_csv" --input_labels="amstr" --label_set="amstr-ZS"
 ```
 
-To reproduce the OpenAI GPT-3.5 experiment on SOTAB-91;
+For PubChem-20 --
 
 ```console
-$ python archetype/src/run.py --model_name="gpt-3.5" --save_path="<SAVE_PATH>/results.json" --input_files="<SOTAB_PATH>/Test" --input_labels="<SOTAB_PATH>/CTA_test_gt.csv" --label_set="SOTAB-91" --method ans_contains_gt gt_contains_ans resample --results --response
+--input_files="<PATH>/pubchem_csv" --input_labels="pubchem" --label_set="pubchem-ZS"
 ```
+
+To reproduce the C-Baseline on T5 --
+
+```
+--model_name="flan-t5-xxl-zs-chorusprompt" --method similarity simple_random_sampling
+```
+
+To reproduce the K-Baseline on T5 --
+
+```
+--model_name="flan-t5-xxl-zs-koriniprompt" --method first_sampling
+```
+
+To vary the choice of prompt, substitute the correct prompt name in the model field.
+
+Here are the commands for all six prompts listed in our paper (K, C, S, N, I, O)
+
+```
+--model_name="flan-t5-xxl-zs-koriniprompt" --model_name="flan-t5-xxl-zs-chorusprompt" --model_name="flan-t5-xxl-zs-shortprompt" --model_name="flan-t5-xxl-zs-noisyprompt" --model_name="flan-t5-xxl-zs-invertedprompt" --model_name="flan-t5-xxl-zs"
+```
+
+The model_name field also controls which model is called at the model querying stage.
+
+```console
+--model_name="gpt-3.5-turbo", --model_name="flan-ul2-zs", --model_name="flan-t5-xxl-zs"
+```
+
+To only evaluate a subset of the data, use the `--stop_early` flag. To reproduce the ArcheType+ results, include the `--rules` flag.
 
 ## Custom Labels and Data
 
@@ -115,7 +145,13 @@ $ python archetype/src/run.py --model_name="gpt-3.5" --save_path="<SAVE_PATH>/re
 You can evaluate a results json using eval.py. Add --confusion_matrix to generate confusion matrices at the same time.
 
 ```
-python archetype/src/eval.py --input_path "results/flan-ul2-zs-shortprompt-pubchem-mod.json" --label_set "pubchem-ZS" --confusion_matrix
+python archetype/src/eval.py --input_path <FILE_PATH> --label_set <LABEL_SET_NAME> --confusion_matrix
+```
+
+You can also evaluate only certain classes in the entire test set.
+
+```
+python src/eval.py --input_path <FILE_PATH> --label_set "SOTAB-91" --ignore_classes "weight, Energy, Review, Recipe/name, openingHours, Boolean, EducationalOccupationalCredential, Action, Photograph, URL, ItemList, EventAttendanceModeEnumeration, EventStatusType, DayOfWeek, ItemAvailability, RestrictedDiet, OfferItemCondition"
 ```
 
 ## Label Sets in our Paper
