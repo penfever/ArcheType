@@ -2,6 +2,7 @@
 #Project-specific
 logs/
 results/
+confusion_matrices/
 Test/
 profiling/
 CTA_test_corner_cases_gt.csv
