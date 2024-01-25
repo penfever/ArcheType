@@ -69,7 +69,7 @@ def query_correct_model(model, prompt, context_labels, context, session, link, l
         end_of_sentence = prompt[-15:]
         try:
             orig_ans = args["llm_chain"].run(prompt)
-        except NameError:
+        except:
             set_pipeline(k=1, args=args)
             orig_ans = args["llm_chain"].run(prompt)
         if "speechless-llama2" in model:
@@ -249,15 +249,33 @@ def set_pipeline(k=1, args=None):
         pad_token_id = args['tokenizer'].eos_token_id
     else:
         pad_token_id = args['tokenizer'].pad_token_id
+    if args.get("params", -1) == -1 or args["params"] is None:
+        args["params"] = dict()
+        args['params']['max_new_tokens'] = args['params'].get('max_new_tokens', 6)
+        args['params']['do_sample'] = True
+        args['params']['typical_p'] = 1
+        args['params']['repetition_penalty'] = 1.3
+        args['params']['encoder_repetition_penalty'] = 1.0
+        args['params']['top_k'] = 0
+        args['params']['min_length'] = 3
+        args['params']['no_repeat_ngram_size'] = 3
+        args['params']['num_beams'] = 1
+        args['params']['penalty_alpha'] = 0
+        args['params']['length_penalty'] = 1
+        args['params']['early_stopping'] = False
+        args['params']['seed'] = args["rand_seed"]
+
+    args['params']['temperature'] = 0.5*k
+    args['params']['top_p'] = 0.8 - (0.1 * k)
     args["pipe"] = pipeline(
         "text-generation",
         model=args["base_model"], 
         tokenizer=args["tokenizer"], 
         max_length=args["MAX_LEN"],
-        temperature=0.5*k,
-        top_p=0.80-(0.1 * k),
-        do_sample=True,
-        repetition_penalty=1.3,
+        temperature=args['params']['temperature'],
+        top_p=args['params']['top_p'],
+        do_sample=args['params']['do_sample'],
+        repetition_penalty=args['params']['repetition_penalty'],
         pad_token_id=pad_token_id,
     )
     args["local_llm"] = HuggingFacePipeline(pipeline=args["pipe"])
@@ -434,7 +452,7 @@ def fuzzy_label_match(orig_ans, fixed_labels, session, link, prompt, lsd, model,
                 ).choices[0]['message']['content'].lower()
             elif "internlm" in model:
                 ans_n = get_internlm_resp(prompt, k, args)
-            elif any(["speechless-llama2" in model, "llama-zs" in model, "opt-iml-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
+            elif any(["speechless-llama2" in model, "llama-zs" in model, "opt-iml" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
                 # prompt = cutoff_prompt_length(prompt, args["MAX_LEN"])
                 end_of_sentence = prompt[-15:]
                 set_pipeline(k=k, args=args)
@@ -444,9 +462,10 @@ def fuzzy_label_match(orig_ans, fixed_labels, session, link, prompt, lsd, model,
             elif any(["topp-zs" in model, "flan-t5-xxl-zs" in model, "flan-ul2-zs" in model]):
                 ans_n = get_topp_resp(prompt, k, args)
             else:
+                print("Running default (local saved checkpoint) llama resampling -- THIS SHOULD NOT HAPPEN if you are running zero-shot models, please check model name")
                 top_p = args['params']['top_p']
                 temp = args['params']['temperature']
-                ans_n = call_llama_model(session, link, prompt, lsd, {'no_repeat_ngram_size' : 1, 'top_p' : top_p - (0.1 * k), 'temperature' : 0.9})
+                ans_n = call_llama_model(session, link, prompt, lsd, {'no_repeat_ngram_size' : 1, 'top_p' : top_p - (0.1 * k), 'temperature' : 0.9}, args)
                 args['params']['top_p'] = top_p
                 args['params']['temperature'] = temp
             res = basic_contains(ans_n, fixed_labels, method)
