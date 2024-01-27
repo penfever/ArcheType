@@ -251,7 +251,7 @@ def set_pipeline(k=1, args=None):
         pad_token_id = args['tokenizer'].pad_token_id
     if args.get("params", -1) == -1 or args["params"] is None:
         args["params"] = dict()
-        args['params']['max_new_tokens'] = args['params'].get('max_new_tokens', 6)
+        args['params']['max_new_tokens'] = args['params'].get('max_new_tokens', 128)
         args['params']['do_sample'] = True
         args['params']['typical_p'] = 1
         args['params']['repetition_penalty'] = 1.3
@@ -387,7 +387,7 @@ def init_model(model, args):
     pt = PromptTemplate(template=template, input_variables=["instruction"])
     if "llama" in model:
         params = {
-            'max_new_tokens': 6,
+            'max_new_tokens': 128,
             'do_sample': True,
             'temperature': 0.2,
             'top_p': 0.8,
