@@ -10,16 +10,16 @@ import openai
 from transformers import AutoTokenizer
 import numpy as np
 
-try:
-  from .model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all, free_memory
-  from .data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs, get_amstr_classname_map, get_pubchem_dfs, get_pubchem_classname_map, get_viznet_dfs, get_viznet_classname_map
-  from .metrics import results_checker, results_checker_doduo
-  from .const import DOTENV_PATH, MAX_LEN
-except ImportError:
-  from model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all, free_memory
-  from data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs, get_amstr_classname_map, get_pubchem_dfs, get_pubchem_classname_map, get_viznet_dfs, get_viznet_classname_map
-  from metrics import results_checker, results_checker_doduo
-  from const import DOTENV_PATH, MAX_LEN
+# try:
+#   from .model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all, free_memory
+#   from .data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs, get_amstr_classname_map, get_pubchem_dfs, get_pubchem_classname_map, get_viznet_dfs, get_viznet_classname_map
+#   from .metrics import results_checker, results_checker_doduo
+#   from .const import DOTENV_PATH, MAX_LEN
+# except ImportError:
+from model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all, free_memory
+from data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs, get_amstr_classname_map, get_pubchem_dfs, get_pubchem_classname_map, get_viznet_dfs, get_viznet_classname_map
+from metrics import results_checker, results_checker_doduo
+from const import DOTENV_PATH, MAX_LEN
 
 def run(
     model_name : str, 
@@ -54,6 +54,7 @@ def run(
     args['tokenizer'] = AutoTokenizer.from_pretrained("openai-gpt")
     args['MAX_LEN'] = 4096
   else:
+    print("Initializing model...")
     init_model(model_name, args)
   infmods = "sherlock" in model_name or "doduo" in model_name
   isd4 = "d4" in label_set['name']

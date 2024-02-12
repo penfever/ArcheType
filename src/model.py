@@ -17,14 +17,14 @@ import argparse
 import gc
 import time
 
-try:
-    from .const import *
-    from .data import *
-    from .match import *
-except ImportError:
-    from const import *
-    from data import *
-    from match import *
+# try:
+#     from .const import *
+#     from .data import *
+#     from .match import *
+# except ImportError:
+from const import *
+from data import *
+from match import *
 
 def free_memory(sleep_time=0.1):
     """ Black magic function to free torch memory and some jupyter whims """
@@ -168,7 +168,7 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
         fixed_labels = args['non_numeric_labels']
   else:
     target_labels = set(lsd['label_set'])
-    lsd['label_set'] = lsd['label_set'] + all_labels
+    lsd['label_set'] = lsd['label_set'] + list(all_labels)
     fixed_labels = sorted(list(set([fix_labels(s, lsd) for s in target_labels])), key=len, reverse=True)
 
   context_labels = ", ".join(fixed_labels)

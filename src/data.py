@@ -6,10 +6,10 @@ from pathlib import Path
 import numpy as np
 import os
 
-try:
-  from .const import *
-except ImportError:
-  from const import *
+# try:
+#   from .const import *
+# except ImportError:
+from const import *
 
 from fuzzywuzzy import fuzz
 
@@ -860,7 +860,7 @@ def get_viznet_dfs(viznet_path, random_seed):
       dfs = pd.DataFrame(dfs)
       if len(dfs) > 15:
         dfs = dfs.sample(15, replace=True, random_state=random_seed)
-      viznet_dfs[str(row['class']) + "_" + str(f.stem).split('_')[0] + "_" + str(f.stem).split('_')[-1]] = dfs
+      viznet_dfs[str(row['class']) + "_" + str(f.stem).split('_')[0] + str(f.stem).split('_')[-1]] = dfs
   return viznet_dfs
 
 # 78 classes
@@ -897,7 +897,7 @@ def get_lsd(s):
     return amstr_zs_2step_context_labels
   elif s == "pubchem-ZS":
     return pubchem_zs_context_labels
-  elif s == "VizNet-ZS":
+  elif s == "viznet-ZS":
     return viznet_zs_context_labels
   print("Label set not found")
   return None
