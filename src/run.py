@@ -12,12 +12,12 @@ import numpy as np
 
 try:
   from .model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all, free_memory
-  from .data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs, get_amstr_classname_map, get_pubchem_dfs, get_pubchem_classname_map
+  from .data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs, get_amstr_classname_map, get_pubchem_dfs, get_pubchem_classname_map, get_viznet_dfs, get_viznet_classname_map
   from .metrics import results_checker, results_checker_doduo
   from .const import DOTENV_PATH, MAX_LEN
 except ImportError:
   from model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all, free_memory
-  from data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs, get_amstr_classname_map, get_pubchem_dfs, get_pubchem_classname_map
+  from data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs, get_amstr_classname_map, get_pubchem_dfs, get_pubchem_classname_map, get_viznet_dfs, get_viznet_classname_map
   from metrics import results_checker, results_checker_doduo
   from const import DOTENV_PATH, MAX_LEN
 
@@ -59,6 +59,7 @@ def run(
   isd4 = "d4" in label_set['name']
   isAmstr = "amstr" in label_set['name']
   isPubchem = "pubchem" in label_set['name']
+  isViznet = "viznet" in label_set['name']
   if "similarity" in method:
     get_sent_model(args)
   args["prompt_hashes"] = set()
@@ -118,6 +119,10 @@ def run(
         f_df = f
         label_indices=[0]
         gt_labels = labels[idx]
+    elif isViznet:
+        f_df = f
+        label_indices=[0]
+        gt_labels = labels[idx]
     elif "skip-eval" in method:
         f_df = pd_read_any(f)
         gt_labels = None
@@ -152,6 +157,9 @@ def run(
       elif isPubchem:
         pubchem_classname_map = get_pubchem_classname_map()
         orig_label = pubchem_classname_map[gt_labels]
+      elif isViznet:
+        viznet_classname_map = get_viznet_classname_map()
+        orig_label = viznet_classname_map[gt_labels]
       elif "skip-eval" in method:
         orig_label = ""
       else:
@@ -224,7 +232,7 @@ def main():
     parser.add_argument("--model_path", type=str, help="Path to ArcheType-LLAMA or zs-LLAMA model weights", default="")
     parser.add_argument("--save_path", type=str, help="Save path", required=True)
     parser.add_argument("--input_files", type=str, help="Path to input CSV files", required=True)
-    parser.add_argument("--label_set", type=str, help="Name of label set (SOTAB-91, SOTAB-55, SOTAB-27, D4-ZS, D4-DoDuo, amstr-ZS, pubchem-ZS, custom)", required=True)
+    parser.add_argument("--label_set", type=str, help="Name of label set (SOTAB-91, SOTAB-55, SOTAB-27, D4-ZS, D4-DoDuo, amstr-ZS, pubchem-ZS, viznet-ZS, custom)", required=True)
     parser.add_argument("--custom-labels", nargs='+', type=str, help="Custom labels", required=False)
     parser.add_argument("--input_labels", type=str, help="Path to input DataFrame (CSV file) for SOTAB. skip-eval will generate predictions but will not compare them to anything. D4 will use (internal) D4 ground-truth labels.", required=True)
     parser.add_argument("--resume", action='store_true', help="Resume")
@@ -250,6 +258,8 @@ def main():
       input_files = get_amstr_dfs(args.input_files, args.rand_seed)
     elif args.input_labels == "pubchem":
       input_files = get_pubchem_dfs(args.input_files, args.rand_seed)
+    elif args.input_labels == "viznet":
+      input_files = get_viznet_dfs(args.input_files, args.rand_seed)
     else:
       # Define the file extensions to search for
       extensions = ('.json', '.csv', '.json.gz', '.parquet', '.xlsx', '.xls', '.tsv')
@@ -260,6 +270,7 @@ def main():
     if args.input_labels == "D4" or \
       "amstr" in args.input_labels or \
       "pubchem" in args.input_labels or \
+      "viznet" in args.input_labels or \
       args.input_labels == "skip-eval":
       input_df = None
       if args.input_labels == "skip-eval":

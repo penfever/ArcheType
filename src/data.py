@@ -847,6 +847,39 @@ def get_pubchem_classname_map():
 pubchem_zs_context_labels = {"name" : "pubchem_zs", "label_set" : pubchem_renamed_class, "dict_map" : {c : c for c in pubchem_renamed_class}, "pubchem_map" : pubchem_classname_map}
 
 
+# VizNet
+viznet_path = os.path.join(current_script_dir, 'metadata', 'VizNet')
+
+def get_viznet_dfs(viznet_path, random_seed):
+  viznet_files = sorted(list(Path(viznet_path).rglob("*.csv")))
+  viznet_dfs = {}
+  for f in viznet_files:
+    df = pd.read_csv(f)
+    for index, row in df.iterrows():
+      dfs = row['data'].split(' ')
+      dfs = pd.DataFrame(dfs)
+      if len(dfs) > 15:
+        dfs = dfs.sample(15, replace=True, random_state=random_seed)
+      viznet_dfs[str(row['class']) + "_" + str(f.stem).split('_')[0] + "_" + str(f.stem).split('_')[-1]] = dfs
+  return viznet_dfs
+
+# 78 classes
+viznet_classes = ['category', 'sex', 'type', 'requirement', 'position', 'credit', 'depth', 'company', 'location', 'notes', 'region', 'symbol', 'creator', 
+                  'education', 'code', 'service', 'teamName', 'artist', 'year', 'order', 'person', 'industry', 'album', 'product', 'grades', 'duration', 
+                  'ranking', 'sales', 'country', 'result', 'class', 'continent', 'isbn', 'address', 'city', 'area', 'family', 'name', 'description', 'component', 
+                  'brand', 'format', 'collection', 'origin', 'club', 'nationality', 'religion', 'affiliation', 'birthDate', 'command', 'publisher', 'day', 'currency', 
+                  'jockey', 'range', 'elevation', 'age', 'county', 'fileSize', 'owner', 'species', 'language', 'genre', 'weight', 'affiliate', 'state', 'team', 
+                  'organisation', 'birthPlace', 'director', 'rank', 'status', 'plays', 'classification', 'manufacturer', 'operator', 'capacity', 'gender']
+
+viznet_renamed_class = viznet_classes
+
+viznet_classname_map = {k1 : k2 for (k1, k2) in zip(viznet_classes, viznet_renamed_class)}
+
+def get_viznet_classname_map():
+  return viznet_classname_map
+
+viznet_zs_context_labels = {"name" : "viznet_zs", "label_set" : viznet_renamed_class, "dict_map" : {c : c for c in viznet_renamed_class}, "viznet_map" : viznet_classname_map}
+
 def get_lsd(s):
   if s == "SOTAB-91":
     return context_labels
@@ -864,6 +897,8 @@ def get_lsd(s):
     return amstr_zs_2step_context_labels
   elif s == "pubchem-ZS":
     return pubchem_zs_context_labels
+  elif s == "VizNet-ZS":
+    return viznet_zs_context_labels
   print("Label set not found")
   return None
 
