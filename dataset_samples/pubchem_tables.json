@@ -1,0 +1,257 @@
+{
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label.  \n Input column: ['Quality and user experience', 'Quality and user experience', 'Journal of early and intensive behavior intervention : JEIBI', \"Journal d'urologie\", 'Minerva cardioangiologica'] \n Output: \n": {
+        "response": "journal title",
+        "context": [
+            "Quality and user experience",
+            "Quality and user experience",
+            "Journal of early and intensive behavior intervention : JEIBI",
+            "Journal d'urologie",
+            "Minerva cardioangiologica"
+        ],
+        "ground_truth": "journal title",
+        "correct": true,
+        "original_model_answer": "journal title",
+        "original_label": "Journal Title",
+        "file+idx": "                                        journal_title\n32                        Quality and user experience\n57  Action (National Fund for Research into Crippl...\n34                          Minerva cardioangiologica\n60                                     PhytoFrontiers\n38                                 Journal d'urologie\n60                                     PhytoFrontiers\n56  Forschungsberichte des ATB = Research reports ...\n38                                 Journal d'urologie\n29                      International journal of play\n55  Journal of early and intensive behavior interv...\n58                 Annals of anthropological practice\n1              Nordiskt folkmedicinmuseum meddelanden\n10                     Healthcare trends & transition\n32                        Quality and user experience\n38                                 Journal d'urologie_0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label.  \n Input column: ['Plastics film, its use in processes to produce packaging containers, the packaging containers thus produced, and the use of aqueous coating compositions to coat plastics films for producing packaging containers', 'Plastics film, its use in processes to produce packaging containers, the packaging containers thus produced, and the use of aqueous coating compositions to coat plastics films for producing packaging containers', 'A peel box with sewage overflow prevention function', 'monitoring device', 'Cable cleat'] \n Output: \n": {
+        "response": "patent abstract",
+        "context": [
+            "Plastics film, its use in processes to produce packaging containers, the packaging containers thus produced, and the use of aqueous coating compositions to coat plastics films for producing packaging containers",
+            "Plastics film, its use in processes to produce packaging containers, the packaging containers thus produced, and the use of aqueous coating compositions to coat plastics films for producing packaging containers",
+            "A peel box with sewage overflow prevention function",
+            "monitoring device",
+            "Cable cleat"
+        ],
+        "ground_truth": "patent title",
+        "correct": false,
+        "original_model_answer": "patent abstract",
+        "original_label": "Patent Title",
+        "file+idx": "                                         patent_title\n16  Plastics film, its use in processes to produce...\n32               Chrysanthemum plant named ‘Yoencino’\n57                                        Cable cleat\n23  Method of carrying allele-specific pcr for cat...\n34  Performance Enhanced Drug Combination and Hair...\n60  Thin film transistor and organic light-emittin...\n33  Heating element for aln ceramic heater and its...\n38                                  monitoring device\n9   Room temperature wet chemical growth of SiO-ba...\n3   A peel box with sewage overflow prevention fun...\n36  A kind of preparation method and application o...\n60  Thin film transistor and organic light-emittin...\n4   Pharmaceutical composition for the prevention ...\n56  Extract for restraining prostatic hypertrophy ...\n50  Homeopathic medicinal for veterinary exhibitin..._0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label.  \n Input column: ['author:MD5_e1b3e60813af24f8da8b93e5ae79b832', 'author:MD5_e1b3e60813af24f8da8b93e5ae79b832', 'author:MD5_d766407440ee1f99f6722138332fb637', 'author:MD5_d9f507fea90578aa524a643c5a9c4570', 'author:MD5_2e2346bf0d1c12f53b22403b4ad09ee9'] \n Output: \n": {
+        "response": "md5 hash",
+        "context": [
+            "author:MD5_e1b3e60813af24f8da8b93e5ae79b832",
+            "author:MD5_e1b3e60813af24f8da8b93e5ae79b832",
+            "author:MD5_d766407440ee1f99f6722138332fb637",
+            "author:MD5_d9f507fea90578aa524a643c5a9c4570",
+            "author:MD5_2e2346bf0d1c12f53b22403b4ad09ee9"
+        ],
+        "ground_truth": "md5 hash",
+        "correct": true,
+        "original_model_answer": "md5 hash",
+        "original_label": "MD5 Hash",
+        "file+idx": "                                   book_creator\n16  author:MD5_e1b3e60813af24f8da8b93e5ae79b832\n32  author:MD5_092f90d37eba9129ae9284cf92a976ea\n57  author:MD5_2e2346bf0d1c12f53b22403b4ad09ee9\n23  author:MD5_6b902bddec529564ca70472e0ddc2dfe\n34  author:MD5_f0a45c2a99d59376424f77ea1ca6788e\n60  author:MD5_1e549e628e18a7fac3f13dfce4759868\n33  author:MD5_91c4b63a5102f6f9331014e9674fa5e6\n38  author:MD5_d9f507fea90578aa524a643c5a9c4570\n9   author:MD5_e5eff53c2a7cb8446b3ef7b7cbdd3956\n3   author:MD5_d766407440ee1f99f6722138332fb637\n36  author:MD5_f884bd30ad66fdc94a9f05c41d95780b\n60  author:MD5_1e549e628e18a7fac3f13dfce4759868\n4   author:MD5_7790a9c601203eb6da83370c325ecb92\n56  author:MD5_0d2518d7a7d65d729d7e060298ce0622\n50  author:MD5_a26e4b4109d5b190dca0575c263855ee_0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label.  \n Input column: ['The natural science foundation of Jiangsu province, China', 'The natural science foundation of Jiangsu province, China', 'Regions of Southern Denmark', 'Department d’Empresa i Coneixement de la Generalitat de Catalunya', 'J. Willard and Alice S. Marriott and Peery Foundations'] \n Output: \n": {
+        "response": "organization name",
+        "context": [
+            "The natural science foundation of Jiangsu province, China",
+            "The natural science foundation of Jiangsu province, China",
+            "Regions of Southern Denmark",
+            "Department d’Empresa i Coneixement de la Generalitat de Catalunya",
+            "J. Willard and Alice S. Marriott and Peery Foundations"
+        ],
+        "ground_truth": "organization name",
+        "correct": true,
+        "original_model_answer": "organization name",
+        "original_label": "Organization Name",
+        "file+idx": "                                      organization_fn\n16  The natural science foundation of Jiangsu prov...\n32                                          PRIN MIUR\n23  J. Willard and Alice S. Marriott and Peery Fou...\n34   Pollock Conservation Cooperative Research Center\n33                              Southwestern Hospital\n38  Cancer Research Award from the Condon Family F...\n9   Science Technology Department of Zhejiang Prov...\n3   Department d’Empresa i Coneixement de la Gener...\n36    Department of biotechnology Government of India\n4                         Regions of Southern Denmark\n38  Cancer Research Award from the Condon Family F...\n29       Shandong Province Natural Science foundation\n23  J. Willard and Alice S. Marriott and Peery Fou...\n1   Foundation for the Excellent Young Teachers in...\n10  Wellcome Trust-funded Institute of Infectious ..._0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, personClasses: book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label \n Output: \n": {
+        "response": "inchi (international chemical identifier)",
+        "context": [
+            "InChI=1S/C14H14N4OS2/c1-2-9-7-12(18-17-9)16-13(19)8-20-14-15-10-5-3-4-6-11(10)21-14/h3-7H,2,8H2,1H3,(H2,16,17,18,19)",
+            "InChI=1S/C14H14N4OS2/c1-2-9-7-12(18-17-9)16-13(19)8-20-14-15-10-5-3-4-6-11(10)21-14/h3-7H,2,8H2,1H3,(H2,16,17,18,19)",
+            "InChI=1S/C25H23NO/c1-25(2)18-27-24(26-25)22-16-10-9-15-21(22)23(20-13-7-4-8-14-20)17-19-11-5-3-6-12-19/h3-17H,18H2,1-2H3/b23-17+",
+            "InChI=1S/C22H21NO4S/c1-23(28(25,26)20-15-13-19(14-16-20)22(24)27-2)21(17-9-5-3-6-10-17)18-11-7-4-8-12-18/h3-16,21H,1-2H3",
+            "InChI=1S/C21H22N2O8S.C2HF3O2/c24-14(9-23-21(29)18-7-13-8-22-5-1-2-17(13)32-18)12-3-4-15(30-10-19(25)26)16(6-12)31-11-20(27)28;3-2(4,5)1(6)7/h3-4,6-7,22H,1-2,5,8-11H2,(H,23,29)(H,25,26)(H,27,28);(H,6,7)"
+        ],
+        "ground_truth": "inchi (international chemical identifier)",
+        "correct": true,
+        "original_model_answer": "inchi (international chemical identifier)",
+        "original_label": "InChI (International Chemical Identifier)",
+        "file+idx": "                                                InChI\n32  InChI=1S/C14H14N4OS2/c1-2-9-7-12(18-17-9)16-13...\n57  InChI=1S/C14H21N3O3/c1-4-10(5-2)16-14(18)11-8-...\n34  InChI=1S/C21H22N2O8S.C2HF3O2/c24-14(9-23-21(29...\n60  InChI=1S/C12H25N3O3.ClH/c1-13-7-4-6-12(17)15(2...\n38  InChI=1S/C25H23NO/c1-25(2)18-27-24(26-25)22-16...\n67  InChI=1S/C13H21N3O4S/c1-10(13(17)15-8-9-20-3)1...\n60  InChI=1S/C12H25N3O3.ClH/c1-13-7-4-6-12(17)15(2...\n68  InChI=1S/C22H21NO4S/c1-23(28(25,26)20-15-13-19...\n56  InChI=1S/C22H27ClN2O2/c1-4-16(2)24-22(27)17(3)...\n38  InChI=1S/C25H23NO/c1-25(2)18-27-24(26-25)22-16...\n29  InChI=1S/C27H21Cl2FN6O3/c28-19-12-20(29)18(11-...\n55  InChI=1S/C20H16N4O4S2/c21-8-17(25)28-20-23-10-...\n58  InChI=1S/C15H12ClN3O4S2/c1-9-12(8-17-23-9)15(2...\n1   InChI=1S/C17H27N3O/c1-14(2)18-11-5-6-17(21)19-...\n10  InChI=1S/C27H22N2/c1-27(2)21-13-7-9-15-24(21)2..._0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label.  \n Input column: ['Molecular Parasitology', 'Molecular Parasitology', 'Evidence reviews for pharmacological interventions for the prevention and treatment of PTSD in children', 'Vitamin C', 'Cobalt in Hard Metals and Cobalt Sulfate, Gallium Arsenide, Indium Phosphide and Vanadium Pentoxide'] \n Output: \n": {
+        "response": "book title",
+        "context": [
+            "Molecular Parasitology",
+            "Molecular Parasitology",
+            "Evidence reviews for pharmacological interventions for the prevention and treatment of PTSD in children",
+            "Vitamin C",
+            "Cobalt in Hard Metals and Cobalt Sulfate, Gallium Arsenide, Indium Phosphide and Vanadium Pentoxide"
+        ],
+        "ground_truth": "book title",
+        "correct": true,
+        "original_model_answer": "book title",
+        "original_label": "Book Title",
+        "file+idx": "                                           book_title\n16                             Molecular Parasitology\n32  Early positive approaches to support for famil...\n23  Cobalt in Hard Metals and Cobalt Sulfate, Gall...\n34  A Research Strategy for Ocean-based Carbon Dio...\n33  Protecting the Confidentiality of Health Infor...\n38  A randomised controlled study of the effective...\n9   Laser Eye Surgery for Vision Correction: A Rev...\n3                                           Vitamin C\n36  Acetylsalicylic Acid for Venous Thromboembolis...\n4   Evidence reviews for pharmacological intervent...\n38  A randomised controlled study of the effective...\n29  Evidence review for identification and recordi...\n23  Cobalt in Hard Metals and Cobalt Sulfate, Gall...\n1   Redesigning the Clinical Effectiveness Researc...\n10  Addition of oral corticosteroids to oral isotr..._0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label.  \n Input column: ['John L. Colaizzi Chair Endowment fund', 'John L. Colaizzi Chair Endowment fund', 'Young Scientists (B) from Japan Society for the Promotion of Science (JSPS) and on Priority Areas “Soft Interfaces” and “Soft Matter Physics”', 'National Research System (PAN)', 'National Natural Science Funds for Outstanding Young Scholars'] \n Output: \n": {
+        "response": "organization name",
+        "context": [
+            "John L. Colaizzi Chair Endowment fund",
+            "John L. Colaizzi Chair Endowment fund",
+            "Young Scientists (B) from Japan Society for the Promotion of Science (JSPS) and on Priority Areas “Soft Interfaces” and “Soft Matter Physics”",
+            "National Research System (PAN)",
+            "National Natural Science Funds for Outstanding Young Scholars"
+        ],
+        "ground_truth": "organization name",
+        "correct": true,
+        "original_model_answer": "organization name",
+        "original_label": "Organization Name",
+        "file+idx": "                                      organization_fn\n16              John L. Colaizzi Chair Endowment fund\n32  PhD Start-up Fund of Shenyang Agricultural Uni...\n23  National Natural Science Funds for Outstanding...\n34  Social Welfare Projects for Scientific Researc...\n33      Interuniversity Institute for Marine Sciences\n38  Independent Research, Technology and Productio...\n9           Sh. Rustaveli National Science Foundation\n3                      National Research System (PAN)\n36  National Cancer Institute (NCI) Alliance for N...\n4   Young Scientists (B) from Japan Society for th...\n38  Independent Research, Technology and Productio...\n29                       Science and Higher Education\n23  National Natural Science Funds for Outstanding...\n1   the Research Foundation of Qingdao Forest Ecos...\n10     Institute of Forensic Research, Krakow, Poland_0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label.  \n Input column: ['C10H30Cl4O2Si4', 'C10H30Cl4O2Si4', 'C54H77N11O15', 'C11H5ClF3NO3', 'C43H75NO10S'] \n Output: \n": {
+        "response": "molecular formula",
+        "context": [
+            "C10H30Cl4O2Si4",
+            "C10H30Cl4O2Si4",
+            "C54H77N11O15",
+            "C11H5ClF3NO3",
+            "C43H75NO10S"
+        ],
+        "ground_truth": "molecular formula",
+        "correct": true,
+        "original_model_answer": "molecular formula",
+        "original_label": "Molecular Formula",
+        "file+idx": "        Molecular_Formula\n80         C10H30Cl4O2Si4\n32          C389H274F2N26\n57            C43H75NO10S\n87      C44H57BF2N10NaO13\n34          C98H167N19O31\n60           C54H77N11O15\n38           C49H52FN11O5\n73           C11H5ClF3NO3\n67  C104H118Cl13N5O8S5Si3\n60           C54H77N11O15\n68         C52H50O4P2Ru+2\n56             C218H406N6\n38           C49H52FN11O5\n29            C67H74N10O5\n87      C44H57BF2N10NaO13_0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label.  \n Input column: ['C28H44N2O32S3', 'C28H44N2O32S3', 'C120H203N23O26', 'C37H65Br3N6O13', 'C27H34INO9'] \n Output: \n": {
+        "response": "molecular formula",
+        "context": [
+            "C28H44N2O32S3",
+            "C28H44N2O32S3",
+            "C120H203N23O26",
+            "C37H65Br3N6O13",
+            "C27H34INO9"
+        ],
+        "ground_truth": "molecular formula",
+        "correct": true,
+        "original_model_answer": "molecular formula",
+        "original_label": "Molecular Formula",
+        "file+idx": "        Molecular_Formula\n16          C28H44N2O32S3\n32          C23H29BrN4O2S\n23             C27H34INO9\n34         C35H26F5N6OS2+\n33        C15H10BrClF4N2O\n38           C11H10ClFeO-\n9           C58H84N16O17S\n3          C37H65Br3N6O13\n36           C10H5Cl2F3N4\n4          C120H203N23O26\n50  C112H152ClN15O47P4S26\n38           C11H10ClFeO-\n29           C53H74O4S3Se\n23             C27H34INO9\n1             C100H170O28_0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, personClasses: book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label \n Output: \n*": {
+        "response": "patent title",
+        "context": [
+            "Steganography is the art of hiding information within information. The hidden information is called “covert” and the carrier information is called “overt.” In the digital world, steganography as a security technique differs considerably from encryption, watermarking, or placing data within digital envelopes. This invention uses steganographic techniques to embedded hidden behaviors, controls, and security within content creating self-governance of the content itself. The hidden behaviors include who, what, when, where, and how content is to be used. The hidden controls govern what can be done with the content such as copied, stored, deleted, and archived. The hidden embedded security includes authentication of author, source, and user of the content. In effect, the content becomes “smart content” and does not require network-centric security controls allowing ubiquitous exchanges across enterprises. This invention renders content counterfeit resistant, one-of-a-kind and includes self-editing schema for multimedia applications.",
+            "Steganography is the art of hiding information within information. The hidden information is called “covert” and the carrier information is called “overt.” In the digital world, steganography as a security technique differs considerably from encryption, watermarking, or placing data within digital envelopes. This invention uses steganographic techniques to embedded hidden behaviors, controls, and security within content creating self-governance of the content itself. The hidden behaviors include who, what, when, where, and how content is to be used. The hidden controls govern what can be done with the content such as copied, stored, deleted, and archived. The hidden embedded security includes authentication of author, source, and user of the content. In effect, the content becomes “smart content” and does not require network-centric security controls allowing ubiquitous exchanges across enterprises. This invention renders content counterfeit resistant, one-of-a-kind and includes self-editing schema for multimedia applications.",
+            "PURPOSE: To provide the titled compsn. having excellent rigidity, moldability and impact resistact and improved melt tension and die swell, by slightly crosslinking a high-molecular high/medium-density PE with a low-molecular high/medium- density PE, and intimately melt-mixing them.  n     CONSTITUTION: 0.001W0.5wt% crosslinking agent such as di-t-butyl peroxide is added to a compsn. consisting of 5W80wt% high-molecular high/medium-density PE(A) having an average MW of 100,000W1,000,000 and 95W20wt% low-molecular high/medium-density PE(B) in a ratio of of MW of component A to that of component B of 2W100. The mixture is melt-kneaded at 150W290°C for 1W5min, and crosslinked to such an extent that α 2 /α 1  becomes 1.1W10 and (MI) 2 /(MI) 2  becomes 0.03W0.9 wherein (MI), is MI of the compsn. before crosslinking and α 1  is its expansion factor, and (MI) 2  is MI of the compsn. after crosslinking and α 2  is its expansion factor. n     COPYRIGHT: (C)1983,JPO&amp;Japio",
+            "PURPOSE: To synthesize various terpene compounds readily in high yield, by alkylating an O-linalyl-N,N-dialkyl-hydroxylamine with a specific compound capable of formint stable carbanions at a specific position under specified conditions.  n     CONSTITUTION: An O-linalyl-N,N-dialkylhydroxylamine of formula I: (R 1  is alkyl group) is reacted with a compound of formula II: (R 2  is H or 1W4C alkyl group; R 3  is alkyl, alkenyl, or lower alkoxy group; R 4  is lower alkoxy group) in the presence of a palladium catalyst to give a palladium complex of formula III, which is heated in a solvent in the presence of a trialkylchlorosilane to give the compound of formula IV free from palladium. The method permits alkylation of the compound of formula I in high yield at a specific position, and easy synthesis of terpenes. The compound of formula IV can be converted to an intermediate for perfumes and medicines. n     COPYRIGHT: (C)1980,JPO&amp;Japio",
+            "The present invention is concerned with cancer treatment and diagnosis, especially with melanoma associated peptide analogues with improved immunogenicity, epitopes thereof, vaccines against melanoma, tumour infiltrating T lymphocytes recognizing the antigen  and diagnostics for the detection of melanoma and for the monitoring of vaccination. The peptides according to the invention can be exploited to elicit native epitope-reactive CTL. Usage of said peptides with improved immunogenicity may contribute to the development of CTL-epitope based vaccines in viral disease and cancer."
+        ],
+        "ground_truth": "patent abstract",
+        "correct": false,
+        "original_model_answer": "patent title",
+        "original_label": "Patent Abstract",
+        "file+idx": "                                      patent_abstract\n32  Steganography is the art of hiding information...\n57  A laminate and a process for producing a lamin...\n34  The present invention is concerned with cancer...\n60  An exercise motivating system which rewards th...\n38  PURPOSE: To provide the titled compsn. having ...\n67  The present invention has been made in view of...\n60  An exercise motivating system which rewards th...\n68  PURPOSE: To synthesize various terpene compoun...\n56  Histatin formulations include at least two dif...\n38  PURPOSE: To provide the titled compsn. having ...\n29  The present invention provides a process for t...\n55  A dosage form, comprising: a core having at le...\n58  The present invention is to provide a photosen...\n1   The invention belongs to the technical field o...\n10  The invention relates to an iodic broad-spectr..._0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label.  \n Input column: ['Le Moniteur des pharmacies et des laboratoires', 'Le Moniteur des pharmacies et des laboratoires', \"Questions [d'internat]\", 'Annals of pulmonary and critical care medicine', 'Cultural sociology'] \n Output: \n": {
+        "response": "journal title",
+        "context": [
+            "Le Moniteur des pharmacies et des laboratoires",
+            "Le Moniteur des pharmacies et des laboratoires",
+            "Questions [d'internat]",
+            "Annals of pulmonary and critical care medicine",
+            "Cultural sociology"
+        ],
+        "ground_truth": "journal title",
+        "correct": true,
+        "original_model_answer": "journal title",
+        "original_label": "Journal Title",
+        "file+idx": "                                        journal_title\n80     Le Moniteur des pharmacies et des laboratoires\n32                            The Jerusalem quarterly\n57                                 Cultural sociology\n87                                   Lettere italiane\n34                                    NeuroRegulation\n60                             Questions [d'internat]\n38                      Journal of medical regulation\n73     Annals of pulmonary and critical care medicine\n67                                Modern cell biology\n60                             Questions [d'internat]\n68  Turk ortodonti dergisi : Ortodonti Derneg'nin ...\n56                   Patient related outcome measures\n38                      Journal of medical regulation\n29                                     Latino studies\n87                                   Lettere italiane_0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label.  \n Input column: ['Vundavalli V. V. S.', 'Vundavalli V. V. S.', 'Liz Mary B.', 'Kamuran Cumhur', 'LLOYD E.'] \n Output: \n": {
+        "response": "person's full name",
+        "context": [
+            "Vundavalli V. V. S.",
+            "Vundavalli V. V. S.",
+            "Liz Mary B.",
+            "Kamuran Cumhur",
+            "LLOYD E."
+        ],
+        "ground_truth": "person's first name and middle initials",
+        "correct": false,
+        "original_model_answer": "person's full name",
+        "original_label": "Person's First Name and Middle Initials",
+        "file+idx": "          author_given_name\n16      Vundavalli V. V. S.\n32              Irawan Budi\n57                 LLOYD E.\n23              Signe Videm\n34              Naila Nurun\n33               Andries G.\n38                 ZHU PING\n9            Kamuran Cumhur\n3     Thorbjørn Erik Køppen\n36              Liz Mary B.\n4                  Kamikawa\n56                Laurie A.\n50  Carlos Adolfo Marroquín\n38                 ZHU PING\n29                 Benji M._0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label.  \n Input column: ['Numico BV, Zoetermeer, The Netherlands', 'Numico BV, Zoetermeer, The Netherlands', \"Chaire d'Excellence from IdEx Université de Paris\", 'Science and Technology Key Project', 'Bielefeld-Gießen Center for Microbial Bioinformatics'] \n Output: \n": {
+        "response": "organization name",
+        "context": [
+            "Numico BV, Zoetermeer, The Netherlands",
+            "Numico BV, Zoetermeer, The Netherlands",
+            "Chaire d'Excellence from IdEx Université de Paris",
+            "Science and Technology Key Project",
+            "Bielefeld-Gießen Center for Microbial Bioinformatics"
+        ],
+        "ground_truth": "organization name",
+        "correct": true,
+        "original_model_answer": "organization name",
+        "original_label": "Organization Name",
+        "file+idx": "                                      organization_fn\n16             Numico BV, Zoetermeer, The Netherlands\n32  Health Industry Special Scientific Research Pr...\n57  Bielefeld-Gießen Center for Microbial Bioinfor...\n23  Project of Product, Study and Research of Guan...\n34                                            PMI/RTI\n60  Ministry of Science and Education (Russian Fed...\n33  Melissa Kirk, of Scientific Connexions, an Ash...\n38                 Science and Technology Key Project\n9                                      SFB Consortium\n3   Chaire d'Excellence from IdEx Université de Paris\n36  Cooperative State Research, Education, and Ext...\n60  Ministry of Science and Education (Russian Fed...\n4                                       he NSAF Grant\n56  Targeted Aid for Undergraduate Innovation Fund...\n50                                     Biosearch life_0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label.  \n Input column: ['Gobio argentatus', 'Gobio argentatus', '\"Nocardia pseudovaccinii\" Gordon', 'Bacterium tracheiphilus', 'Pseudomonas syringae pv. syringae'] \n Output: \n": {
+        "response": "taxonomy label",
+        "context": [
+            "Gobio argentatus",
+            "Gobio argentatus",
+            "\"Nocardia pseudovaccinii\" Gordon",
+            "Bacterium tracheiphilus",
+            "Pseudomonas syringae pv. syringae"
+        ],
+        "ground_truth": "taxonomy label",
+        "correct": true,
+        "original_model_answer": "taxonomy label",
+        "original_label": "Taxonomy Label",
+        "file+idx": "                              taxonomy_label\n16                          Gobio argentatus\n0                   Philadelphus sericanthus\n2          Pseudomonas syringae pv. syringae\n1                        Tricyrtis formosana\n6            Citrus paradisi x P. trifoliata\n9                     Lamellibrachia luymesi\n3                  Thaumatophyllum speciosum\n4                    Bacterium tracheiphilus\n4                    Bacterium tracheiphilus\n18          \"Nocardia pseudovaccinii\" Gordon\n6            Citrus paradisi x P. trifoliata\n1                        Tricyrtis formosana\n10  Lespedeza leptostachya Engelm. ex A.Gray\n11                Aesopia cornuta Kaup, 1858\n6            Citrus paradisi x P. trifoliata_0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label.  \n Input column: ['WT Limb-Blood Syndrome', 'WT Limb-Blood Syndrome', 'Immunodeficiency Syndrome, Severe Combined', 'Brain Injury, Vascular', 'Hallucinations, Auditory'] \n Output: \n": {
+        "response": "disease alternative label",
+        "context": [
+            "WT Limb-Blood Syndrome",
+            "WT Limb-Blood Syndrome",
+            "Immunodeficiency Syndrome, Severe Combined",
+            "Brain Injury, Vascular",
+            "Hallucinations, Auditory"
+        ],
+        "ground_truth": "disease alternative label",
+        "correct": true,
+        "original_model_answer": "disease alternative label",
+        "original_label": "Disease Alternative Label",
+        "file+idx": "                                disease_altlabel\n80                        WT Limb-Blood Syndrome\n32                       Bacteremia, Hemorrhagic\n57                      Hallucinations, Auditory\n87                  Environmental Sleep Disorder\n34         Childhood Benign Psychomotor Epilepsy\n60    Immunodeficiency Syndrome, Severe Combined\n38                           Dental Pulp Disease\n73                        Brain Injury, Vascular\n67                               taijin-kyofusho\n60    Immunodeficiency Syndrome, Severe Combined\n68  Epidermolysis Bullosa Dystrophica, Bart Type\n56                Secondary Empty Sella Syndrome\n38                           Dental Pulp Disease\n29         Brachydactyly, combined B and E types\n87                  Environmental Sleep Disorder_0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, personClasses: book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label \n Output: \n**": {
+        "response": "inchi (international chemical identifier)",
+        "context": [
+            "InChI=1S/C39H25N3/c1-3-12-26(13-4-1)33-18-11-21-36(40-33)42-35-20-10-8-17-30(35)32-25-23-27-22-24-31-29-16-7-9-19-34(29)41(28-14-5-2-6-15-28)38(31)37(27)39(32)42/h1-25H",
+            "InChI=1S/C39H25N3/c1-3-12-26(13-4-1)33-18-11-21-36(40-33)42-35-20-10-8-17-30(35)32-25-23-27-22-24-31-29-16-7-9-19-34(29)41(28-14-5-2-6-15-28)38(31)37(27)39(32)42/h1-25H",
+            "InChI=1S/C19H17FN4O3/c1-27-13-7-5-12(6-8-13)21-19(26)11-9-16(25)24(10-11)18-17-14(20)3-2-4-15(17)22-23-18/h2-8,11H,9-10H2,1H3,(H,21,26)(H,22,23)",
+            "InChI=1S/C20H23N5O2S/c26-18-10-9-17(23-25(18)16-7-3-1-4-8-16)19(27)22-20-21-15(14-28-20)13-24-11-5-2-6-12-24/h1,3-4,7-8,14H,2,5-6,9-13H2,(H,21,22,27)/p+1",
+            "InChI=1S/C20H19F3N4O4S/c1-10-5-16-14(18(28)25-19(29)27(16)2)9-17(10)32(30,31)26-13-6-11(7-13)15-8-12(3-4-24-15)20(21,22)23/h3-5,8-9,11,13,26H,6-7H2,1-2H3,(H,25,28,29)"
+        ],
+        "ground_truth": "inchi (international chemical identifier)",
+        "correct": true,
+        "original_model_answer": "inchi (international chemical identifier)",
+        "original_label": "InChI (International Chemical Identifier)",
+        "file+idx": "                                                InChI\n32  InChI=1S/C39H25N3/c1-3-12-26(13-4-1)33-18-11-2...\n57  InChI=1S/C15H12FN3O2/c1-19(15(21)11-5-13(20)8-...\n34  InChI=1S/C20H19F3N4O4S/c1-10-5-16-14(18(28)25-...\n60  InChI=1S/C23H26N4O2S/c1-15(2)17-8-10-19(11-9-1...\n38  InChI=1S/C22H17BrN6O/c23-16-6-4-15(5-7-16)22(3...\n67  InChI=1S/C26H43FO9/c1-23(2,3)19(28)32-13-14-15...\n60  InChI=1S/C23H26N4O2S/c1-15(2)17-8-10-19(11-9-1...\n56  InChI=1S/C20H23N5O2S/c26-18-10-9-17(23-25(18)1...\n38  InChI=1S/C22H17BrN6O/c23-16-6-4-15(5-7-16)22(3...\n29  InChI=1S/C19H17FN4O3/c1-27-13-7-5-12(6-8-13)21...\n55  InChI=1S/C18H17NO/c20-18-11-6-12-19-17(18)15-1...\n58  InChI=1S/C20H23N3.ClH/c1-22(2)12-5-13-23-19-7-...\n1   InChI=1S/C11H18O3/c1-8(11(13)14)9-4-2-6-10(12)...\n10  InChI=1S/C35H45ClN2O5S/c1-22-4-2-6-31(39)28-12...\n32  InChI=1S/C39H25N3/c1-3-12-26(13-4-1)33-18-11-2..._0"
+    },
+    "For the following table column, select a schema.org type annotation from book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, personClasses: book title, cell alternative label, concept preferred label, disease alternative label, iupac identifier, journal title, molecular formula, organization name, patent abstract, patent title, person's first name and middle initials, person's full name, person's last name, smiles (simplified molecular input line entry system), taxonomy label \n Output: \n***": {
+        "response": "inchi (international chemical identifier)",
+        "context": [
+            "InChI=1S/C16H19/c1-2-7-12-16(11-6-1)13-10-14-8-4-3-5-9-15(14)16/h3-5,9-10,13-14H,1-2,6-7,11-12H2/q+1",
+            "InChI=1S/C16H19/c1-2-7-12-16(11-6-1)13-10-14-8-4-3-5-9-15(14)16/h3-5,9-10,13-14H,1-2,6-7,11-12H2/q+1",
+            "InChI=1S/C56H99NO8/c1-6-8-10-12-14-16-18-20-22-24-26-27-29-30-32-34-36-38-40-42-44-46-53(58)63-50-52(51-64-56(55(60)61)62-49-48-57(3,4)5)65-54(59)47-45-43-41-39-37-35-33-31-28-25-23-21-19-17-15-13-11-9-7-2/h9,11,15,17,21,23-24,26,28,31,52,56H,6-8,10,12-14,16,18-20,22,25,27,29-30,32-51H2,1-5H3/b11-9-,17-15-,23-21-,26-24-,31-28-",
+            "InChI=1S/C12H14N4/c1-2-10-6-14-12(16(10)3-1)9-4-11-5-13-8-15(11)7-9/h5-6,8-9H,1-4,7H2",
+            "InChI=1S/C17H15FO6.C5H11N3OS/c1-22-17(21)12-6-13(8-14(7-12)24-10-16(19)20)23-9-11-4-2-3-5-15(11)18;1-3-4(9)7-8-5(10)6-2/h2-8H,9-10H2,1H3,(H,19,20);3H2,1-2H3,(H,7,9)(H2,6,8,10)"
+        ],
+        "ground_truth": "inchi (international chemical identifier)",
+        "correct": true,
+        "original_model_answer": "inchi (international chemical identifier)",
+        "original_label": "InChI (International Chemical Identifier)",
+        "file+idx": "                                                InChI\n16  InChI=1S/C16H19/c1-2-7-12-16(11-6-1)13-10-14-8...\n32  InChI=1S/C21H23ClN2O2/c1-15-18(22)10-5-11-19(1...\n23  InChI=1S/C17H15FO6.C5H11N3OS/c1-22-17(21)12-6-...\n34  InChI=1S/C10H12ClN5/c1-16-6-14-9(15-16)5-13-8-...\n33  InChI=1S/C17H22N4S/c1-6-13(7-2)14-8-10(3)20-21...\n38  InChI=1S/C23H25FN2O2/c1-2-26-21(27)12-11-19(22...\n9   InChI=1S/C14H13FN2O2/c1-8-5-10(3-4-12(8)15)14-...\n3   InChI=1S/C12H14N4/c1-2-10-6-14-12(16(10)3-1)9-...\n36  InChI=1S/C13H9Cl2F2N/c14-10-2-1-3-12(16)9(10)7...\n4   InChI=1S/C56H99NO8/c1-6-8-10-12-14-16-18-20-22...\n38  InChI=1S/C23H25FN2O2/c1-2-26-21(27)12-11-19(22...\n29  InChI=1S/C13H16ClN3OS/c1-9-16-12(8-19-9)6-11(1...\n23  InChI=1S/C17H15FO6.C5H11N3OS/c1-22-17(21)12-6-...\n1   InChI=1S/C24H32N2O6/c1-25(2)10-11-31-21-9-6-17...\n10  InChI=1S/CH2O3.H3N.H2O5S/c2-1(3)4;;1-5-6(2,3)4..._0"
+    }
+}

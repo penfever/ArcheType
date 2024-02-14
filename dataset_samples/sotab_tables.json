@@ -1,0 +1,227 @@
+{
+    "Pick the column's class. \n Column: ['PD2TH0M0', 'PD2TH0M0', 'PD1TH0M0', 'PD1TH0M0', 'PD1TH0M0'] \n Classes: age, boolean, company, coordinates, country, creativework, currency, date, email, event, gender, jobposting, language, organization, person, price, product, sportsteam, streetaddress, telephone, time, weight, zipcode \n Output: \n": {
+        "response": "coordinates",
+        "context": [
+            "PD2TH0M0",
+            "PD2TH0M0",
+            "PD1TH0M0",
+            "PD1TH0M0",
+            "PD1TH0M0"
+        ],
+        "ground_truth": "time",
+        "correct": false,
+        "original_model_answer": "coordinates",
+        "original_label": "Duration",
+        "file+idx": "/home/bf996/archetype/Test/Event_concise.ch_September2020_CTA.json.gz_2"
+    },
+    "Pick the column's class. \n Column: ['None', 'Fax: (630) 879-9394', 'None', 'Fax: 630-879-9394', 'None'] \n Classes: age, boolean, company, coordinates, country, creativework, currency, date, email, event, gender, jobposting, language, organization, person, price, product, sportsteam, streetaddress, telephone, time, weight, zipcode \n Output: \n": {
+        "response": "telephone",
+        "context": [
+            "None",
+            "Fax: (630) 879-9394",
+            "None",
+            "Fax: 630-879-9394",
+            "None"
+        ],
+        "ground_truth": "telephone",
+        "correct": true,
+        "original_model_answer": "telephone",
+        "original_label": "faxNumber",
+        "file+idx": "/home/bf996/archetype/Test/LocalBusiness_illinoisbankruptcyattorney.cc_September2020_CTA.json.gz_3"
+    },
+    "Pick the column's class. \n Column: ['New', 'New', 'New', 'New', 'New'] \n Classes: age, boolean, company, coordinates, country, creativework, currency, date, email, event, gender, jobposting, language, organization, person, price, product, sportsteam, streetaddress, telephone, time, weight, zipcode \n Output: \n": {
+        "response": "boolean",
+        "context": [
+            "New",
+            "New",
+            "New",
+            "New",
+            "New"
+        ],
+        "ground_truth": "category",
+        "correct": false,
+        "original_model_answer": "boolean",
+        "original_label": "OfferItemCondition",
+        "file+idx": "/home/bf996/archetype/Test/Product_bold3.org_September2020_CTA.json.gz_3"
+    },
+    "Pick the column's class. \n Column: ['Melbourne Fringe Festival', 'Melbourne Career Expo', 'Williamstown Literary Festival', 'Royal Melbourne Show', 'Melbourne Underground Film Festival'] \n Classes: age, boolean, company, coordinates, country, creativework, currency, date, email, event, gender, jobposting, language, organization, person, price, product, sportsteam, streetaddress, telephone, time, weight, zipcode \n Output: \n": {
+        "response": "event",
+        "context": [
+            "Melbourne Fringe Festival",
+            "Melbourne Career Expo",
+            "Williamstown Literary Festival",
+            "Royal Melbourne Show",
+            "Melbourne Underground Film Festival"
+        ],
+        "ground_truth": "event",
+        "correct": true,
+        "original_model_answer": "event",
+        "original_label": "Event/name",
+        "file+idx": "/home/bf996/archetype/Test/Event_melbournepoint.com.au_September2020_CTA.json.gz_0"
+    },
+    "Pick the column's class. \n Column: ['The residents of Melbourne come together every September to celebrate the famous Melbourne Fringe Festival. This unique event welcomes more than 3400 independent artists to participate and display their finest artwork and is celebrated at over 150 venues around Melbourne. In addition to the many art shows, the Melbourne Fringe Festival also includes visual art exhibitions, music performances, cabaret shows and film premiers. Visitors will find excellent and diverse options of performances and shows. Melbourne Fringe Festival - 2020 Dates, Ticket Prices, Events &amp; Venues This arts and cultural festival not only features artists from Melbourne but also many from around Australia. So you can expect to see a wide variety of art forms at the exhibition. A number of thriving contemporary art communities also participate in the event. The Melbourne Fringe Festival also provides support to artists participating. In addition, artists get access to a wide array of new artworks by thousands of other experienced artists. Organisers of the festival also help many new artists to represent their exhibitions for the first time. The festival also offers sponsored projects for individuals and groups who want to grow within the industry. Tickets will go on sale for the festival in', 'The Melbourne Career Expo is the largest and most comprehensive careers event in Australia. The event showcases career opportunities from large employers, trades to higher education in an exciting, interactive and informative format. Melbourne Career Expo 2020 Dates, Exhibition Centre &amp; Parking All sectors and industries are covered, with the latest career trends and opportunities showcased and ready to be explored. The event annually attracts around 20,000 attendees consisting of school leavers, gradua\n RESPONSE: ": {
+        "response": "text",
+        "context": [
+            "The residents of Melbourne come together every September to celebrate the famous Melbourne Fringe Festival. This unique event welcomes more than 3400 independent artists to participate and display their finest artwork and is celebrated at over 150 venues around Melbourne. In addition to the many art shows, the Melbourne Fringe Festival also includes visual art exhibitions, music performances, cabaret shows and film premiers. Visitors will find excellent and diverse options of performances and shows. Melbourne Fringe Festival - 2020 Dates, Ticket Prices, Events &amp; Venues This arts and cultural festival not only features artists from Melbourne but also many from around Australia. So you can expect to see a wide variety of art forms at the exhibition. A number of thriving contemporary art communities also participate in the event. The Melbourne Fringe Festival also provides support to artists participating. In addition, artists get access to a wide array of new artworks by thousands of other experienced artists. Organisers of the festival also help many new artists to represent their exhibitions for the first time. The festival also offers sponsored projects for individuals and groups who want to grow within the industry. Tickets will go on sale for the festival in",
+            "The Melbourne Career Expo is the largest and most comprehensive careers event in Australia. The event showcases career opportunities from large employers, trades to higher education in an exciting, interactive and informative format. Melbourne Career Expo 2020 Dates, Exhibition Centre &amp; Parking All sectors and industries are covered, with the latest career trends and opportunities showcased and ready to be explored. The event annually attracts around 20,000 attendees consisting of school leavers, graduates, job seekers and mature age career changers offering exhibitors the opportunity to attract a targeted audience. The expo offers free career advice, inspiring and informative industry panels, employment opportunities, interactive training demonstrations and exhibits, free seminars and a wealth of information and opportunities for further study within the private education sector and universities. With all career, education and training information under one roof, this event is the first stop for all Victorians seeking a successful future. Held in the Melbourne Convention and Exhibition Centre along the Yarra River at South Wharf, you can get to this event by public transport. Get here by tram by taking either the #96, #109 or #12 and alight at the stop opposite the Clarendon Street entrance of the exhibition centre. If",
+            "Due to the ongoing developments around the COVID-19 virus, the Williamstown Literary Festival Committee has made the difficult decision to cancel 2020 Williamstown Literary Festival. Please check back later in the year for details on the 2021 event The Williamstown Literary Festival (aka the Willy Lit Fest) is an event which brings together readers and writers for one of the biggest literary festivals in Victoria. The festival runs for two days and will take place in the Williamstown Town Hall and the Williamstown Library. Williamstown Literary Festival 2021 Dates, Tickets &amp; Program Schedule Each year there are over 80 authors who present and take part in over 50 sessions which discuss all topics from life, death, happiness, self, politics, ageing and science fiction. Many sessions involve question and answer format as well as panel discussion and interviews. Discussions and workshops are unique from year to year, but some have focused on the transition from novel to film, interviewing techniques for memoirs or biographies, creative writing techniques, combating writer's block, writing and illustrating for children and the rise of audiobooks. Each year, a number of creative workshops are held for amateur writers where they can develop their skills in a constructive",
+            "Taking place over the September school holidays, the Royal Melbourne Show is celebrated over 11 wonderful days and includes everything from exciting rides and family entertainment to arts, crafts and barnyard animals. The Royal Melbourne Show is one of the most popular events on the Melbourne calendar; with thousands of people flocking to the Melbourne Showgrounds year after year for excitement, entertainment and fun activities for the whole family. Royal Melbourne Show 2020 Dates, Maps, Showbags, Rides &amp; Tickets Families come to the show to enjoy the vast array of carnival games and rides. Kids also get the opportunity to watch and learn about farming, animals and living off the land. Kids can get up close to many farm animals, which they can feed and pat. Food lovers will also be excited to know that the show offers an exciting range of food and drink stalls. Each stall offers award-winning produce, regional wines, finger food and homemade desserts. Furthermore, the show offers a number of cooking workshops and engaging programs for adults and kids alike. Kids also love going to the Showbag Hall where they can purchase a range of goodies all packed into one awesome showbag! There are chocolates,",
+            "The Melbourne Underground Film Festival (MUFF) is an independent festival which shows films in venues around Melbourne from new and upcoming filmmakers. The MUFF has been running since the year 2000, so 2020 will mark its 21st year on the Melbourne scene. Melbourne Underground Film Festival 2020 Dates &amp; Ticket Prices Celebrating Australian Cinema, MUFF aims to support and promote Australian and International features to an Australian audience and many of the films which make up their programs are being shown to audiences for the very first time. MUFF also hosts the “Mini MUFF” which are a series of short films. Overall, the festival will play over 100 films each year and will include a variety of genres including comedies, dramas, thrillers and documentaries. There are a number of venues which MUFF uses to showcase this event including the Cracked Actors Theatre, Alex Theatre in St Kilda, Moondog Bar &amp; Space in Abbotsford, Fad Gallery in Melbourne and Howler in Brunswick. There are usually 3 film sessions each night (7pm, 8pm and 9pm) and the festival runs for just over a week. So gather up some friends and grab your tickets ahead of time. Tickets will be available through Ticketek"
+        ],
+        "ground_truth": "text",
+        "correct": true,
+        "original_model_answer": "Business",
+        "original_label": "Text",
+        "file+idx": "/home/bf996/archetype/Test/Event_melbournepoint.com.au_September2020_CTA.json.gz_3"
+    },
+    "Pick the column's class. \n Column: ['Instant Pot Roasted Garlic Soup', 'Scrumptious Sausage Bread', 'Instant Pot Mississippi Chicken', 'Instant Pot Unbaked Ziti', 'Instant Pot Fireworks (Sweet n’ Spicy) Chicken'] \n Classes: age, boolean, company, coordinates, country, creativework, currency, date, email, event, gender, jobposting, language, organization, person, price, product, sportsteam, streetaddress, telephone, time, weight, zipcode \n Output: \n": {
+        "response": "product",
+        "context": [
+            "Instant Pot Roasted Garlic Soup",
+            "Scrumptious Sausage Bread",
+            "Instant Pot Mississippi Chicken",
+            "Instant Pot Unbaked Ziti",
+            "Instant Pot Fireworks (Sweet n’ Spicy) Chicken"
+        ],
+        "ground_truth": "text",
+        "correct": false,
+        "original_model_answer": "product",
+        "original_label": "Recipe/name",
+        "file+idx": "/home/bf996/archetype/Test/Recipe_pressureluckcooking.com_September2020_CTA.json.gz_0"
+    },
+    "Pick the column's class. \n Column: ['https://schema.org/OfflineEventAttendanceMode', 'https://schema.org/OfflineEventAttendanceMode', 'https://schema.org/OfflineEventAttendanceMode', 'https://schema.org/OfflineEventAttendanceMode', 'https://schema.org/OfflineEventAttendanceMode'] \n Classes: age, boolean, company, coordinates, country, creativework, currency, date, email, event, gender, jobposting, language, organization, person, price, product, sportsteam, streetaddress, telephone, time, weight, zipcode \n Output: \n": {
+        "response": "url",
+        "context": [
+            "https://schema.org/OfflineEventAttendanceMode",
+            "https://schema.org/OfflineEventAttendanceMode",
+            "https://schema.org/OfflineEventAttendanceMode",
+            "https://schema.org/OfflineEventAttendanceMode",
+            "https://schema.org/OfflineEventAttendanceMode"
+        ],
+        "ground_truth": "boolean",
+        "correct": false,
+        "original_model_answer": "url",
+        "original_label": "EventAttendanceModeEnumeration",
+        "file+idx": "/home/bf996/archetype/Test/Event_cjjones.com_September2020_CTA.json.gz_4"
+    },
+    "Pick the column's class. \n Column: [\"['James Franco', 'Emma Roberts', 'Daryl Hannah', 'Zachary Quinto', 'Avan Jogia', 'Charlie Carver', 'Leven Rambin', 'Lesley Ann Warren']\", 'None', 'None', 'None', \"['Aishwarya Rai', 'Prithviraj Sukumaran', 'Priyamani', 'Prabhu', 'Govinda', 'Vikram']\"] \n Classes: age, boolean, company, coordinates, country, creativework, currency, date, email, event, gender, jobposting, language, organization, person, price, product, sportsteam, streetaddress, telephone, time, weight, zipcode \n Output: \n": {
+        "response": "person",
+        "context": [
+            "['James Franco', 'Emma Roberts', 'Daryl Hannah', 'Zachary Quinto', 'Avan Jogia', 'Charlie Carver', 'Leven Rambin', 'Lesley Ann Warren']",
+            "None",
+            "None",
+            "None",
+            "['Aishwarya Rai', 'Prithviraj Sukumaran', 'Priyamani', 'Prabhu', 'Govinda', 'Vikram']"
+        ],
+        "ground_truth": "person",
+        "correct": true,
+        "original_model_answer": "person",
+        "original_label": "Person",
+        "file+idx": "/home/bf996/archetype/Test/Movie_tvtoday.de_September2020_CTA.json.gz_5"
+    },
+    "Pick the column's class. \n Column: ['Justin Kelly,', 'None', 'None', 'Sasha Snow,', 'Mani Ratnam, /kino/stars/star/mani-ratnam,1594699,ApplicationStar.html'] \n Classes: age, boolean, company, coordinates, country, creativework, currency, date, email, event, gender, jobposting, language, organization, person, price, product, sportsteam, streetaddress, telephone, time, weight, zipcode \n Output: \n": {
+        "response": "person",
+        "context": [
+            "Justin Kelly,",
+            "None",
+            "None",
+            "Sasha Snow,",
+            "Mani Ratnam, /kino/stars/star/mani-ratnam,1594699,ApplicationStar.html"
+        ],
+        "ground_truth": "person",
+        "correct": true,
+        "original_model_answer": "person",
+        "original_label": "Person",
+        "file+idx": "/home/bf996/archetype/Test/Movie_tvtoday.de_September2020_CTA.json.gz_7"
+    },
+    "Pick the column's class. \n Column: ['https://schema.org/OfflineEventAttendanceMode', 'https://schema.org/OfflineEventAttendanceMode', 'https://schema.org/OfflineEventAttendanceMode', 'https://schema.org/OfflineEventAttendanceMode', 'https://schema.org/OfflineEventAttendanceMode'] \n Classes: age, boolean, company, coordinates, country, creativework, currency, date, email, event, gender, jobposting, language, organization, person, price, product, sportsteam, streetaddress, telephone, time, weight, zipcode \n Output: \n*": {
+        "response": "url",
+        "context": [
+            "https://schema.org/OfflineEventAttendanceMode",
+            "https://schema.org/OfflineEventAttendanceMode",
+            "https://schema.org/OfflineEventAttendanceMode",
+            "https://schema.org/OfflineEventAttendanceMode",
+            "https://schema.org/OfflineEventAttendanceMode"
+        ],
+        "ground_truth": "boolean",
+        "correct": false,
+        "original_model_answer": "url",
+        "original_label": "EventAttendanceModeEnumeration",
+        "file+idx": "/home/bf996/archetype/Test/Event_eepiea.com_September2020_CTA.json.gz_3"
+    },
+    "Pick the column's class. \n Column: ['Picuí - PB, 58187-000, Brasil', 'Picuí - PB, 58187-000, Brasil', 'Picuí - PB, 58187-000, Brasil', 'Picuí - PB, 58187-000, Brasil', 'Picuí - PB, 58187-000, Brasil'] \n Classes: age, boolean, company, coordinates, country, creativework, currency, date, email, event, gender, jobposting, language, organization, person, price, product, sportsteam, streetaddress, telephone, time, weight, zipcode \n Output: \n": {
+        "response": "zipcode",
+        "context": [
+            "Picuí - PB, 58187-000, Brasil",
+            "Picuí - PB, 58187-000, Brasil",
+            "Picuí - PB, 58187-000, Brasil",
+            "Picuí - PB, 58187-000, Brasil",
+            "Picuí - PB, 58187-000, Brasil"
+        ],
+        "ground_truth": "streetaddress",
+        "correct": false,
+        "original_model_answer": "zipcode",
+        "original_label": "PostalAddress",
+        "file+idx": "/home/bf996/archetype/Test/Event_eepiea.com_September2020_CTA.json.gz_4"
+    },
+    "Pick the column's class. \n Column: ['https://schema.org/EventScheduled', 'https://schema.org/EventScheduled', 'https://schema.org/EventScheduled', 'https://schema.org/EventScheduled', 'https://schema.org/EventScheduled'] \n Classes: age, boolean, company, coordinates, country, creativework, currency, date, email, event, gender, jobposting, language, organization, person, price, product, sportsteam, streetaddress, telephone, time, weight, zipcode \n Output: \n": {
+        "response": "url",
+        "context": [
+            "https://schema.org/EventScheduled",
+            "https://schema.org/EventScheduled",
+            "https://schema.org/EventScheduled",
+            "https://schema.org/EventScheduled",
+            "https://schema.org/EventScheduled"
+        ],
+        "ground_truth": "event",
+        "correct": false,
+        "original_model_answer": "url",
+        "original_label": "EventStatusType",
+        "file+idx": "/home/bf996/archetype/Test/Event_eepiea.com_September2020_CTA.json.gz_6"
+    },
+    "Pick the column's class. \n Column: ['None', 'None', 'None', 'None', 'None'] \n Classes: age, boolean, company, coordinates, country, creativework, currency, date, email, event, gender, jobposting, language, organization, person, price, product, sportsteam, streetaddress, telephone, time, weight, zipcode \n Output: \n": {
+        "response": "boolean",
+        "context": [
+            "None",
+            "None",
+            "None",
+            "None",
+            "None"
+        ],
+        "ground_truth": "language",
+        "correct": false,
+        "original_model_answer": "boolean",
+        "original_label": "Language",
+        "file+idx": "/home/bf996/archetype/Test/Recipe_arecetas.com_September2020_CTA.json.gz_7"
+    },
+    "Pick the column's class. \n Column: ['Hotel ILIO MARIS MYKONOS', 'Hotel KORAL SF CONSTANTIN SI ELENA', 'Hotel IMPERIAL PALACE SUNNY BEACH', 'Hotel THALASSA BEACH CRETA', 'Hotel ADRIATIC DUBROVNIK'] \n Classes: age, boolean, company, coordinates, country, creativework, currency, date, email, event, gender, jobposting, language, organization, person, price, product, sportsteam, streetaddress, telephone, time, weight, zipcode \n Output: \n": {
+        "response": "company",
+        "context": [
+            "Hotel ILIO MARIS MYKONOS",
+            "Hotel KORAL SF CONSTANTIN SI ELENA",
+            "Hotel IMPERIAL PALACE SUNNY BEACH",
+            "Hotel THALASSA BEACH CRETA",
+            "Hotel ADRIATIC DUBROVNIK"
+        ],
+        "ground_truth": "company",
+        "correct": true,
+        "original_model_answer": "hotel",
+        "original_label": "Hotel/name",
+        "file+idx": "/home/bf996/archetype/Test/Hotel_jeka.ro_September2020_CTA.json.gz_0"
+    },
+    "Pick the column's class. \n Column: ['381 kcal', 'None', '207 kcal', '297 kcal', '374 kcal'] \n Classes: age, boolean, company, coordinates, country, creativework, currency, date, email, event, gender, jobposting, language, organization, person, price, product, sportsteam, streetaddress, telephone, time, weight, zipcode \n Output: \n": {
+        "response": "weight",
+        "context": [
+            "381 kcal",
+            "None",
+            "207 kcal",
+            "297 kcal",
+            "374 kcal"
+        ],
+        "ground_truth": "number",
+        "correct": false,
+        "original_model_answer": "weight",
+        "original_label": "Energy",
+        "file+idx": "/home/bf996/archetype/Test/Recipe_gracefullittlehoneybee.com_September2020_CTA.json.gz_20"
+    }
+}

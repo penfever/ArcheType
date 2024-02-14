@@ -59,10 +59,11 @@ def run(
   isd4 = "d4" in label_set['name']
   isAmstr = "amstr" in label_set['name']
   isPubchem = "pubchem" in label_set['name']
+  isT2D = "T2D" in label_set['name']
   if "similarity" in method:
     get_sent_model(args)
-  args["prompt_hashes"] = set()
-  args["prompt_hash_counter"] = collections.Counter()
+  args["prompt_hashes"] = collections.Counter()
+  args["current_prompt_hashes"] = collections.Counter()
   if resume and not os.path.isfile(save_path):
     print("Could not open save file. Starting from scratch...")
     prompt_dict = {}
@@ -75,16 +76,23 @@ def run(
         prompt_dict = {}
       else:
         test_entry = prompt_dict[prompt_dict_keys[0]]
-      if test_entry.get("prompt_hash", -1) == -1:
-        print("No prompt hashes found in the provided dict's entries. Starting from scratch...")
-        prompt_dict = {}
-      args["prompt_hashes"] = set([prompt_dict[k]["prompt_hash"] for k in prompt_dict.keys()])
+        if test_entry.get("prompt_hash", -1) == -1:
+          print("No prompt hashes found in the provided dict's entries. Starting from scratch...")
+          prompt_dict = {}
+        else:
+          for k, v in prompt_dict.items():
+            ph = v.get("prompt_hash", -1)
+            if ph != -1 and ph not in args["prompt_hashes"]:
+              args["prompt_hashes"][ph] += v.get("prompt_hash_count", 1)
+        print(f"Loaded {args['prompt_hashes'].total()} entries from the save file.")
   else:
     prompt_dict = {}
   s = requests.Session()
   if "-zs" in model_name:
     args["base_model"].eval()
-  if isinstance(inputs, dict):
+  if isT2D:
+    df = pd.read_json(inputs[0], compression='gzip', lines=True)
+  elif isinstance(inputs, dict):
     labels = np.array(['_'.join(k.split('_')[:-1]) for k in inputs.keys()])
     inputs = [v for v in inputs.values()]
     np.random.seed(rand_seed)
@@ -172,46 +180,33 @@ def run(
         context = sample_df[col].tolist()
       #Check if we have run this context before (to avoid duplicates and allow for resuming jobs)
       prompt_hash = hashlib.md5(str(context).encode('utf-8')).hexdigest()
-      args["prompt_hash_counter"][prompt_hash] += 1
-      if prompt_hash in args["prompt_hashes"]:
+      args["current_prompt_hashes"][prompt_hash] += 1
+      if args["prompt_hashes"][prompt_hash] >= args["current_prompt_hashes"][prompt_hash]:
         continue
       try:
         key = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
       except RuntimeError as r:
         try:
-          context = [str(c)[:args["MAX_LEN"]//(len(context)*2)] for c in context]
           key = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
         except RuntimeError as r:
           prompt_dict[key] = {"response" : f"RuntimeError: {r}", "context" : context, "ground_truth" : orig_label, "correct" : False, "original_model_answer" : f"RuntimeError: {r}"}
           with open(save_path, 'w', encoding='utf-8') as my_f:
             json.dump(prompt_dict, my_f, ensure_ascii=False, indent=4)
           raise RuntimeError(f"Unhandled RuntimeError: {r} \n Please check logs for more information.")
-      args["prompt_hashes"].add(prompt_hash)
       prompt_dict[key]['prompt_hash'] = prompt_hash
+      cur_pc = prompt_dict[key].get("prompt_hash_count", 0)
+      prompt_dict[key]['prompt_hash_count'] = cur_pc + 1
+      args["prompt_hashes"][prompt_hash] += 1
       prompt_dict[key]['original_label'] = orig_label
       prompt_dict[key]['file+idx'] = str(f) + "_" + str(idx)
   with open(save_path, 'w', encoding='utf-8') as my_f:
     json.dump(prompt_dict, my_f, ensure_ascii=False, indent=4)
+
+  #results checking
   if results:
     if "skip-eval" in method:
       print("Skipping evaluation.")
       return
-    print("Run complete. Checking results...")
-    items_greater_than_k = [(item, count - 1) for item, count in args["prompt_hash_counter"].items() if count > 1]
-    duplicate_count = sum([count for _, count in items_greater_than_k])
-    print(f"Found {duplicate_count} duplicate prompts. Duplicating model responses...")
-    if duplicate_count > 0:
-      duplicate_items = {item : count - 1 for item, count in args["prompt_hash_counter"].items() if count > 1}
-      assert len(duplicate_items) == duplicate_count, "Duplicate items were not counted correctly."
-      prompt_dict_copy = prompt_dict.copy()
-      for ki, vi in tqdm(duplicate_items.items()):
-        for kp, vp in prompt_dict.items():
-          if prompt_dict[kp]['prompt_hash'] == ki:
-            for i in range(vi):
-              prompt_dict_copy[f"{kp}_{i}"] = prompt_dict[kp]
-      prompt_dict = prompt_dict_copy
-    with open(save_path, 'w', encoding='utf-8') as my_f:
-      json.dump(prompt_dict, my_f, ensure_ascii=False, indent=4)
     if model_name == "doduo":
       results_checker_doduo(save_path)
     else:

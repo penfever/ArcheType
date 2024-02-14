@@ -450,11 +450,15 @@ def prompt_context_insert(context_labels: str, context : str, max_len : int = 20
   if "internlm" in model or "speechless" in model:
     s = s.replace("[", "").replace("]", "").replace("'", "")
   if args.get('tokenizer', None) is not None and len(s) > max_len:
-    inputs = args["tokenizer"].encode(s, return_tensors="pt")
+    inputs = args["tokenizer"].encode(s, return_tensors="pt", add_special_tokens=True)
     target_len = len(inputs[0])
-    if target_len > max_len:
-      inputs = inputs[:,:max_len-len(context_labels)-100]
-      s = args["tokenizer"].decode(inputs[0]) + f"Classes: {context_labels} \n Output: \n"
+    #NOTE: 250 is a somewhat arbitrary number (if we cutoff at exactly max_len, there will still sometimes be overflow errors for certain LLMs)
+    if target_len > max_len - 250:
+      cl_tok = args["tokenizer"].encode(f"Classes: {context_labels} \n Output: \n", return_tensors="pt", add_special_tokens=True)
+      inputs = inputs[:,:max_len-len(cl_tok[0])-250]
+      s = args["tokenizer"].decode(inputs[0]) + f"\n Classes: {context_labels} \n Output: \n"
+      print("Input length reduced: ", len(inputs[0]) + len(cl_tok[0]), "Max length: ", max_len)
+
   return s
 
 def prompt_2step_context_insert(context : str, max_len : int = 2000, model : str = "gpt-3.5", args : dict = dict()):
@@ -844,8 +848,18 @@ pubchem_classname_map = {k1 : k2 for (k1, k2) in zip(pubchem_classes, pubchem_re
 def get_pubchem_classname_map():
   return pubchem_classname_map
 
-pubchem_zs_context_labels = {"name" : "pubchem_zs", "label_set" : pubchem_renamed_class, "dict_map" : {c : c for c in pubchem_renamed_class}, "pubchem_map" : pubchem_classname_map}
+pubchem_zs_context_labels = {"name" : "pubchem_zs", 
+                            "label_set" : pubchem_renamed_class, 
+                            "dict_map" : {c : c for c in pubchem_renamed_class}, 
+                            "pubchem_map" : pubchem_classname_map}
 
+t2d_label_list = ["swimmer", "cricketer", "mountain", "Country", "Bird", "Company", "Monarch", "Mountain", "RadioStation", "Saint", "Currency", "AdministrativeRegion", "VideoGame", "Airline", "City", "Building", "Airport", "Animal", "Film", "Wrestler", "Hospital", "PoliticalParty", "Lake", "Person", "Plant", "Museum", "BaseballPlayer", "University", "Novel", "Scientist", "Newspaper", "Hotel", "AcademicJournal", "Election", "Book", "Work", "FictionalCharacter", "GolfPlayer", "TelevisionShow", "Mammal"]
+
+t2d_labels = {
+  "name" : "t2d",
+  "label_set" : t2d_label_list,
+  "dict_map" : {c : c for c in t2d_label_list},
+}
 
 def get_lsd(s):
   if s == "SOTAB-91":
@@ -864,6 +878,8 @@ def get_lsd(s):
     return amstr_zs_2step_context_labels
   elif s == "pubchem-ZS":
     return pubchem_zs_context_labels
+  elif s == "T2D":
+    return t2d_labels
   print("Label set not found")
   return None
 

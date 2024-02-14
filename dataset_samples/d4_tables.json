@@ -1,0 +1,167 @@
+{
+    "For the following table column, select a schema.org type annotation from abbreviation of agency, color, elevator or staircase, ethnicity, month, nyc agency name, region in bronx, region in brooklyn, region in manhattan, region in queens, region in staten island, school name.  \n Input column: ['WHITE', 'HISPANIC', 'ASIAN', 'BLACK', 'WHITE'] \n Output: \n": {
+        "response": "ethnicity",
+        "context": [
+            "WHITE",
+            "HISPANIC",
+            "ASIAN",
+            "BLACK",
+            "WHITE"
+        ],
+        "ground_truth": "ethnicity",
+        "correct": true,
+        "original_model_answer": "ethnicity",
+        "original_label": "ethnicity",
+        "file+idx": "    ID1        ID2    values\n3  1594  198673808     ASIAN\n3  1594  198673808     ASIAN\n0  1834  199823961     BLACK\n0  1834  199823961     BLACK\n3  1594  198673808     ASIAN\n1  1594  208249100  HISPANIC\n0  1834  199823961     BLACK\n3  1594  198673808     ASIAN\n0  1834  199823961     BLACK\n1  1594  208249100  HISPANIC\n3  1594  198673808     ASIAN\n1  1594  208249100  HISPANIC\n0  1834  199823961     BLACK\n3  1594  198673808     ASIAN\n0  1834  199823961     BLACK\n3  1594  198673808     ASIAN\n2  5144  229411642     WHITE\n0  1834  199823961     BLACK\n2  5144  229411642     WHITE\n0  1834  199823961     BLACK\n1  1594  208249100  HISPANIC\n3  1594  198673808     ASIAN\n2  5144  229411642     WHITE\n3  1594  198673808     ASIAN\n2  5144  229411642     WHITE\n3  1594  198673808     ASIAN\n3  1594  198673808     ASIAN\n3  1594  198673808     ASIAN\n1  1594  208249100  HISPANIC\n3  1594  198673808     ASIAN\n2  5144  229411642     WHITE\n1  1594  208249100  HISPANIC\n1  1594  208249100  HISPANIC\n2  5144  229411642     WHITE\n0  1834  199823961     BLACK\n1  1594  208249100  HISPANIC\n0  1834  199823961     BLACK\n0  1834  199823961     BLACK\n1  1594  208249100  HISPANIC\n0  1834  199823961     BLACK\n1  1594  208249100  HISPANIC\n2  5144  229411642     WHITE\n2  5144  229411642     WHITE\n3  1594  198673808     ASIAN_2"
+    },
+    "For the following table column, select a schema.org type annotation from abbreviation of agency, color, elevator or staircase, ethnicity, month, nyc agency name, region in bronx, region in brooklyn, region in manhattan, region in queens, region in staten island, school name.  \n Input column: ['LA', 'WV', 'KY', 'OH', 'MT'] \n Output: \n": {
+        "response": "us-state",
+        "context": [
+            "LA",
+            "WV",
+            "KY",
+            "OH",
+            "MT"
+        ],
+        "ground_truth": "us-state",
+        "correct": true,
+        "original_model_answer": "us-state",
+        "original_label": "us-state",
+        "file+idx": "       ID1        ID2 values\n40  103492  222266454     NJ\n15   65096  200695872     CA\n45   90200  219459451     IN\n8   103507  222269339     NM\n22  125782  229224175     WA\n..     ...        ...    ...\n26  105066  222575626     OH\n8   103507  222269339     NM\n12   51233  198247651     AK\n10   83707  205947498     GA\n40  103492  222266454     NJ\n\n[70 rows x 3 columns]_2"
+    },
+    "For the following table column, select a schema.org type annotation from abbreviation of agency, color, elevator or staircase, ethnicity, month, nyc agency name, region in bronx, region in brooklyn, region in manhattan, region in queens, region in staten island, school name.  \n Input column: ['LEADERSHIP PREPARATORY BROWNSVILLE CHARTER SCHOOL', 'NEW YORK CENTER FOR AUTISM CHARTER SCHOOL', 'ACADEMY FOR SCHOLARSHIP AND ENTREPRENEURSHIP: A CO', 'BROOKLYN GARDENS ELEMENTARY SCHOOL', 'STAGG STREET CENTER FOR CHILDREN'] \n Output: \n": {
+        "response": "school name",
+        "context": [
+            "LEADERSHIP PREPARATORY BROWNSVILLE CHARTER SCHOOL",
+            "NEW YORK CENTER FOR AUTISM CHARTER SCHOOL",
+            "ACADEMY FOR SCHOLARSHIP AND ENTREPRENEURSHIP: A CO",
+            "BROOKLYN GARDENS ELEMENTARY SCHOOL",
+            "STAGG STREET CENTER FOR CHILDREN"
+        ],
+        "ground_truth": "school name",
+        "correct": true,
+        "original_model_answer": "school name",
+        "original_label": "school-name",
+        "file+idx": "       ID1        ID2                                             values\n1231  1284  198032933                          ACADEMY FOR YOUNG WRITERS\n1848  1839  199905772                                      BNOS MENACHEM\n772   2874  219351389                          I.S. 204 OLIVER W. HOLMES\n48     483  220368253                            KISSENA CHERRY DAY CARE\n2416   483  225849808                             ST. RAYMOND ELEMENTARY\n1144  1891  226949162       URBAN ASSEMBLY GATEWAY SCHOOL FOR TECHNOLOGY\n2748   483  229864082             YELED V'YALDA SILVER LAKE I HEAD START\n610   4740  225414672         SCHOOL FOR COMMUNITY RESEARCH AND LEARNING\n2559   483  199595607                         BEDFORD STUYVESANT ECDC 5Q\n2801   483  207832045                                   HAUP UPK PROGRAM\n202    483  224894044                RIVERDALE Y EARLY CHILDHOOD PROGRAM\n840   1632  229263725                               WARREN STREET CENTER\n1646   483  229893572            YMCA OF GREATER NEW YORK - CROSS ISLAND\n447   1553  201206074                CHRISTOPHER AVENUE COMMUNITY SCHOOL\n1452  4095  222886471                               P.S. 112 DUTCH KILLS\n829   1697  224307687      PS/MS 200 - THE POMONOK SCHOOL & STAR ACADEMY\n233   1330  220650586  LEADERSHIP PREPARATORY BROWNSVILLE CHARTER SCHOOL\n1789    21  225846498                           ST. LEO CATHOLIC ACADEMY\n2170  2388  221111901                M.S. 267 MATH, SCIENCE & TECHNOLOGY\n2352  2773  208228392  HIGH SCHOOL FOR LAW, ADVOCACY AND COMMUNITY JU...\n998   4099  222885890                          P.S. 030 HERNANDEZ/HUGHES\n2644  4926  226390823              THE ACTIVE LEARNING ELEMENTARY SCHOOL\n2708  4199  222888837  P.S. 242 LEONARD P. STAVISKY EARLY CHILDHOOD S...\n1208  1278  198032920  ACADEMY FOR SCHOLARSHIP AND ENTREPRENEURSHIP: ...\n681   4277  222891678                                      P.S./I.S. 78Q\n1669  1525  198472525                                      ANDRIES HUDDE\n486   4082  222887868                    P.S. 186 DR. IRVING A GLADSTONE\n1765   483  229455088                          WILLIAMSBURG Y HEAD START\n2322   410  200972261                              CBI ACADEMY PRESCHOOL\n1478  3913  221702671                           MOTT HALL CHARTER SCHOOL\n50    4084  222887202                         P.S. 151 LYNDON B. JOHNSON\n952   2422  224241777                           PRE-K CENTER DISTRICT 30\n1772  1330  222164055          NEW YORK CENTER FOR AUTISM CHARTER SCHOOL\n2530   483  225857563                   STAGG STREET CENTER FOR CHILDREN\n2608  1977  200087034                 BROOKLYN GARDENS ELEMENTARY SCHOOL_2"
+    },
+    "For the following table column, select a schema.org type annotation from abbreviation of agency, color, elevator or staircase, ethnicity, month, nyc agency name, region in bronx, region in brooklyn, region in manhattan, region in queens, region in staten island, school name.  \n Input column: ['SG', 'SG', 'FA', 'NB', 'BL'] \n Output: \n": {
+        "response": "other-states",
+        "context": [
+            "SG",
+            "SG",
+            "FA",
+            "NB",
+            "BL"
+        ],
+        "ground_truth": "permit-types",
+        "correct": false,
+        "original_model_answer": "other-states",
+        "original_label": "permit-types",
+        "file+idx": "      ID1        ID2 values\n5   15316  205384699     FN\n8   19565  225505406     SF\n20  18452  222750427     OT\n19  15059  204351155     EW\n18  12424  199822452     BL\n..    ...        ...    ...\n14  15475  205592053     FS\n18  12424  199822452     BL\n3   15390  205432762     FP\n8   19565  225505406     SF\n4   18060  222031391     NB\n\n[67 rows x 3 columns]_2"
+    },
+    "For the following table column, select a schema.org type annotation from abbreviation of agency, color, elevator or staircase, ethnicity, month, nyc agency name, region in bronx, region in brooklyn, region in manhattan, region in queens, region in staten island, school name.  \n Input column: ['A', 'A', 'B', 'C', 'D'] \n Output: \n": {
+        "response": "school-grades",
+        "context": [
+            "A",
+            "A",
+            "B",
+            "C",
+            "D"
+        ],
+        "ground_truth": "school-grades",
+        "correct": true,
+        "original_model_answer": "school-grades",
+        "original_label": "school-grades",
+        "file+idx": "     ID1        ID2 values\n1   2038  200274683      C\n0   1186  197848313      A\n4   2510  204450069      F\n0   1186  197848313      A\n0   1186  197848313      A\n..   ...        ...    ...\n1   2038  200274683      C\n0   1186  197848313      A\n2   2308  201831376      D\n2   2308  201831376      D\n0   1186  197848313      A\n\n[66 rows x 3 columns]_2"
+    },
+    "For the following table column, select a schema.org type annotation from abbreviation of agency, color, elevator or staircase, ethnicity, month, nyc agency name, region in bronx, region in brooklyn, region in manhattan, region in queens, region in staten island, school name.  \n Input column: ['NEW DORP', 'SOUTH BEACH', 'BAY TERRACE', 'GRASMERE', 'TOMPKINSVILLE'] \n Output: \n": {
+        "response": "region in queens",
+        "context": [
+            "NEW DORP",
+            "SOUTH BEACH",
+            "BAY TERRACE",
+            "GRASMERE",
+            "TOMPKINSVILLE"
+        ],
+        "ground_truth": "region in staten island",
+        "correct": false,
+        "original_model_answer": "region in queens",
+        "original_label": "staten_island",
+        "file+idx": "      ID1        ID2                   values\n20  19743  225749808              SOUTH BEACH\n7   15761  207028813                 GRASMERE\n24  12095  199526197              BAY TERRACE\n2   14939  204001312              ELTINGVILLE\n18  19645  225629363              SILVER LAKE\n9   19868  225867857        STAPLETON-CLIFTON\n3   20264  226684811            TOMPKINSVILLE\n38  13727  201538295                  CONCORD\n19    105  229521135                  WOODROW\n14  20024  225988545                SUNNYSIDE\n42  13605  201371642              CLOVE LAKES\n35  15779  207048510  GREAT KILLS-BAY TERRACE\n33  18126  222103257          NEW SPRINGVILLE\n13   9796  222614130                 OLD TOWN\n31  12903  224115002               PORT IVORY\n39  12903  200916622        CASTLETON CORNERS\n12  18106  222085645                 NEW DORP\n11  15849  207132017              GRYMES HILL\n22  17509  221288447          MARINERS HARBOR\n16  15777  207048342              GREAT KILLS\n16  15777  207048342              GREAT KILLS\n42  13605  201371642              CLOVE LAKES_2"
+    },
+    "For the following table column, select a schema.org type annotation from abbreviation of agency, color, elevator or staircase, ethnicity, month, nyc agency name, region in bronx, region in brooklyn, region in manhattan, region in queens, region in staten island, school name.  \n Input column: ['BATH BEACH', 'MILL BASIN', 'NEW UTRECHT', 'NEW LOTS', 'FORT GREENE'] \n Output: \n": {
+        "response": "region in queens",
+        "context": [
+            "BATH BEACH",
+            "MILL BASIN",
+            "NEW UTRECHT",
+            "NEW LOTS",
+            "FORT GREENE"
+        ],
+        "ground_truth": "region in brooklyn",
+        "correct": false,
+        "original_model_answer": "region in queens",
+        "original_label": "brooklyn",
+        "file+idx": "      ID1        ID2                 values\n9   12226  222554980          OCEAN PARKWAY\n41  14367  202541713  DOWNTOWN-FULTON FERRY\n64  17370  221169050                MADISON\n20  13186  200895152        CARROLL GARDENS\n70  21021  229471585        WINDSOR TERRACE\n..    ...        ...                    ...\n28  12860  200107404            BROWNSVILLE\n68  14367  222554505             OCEAN HILL\n67  12235  199595556     BEDFORD STUYVESANT\n64  17370  221169050                MADISON\n42  18871  224289245       PROSPECT HEIGHTS\n\n[73 rows x 3 columns]_2"
+    },
+    "For the following table column, select a schema.org type annotation from abbreviation of agency, color, elevator or staircase, ethnicity, month, nyc agency name, region in bronx, region in brooklyn, region in manhattan, region in queens, region in staten island, school name.  \n Input column: ['BL', 'FN', 'FO', 'FB', 'FS'] \n Output: \n": {
+        "response": "other-states",
+        "context": [
+            "BL",
+            "FN",
+            "FO",
+            "FB",
+            "FS"
+        ],
+        "ground_truth": "permit-types",
+        "correct": false,
+        "original_model_answer": "other-states",
+        "original_label": "permit-types",
+        "file+idx": "      ID1        ID2 values\n20  18452  222750427     OT\n0   19566  225506994     SG\n12  15087  204825479     FA\n3   15390  205432762     FP\n8   19565  225505406     SF\n..    ...        ...    ...\n9   11026  198259390     AL\n7   19511  225433861     SD\n7   19511  225433861     SD\n5   15316  205384699     FN\n15  17735  221498118     MH\n\n[96 rows x 3 columns]_2"
+    },
+    "For the following table column, select a schema.org type annotation from abbreviation of agency, color, elevator or staircase, ethnicity, month, nyc agency name, region in bronx, region in brooklyn, region in manhattan, region in queens, region in staten island, school name.  \n Input column: ['HISPANIC', 'ASIAN', 'BLACK', 'HISPANIC', 'ASIAN'] \n Output: \n": {
+        "response": "ethnicity",
+        "context": [
+            "HISPANIC",
+            "ASIAN",
+            "BLACK",
+            "HISPANIC",
+            "ASIAN"
+        ],
+        "ground_truth": "ethnicity",
+        "correct": true,
+        "original_model_answer": "ethnicity",
+        "original_label": "ethnicity",
+        "file+idx": "     ID1        ID2    values\n1   1594  208249100  HISPANIC\n3   1594  198673808     ASIAN\n1   1594  208249100  HISPANIC\n3   1594  198673808     ASIAN\n0   1834  199823961     BLACK\n..   ...        ...       ...\n1   1594  208249100  HISPANIC\n0   1834  199823961     BLACK\n1   1594  208249100  HISPANIC\n1   1594  208249100  HISPANIC\n2   5144  229411642     WHITE\n\n[61 rows x 3 columns]_2"
+    },
+    "For the following table column, select a schema.org type annotation from abbreviation of agency, color, elevator or staircase, ethnicity, month, nyc agency name, region in bronx, region in brooklyn, region in manhattan, region in queens, region in staten island, school name.  \n Input column: ['FL', 'MI', 'RI', 'WI', 'WV'] \n Output: \n": {
+        "response": "us-state",
+        "context": [
+            "FL",
+            "MI",
+            "RI",
+            "WI",
+            "WV"
+        ],
+        "ground_truth": "us-state",
+        "correct": true,
+        "original_model_answer": "us-state",
+        "original_label": "us-state",
+        "file+idx": "       ID1        ID2 values\n37  100153  221499729     MI\n32  121428  226656856     TN\n9   129473  229595912     WV\n5   102588  222038569     NE\n16  122265  226838456     TX\n21  122889  226964673     UT\n30   90091  219443139     IL\n41  115202  225433861     SD\n37  100153  221499729     MI\n46   94118  220455123     KY\n37  100153  221499729     MI\n30   90091  219443139     IL\n28  104250  222378772     NV\n20   72428  202153418     DE\n36  100742  221614570     MO\n35   89944  219379022     IA\n27   82059  205281646     FL\n38  122974  228765760     VA\n28  104250  222378772     NV\n42   94047  220432712     KS\n10   83707  205947498     GA\n6    71492  201719058     CT\n25   97246  221149794     MA\n33  128431  229427831     WI\n13   90014  219392160     ID\n39  111789  224845059     RI\n48  100719  221612354     MN\n24   94214  220548329     LA\n40  103492  222266454     NJ_2"
+    },
+    "For the following table column, select a schema.org type annotation from abbreviation of agency, color, elevator or staircase, ethnicity, month, nyc agency name, region in bronx, region in brooklyn, region in manhattan, region in queens, region in staten island, school name.  \n Input column: ['APRIL', 'MAY', 'JUNE', 'JUNE', 'JANUARY'] \n Output: \n": {
+        "response": "month",
+        "context": [
+            "APRIL",
+            "MAY",
+            "JUNE",
+            "JUNE",
+            "JANUARY"
+        ],
+        "ground_truth": "month",
+        "correct": true,
+        "original_model_answer": "month",
+        "original_label": "month",
+        "file+idx": "       ID1        ID2     values\n11  104154  222344222   NOVEMBER\n9    91360  219787301    JANUARY\n9    91360  219787301    JANUARY\n4   115649  225485990  SEPTEMBER\n9    91360  219787301    JANUARY\n10   92457  220096915       JUNE\n5    72607  202175099   DECEMBER\n11  104154  222344222   NOVEMBER\n9    91360  219787301    JANUARY\n3    53610  198551888      APRIL\n3    53610  198551888      APRIL\n8   104942  222560153    OCTOBER\n10   92457  220096915       JUNE\n5    72607  202175099   DECEMBER\n5    72607  202175099   DECEMBER\n2    92424  220093775       JULY\n3    53610  198551888      APRIL\n3    53610  198551888      APRIL\n7    98942  221364123        MAY\n10   92457  220096915       JUNE\n5    72607  202175099   DECEMBER\n1    81442  205006872   FEBRUARY\n11  104154  222344222   NOVEMBER\n10   92457  220096915       JUNE\n4   115649  225485990  SEPTEMBER\n4   115649  225485990  SEPTEMBER\n2    92424  220093775       JULY\n9    91360  219787301    JANUARY\n6    98188  221263129      MARCH\n11  104154  222344222   NOVEMBER\n7    98942  221364123        MAY\n6    98188  221263129      MARCH\n7    98942  221364123        MAY\n9    91360  219787301    JANUARY\n10   92457  220096915       JUNE\n9    91360  219787301    JANUARY\n11  104154  222344222   NOVEMBER\n3    53610  198551888      APRIL\n6    98188  221263129      MARCH\n9    91360  219787301    JANUARY\n7    98942  221364123        MAY\n5    72607  202175099   DECEMBER\n5    72607  202175099   DECEMBER\n1    81442  205006872   FEBRUARY\n3    53610  198551888      APRIL\n2    92424  220093775       JULY_2"
+    }
+}

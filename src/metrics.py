@@ -120,8 +120,17 @@ def results_checker_doduo(file_name):
 def results_checker(file_name, skip_duplicates = True, naive_score = False, confusion_matrix = False):
     with open(file_name, "r") as f:
       d = json.load(f)
-    if skip_duplicates:
-      d = {k : v for k, v in d.items() if "CATEGORY: *" not in str(k)}
+
+    # duplicate handling
+    if skip_duplicates == True:
+        pass
+    else:
+        d_copy = d.copy()
+        for k, v in d.items():
+            if v.get("prompt_hash_count", 1) > 1:
+                for i in range(v["prompt_hash_count"] - 1):
+                    d_copy[f"{k}_{i}"] = v
+        d = d_copy
 
     correct = 0
     good_remap = 0

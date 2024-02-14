@@ -65,7 +65,7 @@ def get_coherence_scores(f_df, model_name, args):
 def query_correct_model(model, prompt, context_labels, context, session, link, lsd, args):
     if "gpt" in model:
         orig_ans = call_gpt_model(prompt, lsd)
-    elif any(["speechless-llama2" in model, "llama-zs" in model, "opt-iml-max-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
+    elif any(["speechless-llama2" in model, "alpaca" in model, "llama-zs" in model, "opt-iml-max-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
         end_of_sentence = prompt[-15:]
         try:
             orig_ans = args["llm_chain"].run(prompt)
@@ -105,7 +105,7 @@ def call_gpt_model(prompt, lsd):
 
 def get_topp_resp(prompt, k, args):
     # print("starting generate")
-    inputs = args["tokenizer"].encode(prompt, return_tensors="pt").cuda()
+    inputs = args["tokenizer"].encode(prompt, return_tensors="pt", add_special_tokens=True, truncation=True).cuda()
     # inputs = inputs[:,:args["MAX_LEN"]-100]
     outputs = args["base_model"].generate(inputs, 
                                   max_length=args["MAX_LEN"],
@@ -120,7 +120,7 @@ def get_topp_resp(prompt, k, args):
 
 def get_internlm_resp(prompt, k, args):
     end_of_sentence = prompt[-15:]
-    inputs = args["tokenizer"].encode(prompt, return_tensors="pt").cuda()
+    inputs = args["tokenizer"].encode(prompt, return_tensors="pt", add_special_tokens=True, truncation=True).cuda()
     #inputs = inputs[:,:args["MAX_LEN"]-100]
     outputs = args["base_model"].generate(inputs, 
                                   max_length=args["MAX_LEN"],
@@ -251,7 +251,7 @@ def set_pipeline(k=1, args=None):
         pad_token_id = args['tokenizer'].pad_token_id
     if args.get("params", -1) == -1 or args["params"] is None:
         args["params"] = dict()
-        args['params']['max_new_tokens'] = args['params'].get('max_new_tokens', 128)
+        # args['params']['max_new_tokens'] = args['params'].get('max_new_tokens', 128)
         args['params']['do_sample'] = True
         args['params']['typical_p'] = 1
         args['params']['repetition_penalty'] = 1.3
@@ -278,7 +278,7 @@ def set_pipeline(k=1, args=None):
         repetition_penalty=args['params']['repetition_penalty'],
         pad_token_id=pad_token_id,
     )
-    args["local_llm"] = HuggingFacePipeline(pipeline=args["pipe"])
+    args["local_llm"] = HuggingFacePipeline(pipeline=args["pipe"],pipeline_kwargs=args["params"])
     args["llm_chain"] = LLMChain(
         prompt=args["pt"], 
         llm=args["local_llm"]
@@ -318,7 +318,7 @@ def init_model(model, args):
                 device_map=device_map
             )
     elif "alpaca-7b-zs" in model:
-        args["MAX_LEN"]=2048
+        args["MAX_LEN"]=512
         tokenizer = LlamaTokenizer.from_pretrained("chavinlo/alpaca-native")
         base_model = LlamaForCausalLM.from_pretrained(
             "chavinlo/alpaca-native",
@@ -359,6 +359,15 @@ def init_model(model, args):
         args["MAX_LEN"]=2048
         tokenizer = AutoTokenizer.from_pretrained("GeorgiaTechResearchInstitute/galpaca-30b")
         base_model = AutoModelForCausalLM.from_pretrained("GeorgiaTechResearchInstitute/galpaca-30b", device_map="auto", torch_dtype=torch.float16, load_in_8bit=True)
+    elif "solar-10b-zs" in model:
+        args["MAX_LEN"]=2048
+        tokenizer = AutoTokenizer.from_pretrained("Upstage/SOLAR-10.7B-Instruct-v1.0")
+        model = AutoModelForCausalLM.from_pretrained(
+            "Upstage/SOLAR-10.7B-Instruct-v1.0",
+            device_map="auto",
+            torch_dtype=torch.float16,
+            load_in_8bit=True,
+        )
     elif "opt-iml-max-30b-zs" in model:
         args["MAX_LEN"] = 2048
         tokenizer = AutoTokenizer.from_pretrained("facebook/opt-iml-max-30b", use_fast=False, padding_side='left')
@@ -452,7 +461,7 @@ def fuzzy_label_match(orig_ans, fixed_labels, session, link, prompt, lsd, model,
                 ).choices[0]['message']['content'].lower()
             elif "internlm" in model:
                 ans_n = get_internlm_resp(prompt, k, args)
-            elif any(["speechless-llama2" in model, "llama-zs" in model, "opt-iml" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
+            elif any(["speechless-llama2" in model, "alpaca" in model, "llama-zs" in model, "opt-iml" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
                 # prompt = cutoff_prompt_length(prompt, args["MAX_LEN"])
                 end_of_sentence = prompt[-15:]
                 set_pipeline(k=k, args=args)
