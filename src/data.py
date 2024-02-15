@@ -853,12 +853,52 @@ pubchem_zs_context_labels = {"name" : "pubchem_zs",
                             "dict_map" : {c : c for c in pubchem_renamed_class}, 
                             "pubchem_map" : pubchem_classname_map}
 
-t2d_label_list = ["swimmer", "cricketer", "mountain", "Country", "Bird", "Company", "Monarch", "Mountain", "RadioStation", "Saint", "Currency", "AdministrativeRegion", "VideoGame", "Airline", "City", "Building", "Airport", "Animal", "Film", "Wrestler", "Hospital", "PoliticalParty", "Lake", "Person", "Plant", "Museum", "BaseballPlayer", "University", "Novel", "Scientist", "Newspaper", "Hotel", "AcademicJournal", "Election", "Book", "Work", "FictionalCharacter", "GolfPlayer", "TelevisionShow", "Mammal"]
+t2d_label_list = ["swimmer", "cricketer", "mountain", "Country", "Bird", "Company", "Monarch", "Mountain", "RadioStation", "Saint", "Currency", "AdministrativeRegion", "VideoGame", "Airline", "City", "Building", "Airport", "Animal", "Film", "Wrestler", "Hospital", "PoliticalParty", "Lake", "Person", "Plant", "Museum", "BaseballPlayer", "University", "Novel", "Scientist", "Newspaper", "Hotel", "AcademicJournal", "Election", "Book", "Work", "FictionalCharacter", "GolfPlayer", "TelevisionShow", "Mammal", "governmenttype", "moviedirector", "language", "genre"]
+
+t2d_label_renamed = ["swimmer", "cricketer", "mountain", "nation", "Bird", "Company", "Roman Emperor", "Mountain", "RadioStation", "Saint", "Currency", "U.S.State", "VideoGame", "Airline", "City", "Building", "Airport", "Animal", "Film", "Wrestler", "Hospital", "PoliticalParty", "Lake", "Person", "Plant", "Museum", "BaseballPlayer", "University", "Novel", "Scientist", "Newspaper", "Hotel", "AcademicJournal", "Election", "Book", "Work", "FictionalCharacter", "GolfPlayer", "TelevisionShow", "Mammal", "SystemOfGovernment", "moviedirector", "language", "music or video game genre"]
 
 t2d_labels = {
-  "name" : "t2d",
+  "name" : "T2D",
   "label_set" : t2d_label_list,
-  "dict_map" : {c : c for c in t2d_label_list},
+  "dict_map" : {k1 : k2 for (k1, k2) in zip(t2d_label_list, t2d_label_renamed)},
+}
+
+ef_label_list = ['Company',
+ 'Scientist',
+ 'Writer',
+ 'PoliticalParty',
+ 'Newspaper',
+ 'Mayor',
+ 'Bird',
+ 'University',
+ 'Plant',
+ 'Mountain',
+ 'Book',
+ 'Currency',
+ 'AcademicJournal',
+ 'Continent',
+ 'Wrestler',
+ 'Mammal',
+ 'RadioStation',
+ 'Genre',
+ 'VideoGame',
+ 'Airport',
+ 'BaseballPlayer',
+ 'Language',
+ 'Monarch',
+ 'AdministrativeRegion',
+ 'City',
+ 'Saint',
+ 'Building',
+ 'Country',
+ 'Lake',
+ 'SportsTeam',
+ 'Film']
+
+ef_labels = {
+  "name" : "EF",
+  "label_set" : ef_label_list,
+  "dict_map" : {c : c for c in ef_label_list},
 }
 
 def get_lsd(s):
@@ -880,6 +920,8 @@ def get_lsd(s):
     return pubchem_zs_context_labels
   elif s == "T2D":
     return t2d_labels
+  elif s == "EF":
+    return ef_labels
   print("Label set not found")
   return None
 

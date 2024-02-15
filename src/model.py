@@ -64,7 +64,7 @@ def get_coherence_scores(f_df, model_name, args):
 
 def query_correct_model(model, prompt, context_labels, context, session, link, lsd, args):
     if "gpt" in model:
-        orig_ans = call_gpt_model(prompt, lsd)
+        orig_ans = call_gpt_model(prompt, lsd, model)
     elif any(["speechless-llama2" in model, "alpaca" in model, "llama-zs" in model, "opt-iml-max-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
         end_of_sentence = prompt[-15:]
         try:
@@ -92,9 +92,9 @@ def call_llama_model(session, link, prompt, lsd, var_params, args):
     ans_n = fix_labels(ans[0][len(prompt):].strip(), lsd)
     return ans_n
 
-def call_gpt_model(prompt, lsd):
+def call_gpt_model(prompt, lsd, model="gpt-3.5-turbo"):
     ans = openai.ChatCompletion.create(
-      model="gpt-3.5-turbo",
+      model=model,
       messages=[
           {"role": "user", "content": prompt},
       ],
@@ -141,6 +141,8 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
   all_labels = set([fix_labels(s, lsd) for s in lsd['label_set']])
   isd4 = "d4" in lsd['name']
   ispubchem = "pubchem" in lsd['name']
+  ist2d = "T2D" in lsd['name']
+  isef = "EF" in lsd['name']
   if isd4:
     target_labels = set(lsd['label_set'])
     drop_labels = set(['school-dbn', 'school-number', 'permit-types', 'us-state', 'school-grades', 'other-states', 'plate-type', 'borough'])
@@ -150,6 +152,9 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
     target_labels = set(lsd['label_set'])
     drop_labels = set(['Concept Broader Term', 'Journal ISSN', 'InChI (International Chemical Identifier)', "Book ISBN", 'MD5 Hash'])
     target_labels = target_labels - drop_labels
+    fixed_labels = sorted(list(set([fix_labels(s, lsd) for s in target_labels])))
+  elif ist2d or isef:
+    target_labels = set(lsd['label_set'])
     fixed_labels = sorted(list(set([fix_labels(s, lsd) for s in target_labels])))
   elif "hierarchical" in method and not isd4:
     dtype = get_base_dtype(limited_context)

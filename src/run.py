@@ -60,6 +60,7 @@ def run(
   isAmstr = "amstr" in label_set['name']
   isPubchem = "pubchem" in label_set['name']
   isT2D = "T2D" in label_set['name']
+  isEF = "EF" in label_set['name']
   if "similarity" in method:
     get_sent_model(args)
   args["prompt_hashes"] = collections.Counter()
@@ -90,8 +91,13 @@ def run(
   s = requests.Session()
   if "-zs" in model_name:
     args["base_model"].eval()
-  if isT2D:
-    df = pd.read_json(inputs[0], compression='gzip', lines=True)
+  if isT2D or isEF:
+    origin_df = pd.read_json(inputs)
+    contexts = origin_df['input'].tolist()
+    inputs = []
+    for c in contexts:
+      inputs.append(pd.DataFrame(c.split(",")))
+    labels = origin_df["output"].tolist()
   elif isinstance(inputs, dict):
     labels = np.array(['_'.join(k.split('_')[:-1]) for k in inputs.keys()])
     inputs = [v for v in inputs.values()]
@@ -118,11 +124,7 @@ def run(
         f_df = f
         label_indices=[2]
         gt_labels = labels[idx]
-    elif isAmstr:
-        f_df = f
-        label_indices=[0]
-        gt_labels = labels[idx]
-    elif isPubchem:
+    elif isT2D or isEF or isPubchem or isAmstr:
         f_df = f
         label_indices=[0]
         gt_labels = labels[idx]
@@ -134,6 +136,7 @@ def run(
         gt_labels = input_df[input_df['table_name'] == f.name]
         label_indices = pd.unique(gt_labels['column_index']).tolist()
         f_df = pd.read_json(f, compression='gzip', lines=True)
+    
     if infmods:
         label_indices = pd.unique(gt_labels['column_index']).tolist()
         # label_indices = ["values"]
@@ -160,6 +163,8 @@ def run(
       elif isPubchem:
         pubchem_classname_map = get_pubchem_classname_map()
         orig_label = pubchem_classname_map[gt_labels]
+      elif isT2D or isEF:
+        orig_label = gt_labels
       elif "skip-eval" in method:
         orig_label = ""
       else:
@@ -245,6 +250,10 @@ def main():
       input_files = get_amstr_dfs(args.input_files, args.rand_seed)
     elif args.input_labels == "pubchem":
       input_files = get_pubchem_dfs(args.input_files, args.rand_seed)
+    elif args.input_labels == "T2D":
+      input_files = "./metadata/T2D/T2D_test_archetype_instr.json"
+    elif args.input_labels == "EF":
+      input_files = "./metadata/EF/EF_test_archetype_instr.json"
     else:
       # Define the file extensions to search for
       extensions = ('.json', '.csv', '.json.gz', '.parquet', '.xlsx', '.xls', '.tsv')
@@ -255,6 +264,8 @@ def main():
     if args.input_labels == "D4" or \
       "amstr" in args.input_labels or \
       "pubchem" in args.input_labels or \
+      "T2D" in args.input_labels or \
+      "EF" in args.input_labels or \
       args.input_labels == "skip-eval":
       input_df = None
       if args.input_labels == "skip-eval":

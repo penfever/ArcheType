@@ -1,0 +1,932 @@
+[
+    {
+        "output":"Scientist",
+        "input":" Larry Guth and Nets Katz,Maryam Mirzakhani Peter Scholze,Rahul Pandharipande,Jeremy Kahn and Vladimir Markovic,Yves Benoist and Jean-Fran\u00c3\u00a7ois Quint Jonathan Pila,not awarded,Jean-Loup Waldspurger Ian Agol, Danny Calegari and David Gabai,Clifford Taubes Claire Voisin,Alex Eskin Christopher Hacon and Michael Harris James McKernan and Richard Taylor,not awarded,Manjul Bhargava Nils Dencker,Ben Green G\u00c3\u00a9rard Laumon and Ng\u00c3\u00b4 B\u00e1\u00ba\u00a3o Ch\u00c3\u00a2u,Richard Hamilton Terence Tao,Oded Schramm Manindra Agrawal,Edward Witten Stanislav Smirnov,Alain Connes Laurent Lafforgue,Andrew Wiles",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Writer",
+        "input":" John Dunning,James Ellroy,Peter Lovesey,Dick Francis,James Crumley,Joe R. Lansdale,Michael Connelly,P. D. James,Lorenzo Carcaterra,John le Carr\u00c3\u00a9",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"BaseballPlayer",
+        "input":" Robin Yount,Cecil Cooper,Ryan Braun*,Paul Molitor,Geoff Jenkins,Ben Oglivie,Prince Fielder,Gorman Thomas,Jim Gantner,Greg Vaughn",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Company",
+        "input":" Air China,China Eastern Airlines,China Southern Airlines,China United Airlines,Hainan Airlines,Lucky Air,Tianjin Airlines",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Wrestler",
+        "input":" Ultratumba (mask),Ultratumba (hair),El Noruego (hair),El Destroyer (mask),Dory Dixon (hair),Humberto Garza (hair),C\u00c3\u00a9sar Valentino (hair),La Momia (mask),La Momia (hair),Pantera Negra (hair),Coloso Colosetti (hair),Coloso Colosetti (hair),Lem\u00c3\u00bas (mask),Sunny War Cloud (hair),Rub\u00c3\u00a9n Ju\u00c3\u00a1rez (hair),Jos\u00c3\u00a9 Torres (hair),\u00c3\\u0081ngel Blanco (hair),El Asesino (mask),Don Corleone (mask),Abdullah Tamba (hair),Ring Fujinami (hair),Blue Blazer (mask),Torre Infernal (mask),Yamato (hair),Scorpio, Jr. (hair),Universo 2000 (mask),M\u00c3\u00a1scara A\u00c3\u00b1o 2000 Jr. (mask)",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Lake",
+        "input":" Jackadder Lake,Jandabup Lake,Lake Janet,Lake Jasper,Jaugle Lake,Lake Jeavons,Jebarjup Swan Lake,Lake Jeffries,Jerdacuttup Lakes,Jilakin Lake,Jogalong Billabong,Lake Johnston,Jolimont Lake,Lake Jones,Lake Joondalup,Lake Josceline,Lake Josephine (Western Australia),Lake Joy,Jualbup Lake",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Airport",
+        "input":" Commercial service \u00e2\\u0080\\u0093 primary airports,Bemidji Regional Airport,Brainerd Lakes Regional Airport,Duluth International Airport,Range Regional Airport (was Chisholm\u00e2\\u0080\\u0093Hibbing Airport),Falls International Airport,Minneapolis\u00e2\\u0080\\u0093St. Paul International Airport (Wold\u00e2\\u0080\\u0093Chamberlain Field),Rochester International Airport,St. Cloud Regional Airport,Reliever airports,Anoka County\u00e2\\u0080\\u0093Blaine Airport (Janes Field),Crystal Airport,Flying Cloud Airport,Airlake Airport,South St. Paul Municipal Airport (Richard E. Fleming Field),St. Paul Downtown Airport (Holman Field),Lake Elmo Airport,General aviation airports,Aitkin Municipal Airport (Steve Kurtz Field),Albert Lea Municipal Airport,Alexandria Municipal Airport (Chandler Field),Austin Municipal Airport,Baudette International Airport & Seaplane Base,Benson Municipal Airport,Blue Earth Municipal Airport,Buffalo Municipal Airport,Houston County Airport (Caledonia\u00e2\\u0080\\u0093Houston County Airport),Cambridge Municipal Airport,Canby Municipal Airport (Myers Field),Cloquet\\\/Carlton County Airport,Cook Municipal Airport,Crookston Municipal Airport (Kirkwood Field),Detroit Lakes Airport (Wething Field),Dodge Center Airport (Dodge Center Municipal),Sky Harbor Airport & Seaplane Base,Elbow Lake Municipal\u00e2\\u0080\\u0093Pride of the Prairie Airport,Ely Municipal Airport,Eveleth\u00e2\\u0080\\u0093Virginia Municipal Airport,Fairmont Municipal Airport,Faribault Municipal Airport,Fergus Falls Municipal Airport (Einar Mickelson Field),Fosston Municipal Airport,Glencoe Municipal Airport (Vernon Perschau Field),Glenwood Municipal Airport,Grand Marais\\\/Cook County Airport,Grand Rapids\\\/Itasca County Airport (Gordon Newstrom Field),Hallock Municipal Airport,Hawley Municipal Airport,Hector Municipal Airport,Hutchinson Municipal Airport (Butler Field),Jackson Municipal Airport,Le Sueur Municipal Airport,Litchfield Municipal Airport,Little Falls\\\/Morrison County Airport (Lindbergh Field),Long Prairie Municipal Airport (Todd Field),Longville Municipal Airport,Luverne Municipal Airport (Quentin Aanenson Field),Lac qui Parle County Airport,Mahnomen County Airport,Mankato Regional Airport,Southwest Minnesota Regional Airport (Marshall\\\/Ryan Field),Montevideo\u00e2\\u0080\\u0093Chippewa County Airport,Moorhead Municipal Airport,Moose Lake Carlton County Airport,Mora Municipal Airport,Morris Municipal Airport (Charlie Schmidt Field),New Ulm Municipal Airport,Orr Regional Airport,Ortonville Municipal Airport (Martinson Field),Owatonna Degner Regional Airport,Park Rapids Municipal Airport (Konshok Field),Paynesville Municipal Airport,Pine River Regional Airport,Pipestone Municipal Airport,Fillmore County Airport,Princeton Municipal Airport,Red Wing Regional Airport,Redwood Falls Municipal Airport,Roseau Municipal Airport (Rudy Billberg Field),Rush City Regional Airport,Rushford Municipal Airport,Sauk Centre Municipal Airport,Silver Bay Municipal Airport,Springfield Municipal Airport,St. James Municipal Airport,Staples Municipal Airport,Thief River Falls Regional Airport,Tower Municipal Airport & Seaplane Base,Tracy Municipal Airport,Richard B. Helgeson Airport,Wadena Municipal Airport,Walker Municipal Airport,Warroad International Memorial Airport (Swede Carlson Field),Waseca Municipal Airport,Wheaton Municipal Airport,Willmar Municipal Airport (John L. Rice Field) (replaced ILL),Windom Municipal Airport,Winona Municipal Airport (Max Conrad Field),Winsted Municipal Airport,Worthington Municipal Airport,Other public-use airports (not listed in NPIAS),Norman County Ada\\\/Twin Valley Airport,Appleton Municipal Airport,Backus Municipal Airport,Bagley Municipal Airport,A.R.S. Sport Airstrip (A.R.S. Sport Strip),Moberg Air Base (Seaplane Base),Big Falls Municipal Airport,Bigfork Municipal Airport,Bowstring Airport,Brooten Municipal Airport,Flying A Airport,Clarissa Municipal Airport,Leaders\\\/Clear Lake Airport,Scotts Seaplane Base,Birch Lake Seaplane Base,Mal's Serpent Lake Seaplane Base,North Country Seaplane Base,East Gull Lake Airport,Sky Harbor Seaplane Base,Fertile Municipal Airport,Forest Lake Airport,Grand Marais\\\/Cook County Seaplane Base,Granite Falls Municipal Airport (Lenzen\u00e2\\u0080\\u0093Roe Memorial Field),Grygla Municipal Airport (Mel Wilkens Field),Henning Municipal Airport,Herman Municipal Airport,Hill City\u00e2\\u0080\\u0093Quadna Mountain Airport,Field of Dreams Airport,International Falls Seaplane Base,Wipline Seaplane Base,Karlstad Municipal Airport,Surfside Seaplane Base,Littlefork Municipal\\\/Hanover Airport,Maple Lake Municipal Airport & Seaplane Base,Isedor Iverson Airport,Milaca Municipal Airport (Milaca Airport),Morey's Airport,Murdock Municipal Airport,Nary National Airport (Shefland Field),Northome Municipal Airport,Olivia Regional Airport,Pelican Rapids Municipal Airport (Lyon's Field),Perham Municipal Airport,Piney Pinecreek Border Airport,Red Lake Falls Municipal Airport,Remer Municipal Airport,Slayton Municipal Airport,Sleepy Eye Municipal Airport,Stanton Airfield,Starbuck Municipal Airport,Stephen Municipal Airport,Tyler Municipal Airport,Warren Municipal Airport,Waskish Municipal Airport,Jolly Fisherman Seaplane Base,Wells Municipal Airport,Other military airports,Ray S. Miller Army Airfield (National Guard),Notable private-use airports,Northwest Angle Airport,Marty's Tranquility Base (Seaplane Base) (former public-use, FAA: 45D) [1],Notable former airports,Devil's Track Municipal Airport (closed 1993, replaced by CKC) [2],New York Mills Municipal Airport (closed 2011?) [3],Pine City Municipal Airport (closed 2001) [],Old Willmar Municipal Airport (closed 2006, replaced by BDH) [4]",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Company",
+        "input":" Televisa Home Entertainment,Televisa Interactive Media",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mountain",
+        "input":" Dinosaur Ridge,Mount Gorman,Kakwa Mountain,Mount C\u00c3\u00b4t\u00c3\u00a9,Intersection Mountain,Mount Morkill,Mount Forget,Mount Talbot,Interpass Ridge,Big Shale Hill,Mount Pauline,Perseverance Mountain,Jackpine Mountain,Mount Bess,Whiteshield Mountain,Treadmill Ridge,Mumm Peak,Upright Mountain,Mount Phillips,Tatei Ridge,Titkana Peak,Chushina Ridge,Lynx Mountain,Mount Machray,Salient Mountain,Mount McCord,Razorback Mountain,Caledonia Mountain,Mount O'Beirne,T\u00c3\u00aate Roche,Lucerne Peak,Bingley Peak,Leather Peak,Yellowhead Mountain,Miette Hill,Kataka Mountain,Mount Clairvaux,Vista Peak,Caniche Peak,Tonquin Hill,Bastion Peak,Drawbridge Peak,Redoubt Peak,Dungeon Peak,Mount Fraser,Paragon Peak,Parapet Peak,Simon Peak,Bennington Peak,McDonell Peak,Scarp Mountain,Mastodon Mountain,Elephas Mountain,Whitecrow Mountain,Blackrock Mountain,Divergence Peak,Alnus Peak,Mount Ross Cox,Mallard Peak,Mount Scott,Lick Peak,Mount Oates,Mount Ermatinger,Mount Hooker,McGillivray Ridge,Fortress Mountain,Younghusband Ridge,Apex Mountain,Chaba Peak,Eden Peak,Snow Dome,Wales Peak,Mount King Edward,Mount Columbia,Omega Peak,Triad Peak,Watchman Peak,Mount Spring-Rice,Qu\u00c3\u00a9ant Mountain,Fresnoy Mountain,Douai Mountain,Oppy Mountain,Farbus Mountain,Mount Lyell,Ernest Peak,Walter Peak,Christian Peak,Division Mountain,Mons Peak,Howse Peak,Mount Synge,Aiguille Peak,Midway Peak,Stairway Peak,Ebon Peak,Mount Conway,Breaker Mountain,Mount Freshfield,Mount Lambe,Barbette Peak,Mount Whiteaves,Mount Pilkington,Prior Peak,Mount Bulyea,Mount Low,Mount Leman,Mount Queen Elizabeth,Mistaya Mountain,Mount Barnard,Gilgit Mountain,Nanga Parbat Mountain,Mount Helmer,Mount Barlow,Mount Trutch,Waitabit Peak,Trapper Peak,Mount Baker,Mount Habel,Mount Rhondda,St. Nicholas Peak,Mount Olive,Mount Balfour,Lilliput Mountain,Mount Daly,Mount Bosworth,Popes Peak,Collier Peak,Mount Victoria,Mount Lefroy,Mount Little,Glacier Peak,Ringrose Peak,Mount Hungabee,Wenkchemna Peak,Neptuak Mountain,Deltaform Mountain,Mount Bowlen,Mount Tuzo,Mount Fay,Mount Perren,Mount Little,Mount Allen,Quadra Mountain,Chimney Peak,Boom Mountain,Storm Mountain,Beatrice Peak,Mount Ball,Isabelle Peak,Haiduk Peak,Twin Cairns,Standish Hump,Quartz Hill,Fatigue Mountain,Citadel Peak,Golden Mountain,Nasswald Peak,Og Mountain,Cave Mountain,Mount Cautley,Wonder Peak,The Towers,Terrapin Mountain,Mount Magog,Mount Assiniboine,Lunette Peak,Mount Gloria,Aye Mountain,Eon Mountain,Aurora Mountain,Windy Ridge,Red Man Mountain,Mount Leval,White Man Mountain,Mount Robertson,Mount Sir Douglas,Mount Williams,Mount King Albert,Mount Maude,Mount Beatty,Mount Worthington,Mount McHarg,Defender Mountain,Mount Northover,Mount Tyrwhitt,Mount Foch,Warrior Mountain,Mount Cordonnier,Mount P\u00c3\u00a9tain,Mount Mangin,Storelk Mountain,Mount Fox,Mount Odlum,Mount Loomis,Mount McPhail,Mount Bishop,Mount Muir,Mount Strachan,Mount Maclaren,Mount Cornwell,Mount Bolton,Mount Armstrong,Baril Peak,Mount Etherington,Mount Scringer,Mount Holcroft,Mount Farquhar,Mount Gass,Mount Lyall,Beehive Mountain,Tornado Mountain,Allison Peak,Phillipps Peak,Crowsnest Ridge,Loop Ridge,Andy Good Peak,Tent Mountain,Mount Ptolemy,Mount McGladrey,Mount Pengelly,Mount Darrah,Hollebeke Mountain,St. Eloi Mountain,Mount Haig,Rainy Ridge,Three Lakes Ridge,Scarpe Mountain,La Coulotte Peak,Mount Matkin,La Coulotte Ridge,Font Mountain,Kishinena Peak,Festubert Mountain,Forum Peak",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"RadioStation",
+        "input":" WABN,WACL,WAFX,WAJL,WAKG,WAMM,WAMV,WARN,WARV-FM,WAVA,WAVA-FM,WAXM,WAZR,WBBC-FM,WBBT-FM,WBCM-LP,WBLB,WBLT,WBNN-FM,WBOP,WBQB,WBQK,WBRF,WBRG,WBRW,WBTJ,WBTK,WBTM,WBTX,WBVA,WBZS,WCBX,WCCA-LP,WCDX,WCFC-LP,WCHG,WCHV,WCHV-FM,WCLM,WCNR,WCNV,WCPK,WCRW,WCTG,WCVA,WCVE-FM,WCWM,WCYK-FM,WDCE,WDCT,WDIC,WDIC-FM,WDVA,WDXC,WDZY,WEBI-LP,WEHC,WEMC,WEQP,WERA-LP,WESR,WESR-FM,WEVA,WFAJ,WFAX,WFFC,WFHG,WFIC,WFIR,WFJX,WFLO,WFLO-FM,WFLS-FM,WFNR,WFOS,WFQX,WFTH,WFTR,WFVA,WFYE,WGAT,WGCK-FM,WGFC,WGFW,WGH,WGH-FM,WGMN,WGPL,WGRQ,WGRX,WGTH,WGTH-FM,WHAN,WHAP,WHBG,WHCE,WHEE,WHEO,WHFV,WHFW,WHHV,WHKT,WHKX,WHLF,WHLQ,WHOV,WHRE,WHRF,WHRG,WHRJ,WHRL,WHRO-FM,WHRV,WHRX,WHTE-FM,WHTI,WHTU,WIGO-FM,WINA,WINC,WINC-FM,WIQO-FM,WISE-FM,WITM,WJEV-LP,WJFK-FM,WJHH-LP,WJJS,WJJX,WJLZ,WJMA,WJNV,WJOI,WJVR,WJYA,WJYJ,WJYK,WKAV,WKBA,WKBY,WKCI,WKCW,WKCY,WKCY-FM,WKDE,WKDE-FM,WKDV,WKDW,WKEX,WKEY,WKGM,WKHF,WKHK,WKJM,WKJS,WKJV-LP,WKLR,WKLV,WKNV,WKPA,WKQA,WKQB,WKQY,WKSI-FM,WKSK-FM,WKTR,WKWI,WKYV,WLEE,WLES,WLFV,WLLL,WLMP-LP,WLNI,WLOY,WLQM,WLQM-FM,WLRJ,WLRV,WLSD,WLTK,WLUR,WLUS-FM,WLVA,WMAL-FM,WMBG,WMEV-FM,WMJD,WMLU,WMNA,WMNA-FM,WMOV-FM,WMPW,WMQR,WMRA,WMRL,WMRY,WMVA,WMVE,WMXH-FM,WNBV,WNIS,WNLR,WNMX,WNNT-FM,WNOB,WNOH,WNOR,WNRG,WNRN,WNRS-FM,WNRV,WNSB,WNTW,WNTX,WNVA,WNVA-FM,WNVZ,WODI,WODY,WOJL,WOKD-FM,WOKG,WOLD-FM,WOPI,WORJ-LP,WOTC,WOWI,WPAK,WPAR,WPCE,WPER,WPEX,WPIM,WPIN,WPIN-FM,WPMH,WPRZ-FM,WPSK-FM,WPTE,WPVA,WPVC-LP,WPWC,WPZZ,WQIQ,WQLU,WQMR-LP,WQMZ,WQPO,WRAA,WRAD,WRAR-FM,WRCW,WREJ,WREL,WRIC-FM,WRIH,WRIQ,WRIR-LP,WRJR,WRKE-LP,WRLP,WRMV-LP,WRNL,WROV-FM,WROX-FM,WRPC-LP,WRTZ,WRVA,WRVL,WRVQ,WRXL,WRXT,WSBV,WSFF,WSHV,WSIG,WSLC-FM,WSLK,WSLQ,WSNV,WSNZ,WSVA,WSVG,WSVO,WSVS,WSWE-LP,WSWV,WSWV-FM,WTAR,WTJU,WTJZ,WTNT,WTON,WTON-FM,WTOX,WTOY,WTPS,WTRM,WTTX-FM,WTVR-FM,WTYD,WTZE,WUDS-LP,WUKZ,WURA,WURV,WUSH,WUSQ-FM,WUVA,WUVT-FM,WVAB,WVAI-LP,WVAX,WVBB,WVBE,WVBE-FM,WVBW,WVBX,WVCV,WVEK-FM,WVES,WVGM,WVHL,WVHT,WVKL,WVLS,WVMP,WVNZ,WVRI,WVRS,WVRU-FM,WVSP-FM,WVST-FM,WVTF,WVTR,WVTU,WVTW,WVXX,WWBU,WWDE-FM,WWDN,WWDW,WWEQ,WWER,WWIP,WWLB,WWRE,WWUZ,WWVT,WWWJ,WWWT-FM,WWWV,WWXX,WWZW,WXBN,WXBQ-FM,WXBX,WXCF,WXDM,WXEZ-LP,WXGI,WXGM,WXGM-FM,WXJK,WXJM,WXJX-LP,WXLK,WXLZ,WXLZ-FM,WXMM-LP,WXMY,WXRK-LP,WXTG,WXTG-FM,WXTJ-LP,WXTR,WXVA,WYAU,WYCS,WYFI,WYFJ,WYFT,WYRV,WYTI,WYTT,WYVE,WYYD,WZAP,WZBB,WZEZ,WZFC,WZFM,WZGN,WZHF,WZLV,WZRV,WZVA,WZZI,WZZU",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Saint",
+        "input":" Gabriel of Our Lady of Sorrows,Marguerite Marie Alacoque,Joan of Arc",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Bird",
+        "input":" Black-browed albatross",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Lake",
+        "input":" Name,Braunsteffer Lake,Club Lake,Collerson Lake,Dingle Lake,Krok Lake,Station Tarn,Stinear Lake,Lake Vereteno,Lake Zvezda",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Plant",
+        "input":" Amaranth,Asparagus,Beans, snap,Beet leaves,Broccoli,Brussels sprouts,Cabbage,Carrot,Cassava,Cauliflower,Celery,Chicory,Chives,Collards,Coriander,Corn, sweet,Cucumber,Eggplant,Endive,Garlic,Kale,Lettuce,Okra,Onion,Parsley,Parsnip,Pea,Bell pepper,Potato,Purslane,Radish,Rhubarb leaves,Rutabaga,Spinach,Squash,Sweet potato,Tomato,Turnip,Turnip greens,Watercress",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Book",
+        "input":" Vector Prime,Boba Fett: A Practical Man,Dark Tide I: Onslaught,Dark Tide: Siege,Dark Tide II: Ruin,Agents of Chaos I: Hero\u00e2\\u0080\\u0099s Trial,Agents of Chaos II: Jedi Eclipse,Balance Point,Emissary of the Void,Knightfall I: Jedi Storm,Knightfall II: Jedi Blood,Knightfall III: Jedi Fire,Recovery (set during Edge of Victory I: Conquest),Edge of Victory I: Conquest,Edge of Victory II: Rebirth,Star by Star,Dark Journey,The Apprentice (set during Dark Journey),Enemy Lines I: Rebel Dream,Enemy Lines II: Rebel Stand,Traitor,Destiny's Way,Ylesia (set during Destiny's Way),Force Heretic I: Remnant,Equals and Opposites,Force Heretic II: Refugee,Or Die Trying,Force Heretic III: Reunion,The Final Prophecy,The Unifying Force",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mayor",
+        "input":" Robert Brent,Daniel Rapine,James H. Blake,Benjamin G. Orr,Samuel N. Smallwood,Thomas Carbery,Samuel N. Smallwood,Roger C. Weightman,Joseph Gales,John P. Van Ness,William A. Bradley,Peter Force,William Winston Seaton,Walter Lenox,John W. Maury,John T. Towers,William B. Magruder,James G. Berret,Richard Wallach,Sayles J. Bowen,Matthew G. Emery[2]",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Building",
+        "input":" Carnegie Library of Homestead, Munhall, Pennsylvania[51],606 W. Cork St, Winchester, Virginia[52][53],Box 360, Winchester, Virginia (Frank Reed Horton's mailbox)[54],Ivanhoe Club Building, 3215 Park Avenue, Kansas City, Missouri[55],410-11 Land Bank Building, Kansas City 6, Missouri[56],505 Land Bank Building, Kansas City 6, Missouri[57],410 Land Bank Building, Kansas City 6, Missouri[58],407 Land Bank Building, Kansas City 6, Missouri[59],419 Columbia Bank Building, Kansas City 6, Missouri (Building imploded[60])[61],1100 Waltower Building, 823 Walnut Street, Kansas City, Missouri 64106[62][63],400 Mainmark Building, 1627 Main Street, Kansas City, Missouri 64108[64],14901 E. 42nd St., Independence, Missouri 64055-7347[65][66][67]",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"AdministrativeRegion",
+        "input":" Jefferson,St. Clair,Bryan,De Kalb,Liberty,Long",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"AcademicJournal",
+        "input":" Science,PNAS,Current Biology,Current Plant Biology,Journal of Neuroscience,Journal of Theoretical Biology,Cell,Neuron,Developmental Cell,Molecular Cell,Molecular Biology and Evolution,Genes & Development,Genome Research,Learning & Memory,RNA,eLife,F1000Research,Frontiers in Journals,Biophysical Journal,Journal of Bacteriology,Journal of Biology of the Cell,EMBO Journal,Journal of Neurophysiology,Molecular & Cellular Proteomics,Proteomics,Journal of Proteome Research,American Journal of Human Genetics,Genetics,Development,The Journal of Experimental Biology,Disease Models & Mechanisms,Biology Open (BiO),Evolution,The Plant Cell,Plant Physiology,Bioessays,Molecular Biology of the Cell,MPMI,Phytopathology,Plant Disease,JCI,Journal of Statistical Software",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Country",
+        "input":" Bulgaria,Greece,Romania,Yugoslavia,,,,,,Turkey,Albania,Total",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Continent",
+        "input":" Oceania",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Scientist",
+        "input":" Dennis Bray,Giorgio Parisi,Nicholas Ayache,Peer Bork",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Newspaper",
+        "input":" The Sunday Times",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Bird",
+        "input":" Red-legged partridge,Grey partridge,(Common) quail,(Common) pheasant,Golden pheasant,Lady Amherst's pheasant",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"SportsTeam",
+        "input":" Calgary Stampeders,Winnipeg Blue Bombers,Regina Roughriders",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"City",
+        "input":" New York,Los Angeles,Chicago,Houston,Philadelphia,Phoenix,San Antonio,San Diego,Dallas,San Jose,Jacksonville,Indianapolis,San Francisco,Austin,Columbus,Fort Worth,Charlotte,Detroit,El Paso,Memphis,Baltimore,Boston,Seattle,Washington,Nashville",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Language",
+        "input":" German,Romansh,Italian",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"VideoGame",
+        "input":" 50 Cent: Bulletproof",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Airport",
+        "input":" RAF Ipswich, Suffolk",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Genre",
+        "input":" Dance\\\/Song,Viennese Waltz \\\/ \\Breakaway\\\"\",Jive \\\/ \\Jump,Rumba \\\/ \\If You're Reading This\\\"\",Foxtrot \\\/ \\Theme from The Pink Panther\\\"\",Samba \\\/ \\Conga\\\"\",Quickstep \\\/ \\Hot Honey Rag\\\" Group Broadway Dance \\\/ \\\"Big Spender\\\" & \\\"Money Money\\\"\",Tango \\\/ \\Theme from Ghostbusters\\\"\",Team Tango \\\/ \\Disturbia\\\"\",Waltz \\\/ \\What the World Needs Now\\\"\",Instant Jive \\\/ \\Tutti Frutti\\\"\",Paso Doble \\\/ \\Theme from The Legend of Zorro\\\"\",Argentine Tango \\\/ \\Bust Your Windows\\\"\",Cha-cha-cha Relay \\\/ \\I Like How It Feels\\\"\",Cha-cha-cha \\\/ \\Let's Get Loud\\\"\",Freestyle \\\/ \\Whine Up\\\"\",Jive \\\/ \\Jump,Instant Samba \\\/ \\Shake Your Bon-Bon\\\"\"",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Scientist",
+        "input":" Murray, NoreenNoreen Murray,Fersht, AlanAlan Fersht,Weissmann, CharlesCharles Weissmann,Hopwood, DavidDavid Hopwood,Holmes, KennethKenneth Holmes,Bird, Adrian PeterAdrian Peter Bird,Surani, M. AzimM. Azim Surani,Beggs, JeanJean Beggs,Crawford, LionelLionel Crawford,Roberts, Richard J.Richard J. Roberts,Challis, GregoryGregory Challis,Davies, GideonGideon Davies,McLean, AngelaAngela McLean,Toumazou, ChristoferChristofer Toumazou,Benjamin David Simons",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Monarch",
+        "input":" Demetrius II Aetolicus,Antigonus III Doson",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Book",
+        "input":" A Painted Devil (1966), Thomas P. Cullinan,A Painted House (2001), John Grisham,The Painted Veil (1925), W. Somerset Maugham,Pan Wolodyjowski (Fire in the Steppe) (1888), Henryk Sienkiewicz,Parineeta (1914), Sharat Chandra Chattopadhyay,Paris Blues (1957), Harold Flender,Les Particules \u00c3\\u0089l\u00c3\u00a9mentaires (1998) (a.k.a. Atomised), Michel Houellebecq,Pas\u00c3\u00b3 por aqu\u00c3\u00ad (Once in the Saddle) (1947), Eugene Manlove Rhodes,A Passage to India (1924), E. M. Forster,Patriot Games (1987), Tom Clancy,The Peacock Spring (1975), Rumer Godden,The Pelican Brief (1992), John Grisham,The Penal Colony (1987), Richard Herley,The People That Time Forgot (1918), Edgar Rice Burroughs,Percy Jackson & the Olympians (2005\u00e2\\u0080\\u00932009) (series), Rick Riordan The Lightning Thief (2005) * The Sea of Monsters (2006),Perfect Little Angels (1989), Andrew Neiderman,Pet Sematary (1983), Stephen King,Peter Pan, or The Boy Who Wouldn't Grow Up (1904) (play) Peter and Wendy (1911) (novel), J. M. Barrie,Peyton Place (1956), Grace Metalious,The Phantom Crown: The Story of Maximilian & Carlota of Mexico (1934), Bertita Harding,Phantom Lady (1942), Cornell Woolrich (as William Irish),The Phantom of the Opera (1909\u00e2\\u0080\\u00931910, 1911), Gaston Leroux,Pharaoh (1895), Boles\u00c5\\u0082aw Prus,The Philadelphian (1957), Richard P. Powell,El Pianista (1985), Manuel V\u00c3\u00a1zquez Montalb\u00c3\u00a1n,The Pickwick Papers (1836\u00e2\\u0080\\u00931837) (serial), (1837) (novel), Charles Dickens,The Picture of Dorian Gray (1890), Oscar Wilde,The Pillar of Light (1990), Gerald N. Lund,Pin (1981), Andrew Neiderman,Pioneer, Go Home! (1959), Richard P. Powell,The Pirates! (2004\u00e2\\u0080\\u00932012) (series), Gideon Defoe The Pirates! in an Adventure with Scientists (2004) * The Pirates! in an Adventure with Whaling (2005),Pity My Simplicity (1944), Christopher Massie,La Plan\u00c3\u00a8te des singes (1963), Pierre Boulle,Pleasure Island (1949), William Maier,Point de lendemain: conte d\u00c3\u00a9di\u00c3\u00a9e \u00c3 la reine (1876), Dominique Vivant,The Polar Express (1985), Chris Van Allsburg,Pollyanna (1913), Eleanor H. Porter,Le Pont de la Rivi\u00c3\u00a8re Kwai (1952), Pierre Boulle,Poodle Springs (1959\u00e2\\u0080\\u00931988) (written), (1989) (published), Raymond Chandler and Robert B. Parker,The Pope of Greenwich Village (1979), Vincent Patrick,Popi\u00c3\u00b3\u00c5\\u0082 i diament (Ashes and Diamonds) (1948), Jerzy Andrzejewski,Portnoy's Complaint (1969), Philip Roth,Portrait of Jennie (1940), Robert Nathan,The Poseidon Adventure (1972), Paul Gallico,The Positronic Man (1993), Isaac Asimov and Robert Silverberg,Possession: A Romance (1990), A. S. Byatt,The Postman (1985), David Brin,The Postman Always Rings Twice (1934), James Cain,The Power (1956), Frank M. Robinson,The Power and the Glory (1940), Graham Greene,The Power of One (1989), Bryce Courtenay,Po\u00c5\u00bcegnania (1948), Stanis\u00c5\\u0082aw Dygat,Presumed Innocent (1987), Scott Turow,Pride and Prejudice (1813), Jane Austen,The Prince and the Pauper (1881), Mark Twain,The Prince of Tides (1986), Pat Conroy,The Princess Bride (1973), William Goldman,The Princess Diaries (2000\u00e2\\u0080\\u00932009) (series), Meg Cabot,A Princess of Mars (1917), Edgar Rice Burroughs,The Prisoner of Zenda (1894), Anthony Hope,Promise at Dawn (1961), Romain Gary,Pronto (1993), Elmore Leonard,Professor Unrat (1905), Heinrich Mann,Psycho (1959), Robert Bloch,Psycho II (1982), Robert Bloch,The Puppet Masters (1951), Robert A. Heinlein,The Purple Cloud (1901), M. P. Shiel The End of the World (1955), Ferdinand Reyher,Pursuit (1963), Richard Unekis",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Building",
+        "input":" Huncoat Hall and barn 53\u00c2\u00b045\u00e2\\u0080\u00b259\u00e2\\u0080\u00b3N 2\u00c2\u00b020\u00e2\\u0080\u00b205\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.76640\u00c2\u00b0N 2.33476\u00c2\u00b0W,Higher Antley Hall and Cottage 53\u00c2\u00b044\u00e2\\u0080\u00b242\u00e2\\u0080\u00b3N 2\u00c2\u00b022\u00e2\\u0080\u00b225\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.74495\u00c2\u00b0N 2.37361\u00c2\u00b0W,High Riley Cottages 53\u00c2\u00b045\u00e2\\u0080\u00b203\u00e2\\u0080\u00b3N 2\u00c2\u00b020\u00e2\\u0080\u00b211\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75092\u00c2\u00b0N 2.33629\u00c2\u00b0W,Hill House Farmhouse 53\u00c2\u00b046\u00e2\\u0080\u00b212\u00e2\\u0080\u00b3N 2\u00c2\u00b020\u00e2\\u0080\u00b221\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.77011\u00c2\u00b0N 2.33924\u00c2\u00b0W,Slate Pits Farmhouse 53\u00c2\u00b045\u00e2\\u0080\u00b226\u00e2\\u0080\u00b3N 2\u00c2\u00b020\u00e2\\u0080\u00b210\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75732\u00c2\u00b0N 2.33614\u00c2\u00b0W,Higher Hey Farmhouse and Cottage 53\u00c2\u00b044\u00e2\\u0080\u00b247\u00e2\\u0080\u00b3N 2\u00c2\u00b019\u00e2\\u0080\u00b241\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.74636\u00c2\u00b0N 2.32806\u00c2\u00b0W,Sundial 53\u00c2\u00b045\u00e2\\u0080\u00b207\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b256\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75191\u00c2\u00b0N 2.36562\u00c2\u00b0W,Village stocks 53\u00c2\u00b046\u00e2\\u0080\u00b211\u00e2\\u0080\u00b3N 2\u00c2\u00b020\u00e2\\u0080\u00b221\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.76968\u00c2\u00b0N 2.33916\u00c2\u00b0W,Friar Hill Farmhouse 53\u00c2\u00b043\u00e2\\u0080\u00b247\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b218\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.72983\u00c2\u00b0N 2.35492\u00c2\u00b0W,St James' Church 53\u00c2\u00b045\u00e2\\u0080\u00b207\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b255\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75195\u00c2\u00b0N 2.36534\u00c2\u00b0W,104 Abbey Street 53\u00c2\u00b045\u00e2\\u0080\u00b203\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b240\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75078\u00c2\u00b0N 2.36115\u00c2\u00b0W,High Brake Hall 53\u00c2\u00b046\u00e2\\u0080\u00b232\u00e2\\u0080\u00b3N 2\u00c2\u00b020\u00e2\\u0080\u00b237\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.77562\u00c2\u00b0N 2.34352\u00c2\u00b0W,Oak Hill Park Mansion 53\u00c2\u00b044\u00e2\\u0080\u00b249\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b226\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.74692\u00c2\u00b0N 2.35715\u00c2\u00b0W,100 and 102 Blackburn Road 53\u00c2\u00b045\u00e2\\u0080\u00b214\u00e2\\u0080\u00b3N 2\u00c2\u00b022\u00e2\\u0080\u00b208\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75379\u00c2\u00b0N 2.36896\u00c2\u00b0W,Old Toll House 53\u00c2\u00b044\u00e2\\u0080\u00b244\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b220\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.74545\u00c2\u00b0N 2.35568\u00c2\u00b0W,Warner Arms public house 53\u00c2\u00b045\u00e2\\u0080\u00b206\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b252\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75175\u00c2\u00b0N 2.36436\u00c2\u00b0W,New High Riley Farmhouse 53\u00c2\u00b045\u00e2\\u0080\u00b205\u00e2\\u0080\u00b3N 2\u00c2\u00b020\u00e2\\u0080\u00b219\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75151\u00c2\u00b0N 2.33858\u00c2\u00b0W,Railway viaduct 53\u00c2\u00b045\u00e2\\u0080\u00b221\u00e2\\u0080\u00b3N 2\u00c2\u00b022\u00e2\\u0080\u00b200\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75579\u00c2\u00b0N 2.36671\u00c2\u00b0W,Former Christ Church School 53\u00c2\u00b044\u00e2\\u0080\u00b251\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b237\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.74757\u00c2\u00b0N 2.36028\u00c2\u00b0W,Town Hall 53\u00c2\u00b045\u00e2\\u0080\u00b211\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b255\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75314\u00c2\u00b0N 2.36533\u00c2\u00b0W,21 Cannon Street 53\u00c2\u00b045\u00e2\\u0080\u00b208\u00e2\\u0080\u00b3N 2\u00c2\u00b022\u00e2\\u0080\u00b205\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75216\u00c2\u00b0N 2.36810\u00c2\u00b0W,Monument to Adam Westwell 53\u00c2\u00b045\u00e2\\u0080\u00b208\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b258\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75219\u00c2\u00b0N 2.36607\u00c2\u00b0W,Church of St John the Evangelist 53\u00c2\u00b045\u00e2\\u0080\u00b227\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b239\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75763\u00c2\u00b0N 2.36072\u00c2\u00b0W,Old People's Day Centre 53\u00c2\u00b045\u00e2\\u0080\u00b209\u00e2\\u0080\u00b3N 2\u00c2\u00b022\u00e2\\u0080\u00b205\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75244\u00c2\u00b0N 2.36809\u00c2\u00b0W,Market Hall 53\u00c2\u00b045\u00e2\\u0080\u00b211\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b252\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75309\u00c2\u00b0N 2.36446\u00c2\u00b0W,Baptist Church 53\u00c2\u00b045\u00e2\\u0080\u00b208\u00e2\\u0080\u00b3N 2\u00c2\u00b022\u00e2\\u0080\u00b202\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75231\u00c2\u00b0N 2.36735\u00c2\u00b0W,Church of St John the Baptist 53\u00c2\u00b044\u00e2\\u0080\u00b205\u00e2\\u0080\u00b3N 2\u00c2\u00b020\u00e2\\u0080\u00b249\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.73476\u00c2\u00b0N 2.34684\u00c2\u00b0W,Mechanics' Institution 53\u00c2\u00b045\u00e2\\u0080\u00b209\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b259\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75250\u00c2\u00b0N 2.36633\u00c2\u00b0W,St Peter's Church 53\u00c2\u00b044\u00e2\\u0080\u00b257\u00e2\\u0080\u00b3N 2\u00c2\u00b022\u00e2\\u0080\u00b230\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.74912\u00c2\u00b0N 2.37509\u00c2\u00b0W,Richmond Hill Street Works 53\u00c2\u00b044\u00e2\\u0080\u00b258\u00e2\\u0080\u00b3N 2\u00c2\u00b022\u00e2\\u0080\u00b222\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.74947\u00c2\u00b0N 2.37288\u00c2\u00b0W,Conservative Club 53\u00c2\u00b045\u00e2\\u0080\u00b207\u00e2\\u0080\u00b3N 2\u00c2\u00b022\u00e2\\u0080\u00b204\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75204\u00c2\u00b0N 2.36772\u00c2\u00b0W,Arcade 53\u00c2\u00b045\u00e2\\u0080\u00b207\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b251\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75202\u00c2\u00b0N 2.36405\u00c2\u00b0W,Carnegie Public Library 53\u00c2\u00b045\u00e2\\u0080\u00b209\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b259\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75237\u00c2\u00b0N 2.36643\u00c2\u00b0W,Dyke Nook Lodge 53\u00c2\u00b045\u00e2\\u0080\u00b248\u00e2\\u0080\u00b3N 2\u00c2\u00b022\u00e2\\u0080\u00b215\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.76328\u00c2\u00b0N 2.37085\u00c2\u00b0W,Gate piers and wall, Dyke Nook Lodge 53\u00c2\u00b045\u00e2\\u0080\u00b248\u00e2\\u0080\u00b3N 2\u00c2\u00b022\u00e2\\u0080\u00b216\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.76326\u00c2\u00b0N 2.37115\u00c2\u00b0W,Haworth Art Gallery 53\u00c2\u00b044\u00e2\\u0080\u00b225\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b216\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.74038\u00c2\u00b0N 2.35436\u00c2\u00b0W,St Augustine's Church 53\u00c2\u00b045\u00e2\\u0080\u00b257\u00e2\\u0080\u00b3N 2\u00c2\u00b020\u00e2\\u0080\u00b253\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.76579\u00c2\u00b0N 2.34808\u00c2\u00b0W,St Andrew's Church 53\u00c2\u00b045\u00e2\\u0080\u00b212\u00e2\\u0080\u00b3N 2\u00c2\u00b022\u00e2\\u0080\u00b257\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.75324\u00c2\u00b0N 2.38253\u00c2\u00b0W,War Memorial 53\u00c2\u00b044\u00e2\\u0080\u00b241\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b227\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.74482\u00c2\u00b0N 2.35758\u00c2\u00b0W,Fire Station 53\u00c2\u00b044\u00e2\\u0080\u00b259\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b236\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.74961\u00c2\u00b0N 2.35995\u00c2\u00b0W,Magistrates Courts and Police Station 53\u00c2\u00b045\u00e2\\u0080\u00b200\u00e2\\u0080\u00b3N 2\u00c2\u00b021\u00e2\\u0080\u00b239\u00e2\\u0080\u00b3W\u00ef\u00bb\u00bf \\\/ \u00ef\u00bb\u00bf53.74988\u00c2\u00b0N 2.36082\u00c2\u00b0W",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Company",
+        "input":" Air Madagascar",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Currency",
+        "input":" CFA franc,CFP franc,East Caribbean dollar,Euro,Hong Kong dollar,Singapore dollar Brunei dollar,Armenian dram,Australian dollar,Pound sterling,Indian rupee,New Zealand dollar,Israeli new sheqel,Jordanian dinar[citation needed],Russian ruble,South African rand,Swiss franc,Turkish lira,United States dollar",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Book",
+        "input":" Another Life,Border Princes,Slow Decay,Something in the Water,Trace Memory,The Twilight Streets,Pack Animals,SkyPoint,Almost Perfect,Into the Silence,Bay of the Dead,The House that Jack Built,Risk Assessment,The Undertaker's Gift,Consequences,First Born[2],Long Time Dead[2],The Men Who Sold The World[2],Exodus Code",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Country",
+        "input":" France (IFOP)[3]",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Book",
+        "input":" Wanderer, kommst Du nach Spa...,Lion of Macedon,The First Chronicles of Druss the Legend,The Dark Tower,The Spartan,Gates of Fire,The Lion in the Gateway,Ghost, 2004,Halo: The Fall of Reach, 2001,Atlantis: Gate,The Hot Gate (Troy Rising, book three),Halo: Ghosts of Onyx,2006",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Saint",
+        "input":" Blessed Columba of Rieti,Blessed Jerome Garibo,Blessed Bernardino of Fossa,Blessed Louisa of Savoy,Blessed Magdalen Panattieri,Blessed Timothy of Montecchio,Blessed Vincent of Aquila,Joan of Valois,Blessed Ladislaus of Gielniow,Blessed Margaret of Ravenna,Blessed Osanna of Mantua,Blessed John-Angelo Porro,Blessed Antonia of Brescia,Blessed Francis of Calderola,Francis of Paola,Blessed Gratia of Kotor,Blessed Jacopino de'Canepacci,Catherine of Genoa,Blessed Mark of Marconi,Blessed John Liccio,Blessed Margaret Fontana,Blessed Paula Montaldi,Joseph of Volokolamsk,Blessed Paula Gambara-Costa,Blessed Hans Wagner,Blessed Giles of Lorenzana,Blessed Helen Duglioli,,Blessed Dominic Spadafora,Blessed Margaret of Lorraine,Blessed Michael Pini,Blessed Baptista Varani,Blessed Margareta Kratz,Blessed Louisa Albertoni,Augustine Webster,John Fisher,John Houghton,Richard Reynolds,Robert Lawrence,Thomas More,Blessed John Haile (or Hale),Blessed Laurence of Villamagna,Blessed Sebastian Newdigate,Blessed William Exmew,Blesseds Humphrey Middlemore,Gerolamo Emiliani,Blessed John Davy,Blessed Richard Bere,Blessed Robert Salt,Blessed Thomas Johnson,Blessed Walter Pierson,Blessed William Greenwood,Blesseds John Rochester and James Walworth,Blesseds Thomas Green,John Stone,Blessed John Forest,Anthony Maria Zaccaria,Blessed Adrian Fortescue,Blessed Hugh Cook Faringdon,Blessed John Baptist of Fabriano,Blessed John Beche (Thomas Marshall),Blessed John Eynon,Blessed John Rugg,Blessed John Thorne,Blessed Richard Whiting,Blessed Roger James,Angela Merici,Blessed Carthusian Martyrs,Blessed Edward Powell,Blessed Richard Fetherston,Blessed Thomas Abel,Blessed William Horne,Blessed David Gonson,Blessed Margaret Pole,Blessed Christina of Aquila,Blessed Lucy of Narni,Blesseds John Larke,Blessed Peter Favre,Cajetan,Blessed Catherine of Racconigi,Blessed Philippa of Gheldre,Juan Diego,John of God,Francis Xavier,Thomas of Villanova,Ignatius of Loyola,Peter of Alcantara,Blessed John Marinoni,Blessed Osanna of Cattaro,Blessed John Armero,Salvatore of Orta,Stanislaus Kostka,John of Avila,Blessed Alphonsus de Vaena,Blessed Ignatius de Azevedo and Companions,Blessed Joanninus de San Juan,Blessed John Felton,Blessed John Fernandez,Blessed Thomas Plumtree,Blessed John Story,Adrian Van Hilvarenbeek,Andrew Wouters,Cornelius,Francis Borgia,Francis Rod,Godfrey of Duynen,Godfrey of Merville,James Lacop,John of Cologne,John of Osterwick,Leonard Wegel (Veckel, Wickel),Martyrs of Gorkum,Nicasius Jonson,Nicholas Pieck,Nicholas Poppel,Peter of Asche (Peter van Asche),Pius V,Theodoric of Emden,Willehad of Denmark,Blessed Thomas Percy,Blessed Thomas Woodhouse,Catherine of Palma,Cuthbert Mayne (Maine),Blessed Mary Bartholomea of Florence,Blessed John Nelson,Blessed Thomas Sherwood,Blassed Alexander Briant,Edmund Campion,Louis Bertrand,Ralph Sherwin,Blessed Everald Hanse,Blessed Patrick Cavanagh and Companions,John Payne (Paine),Luke Kirby,Teresa of Avila,Blessed James Thompson,Blessed John Shert,Blessed Lawrence Richardson,Blessed Richard Kirkman,Blessed Robert Johnson,Blessed Thomas Cottam,Blessed Thomas Ford,Blessed William Filby,Blessed William Lacey,Blessed John Bodey,Blessed John Slade,Blessed Nicholas of Factor,Blessed Richard Thirkeld,Blessed William Hart,Blesseds Rudolph Acquaviva, Alphonsus Pacheco, Peter Berno, Anthony Francis, and Francis Aranha,Charles Borromeo,Richard Gwyn (Richard White),Blessed Dermot O'Hurley,Blessed George Haydock,Blessed James Fenn,Blessed John Finch,Blessed John Munden,Blessed John Nutter,Blessed Margaret (Eleanor) Ball,Blessed Thomas Hemerford,Blessed William Carter,Blessed Hugh Taylor,Blessed Marmaduke Bowes,Blessed Maurice MacKenraghty,Blessed Thomas Alfield,Margaret Clitherow,Blessed Edward Stransham,Blessed John Adams,Blessed John Sandys,Blessed Nicholas Woodfen (Wheeler),Blessed Richard Langley,Blessed Robert Dibdale,Blessed William Thomson,Blesseds John Fingley and Robert Bickerdike,Blesseds Robert Anderson and William Marsden,Felix of Cantalice,Blessed Bernard Scammacca,Blessed George Douglas,Blessed John Hambley,Margaret Ward,Ralph Crockett,Richard Martin,Blessed Christopher Buxton,Blessed Edward Burden,Blessed Edward Campion,Blessed Edward James,Blessed Edward Shelley,Blessed Henry Webley,Blessed Hugh More,Blessed James Claxton,Blessed John Robinson,Blessed John Roche,Blessed Nicholas Garlick,Blessed Richard Flower,Blessed Richard Leigh,Blessed Richard Martin,Blessed Robert Morton,Blessed Robert Sutton,Blessed Robert Widmerpool,Blessed Robert Wilcox,Blessed Thomas Felton,Blessed Thomas Holford (Thomas Acton),Blessed William Dean,Blessed William Guntei,Blessed William Hartley,Blessed William Way,Benedict the Black (Benedict the Moor),Catherine de Ricci,Blessed William Spenser and Robert Hardesty,Blesseds George Nichols, Richard Yaxley, Thomas Belson, and Humphrey Pritchard,Blesseds John Amias and Robert Dalby,Blessed Bartolomeu Fernandes dos Martires,Blessed Christopher Bales,Blessed Edmund Duke,Blessed Francis Dickenson,Blessed Miles Gerard,Blessed Nicholas Horner,Blesseds Edward Jones and Antony Middleton,Blesseds Richard Hill, John Hogg, and Richard Holiday,Aloysius Gonzaga,Edmund Genings, Eustace White, and Polydore Plasden, priests and martyrs (d. 1591), and Swithun Wells,John of the Cross,Martyrs of London,Polydore Plasden,Blessed Alphonsus de Orozco,Blessed George Beesley,Blessed John Mason,Blessed Lawrence Humphrey,Blessed Ralph Milner and Roger Dickenson,Blessed Robert Thorpe,Blessed Sidney Hodgson,Blessed William Pike,Alexander Sauli,Paschal Baylon,Blessed Thomas Pormort,Blessed William Patenson,John Boste,Blessed Edward Waterson,Blessed James Bird,Blessed William Davies,Blesseds James Sales and William Saultemouche,Blessed Edward Osbaldeston,Blessed John Carey,Blessed John Cornelius,Blessed John Ingram,Blessed John Speed,Blessed Patrick Salmon,Blessed Thomas Bosgrave,Blessed William Harrington,Henry Walpole,Philip Howard,Philip Neri,Robert Southwell,William Freeman,Blessed Alexander Rawlins,Blessed William Freeman,Blesseds George Errington,Anthony Dainan,Bonaventure of Miako,Cosmas,Francis of St. Michael,James Kisai,John Soan de Goto,Leo Karasuma,Louis Ibarachi,Martin de Aguirre,Martin Loynaz of the Ascension,Matthias of Meako,Michael Kozaki,Paulo Miki, priest and martyr, and Companions,Peter Baptist,Peter Canisius,Peter Shukeshiko,Peter Sukejiro,Philip of Jesus,Thomas Danki,Thomas Kozaki,Blessed Henry Abbot,Blessed Jose de Anchieta,Blessed Paul of Saint Mary,Blessed Thomas Fulthrop,Blessed Thomas Warcop,Blessed William Andleby,John Jones\\\/Buckley,Blessed Christopher Robinson,Blesseds Peter Snow and Ralph Grimston,Blessed Christopher Wharton,Blessed Edward Thwing (Thweng),Blessed John Grande,John Rigby,Blessed Robert Nutter,Blessed Sebastian Aparicio,Blesseds Thomas Hunt and Thomas Sprott,Blessed Thomas Palasor,Blessed John Talbot",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Genre",
+        "input":" Dance\\\/Song,Contemporary \\\/ \\Burn\\\"\",Rumba \\\/ \\Say Something\\\"\",Jive \\\/ \\Blue Suede Shoes\\\"\",Quickstep \\\/ \\The Ballroom Blitz\\\"\",Samba \\\/ \\Under the Sea\\\"\",Cha-Cha-Cha \\\/ \\I Love It\\\"\",Argentine Tango \\\/ \\1977\\\" Team Freestyle \\\/ \\\"Livin' la Vida Loca\\\"\",Foxtrot \\\/ \\That's It,Viennese Waltz \\\/ \\If I Knew\\\" Jazz \\\/ \\\"Nasty\\\"\",Quickstep \\\/ \\Umbrella\\\" Freestyle \\\/ \\\"Canned Heat\\\" Samba & Quickstep Fusion \\\/ \\\"Sir Duke\\\"\"",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Scientist",
+        "input":" Jean Delay (France),Jean Delay (France),D. Ewen Cameron (Canada),Juan J. L\u00c3\u00b3pez-Ibor (Spain),Howard Rome (USA),Pierre Pichot (France),Costas Stefanis (Greece),Jorge A. Costa e Silva (Brazil),Felice Lieh-Mak (Hong Kong),Norman Sartorius (Switzerland),Juan J. L\u00c3\u00b3pez-Ibor, Jr. (Spain),Ahmed Okasha (Egypt),Juan Mezzich (Peru),Mario Maj (Italy),Pedro Ruiz (USA),Dinesh Bhugra (U.K.)",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Scientist",
+        "input":" Manson Benedict,Norbert Wiener,Gordon S. Brown,Martin Julian Buerger,Morris Cohen,Charles S. Draper,Harold Eugene \\Doc\\\" Edgerton\",Herman Feshbach,Edwin R. Gilliland,Hermann Anton Haus,Arthur von Hippel,Arthur Thomas Ippen,Roman O. Jakobson,Gy\u00c3\u00b6rgy Kepes,Norman Levinson,Francis E. Low,Franco Modigliani,Philip Morrison,Walle J. H. Nauta,Walter A. Rosenblith,Bruno Rossi,Paul Samuelson,Francis O. Schmitt,Nevin S. Scrimshaw,Ascher H. Shapiro,John C. Slater,Cyril S. Smith,Carl R. Soderberg,Charles H. Townes,John S. Waugh,Victor Weisskopf,Jerome Wiesner,Jerrold R. Zacharias,Chia-Chiao Lin",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Book",
+        "input":" Colonel Sun (1968),Licence Renewed (1981),For Special Services (1982),Icebreaker (1983),Role of Honour (1984),Nobody Lives for Ever (1986),No Deals, Mr. Bond (1987),Scorpius (1988),Win, Lose or Die (1989),Brokenclaw (1990),The Man from Barbarossa (1991),Death is Forever (1992),Never Send Flowers (1993),SeaFire (1994),COLD (1996),\\Blast From the Past\\\" (1997)\",Zero Minus Ten (1997),The Facts of Death (1998),\\Midsummer Night's Doom\\\" (1999)\",High Time to Kill (1999),\\Live at Five\\\" (1999)\",DoubleShot (2000),Never Dream of Dying (2001),The Man with the Red Tattoo (2002),Devil May Care (2008),Carte Blanche (2011),Solo (2013),Trigger Mortis (2015)",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mayor",
+        "input":" Petar Alberti,Antun Sarti,Nikola Ivuli\u00c4\\u0087,Petar Alberti,Josip Cindro",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"City",
+        "input":" London (England),Karlsruhe (Germany),The Hague (Netherlands),Lahti (Finland),Akita (Japan),Duisburg (Germany),Kaohsiung (Taiwan),Cali (Colombia)",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Newspaper",
+        "input":" The Macarthur advertiser,Macarthur chronicle,Macarthur Chronicle,Macarthur Chronicle Camden Edition,Macarthur Chronicle Campbelltown Edition,Macarthur Chronicle Wollondilly Edition,The Macksville elevator,The Macleay Argus[25],The Macleay argus and Macleay chronicle : special flood issue,The Macleay Chronicle,Macleay district advertiser,The Macleay herald,The Magnet & the voice,Magnet : Merimbula, Eden, Pambula, Tura Beach,Mailbox shopper,The Maitland advertising medium,The Maitland Daily Mercury,The Maitland ensign,The Maitland herald,The Maitland mail,The Maitland Mercury and Hunter River General Advertiser,The Maitland Mercury,The Maitland post,The Maitland Weekly Mercury,The Maitland weekly post,The Maltese herald,The Manaro Mercury, and Cooma and Bombala Advertiser,Manilla express,Manly Daily[27],Manly gazette and Pittwater express,Manly news,The Manning and Hastings advocate,The Manning River chronicle,The Manning River independent and advocate of native industries,The Manning River news and advocate for the Northern Coast districts of New South Wales,Manning River News,Manning River Times,Manning Times,The Manning River times and advocate for the northern coast districts of New South Wales,Marrickville Dulwich times,The Marrickville express and Dulwich Hill record,Marrickville free press,Marulan & district times,The Mayfield messenger,Menai-Revesby express,The Mendooran and Merrygoen news,The mercury,The Mercury news-pictorial,Merimbula News Weekly,The Merriwa & Cassilis news,The Merriwa & Cassilis standard,The Messenger,The Methodist,The Methodist and Congregationalist,The Metropolitan,Metropolitan independent,Mid coast observer,The Middle East herald,Midstate observer,Midweek Xpress : Albury Wodonga's weekly free newspaper,The Million,Millthorpe post,The Millthorpe post,Milton Ulladulla advertiser,Milton-Ulladulla Express,Milton Ulladulla times,The Miner and general advertiser,Miners Advocate and Northumberland Recorder,The Mining Record and Grenfell General Gdvertiser,Mirage News,The Mirror of Australia,The Mirror,The Mittagong argus,The Mittagong express,The Mittagong star,Moama Echuca free press,Molong Argus,Molong Express and Western District Advertiser,The Monaro post : the independent paper of the Monaro and surrounding regions,The Monitor,Monthly chronicle,Moree Champion,The Moree Examiner and General Advertiser,Moree Gwydir Examiner and General Advertiser,The Moree news,The Morning Chronicle,The Morpeth and East Maitland want and Hunter River district guardian,The Morpeth gazette and Hunter River district guardian,The Morpeth leader and East and West Maitland gazette,Morpeth times and Hunter Valley representative,The Moruya advertiser,Moruya examiner,Moruya examiner,The Moruya examiner : incorporating \\Bay post\\\" and \\\"Braidwood dispatch\\\"\",The Moruya liberal,The Moruya-Tilba times,Moruya Times and South Coast Journal,Mosman Daily[28],The Mosman and lower North Shore daily,Mosman daily news pictorial,The Mosman mail,The Mosman, Neutral and Middle Harbour resident,Moss Vale post,The Moss Vale record,The Moulamein times,The Mountain Daily,The Mountain gazette,The Mountaineer (Katoomba),Mount Druitt \u00e2\\u0080\\u0093 St. Marys Standard,Mudgee guardian and Gulgong advertiser,Mudgee guardian and north-western representative,The Mudgee Guardian and The Weekly,The Mudgee independent,The Mudgee liberal,Mudgee mail,Mudgee newspaper and mining register,The Mudgee times,Mullumbimby Brunswick Valley advocate,Mullumbimby Star,Mullumbimby Star and Byron Bay-Bangalow Advocate,The Mungindi news, NS Wales Queensland border record,Murray & Hume times,The Murrumbidgee Irrigator,Murrumburrah signal and County of Harden advocate,The Murrurundi Times and Liverpool Plains Gazette,The Muswellbrook Chronicle and Upper Hunter advertiser,mX[29],Myall Coast nota",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Airport",
+        "input":" Helsinki Airport,Copenhagen Airport,Oslo Airport,Stockholm Arlanda Airport,Keflav\u00c3\u00adk International Airport,G\u00c3\u00b6teborg Landvetter Airport,Malm\u00c3\u00b6 Airport,Billund Airport,Turku Airport,Bergen Airport Flesland,\u00c3\\u0096rebro Airport,J\u00c3\u00b6nk\u00c3\u00b6ping Airport,Trondheim Airport V\u00c3\u00a6rnes,Stockholm-V\u00c3\u00a4ster\u00c3\u00a5s Airport,Ume\u00c3\u00a5 Airport,Stavanger Airport Sola,Molde Airport \u00c3 r\u00c3\u00b8,Troms\u00c3\u00b8 Airport Langnes,Sundsvall H\u00c3\u00a4rn\u00c3\u00b6sand Airport,Oulu Airport,Bod\u00c3\u00b8 Airport,Lule\u00c3\u00a5 Airport,Mariehamn Airport,Reykjav\u00c3\u00adk Airport,Visby Airport,\u00c3 lesund Airport Vigra,Karlstad Airport,Kirkenes Airport H\u00c3\u00b8ybuktmoen,Vagar Airport,Svalbard Airport Longyear,Harstad\\\/Narvik Airport Evenes,Lapland Airport,Kiruna Airport,Akureyri International Airport,Alta Airport,Tampere-Pirkkala Airport,Lakselv Airport Banak,Torp Sandefjord Airport,Bromma Stockholm Airport,Kristiansand Airport Kjevik,Vads\u00c3\u00b8 Airport,Stockholm Skavsta Airport,Mosj\u00c3\u00b8en Airport Kj\u00c3\u00a6rstad,Sandnessj\u00c3\u00b8en Airport Stokka,Br\u00c3\u00b8nn\u00c3\u00b8ysund Airport Br\u00c3\u00b8nn\u00c3\u00b8y,Haugesund Airport Karm\u00c3\u00b8y,Hammerfest Airport,Kristiansund Airport Kvernberget,Egilssta\u00c3\u00b0ir International Airport,Leknes Airport,Mo i Rana Airport R\u00c3\u00b8ssvoll,Svolv\u00c3\u00a6r Airport Helle,Rovaniemi Airport,R\u00c3\u00b8ros Airport,Kuopio Airport,Esbjerg Airport,\u00c3\\u008Dsafj\u00c3\u00b6r\u00c3\u00b0ur Airport,Aalborg Airport,\u00c3 re \u00c3\\u0096stersund Airport,Norrk\u00c3\u00b6ping Airport,Vestmannaeyjar Airport,\u00c3\\u0096rnsk\u00c3\u00b6ldsvik Airport,Bardufoss Airport,Flor\u00c3\u00b8 Airport,B\u00c3\u00a5tsfjord Airport,Stokmarknes Airport Skagen,F\u00c3\u00b8rde Airport Bringeland,Kajaani Airport,Honningsv\u00c3\u00a5g Airport Valan,B\u00c3\u00adldudalur Airport,Vopnafj\u00c3\u00b6r\u00c3\u00b0ur Airport,Joensuu Airport,\u00c3\\u0098rsta-Volda Airport Hovden,Berlev\u00c3\u00a5g Airport,V\u00c3\u00a6r\u00c3\u00b8y Heliport,Hasvik Airport,Namsos Airport,Mehamn Airport,Hornafj\u00c3\u00b6r\u00c3\u00b0ur Airport,Kemi-Tornio Airport,Vard\u00c3\u00b8 Airport Svartnes,Narvik Airport Framnes,R\u00c3\u00b8st Airport,Sogndal Airport Hauk\u00c3\u00a5sen,Sandane Airport Anda,Kokkola-Pietarsaari Airport,R\u00c3\u00b8rvik Airport Ryum,Stord Airport S\u00c3\u00b8rstokken,And\u00c3\u00b8ya Airport Andenes,Vaasa Airport,Bornholm Airport,Ronneby Airport,Aarhus Airport,Lycksele Airport,Jyv\u00c3\u00a4skyl\u00c3\u00a4 Airport,Kittil\u00c3\u00a4 Airport,S\u00c3\u00b8rkjosen Airport,Halmstad City Airport,H\u00c3\u00b6ga Kusten Airport,Karup Airport",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"VideoGame",
+        "input":" EGAint[34],Lockjaw,Blockout,Tetris 2,Frac4D[35],Quadrapassel (Formerly Gnometris),KBlocks,Wordtris,La Bastille,Tetris 1D[39],Tetris Grand Master 3,NullpoMino,Not Tetris,Twitch Plays Tetris",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Scientist",
+        "input":" John Herschel,James Sylvester,John Newport Langley,Charles Pritchard,Arthur Schuster,Percy MacMahon,William Burnside,Augustus Love,William Mitchinson Hicks,Grafton Elliot Smith,William Johnson Sollas,Joseph Larmor,William Rivers,William Bateson,Frederick Blackman,Albert Seward,John Edward Marr,Patrick Laidlaw,Alfred Harker,Paul Dirac,William Topley,Harold Jeffreys,Edward Appleton,Frederic Bartlett,Nevill Mott,John Cockcroft,W. V. D. Hodge,Rudolf Peierls,Raymond Lyttleton,Frank Yates,Joseph Hutchinson,Charles Oatley,Frederick Sanger,Fred Hoyle,Abdus Salam,Roger Penrose,Eric Denton,Robert Hinde,Christopher Dobson",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mayor",
+        "input":" William Carr Lane,Daniel Page,John W. Johnson,John Fletcher Darby,Wilson Primm,William Carr Lane,John Fletcher Darby,John D. Daggett,George Maguire,John Wimer,Bernard Pratte,Peter G. Camden,Bryan Mullanphy,John Krum,James G. Barry,Luther Martin Kennett,John How,Washington King,John How,John Wimer,Oliver Filley,Daniel G. Taylor,Chauncey Filley,Ferdinand W. Cronenbold,James Thomas,Nathan Cole,Joseph Brown,Arthur Barret,Herman Rechtien,James H. Britton,Henry Overstolz,William L. Ewing,David R. Francis,George W. Allen,Edward A. Noonan,Cyrus Walbridge,Henry Ziegenhein,Rolla Wells,Frederick Kreismann,Henry Kiel,Victor J. Miller,Bernard F. Dickmann,William D. Becker,Aloys P. Kaufmann,Joseph Darst,Raymond Tucker,Alfonso Cervantes,John Poelker,James F. Conway,Vincent C. Schoemehl,Freeman Bosley, Jr.,Clarence Harmon,Francis G. Slay",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Newspaper",
+        "input":" Adresseavisen,Aftenposten,Agder,Agderposten,Akershus Amtstidende (\\Amta\\\")\",And\u00c3\u00b8yposten,Ask\u00c3\u00b8yv\u00c3\u00a6ringen,Avisa Nordland,Bergens Tidende,Bergensavisen,Bladet Troms\u00c3\u00b8,Bladet Vester\u00c3\u00a5len,Bondebladet,Br\u00c3\u00b8nn\u00c3\u00b8ysunds avis,Budstikka,Dag og Tid,Dagbladet,Dagen,Dagens N\u00c3\u00a6ringsliv,Dagsavisen,Dalane Tidende,Demokraten,Drammens Tidende,Driva,Enebakk Avis,Fanaposten,Finnmark Dagblad,Finnmarken,Firda,Firda Tidend,Firdaposten,Fiskaren,Fiskeribladet,Fjordabladet,Fjordenes Tidende,Fjordingen,Fjuken,Framtid i nord,Fredriksstad Blad,Fremover,Friheten,F\u00c3\u00a6drelandsvennen,Gjesdalbuen,Gl\u00c3\u00a5mdalen,Grannar,Gudbrandsd\u00c3\u00b8len Dagningen,Halden Arbeiderblad,Hallingd\u00c3\u00b8len,Hamar Arbeiderblad,Hamar Dagblad,Harstad Tidende,Haugesunds Avis,Helgeland Arbeiderblad,Indre Akershus Blad,Jarlsberg Avis,J\u00c3\u00a6rbladet,Klassekampen,Koordinatoren,Kvinnheringen,Laagendalsposten,Levanger-Avisa,Lofotposten,Lofot-Tidende,Magazinet,Morgenbladet,Moss Avis,Moss Dagblad,M\u00c3\u00b8re-Nytt,Nationen,Nettavisen,Nordlys,Norge Idag,Ny Tid,Nye Troms,Opdalingen,Oppland Arbeiderblad,Panorama.no,Porsgrunns Dagblad,Rana Blad,Ringerikes Blad,Rjukan Arbeiderblad,Rogalands Avis,Romerikes Blad,Romsdals Budstikke,Saltenposten,Sandefjords Blad,Sarpsborg Arbeiderblad,Sogn Avis,Stavanger Aftenblad,Strandbuen,Sunnhordland,Sunnm\u00c3\u00b8rsposten,Svalbardposten,Telemarksavisa,The Foreigner,The Oslo Times,Tidens Krav,TradeWinds,Troms Folkeblad,Tr\u00c3\u00b8nder-Avisa,Tysv\u00c3\u00a6r Bygdeblad,T\u00c3\u00b8nsbergs Blad,Upstream,Varden,Varingen,VG,Vest-Telemark Blad,Vesteraalens Avis,VestNytt,V\u00c3\u00a5rt Land,\u00c3\\u0098stkantavisa,\u00c3\\u0098stlandets Blad,\u00c3\\u0098stlands-Posten,\u00c3\\u0098stlendingen",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Wrestler",
+        "input":" So Sim-hyang North Korea (PRK),Lyudmyla Balushka Ukraine (UKR),Oleksandra Kohut Ukraine (UKR),Yuri Kai Japan (JPN),Alena Filipava Belarus (BLR),Tonya Verbeek Canada (CAN),Marianna Sastin Hungary (HUN),Hanna Vasylenko Ukraine (UKR),Yelena Shalygina Kazakhstan (KAZ),Justine Bouchard Canada (CAN),Ifeoma Iheanacho Nigeria (NGR),Badrakhyn Odonchimeg Mongolia (MGL),Maider Unda Spain (ESP),Stanka Zlateva Bulgaria (BUL)",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Airport",
+        "input":" Commercial service \u00e2\\u0080\\u0093 primary airports,Bismarck Municipal Airport,Dickinson Theodore Roosevelt Regional Airport,Hector International Airport,Grand Forks International Airport,Minot International Airport,Sloulin Field International Airport,Commercial service \u00e2\\u0080\\u0093 nonprimary airports,Devils Lake Regional Airport (Knoke Field),General aviation airports,Beach Airport,Bottineau Municipal Airport,Bowman Municipal Airport,Cando Municipal Airport,Carrington Municipal Airport,Casselton Robert Miller Regional Airport,Cavalier Municipal Airport,Cooperstown Municipal Airport,Crosby Municipal Airport,International Peace Garden Airport,Edgeley Municipal Airport,Ellendale Municipal Airport,Standing Rock Airport,Garrison Municipal Airport,Glen Ullin Regional Airport,Grafton Municipal Airport (Hutson Field),Gwinner-Roger Melroe Field,Harvey Municipal Airport,Mercer County Regional Airport,Hettinger Municipal Airport,Hillsboro Municipal Airport,Jamestown Regional Airport,Kenmare Municipal Airport,Hamry Field,LaMoure Rott Municipal Airport,Lakota Municipal Airport,Robertson Field,Linton Municipal Airport,Lisbon Municipal Airport,Mandan Municipal Airport,Mohall Municipal Airport,Mott Municipal Airport,Northwood Municipal Airport (Vince Field),Oakes Municipal Airport,Park River Airport (W.C. Skjerven Field),Parshall-Hankins Airport,Pembina Municipal Airport,Rolla Municipal Airport,Rugby Municipal Airport,Stanley Municipal Airport,Tioga Municipal Airport,Barnes County Municipal Airport,Harry Stern Airport,Walhalla Municipal Airport,Washburn Municipal Airport,Watford City Municipal Airport,Other public-use airports (not listed in NPIAS),Arthur Airport,Ashley Municipal Airport,Beulah Airport,Bowbells Municipal Airport,Columbus Municipal Airport,Drayton Municipal Airport,Elgin Municipal Airport,Sky Haven Airport,West Fargo Municipal Airport,Fessenden Municipal Airport,Gackle Municipal Airport,Grenora Centennial Airport,Hazelton Municipal Airport,Weydahl Field,Kulm Municipal Airport (opened 2009, replacing Pruetz Municipal),Larimore Municipal Airport,Leeds Municipal Airport,Lidgerwood Municipal Airport,Maddock Municipal Airport,Mayville Municipal Airport,McClusky Municipal Airport,McVille Municipal Airport,Milnor Municipal Airport,Minto Municipal Airport,Napoleon Municipal Airport,Tomlinson Field,New Town Municipal Airport,Page Regional Airport,Trulson Field,Richardton Airport,Garrison Dam Recreational Airpark,Rolette Airport,St. Thomas Municipal Airport,Towner Municipal Airport,Turtle Lake Municipal Airport,Westhope Municipal Airport,Wishek Municipal Airport,Other military airports,Grand Forks Air Force Base,Minot Air Force Base,Notable former airports,Pruetz Municipal Airport (closed 2009, replaced by Kulm Municipal),Wimbledon Airport (closed 2001-2003) [1]",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"AcademicJournal",
+        "input":" Copeia,Journal of Applied Ichthyology,Ichthyological Bulletin",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Country",
+        "input":" Czech Republic (Bares),Sweden (Edin)",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"City",
+        "input":" Augusta,Falmouth,Louisa",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Saint",
+        "input":" St. Justin, Martyr, Teacher of the Faith,Martyrs of Lyon,Martyrs of Uganda and Janani Luwum, Archbishop, Martyr,St. John XXIII, Bishop, Reformer,St. Boniface, Archbishop, Martyr,William Grant Broughton, Bishop,St. Columba, Abbot, Missionary,St. Barnabas the Apostle,Joseph Butler, Bishop, Teacher of the Faith,Bernard Mizeki, Catechist, Martyr,St. Alban, Martyr,Nativity of St. John the Baptist,St. Irenaeus, Bishop, Teacher of the Faith,St. Peter and St. Paul, Apostles",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"AcademicJournal",
+        "input":" Agronomy Journal,Agronomie,Agronomy for Sustainable Development,American Journal of Potato Research,Australian Journal of Grape and Wine Research,The Biology of Canadian Weeds,British Sugar Beet Review,Cereal Research Communications,Cereal Chemistry,Ceiba,Crop Protection (journal),Crop Science (journal),Davidsonia,Economic Botany,Erwerbs-Obstbau,Euphytica,European Journal of Agronomy,European Journal of Horticultural Science,Field Crops Research,Genetic Resources and Crop Evolution,Grass and Forage Science,Hilgardia,The Horticulturist,Horticultural Reviews,Industrial Crops and Products,Invasive Plant Science and Management,Journal of Agronomy and Crop Science,Journal of Applied Horticulture,Journal of Bamboo and Rattan,Journal of Cereal Science,Journal of Horticultural Science and Biotechnology,Journal of Fruit and Ornamental Plant Research,Journal of plant nutrition and soil science,Journal of Plant Registrations,Journal of the American Society of Horticulture,Molecular Breeding,PHM,Plant and Soil,Plant Breeding (journal),Postharvest Biology and Technology,Potato Research,Rice,Rice Science,Scientia Horticulturae,Weed Biology and Management,Weed Research,Weed Science,Weed Technology",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"AcademicJournal",
+        "input":" Trends in Biochemical Sciences (TIBS),Trends in Biotechnology (TiBTech),Trends in Cancer (TiC),Trends in Cell Biology,Trends in Cognitive Sciences (TiCS),Trends in Ecology & Evolution (TREE),Trends in Endocrinology and Metabolism (TEM),Trends in Genetics (TIG),Trends in Immunology (TIM), formerly Immunology Today,Trends in Microbiology (TIMI),Trends in Molecular Medicine (TMM), formerly Molecular Medicine Today,Trends in Neurosciences (TINS),Trends in Parasitology (TiP) -- formerly Parasitology Today,Trends in Pharmacological Sciences (TIPS),Trends in Plant Science",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"AcademicJournal",
+        "input":" Albany Business Review,Albuquerque Business First,Atlanta Business Chronicle,Austin Business Journal,Baltimore Business Journal,Birmingham Business Journal,Boston Business Journal,Buffalo Business First,Charlotte Business Journal,Chicago Business Journal,Cincinnati Business Courier,Columbus Business First,Dallas Business Journal,Dayton Business Journal,Denver Business Journal,Triad Business Journal,Pacific Business News,Houston Business Journal,Jacksonville Business Journal,Kansas City Business Journal,L.A. Biz,Business First of Louisville,Memphis Business Journal,Milwaukee Business Journal,Minneapolis \\\/ St. Paul Business Journal,Nashville Business Journal,Orlando Business Journal,Philadelphia Business Journal,Phoenix Business Journal,Pittsburgh Business Times,Portland Business Journal,Puget Sound Business Journal,Triangle Business Journal,Sacramento Business Journal,St. Louis Business Journal,San Antonio Business Journal,San Francisco Business Journal,Silicon Valley \\\/ San Jose Business Journal,South Florida Business Journal,Tampa Bay Business Journal,Washington Business Journal,Wichita Business Journal",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Book",
+        "input":" Zatadawbon Yazawin,Maha Yazawin,Yazawin Thit and Hmannan Yazawin,Hmannan adjusted",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Lake",
+        "input":" Caniapiscau Reservoir[9],Robert-Bourassa Reservoir[9],La Grande-3 Reservoir[10],Lac Mistassini,Manicouagan Reservoir[9],Gouin Reservoir,Lac a l'Eau-Claire,Laforge-1 Reservoir,Lake Champlain,Lac Bienville,Lac Saint-Jean,Opinaca Reservoir,Pipmuacan Reservoir,Lake Abitibi,Lake Minto,Lac Guillaume-Delisle[11],Cabonga Reservoir,Outardes-4 Reservoir[9],Eastmain Reservoir,Lake Manouane,Lacs des Loups Marins,Lake Evans,Lac Sakami,Lac Payne,Lac aux Feuilles,Lake Albanel,Baskatong Reservoir,Dozois Reservoir",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Monarch",
+        "input":" George Tupou I 1875\u00e2\\u0080\\u00931893,George Tupou II 1893\u00e2\\u0080\\u00931918,S\u00c4\\u0081lote Tupou III 1918\u00e2\\u0080\\u00931965,T\u00c4\\u0081ufa\u00ca\u00bbahau Tupou IV 1965\u00e2\\u0080\\u00932006,George Tupou V 2006\u00e2\\u0080\\u00932012,Tupou VI 2012\u00e2\\u0080\\u0093present",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mountain",
+        "input":" Pizzo Coca,Corno Stella,Pizzo Recastello,Monte Legnone,Pizzo Tre Signori,Pizzo Arera,Presolana,Pizzo Camino,Grigna,Monte Resegone,Canto Alto",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Wrestler",
+        "input":" X-Pac (hair),Sting (career),Jeff Jarrett (career)",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Scientist",
+        "input":" Michel Condomines,Marc Chaussidon,Ken Farley,Terry Plank,Eric Hauri,Gleb Prokorvsky,Jess Atkins,Albert Galy,Mark E. Hodson,James Badro,Steve Parman,Nicolas Dauphas,Nathan Yee,Karim Benzerara,Maud Boyet,Fr\u00c3\u00a9d\u00c3\u00a9ric Moynier,James Day,Liping Qin,Caroline Peacock",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Writer",
+        "input":" Charles Shadwell,Samuel Richardson,Elizabeth Barrett Browning,Eliza Pope,M. Bryant,John Charles Tarver,Winifred Phelps,David R. Slavitt (Henry Sutton),Stanley Cook, William J. Sullivan, Fred Moramarco",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"PoliticalParty",
+        "input":" Liberal,Progressive Conservative,Co-operative Commonwealth,Labor\u00e2\\u0080\\u0093Progressive",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Book",
+        "input":" Psalms,Deuteronomy,1 Enoch,Genesis,Isaiah,Jubilees,Exodus,Leviticus,Numbers,Minor Prophets,Daniel,Jeremiah,Ezekiel,Job,Tobit,1 & 2 Kings,1 & 2 Samuel,Judges,Song of Songs (Canticles),Ruth,Lamentations,Sirach,Ecclesiastes,Joshua",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Currency",
+        "input":" \u00e2\\u0080\\u0089United States dollar,\u00e2\\u0080\\u0089Euro,\u00e2\\u0080\\u0089Japanese yen,\u00e2\\u0080\\u0089Pound sterling,\u00e2\\u0080\\u0089Australian dollar,\u00e2\\u0080\\u0089Swiss franc,\u00e2\\u0080\\u0089Canadian dollar,\u00e2\\u0080\\u0089Mexican peso,\u00e2\\u0080\\u0089Chinese yuan,\u00e2\\u0080\\u0089New Zealand dollar,\u00e2\\u0080\\u0089Swedish krona,\u00e2\\u0080\\u0089Russian ruble,\u00e2\\u0080\\u0089Hong Kong dollar,Norwegian krone,\u00e2\\u0080\\u0089Singapore dollar,\u00e2\\u0080\\u0089Turkish lira,South Korean won,South African rand,Brazilian real,Indian rupee",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Bird",
+        "input":" Belted kingfisher",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Genre",
+        "input":" Dance\\\/Song,Viennese Waltz\\\/\\I'll Be\\\"\",Jive\\\/\\Best Damn Thing\\\"\",Quickstep\\\/\\Hot Honey Rag\\\"\",Tango\\\/\\Wait a Minute\\\"\",Rumba\\\/\\I Don't Want to Miss a Thing\\\"\",Samba\\\/\\Hey Mama\\\" Swing\\\/\\\"In the Mood\\\"\",Argentine Tango\\\/\\Bust Your Windows\\\" Team Cha-Cha-Cha\\\/\\\"Holiday\\\"\",Waltz\\\/\\Open Arms\\\" Futuristic Cha-Cha-Cha\\\/\\\"Bulletproof\\\"\",Foxtrot\\\/\\I've Got the World on a String\\\" Paso Doble\\\/\\\"Bring Me to Life\\\"\",Viennese Waltz\\\/\\Piano Man\\\" Freestyle\\\/\\\"Footloose\\\" Argentine Tango\\\/\\\"Bust Your Windows\\\" Quickstep\\\/\\\"I Want You To Want Me\\\"\"",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"University",
+        "input":" Arizona State[15],Cornell[16],TCNJ[17],Boston University[18],UC Berkeley[19],UCLA[20],Wesleyan University[21],Frostburg[22],DePaul[23],Carnegie-Mellon[24],U. Minnesota[25],U. Florida[26],U. Delaware[27][28],U. Georgia [29],Bucknell[30],Haverford [31],Lehigh[32],Stanford[33],Emory[34],U. Michigan[35],U. Texas-Austin[36],Pomona[37],Vanderbilt[38],Rice[39],Notre Dame[40],Purdue[41],SUNY-Binghamton[42],Reed[43],Swarthmore[44],Harvard[45],Allegheny[46],Gettysburg[47],U. Arkansas[48],BYU[49],U. Oklahoma[50],Colgate[51]",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mountain",
+        "input":" Mangerton Mountain,Knockboy,Crohane,Knocknamanagh,Carran,Peakeen Mountain,Torc Mountain,Knockanaguish,Coomagearlahy,Bennaunmore,Cappanlivane",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Building",
+        "input":" Helion Lodge",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"City",
+        "input":" Auckland,Vancouver, British Columbia,Cardiff,Perth, Western Australia,Kingston,Edinburgh,Christchurch,Edmonton, Alberta,Brisbane, Queensland,Edinburgh,Auckland,Victoria, British Columbia,Kuala Lumpur,Manchester,Melbourne, Victoria,Delhi,Glasgow,Gold Coast, Queensland",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"University",
+        "input":" Luoyuan Academy (Chinese: \u00e6\u00b3\u00ba\u00e6\u00ba\\u0090\u00e4\u00b9\u00a6\u00e9\\u0099\u00a2; pinyin: Luoyu\u00c3\u00a1n Sh\u00c5\u00abyu\u00c3 n),Tengchow College of Liberal Arts (Chinese: \u00e7\\u0099\u00bb\u00e5\u00b7\\u009E\u00e6\\u0096\\u0087\u00e4\u00bc\\u009A\u00e9\u00a6\\u0086; pinyin: D\u00c4\\u0093ngzh\u00c5\\u008Du W\u00c3\u00a9nhu\u00c3\u00ac Gu\u00c7\\u008En),Tsingchow Boy\u00e2\\u0080\\u0099s Boarding School (Chinese: \u00e5\u00bb\u00a3\u00e5\u00be\u00b7\u00e6\\u009B\u00b8\u00e9\\u0099\u00a2; pinyin: Gu\u00c7\\u008Engd\u00c3\u00a9 Sh\u00c5\u00abyu\u00c3 n),Arts College at Weixian Chinese: \u00e6\u00bd\\u008D\u00e5\\u008E\u00bf\u00e5\u00b9\u00bf\u00e6\\u0096\\u0087\u00e5\u00ad\u00a6\u00e5 \\u0082; pinyin: W\u00c3\u00a9ixi\u00c3 n Gu\u00c7\\u008Engw\u00c3\u00a9n Xu\u00c3\u00a9t\u00c3\u00a1ng,Theological College at Qingzhou Chinese: \u00e9\\u009D\\u0092\u00e5\u00b7\\u009E\u00e5 \u00b1\u00e5\\u0090\\u0088\u00e7\u00a5\\u009E\u00e9\\u0081\\u0093\u00e5\u00ad\u00a6\u00e5 \\u0082; pinyin: Q\u00c4\u00abngzh\u00c5\\u008Du G\u00c3\u00b2ngh\u00c3\u00a9 Sh\u00c3\u00a9nd\u00c3 o Xu\u00c3\u00a9t\u00c3\u00a1ng,Medical College Chinese: \u00e6\u00b5\\u008E\u00e5\\u008D\\u0097\u00e5 \u00b1\u00e5\\u0090\\u0088\u00e5\\u008C\u00bb\u00e9\\u0081\\u0093\u00e5\u00ad\u00a6\u00e5 \\u0082; pinyin: J\u00c3\u00acn\u00c3\u00a1n G\u00c3\u00b2ngh\u00c3\u00a9 Y\u00c4\u00abd\u00c3 o Xu\u00c3\u00a9t\u00c3\u00a1ng,Shandong Imperial University (Chinese: \u00e5\u00b1\u00b1\u00e4\u00b8\\u009C\u00e5\u00a4\u00a7\u00e5\u00ad\u00a6\u00e5 \\u0082; pinyin: Sh\u00c4\\u0081nd\u00c5\\u008Dng D\u00c3 xu\u00c3\u00a9 T\u00c3\u00a1ng),Shandong Institution of Higher Learning (Chinese: \u00e5\u00b1\u00b1\u00e4\u00b8\\u009C\u00e9\u00ab\\u0098\u00e7\u00ad\\u0089\u00e5\u00ad\u00a6\u00e5 \\u0082; pinyin: Sh\u00c4\\u0081nd\u00c5\\u008Dng G\u00c4\\u0081od\u00c4\\u009Bng Xu\u00c3\u00a9t\u00c3\u00a1ng),Cheeloo University\\\/Shantung Protestant University (later renamed to Shantung Christian University, Chinese: \u00e9\u00bd\\u0090\u00e9\u00b2\\u0081\u00e5\u00a4\u00a7\u00e5\u00ad\u00a6; pinyin: Q\u00c3\u00adl\u00c5\u00ad D\u00c3 xu\u00c3\u00a9),Advanced School of Special Sciences of a Special Type (Hochschule f\u00c3\u00bcr Spezialwissenschaften mit besonderem Charakter, Chinese: \u00e7\\u0089\u00b9\u00e5\\u0088\u00ab\u00e9\u00ab\\u0098\u00e7\u00ad\\u0089\u00e4\u00b8\\u0093\u00e9\\u0097\u00a8\u00e5\u00ad\u00a6\u00e5 \\u0082; pinyin: T\u00c3\u00a8bi\u00c3\u00a9 G\u00c4\\u0081od\u00c4\\u009Bng Zhu\u00c4\\u0081nm\u00c3\u00a9n Xu\u00c3\u00a9t\u00c3\u00a1ng),School of Higher Learning (Chinese: \u00e5\u00b1\u00b1\u00e4\u00b8\\u009C\u00e9\u00ab\\u0098\u00e7\u00ad\\u0089\u00e5\u00ad\u00a6\u00e6 \u00a1; pinyin: Sh\u00c4\\u0081nd\u00c5\\u008Dng G\u00c4\\u0081od\u00c4\\u009Bng Xu\u00c3\u00a9xi\u00c3 o),Shandong Provincial Law and Politics College,Shandong Provincial Industrial College,Shandong Provincial Commercial College,Shandong Provincial Medical College,Shandong Provincial College of Mineralogy,Qingdao University,Shandong Provincial University (Chinese: \u00e7\\u009C\\u0081\u00e7\u00ab\\u008B\u00e5\u00b1\u00b1\u00e4\u00b8\\u009C\u00e5\u00a4\u00a7\u00e5\u00ad\u00a6; pinyin: Sh\u00c4\\u009Bngl\u00c3\u00ac Sh\u00c4\\u0081nd\u00c5\\u008Dng D\u00c3 xu\u00c3\u00a9),National Shandong University (simplified Chinese: \u00e5\\u009B\u00bd\u00e7\u00ab\\u008B\u00e5\u00b1\u00b1\u00e4\u00b8\\u009C\u00e5\u00a4\u00a7\u00e5\u00ad\u00a6; traditional Chinese: \u00e5\\u009C\\u008B\u00e7\u00ab\\u008B\u00e5\u00b1\u00b1\u00e6\\u009D\u00b1\u00e5\u00a4\u00a7\u00e5\u00ad\u00b8; pinyin: Gu\u00c3\u00b3l\u00c3\u00ac Sh\u00c4\\u0081nd\u00c5\\u008Dng D\u00c3 xu\u00c3\u00a9),University Property Protection Committee of National Shandong University,Huazhong Construction University,Linyi Shandong University,National Shandong University,Huadong (East China) University (Chinese: \u00e5\\u008D\\u008E\u00e4\u00b8\\u009C\u00e5\u00a4\u00a7\u00e5\u00ad\u00a6; pinyin: Hu\u00c3\u00a1d\u00c5\\u008Dng D\u00c3 xu\u00c3\u00a9),Shandong University,Qingdao Medical College,Shandong College of Oceanography (now Ocean University of China, Qingdao),Shandong University (simplified Chinese: \u00e5\u00b1\u00b1\u00e4\u00b8\\u009C\u00e5\u00a4\u00a7\u00e5\u00ad\u00a6; traditional Chinese: \u00e5\u00b1\u00b1\u00e6\\u009D\u00b1\u00e5\u00a4\u00a7\u00e5\u00ad\u00b8; pinyin: Sh\u00c4\\u0081nd\u00c5\\u008Dng D\u00c3 xu\u00c3\u00a9),Liberal Arts Departments are combined with Qufu Teachers College,Department of Biology becomes part of Shandong Agricultural College,Department of Science and the Administration built into Shandong University of Science and Technology,Shandong University,Shandong University, Weihai (satellite campus) (Chinese: \u00e5\u00a8\\u0081\u00e6\u00b5\u00b7\u00e6 \u00a1\u00e5\\u008C\u00ba; pinyin: W\u00c4\\u0093ih\u00c3\u00a1i Xi\u00c3 oq\u00c5\u00ab)",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Company",
+        "input":" Toyota,Dodge,Ford,Chevrolet",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Film",
+        "input":" Audrey Rose,Harper Valley PTA,Featherstone's Nest,Burned at the Stake,The Six of Us,A Killer in the Family,Halloween: The Curse of Michael Myers",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Company",
+        "input":" Honda,Honda,Honda,Chevrolet,Chevrolet",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Film",
+        "input":" Frost\\\/Nixon",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Airport",
+        "input":" Copenhagen Airport,Oslo Airport,Stockholm Arlanda Airport,Helsinki Airport,Bergen Airport Flesland,G\u00c3\u00b6teborg Landvetter Airport,Stavanger Airport Sola,Trondheim Airport V\u00c3\u00a6rnes,Keflav\u00c3\u00adk International Airport,Billund Airport,Bromma Stockholm Airport,Stockholm Skavsta Airport,Malm\u00c3\u00b6 Airport,Troms\u00c3\u00b8 Airport Langnes,Moss Airport Rygge,Torp Sandefjord Airport,Bod\u00c3\u00b8 Airport,Aalborg Airport,Lule\u00c3\u00a5 Airport,\u00c3 lesund Airport Vigra,Kristiansand Airport Kjevik,Ume\u00c3\u00a5 Airport,Oulu Airport,G\u00c3\u00b6teborg City Airport,Haugesund Airport Karm\u00c3\u00b8y,Harstad\\\/Narvik Airport Evenes,Tampere-Pirkkala Airport,Molde Airport \u00c3 r\u00c3\u00b8,Aarhus Airport,Rovaniemi Airport,\u00c3\\u0084ngelholm Helsingborg Airport,\u00c3 re \u00c3\\u0096stersund Airport,Kristiansund Airport Kvernberget,Reykjav\u00c3\u00adk Airport,Alta Airport,Visby Airport,Turku Airport,Vaasa Airport,Kirkenes Airport H\u00c3\u00b8ybuktmoen,Skellefte\u00c3\u00a5 Airport,Sundsvall H\u00c3\u00a4rn\u00c3\u00b6sand Airport,Kuopio Airport,Kittil\u00c3\u00a4 Airport,Vagar Airport,Kiruna Airport,Ronneby Airport,Bardufoss Airport,Bornholm Airport,Flor\u00c3\u00b8 Airport,Kalmar Airport,Akureyri International Airport,V\u00c3\u00a4xj\u00c3\u00b6 Sm\u00c3\u00a5land Airport,Br\u00c3\u00b8nn\u00c3\u00b8ysund Airport Br\u00c3\u00b8nn\u00c3\u00b8y,Hammerfest Airport,Stockholm-V\u00c3\u00a4ster\u00c3\u00a5s Airport,Svalbard Airport Longyear,Ivalo Airport,Karup Airport,Joensuu Airport,\u00c3\\u0098rsta-Volda Airport Hovden,Link\u00c3\u00b6ping City Airport,Halmstad City Airport,Mo i Rana Airport R\u00c3\u00b8ssvoll,Leknes Airport,Stokmarknes Airport Skagen,Karlstad Airport,Norrk\u00c3\u00b6ping Airport,Sandnessj\u00c3\u00b8en Airport Stokka,Esbjerg Airport,\u00c3\\u0096rebro Airport,Lappeenranta Airport,Sogndal Airport Hauk\u00c3\u00a5sen,Egilssta\u00c3\u00b0ir International Airport,J\u00c3\u00b6nk\u00c3\u00b6ping Airport,Vads\u00c3\u00b8 Airport,F\u00c3\u00b8rde Airport Bringeland,Mosj\u00c3\u00b8en Airport Kj\u00c3\u00a6rstad,\u00c3\\u0096rnsk\u00c3\u00b6ldsvik Airport,Kuusamo Airport,Kajaani Airport,Kokkola-Pietarsaari Airport,Svolv\u00c3\u00a6r Airport Helle,Lakselv Airport Banak,And\u00c3\u00b8ya Airport Andenes,Kemi-Tornio Airport,Mariehamn Airport,Arvidsjaur Airport,Jyv\u00c3\u00a4skyl\u00c3\u00a4 Airport,R\u00c3\u00b8rvik Airport Ryum,Sandane Airport Anda,Namsos Airport,S\u00c3\u00b8nderborg Airport,Trollh\u00c3\u00a4ttan-V\u00c3\u00a4nersborg Airport,Lapland Airport,Dala Airport,Skien Airport,\u00c3\\u008Dsafj\u00c3\u00b6r\u00c3\u00b0ur Airport,Kristianstad Airport,Narvik Airport Framnes,Roskilde Airport",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"AcademicJournal",
+        "input":" Canadian Journal of Forest Research,Dendrobiology,Forest Genetic Resources Bulletin,Journal of Dendrology,New Forests,Tree Genetics and Genomes,Tree Physiology,Trees - Structure and Function",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"SportsTeam",
+        "input":" Herbalife Gran Canaria,Khimki",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Bird",
+        "input":" White-collared swift",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Genre",
+        "input":" No program type or undefined,News,Information,Sports,Talk,Rock,Classic rock,Adult hits,Soft rock,Top 40,Country,Oldies,Soft,Nostalgia,Jazz,Classical,Rhythm and blues,Soft rhythm and blues,Language,Religious music,Religious talk,Personality,Public,College,Spanish Talk,Spanish Music,Hip Hop,Unassigned,Unassigned,Weather,Emergency test,Emergency",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"PoliticalParty",
+        "input":" Liberal,Progressive Conservative,New Democratic,Social Credit",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mountain",
+        "input":" Mount Elbert[4][5][6][7],Pikes Peak[172][173][174][175],Blanca Peak[40][41][42]",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Writer",
+        "input":" Grae Cleugh,Abi Morgan,Simon Stephens,Charlotte Eilenberg,Christopher Shinn",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mammal",
+        "input":" Long-tailed goral (\u00ec\\u0082\u00b0\u00ec\\u0096\\u0091),Siberian roe deer (\u00eb \u00b8\u00eb\u00a3\u00a8),Manchurian wapiti (\u00eb\u00b6\\u0089\u00ec\\u009D\\u0080\u00ec\\u0082\u00ac\u00ec\\u008A\u00b4),Manchurian sika deer (\u00eb\\u008C\\u0080\u00eb\u00a5\\u0099\u00ec\\u0082\u00ac\u00ec\\u008A\u00b4),Water deer (\u00ea\u00b3 \u00eb\\u009D\u00bc\u00eb\\u008B\\u0088),Wild boar (\u00eb\u00a9\u00a7\u00eb\\u008F\u00bc\u00ec\u00a7\\u0080),Siberian musk deer (\u00ec\\u0082\u00ac\u00ed\\u0096\u00a5\u00eb \u00b8\u00eb\u00a3\u00a8)",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Saint",
+        "input":" Sarbel and Barbe,Phocas,Evaristus,Zachary,Charbel,Eudokia of Heliopolis,Ignatius of Antioch,Rufus and Zosimus,Simeon of Jerusalem,Hyacinth,Antiochus of Sulcis,Zosimus,Eleuchadius,Publius,Romulus,Flavius Latinus of Brescia,Quirinus of Neuss,Zacchaeus of Jerusalem,Astius,Hermione of Ephesus,Maurus, Pantalemon and Sergius,Thecla,Eustace,Terentian,Pope Alexander I,Secundus of Asti,Seraphia,Getulius and companions,Marcian of Tortona,Matthias of Jerusalem,Symphorosa and her seven sons,Theodora,Faustinus and Jovita,Philetus and companions,Sixtus I,Thamel and Companions,Exuperius and Zoe,Sabina,Quadratus of Athens,Ariadne of Phrygia,Auspicius,Balbina,Calocerus,Crescentian,Papias,Theodore and Pausilippus,Hermes,Juvenal of Benevento,Judas Cyriacus,Ovidius,Herodion of Antioch,Castritian,Telesphorus,Corebus,Eleutherius and Anthia,Oliva of Brescia,Peregrinus,Marina,Hyginus,Julian of Sora,Paternus of Auch,Patiens,Philo and Agathopodes,Novatus,Pius I,Germanicus of Smyrna,Polycarp,Felicitas of Rome and her seven sons,Ptolemaeus and Lucius,Justin Martyr,Abercius of Hieropolis,Pope Anicetus,Daniel of Padua,Pontianus (Pontian),Constantius of Perugia,Hermias,Severinus, Exuperius, and Felician,Thraseas,Dionysius,Apollinaris Claudius,Sagar of Laodicea,Speusippus, Eleusippus, and Melapsippus,Victor and Corona,Alexander,Blandina,Glyceria,Pothinus,Martyrs of Lyons,Pope Soter,Epipodius and Alexander,Concordius,Symphorianus,Hegesippus,Herculanils,Leucius,Melito of Sardis,Philip of Gortyna,Pinytus,Scillitan Martyrs,Theophilus of Antioch,Antoninus,Apollonius the Apologist,Pope Eleuterus,Dathus,Faustus of Milan,Julius of Rome,Dionysius of Vienne,Serapion of Macedonia,Theophilus of Caesarea,Victor I,Liberius of Ravenna,Pantaenus",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Book",
+        "input":" Casino Royale (1953),Live and Let Die (1954),Moonraker (1955),Diamonds Are Forever (1956),From Russia, with Love (1957),Dr. No (1958),Goldfinger (1959),\\From a View to a Kill\\\" (1960)\",\\For Your Eyes Only\\\" (1960)\",\\Quantum of Solace\\\" (1960)\",\\Risico\\\" (1960)\",\\The Hildebrand Rarity\\\" (1960)\",Thunderball (1961),The Spy Who Loved Me (1962),On Her Majesty's Secret Service (1963),You Only Live Twice (1964),The Man with the Golden Gun (1965, posthumously),\\The Living Daylights\\\" (1966,\\The Property of a Lady\\\" (1966,\\Octopussy\\\" (1966,\\007 in New York\\\" (1966",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mountain",
+        "input":" Mount Caubvick[193][194][195] (Mont d'Iberville),Barbeau Peak[118][119][120],Qiajivik Mountain[196][197],Melville Island High Point[198][199],Mathiassen Mountain[200][201],Mount Logan[1][2][3],Mount Odin[158][159][160],Mount Waddington[42][43][44],Melville Hills High Point[202],Keele Peak[152][153][154],Mealy Mountains High Point[203],The Cabox[204][205][206],Mont Yapeitso[207][208][209],Mount Robson[46][47][48],Ulysses Mountain[138][139],Mont Jacques-Cartier[210][211][212],Victoria Island High Point[213],South Ellesmere Ice Cap High Point[169],Manuel Peak[214][215],Mount Ratz[124][125][126],Cap Mountain[216][217][218],Outlook Peak[145][146][147],Devon Ice Cap High Point[185][186],Howson Peak[219][220][221],Fox Mountain[222][223][224],Mount Frank Rae[225][226][227],Mount Nirvana[228][229],Durham Heights[230][231],Kisimngiuqtuq Peak[232][233],Mount Moresby[234][235][236],Mount Raoul Blanchard[237][238][239],Fairweather Mountain[18][19][20] (Mount Fairweather),Mount Macdonald[240][241],Mont Veyrier[242][243][244],Grey Hunter Peak[245][246][247],Mount Columbia[61][62][63],Skihist Mountain[121][122][123],Golden Hinde[148][149][150],White Hill[248][249][250],Simpson Peak[251][252][253],Angilaaq Mountain[182][183][184],Mount Crysdale[254][255],Mount Assiniboine[72][73],Peak 39-18[256],Devils Paw[257][258][259],Mount Carleton[260][261][262],Mount Jancowski[163][164][165],Sentinel Peak[263][264][265],Shedin Peak[266][267][268],Fleet Peak[269][270][271][272]",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Company",
+        "input":" Glasgow and South Western Railway Line Name,Caledonian Railway Line Name,Caledonian and Glasgow & South Western Railways Line Name,British Rail Line Name,London, Midland and Scottish Railway Line Name,London and North Eastern Railway Line Name,North British Railway Line Name,Caledonian and North British Railways Line Name",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"VideoGame",
+        "input":" The Super Spy (1990),Hovertank 3D (1990),Catacomb 3D (1991),Gun Buster (1992),Wolfenstein 3D (1992),Ultima Underworld (1992),Ken's Labyrinth (1993),Lethal Tender (1993),Doom (1993),Marathon (1994),Marathon 2: Durandal (1995),Star Wars: Dark Forces (1995),Witchaven (1995),Gloom (1995),Alien Breed 3D (1995),Alien Breed 3D II: The Killing Grounds (1996)",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Airport",
+        "input":" Kempegowda International Airport,Chennai International Airport,Rajiv Gandhi International Airport,Cochin International Airport,Thiruvananthapuram International Airport,Kozhikode International Airport,Coimbatore International Airport,Visakhapatnam Airport,Mangalore International Airport,Tiruchirappalli International Airport,Madurai Airport,Veer Savarkar International Airport,Vijayawada Airport,Tirupati Airport,Rajahmundry Airport",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Lake",
+        "input":" Lake Athabasca,Reindeer Lake,Wollaston Lake,Cree Lake,Lac la Ronge,Peter Pond Lake,Dor\u00c3\u00a9 Lake,Churchill Lake[12],Deschambault Lake[13],Frobisher Lake[14],Black Lake,Montreal Lake,Primrose Lake,Amisk Lake,Lake Diefenbaker[15],Pinehouse Lake",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Plant",
+        "input":" Aiphanes acanthophylla (Mart.) Burret,Aiphanes acaulis Galeano & R.Bernal,Aiphanes aculeata Willd.,Aiphanes bicornis Cer\u00c3\u00b3n & R.Bernal,Aiphanes caryotifolia (Kunth) H.Wendl.,Aiphanes chiribogensis Borchs. & Balslev,Aiphanes chocoensis A.H.Gentry,Aiphanes concinna H.E.Moore,Aiphanes corallina (Mart.) H.Wendl.,Aiphanes deltoidea Burret,Aiphanes disticha (Linden) Burret,Aiphanes duquei Burret,Aiphanes echinocarpa Dugand,Aiphanes eggersii Burret,Aiphanes elegans (Linden & H.Wendl.) H.Wendl.,Aiphanes erinacea (H.Karst.) H.Wendl.,Aiphanes ernestii (Burret) Burret,Aiphanes erosa (Mart.) Burret,Aiphanes fosteriorum H.E.Moore,Aiphanes fuscopubens L.H.Bailey,Aiphanes gelatinosa H.E.Moore,Aiphanes gracilis Burret,Aiphanes graminifolia Galeano & R.Bernal,Aiphanes grandis Borchs. & Balslev,Aiphanes hirsuta Burret,Aiphanes horrida (Jacq.) Burret,Aiphanes kalbreyeri Burret,Aiphanes killipii Burret,Aiphanes leiospatha Burret,Aiphanes leiostachys Burret,Aiphanes lindeniana (H.Wendl.) H.Wendl.,Aiphanes linearis Burret,Aiphanes luciana L.H.Bailey,Aiphanes macroloba Burret,Aiphanes minima (Gaertn.) Burret,Aiphanes monostachys Burret,Aiphanes orinocensis Burret,Aiphanes pachyclada Burret,Aiphanes parvifolia Burret,Aiphanes pilaris R.Bernal,Aiphanes praemorsa (Poepp. ex Mart.) Burret,Aiphanes praga Humboldt, Bonpland & Kunth,Aiphanes schultzeana Burret,Aiphanes simplex Burret,Aiphanes spicata Brochs. & R.Bernal,Aiphanes stergiosii S.M.Ni\u00c3\u00b1o, Dorr & F.W.Stauffer,Aiphanes tessmannii Burret,Aiphanes tricuspidata Borchs., M.Ru\u00c3\u00adz & Bernal,Aiphanes truncata (Brongn. ex Mart.) H.Wendl.,Aiphanes ulei (Dammer) Burret,Aiphanes verrucosa Borchs. & Balslev,Aiphanes vincentiana L.H.Bailey,Aiphanes weberbaueri Burret",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Building",
+        "input":" Basilica of St. Donatien et St. Rogatien, Nantes,Basilica of Notre-Dame du Ch\u00c3\u00aane, Vion (\\Basilica of Our Lady of the Oak,Basilica of Notre-Dame d'Avesni\u00c3\u00a8res, Laval,Basilica of Notre-Dame des Miracles, Mayenne,Basilica of Notre-Dame, Pontmain,Basilica of St. Madeleine, Angers,Basilica of Notre-Dame de l\u00e2\\u0080\\u0099\u00c3\\u0089pine, \u00c3\\u0089vron (\\Basilica of Our Lady of the Thorn,Basilica of St. Benedict, Saint-Beno\u00c3\u00aet-sur-Loire,Basilica of St. Louis de Montfort Basilique Saint-Louis-Marie-Grignon-de-Montfort de Saint-Laurent-sur-S\u00c3\u00a8vre",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Wrestler",
+        "input":" Vladimir Bakulin Soviet Union (URS),Ion Baciu Romania (ROU),Roman Rurua Soviet Union (URS),Eero Tapio Finland (FIN),Viktor Igumenov Soviet Union (URS),L\u00c3\u00a1szl\u00c3\u00b3 Sillai Hungary (HUN),Nikolay Yakovenko Soviet Union (URS),Istv\u00c3\u00a1n Kozma Hungary (HUN)",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Plant",
+        "input":" Abelmoschus esculentus (L.) Moench,Actinidia deliciosa (A. Chev.) C.F.Liang & A.R.Ferguson,Agave fourcroydes Lem.,Agave sisalana Perrine,Allium ampeloprasum L.,Allium cepa L.,Allium cornutum Clementi,Ananas comosus (L.) Merr is,Annona x atemoya,Arachis hypogaea L.,Armoracia rusticana P.Gaertn., B.Mey. & Scherb.,Artocarpus altilis (Parkinson ex F.A.Zorn) Fosberg,Avena sativa L.,Brassica carinata A.Braun,Brassica juncea (L.) Czern.,Brassica napus L.,Cajanus cajan (L.) Millsp.,Cannabis sativa L.,Carica pentagona Heilborn,Carya illinoinensis (Wangenh.) K.Koch,Castanea dentata (Marshall) Borkh,Castanea sativa Mill.,Chenopodium quinoa Willd.,Cicer arietinum L.,Cichorium intybus L.,Citrus aurantiifolia (Christm.) Swingle,Citrus aurantium L.,Citrus clementina hort.,Citrus limon (L.) Osbeck,Citrus paradisi Macfad.,Citrus reticulata Blanco,Citrus sinensis (L.) Osbeck,Cocos nucifera L.,Coffea arabica L.,Corylus avellana L.,Cucurbita pepo L.,Daucus carota subsp. sativus (Hoffm.) Arcang.,Dioscorea L. spp.,Diospyros kaki L.f.,Ficus carica L.,Fragaria ananassa (Duchesne ex Weston) Duchesne ex Rozier,Garcinia mangostana L.,Gossypium hirsutum L.,Hibiscus sabdariffa L.,Hordeum vulgare L.,Humulus lupulus L.,Ipomoea batatas (L.) Lam.,Juglans regia L.,Lactuca sativa L.,Lagenaria siceraria (Molina) Standl.,Lens culinaris Medik. ssp. culinaris,Macadamia integrifolia Maiden & Betche,Malus domestica Borkh.,Mentha piperita L.,Musa paradisiaca L.,Nicotiana tabacum L.,Olea europaea L.,Opuntia L. spp.,Oryza sativa L.,Oxalis tuberosa Molina,Pennisetum glaucum (L.) R.Br.,Persea americana Mill.,Phoenix dactylifera L.,Piper methysticum G.Forst.,Pistacia vera L.,Pisum abyssinicum A.Braun,Pisum sativum L.,Plinia cauliflora (Mart.) Kausel,Prunus cerasus L.,Prunus domestica L.,Prunus dulcis (Mill.) D.A.Webb,Pyrus L. species,Raphanus raphanistrum subsp. sativus (L.) Domin,Rheum L. cultivated species,Rubus L. spp.,Saccharum spp.,Secale cereale L.,Sechium edule (Jacq.) Sw.,Setaria italica (L.) P.Beauv.,Solanum L. spp. Section Petota,Solanum lycopersicum L.,Solanum melongena L.,Solanum muricatum Aiton,Solanum tuberosum,Spondias purpurea L.,Theobroma cacao L.,Triticum aestivum L.,Triticum turgidum L.,Vaccinium corymbosum L.,Vanilla tahitensis J.W. Moore,Vitis rotundifolia Michx.,Zea mays L.",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Plant",
+        "input":" Baldwin,Brown Snout,Dabinett,Dymock Red,Foxwhelp,Hagloe Crab,Hangdown,Kingston Black,Newtown Pippin,Redstreak,Roxbury Russet,Slack-ma-Girdle,Stoke Red,Styre,Tremlett's Bitter,Vista Bella,Winesap,Yeovil Sour",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"University",
+        "input":" Al-Jamiatul Ahlia Darul Ulum Moinul Islam[1],Al-Jamiah Al-Islamiah Patiya[2],Al-Jamiatul Arabiatul Islamiah, Ziri[3],Jamia Tawakkulia Renga Madrasah[4],Jamiah Islamiah Yunusia Brahmanbaria,Jamiah Rahmania Arabia Dhaka[5],Jamia Qurania Arabia Lalbagh[6],Jamia Luthfia Anwarul Uloom Hamid Nogor[7],Al-Jamiatul Islamiah Qasemul Uloom Charia,Al-Jamiatul Islamiah Azizul Uloom Babunagar[8],Al-Jamiah Al-Islamiah Obaidia Nanupur[9],Al-Jamiatus Shari'ah Malibag, Dhaka,Jamiatul Uloom Al-Islamia Lalkhan Bazar[10],Jamia Darul Ma'arif Al-Islamia[11],Shahbag Jamia Madania Quasimul Uloom,Jamia Hosainia Islamia Arjabad,Al Jamiatul Islamia Darul Uloom Madani Nagar Madrahsa,Jameah Islamiah Hussainia Gohorpur[12],Darul Uloom Sahbania[13]",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"PoliticalParty",
+        "input":" Democratic,Republican",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Building",
+        "input":" Olympia Theatre,Athens Concert Hall,Athens Concert Hall,Athens Concert Hall,Odeon of Herodes Atticus,Onassis Cultural Centre (in Greek),Apollon Theatre (Ermoupoli) (in Greek),Apollon Theatre (Patras),Piraeus Municipal Theatre,Thessaloniki Concert Hall,Thessaloniki Concert Hall",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"PoliticalParty",
+        "input":" Liberal,Conservative",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Bird",
+        "input":" Red-throated loon,Pacific loon,Common loon,Pied-billed grebe,Horned grebe,Eared grebe,Western grebe,Clark's grebe,American white pelican,Brown pelican,Brandt's cormorant,Double-crested cormorant,Pelagic cormorant,American bittern,Great blue heron,Great egret,Snowy egret,Cattle egret,Green heron,Black-crowned night heron,Turkey vulture,Canada goose,Brant,Wood duck,Gadwall,American wigeon,Mallard,Blue-winged teal,Cinnamon teal,Northern shoveler,Northern pintail,Green-winged teal,Canvasback,Ring-necked duck,Greater scaup,Lesser scaup,Surf scoter,White-winged scoter,Bufflehead,Common goldeneye,Hooded merganser,Common merganser,Red-breasted merganser,Ruddy duck,Osprey,White-tailed kite,Northern harrier,Sharp-shinned hawk,Cooper's hawk,Red-shouldered hawk,Red-tailed hawk,Ferruginous hawk,Golden eagle,American kestrel,Merlin,Peregrine falcon,Wild turkey,California quail,Virginia rail,Sora,Common gallinule,American coot,Black-bellied plover,Snowy plover,Semipalmated plover,Killdeer,Black oystercatcher,Black-necked stilt,American avocet,Greater yellowlegs,Lesser yellowlegs,Willet,Wandering tattler,Spotted sandpiper,Whimbrel,Long-billed curlew,Marbled godwit,Ruddy turnstone,Black turnstone,Surfbird,Sanderling,Western sandpiper,Least sandpiper,Dunlin,Short-billed dowitcher,Long-billed dowitcher,Wilson's snipe,Wilson's phalarope,Red-necked phalarope,Red phalarope,Pomarine jaeger,Parasitic jaeger,Bonaparte's gull,Heermann's gull,Mew gull,Ring-billed gull,California gull,Herring gull,Thayer's gull,Western gull,Glaucous-winged gull,Sabine's gull,Black-legged kittiwake,Caspian tern,Elegant tern,Common tern,Arctic tern,Forster's tern,Common murre,Pigeon guillemot,Marbled murrelet,Xantus's murrelet,Ancient murrelet,Cassin's auklet,Rhinoceros auklet",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Monarch",
+        "input":" Haytham I,Muhammad I,Haytham II,Ali I,Muhammad II Also Shah of Layzan,Abu Tahir Yazid Also Shah of Layzan,Muhammad III Also Shah of Layzan and Shah of Tabarsaran in 917\u00e2\\u0080\\u0093948,Ahmad I Also Shah of Layzan in 948\u00e2\\u0080\\u0093956,Muhammad IV Also Shah of Layzan in 956\u00e2\\u0080\\u0093981,Yazid III,Manuchehr I,Ali II,Kubad,Ali III Bukhtnassar,Salar,Fariburz I,Manuchehr II,Afridun I the Martyr,Manuchehr III,Afridun II,Akhsitan I,Shahanshah,Fariburz II,Farrukhzad,Gushtasb I,Fariburz III,Akhsitan II,Farrukhzad II,Akhsitan III,Keykavus I,Keykubad I,Kavus I,Hushang I,Ibrahim I,Khalilullah I,Farrukh Yassar I,Bahram,Gazi Beg,Sultan Mahmud,Ibrahim II Sheykhshah,Khalilullah II,Farrukh Yassar II,Shahrukh of Shirvan",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Writer",
+        "input":" Brendan Gall,Mavis Gallant,Steven Galloway,Fran\u00c3\u00a7ois-Xavier Garneau,Saint-Denys Garneau,Hugh Garner,Elyse Gasco,Bill Gaston,C. E. Gatchalian,Connie Gault,Pauline Gedge,Camilla Gibb,John Murray Gibbon,Douglas Gibson,Graeme Gibson,Margaret Gibson,William Gibson,Sky Gilbert,Charlotte Gill,John Patrick Gillese,David Gilmour,Joanna Glass,John Glassco,Paul Glennon,Susan Glickman,Douglas Glover,Jacques Godbout,Dave Godfrey,Glenda Goertzen,Oliver Goldsmith,Gabriella Goliger,Leona Gom,Alison Gordon,Charles Gordon,Phyllis Gotlieb,Sondra Gotlieb,Hiromi Goto,John Gould,George R. D. Goulet,Terry Goulet,Katherine Govier,Lee Gowan,Barbara Gowdy,Wayne Grady,Gwethalyn Graham,Neile Graham,Martin Allerdale Grainger,Jack Granatstein,E. M. Granger Bennett,George Grant,Jessica Grant,Charlotte Gray,R. W. Gray,Robert Joseph Greene,Ed Greenwood,Taras Grescoe,Grey Owl,Claude-Henri Grignon,Frederick Phillip Grove,Brett Josef Grubisic,Germaine Gu\u00c3\u00a8vremont,Genni Gunn,Kristjana Gunnars,David Gurr,Ralph Gustafson,Don Gutteridge,Sandra Gwyn",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Country",
+        "input":" Costa Rica,Honduras,El Salvador,Guatemala,Costa Rica,Honduras,Panama,Guatemala,El Salvador,Honduras,Panama,Costa Rica,United States",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"SportsTeam",
+        "input":" Blooming",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"City",
+        "input":" Canberra,Brisbane,Melbourne,Sydney,Suva,Tarawa,Majuro,Yaren,Wellington,Auckland,Koror,Port Moresby,Honiara,Funafuti",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Newspaper",
+        "input":" Ada,Daily Mirror,Ceylon Today,Daily News,Dinamina,Divaina,The Island,Lakbima,Lakbima News,Lankadeepa,Mawbima,The Nation,Ravaya,Rivira,Silumina,Sudar Oli,The Sunday Leader,Sunday Observer,The Sunday Times,Thinakaran,Thinakkural,Uthayan,Virakesari,Randiwa,Sathhanda",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"BaseballPlayer",
+        "input":" Red Roberts,Ted Browning,Vern Morgan,Ken Guettler",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Book",
+        "input":" The Black Echo (1992),The Black Ice (1993),The Concrete Blonde (1994),The Last Coyote (1995),Trunk Music (1997),Angels Flight (1999),A Darkness More Than Night (2001),City of Bones (2002),Lost Light (2003),The Narrows (2004),The Closers (2005),Echo Park (2006),The Overlook (2007),9 Dragons (2009),The Drop (2011),The Black Box (2012),The Burning Room (2014),The Crossing (2015)",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Plant",
+        "input":" Papaya,Strawberry,Orange,Lemon,Pineapple,Cauliflower,Kale,Melon, cantaloupe,Garlic,Grapefruit,Raspberry,Tangerine,Mandarin orange,Passion fruit,Spinach,Cabbage raw green,Lime,Mango,Rutabaga,Blackberry,Potato,Melon, honeydew,Tomato, red,Cranberry,Tomato,Blueberry,Pawpaw",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Genre",
+        "input":" Top 200,Metal and Loud Rock,Jazz and Acoustic,Local,Dance,Hip-Hop,World",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Lake",
+        "input":" Adelaide Tarn,Bessons Dam,Black Lakes,Blue Lake,Boulder Lake,Bowscale Tarn,Camp Lake,Cleopatras Pool,Cobb Reservoir,Lake Constance,Darby Pond,Dew Lakes,Diamond Lake,Fish Lake,Gillows Dam,Hinapouri Tarn,Iron Lake,Island Lake,Island Lake,Kaihoka Lakes,Kinzett Tarn,Lake Angelus,Lake Aorere,Lake Barfoot,Lake Bellbird,Lake Caslani,Lake Clara,Lake Cobb,Lake Daniell,Lake Dora,Lake Ella,Lake Elmer,Lake Fiddle,Lake Hanlon,Lake Henderson,Lake Jeanette,Lake Jewell,Lake Killarney,Lake Lillie,Lake Lindsay,Lake Lockett,Lake Marina,Lake Matiri,Lake Otuhie,Lake Peel,Lake Perrine,Lake Phyllis,Lake Rahui,Lake Rochfort,Lake Rotoiti,Lake Rotopai,Lake Rotoroa,Lake Sedgemere,Lake Sparrow,Lake Stanley,Lake Sylvester,Lake William,Little Sylvester Lake,Luna Lake,Mirror Tarn,Moonstone Lake,Morgan Tarn,Mueller Tarn,Okari Lagoon,Orowaiti Lagoon,Round Lake,Ruby Lake,Rush Pool,Saddle Lakes,Shag Tarn,Swampy Tarn,Townson Tarn",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"SportsTeam",
+        "input":" Anderlecht,Genk,Gent,Club Brugge,Lokeren,Standard Li\u00c3\u00a8ge,Mechelen,Westerlo,Cercle Brugge,Kortrijk,Zulte Waregem,Sint-Truiden,Germinal Beerschot,Lierse,Eupen,Charleroi",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Language",
+        "input":" Hindi, Urdu, Hindustani, Punjabi[9],Telugu,Marathi,Tamil,Bengali,Gujarati,Kannada,Malayalam,Odia,Assamese",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mammal",
+        "input":" Star-nosed mole,Hairy-tailed mole,Eastern mole",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"BaseballPlayer",
+        "input":" \u00e2\\u0080 Randy Johnson,\u00e2\\u0080 Pedro Mart\u00c3\u00adnez,\u00e2\\u0080 John Smoltz,Craig Biggio,Mike Piazza,Jeff Bagwell,Tim Raines,Curt Schilling,Roger Clemens,Barry Bonds,Lee Smith,Edgar Mart\u00c3\u00adnez,Alan Trammell,Mike Mussina,Jeff Kent,Fred McGriff,Larry Walker,\u00e2\\u0080 Gary Sheffield,Mark McGwire,Don Mattingly,Sammy Sosa,\u00e2\\u0080 Nomar Garciaparra,\u00e2\\u0080 Carlos Delgado*,\u00e2\\u0080 Troy Percival*,\u00e2\\u0080 Aaron Boone*,\u00e2\\u0080 Tom Gordon*,\u00e2\\u0080 Darin Erstad*,\u00e2\\u0080 Rich Aurilia*,\u00e2\\u0080 Tony Clark*,\u00e2\\u0080 Jermaine Dye*,\u00e2\\u0080 Cliff Floyd*,\u00e2\\u0080 Brian Giles*,\u00e2\\u0080 Eddie Guardado*,\u00e2\\u0080 Jason Schmidt*",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Bird",
+        "input":" Mallard,Common pochard,Wigeon,Gadwall,Eurasian teal,Northern shoveler",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Newspaper",
+        "input":" Corriere della Sera,la Repubblica,La Gazzetta dello Sport,La Stampa,Il Sole 24 Ore,Il Messaggero,il Resto del Carlino,Avvenire,Corriere dello Sport,La Nazione,il Giornale,Tuttosport,Libero,Il Giorno,Il Mattino,Italia Oggi,Il Fatto Quotidiano,Il Tempo,il manifesto",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"AcademicJournal",
+        "input":" Copeia,Journal of Applied Ichthyology,Ichthyological Bulletin",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Writer",
+        "input":"[VAL] Mark Haddon: \\The Gun\\\" in Granta Kristen Iskandrian: \\\"The Inheritors\\\" in Tin House Laura van den Berg: \\\"Opa-locka\\\" in The Southern Review\" [VAL] Deborah Eisenberg: \\Your Duck Is My Duck\\\" in Fence Kelly Link: \\\"The Summer People\\\" in Tin House Andrea Barrett: \\\"The Particles\\\" in Tin House\",Yiyun Li: \\Kindness\\\" in A Public Space Alice Munro: \\\"Corrie\\\" in The New Yorker\",Lynn Freed: \\Sunshine\\\" in Narrative Magazine Matthew Neill Null: \\\"Something You Can't Live Without\\\" in Oxford American Jim Shepard: \\\"Your Fate Hurtles Down at You\\\" in Electric Literature\",Daniyal Mueenuddin: \\A Spoiled Man\\\" in The New Yorker September 15,Graham Joyce: \\An Ordinary Soldier of the Queen\\\" in The Paris Review Junot D\u00c3\u00adaz: \\\"Wildwood\\\" in The New Yorker\",Alexi Zentner: \\Touch\\\" in Tin House Alice Munro: \\\"What Do You Want To Know For?\\\" in The American Scholar William Trevor: \\\"Folie a Deux\\\" in The New Yorker\",Eddie Chuculate: \\Galveston Bay,Edward P. Jones: \\Old Boys,Ruth Prawer Jhabvala: \\Refuge in London\\\" in Zoetrope,No edition,Denis Johnson: \\Train Dreams\\\" in The Paris Review,Kevin Brockmeier: \\The Ceiling\u00e2\\u0080\\u009D in McSweeney's,Mary Swan: \\The Deep\u00e2\\u0080\\u009D in The Malahat Review,John Edgar Wideman: \\Weight\u00e2\\u0080\\u009D in The Callaloo Journal,Peter Baida: \\A Nurse's Story\u00e2\\u0080\\u009D in The Gettysburg Review,Lorrie Moore: \\People Like That Are the Only People Here\u00e2\\u0080\\u009D in The New Yorker,Mary Gordon: \\City Life\u00e2\\u0080\\u009D in Ploughshares,Stephen King: \\The Man in the Black Suit\u00e2\\u0080\\u009D in The New Yorker,Cornelia Nixon: \\The Women Come and Go\u00e2\\u0080\\u009D in New England Review,Alison Baker: \\Better Be Ready 'Bout Half Past Eight\u00e2\\u0080\\u009D in The Atlantic Monthly,Thom Jones: \\The Pugilist at Rest\u00e2\\u0080\\u009D in The New Yorker,Cynthia Ozick: \\Puttermesser Paired\u00e2\\u0080\\u009D in The New Yorker,John Updike: \\A Sandstone Farmhouse\u00e2\\u0080\\u009D in The New Yorker,Leo E. Litwak: \\The Eleventh Edition\u00e2\\u0080\\u009D in TriQuarterly,Ernest J. Finney: \\Peacocks\u00e2\\u0080\\u009D in The Sewanee Review,Raymond Carver: \\Errand\u00e2\\u0080\\u009D in The New Yorker,Louise Erdrich: \\Fleur\u00e2\\u0080\\u009D in Esquire,Alice Walker: \\Kindred Spirits\u00e2\\u0080\\u009D in Esquire,Stuart Dybek: \\Hot Ice\u00e2\\u0080\\u009D in Antaeus Jane Smiley: \\\"Lily\u00e2\\u0080\\u009D in The Atlantic Monthly\",Cynthia Ozick: \\Rosa\u00e2\\u0080\\u009D in The New Yorker,Raymond Carver: \\A Small,Susan Kenney: \\Facing Front\u00e2\\u0080\\u009D in Epoch,Cynthia Ozick: \\The Shawl\u00e2\\u0080\\u009D in The New Yorker,Saul Bellow: \\A Silver Dish\u00e2\\u0080\\u009D in The New Yorker,Gordon Weaver: \\Getting Serious\u00e2\\u0080\\u009D in The Sewanee Review,Woody Allen: \\The Kugelmass Episode\u00e2\\u0080\\u009D in The New Yorker,Shirley Hazzard: \\A Long Story Short\u00e2\\u0080\\u009D in The New Yorker,Harold Brodkey: \\His Son in His Arms,Harold Brodkey: \\A Story in an Almost Classical Mode\u00e2\\u0080\\u009D in The New Yorker,Renata Adler: \\Brownstone\u00e2\\u0080\\u009D in The New Yorker,Joyce Carol Oates: \\The Dead\u00e2\\u0080\\u009D in McCall's,John Batki: \\Strange-Dreaming Charlie,Florence M. Hecht: \\Twin Bed Bridge\u00e2\\u0080\\u009D in The Atlantic Monthly,Robert Welton Hemenway: \\The Girl Who Sang with the Beatles\u00e2\\u0080\\u009D in The New Yorker,Bernard Malamud: \\Man in the Drawer\u00e2\\u0080\\u009D in The Atlantic Monthly,Eudora Welty: \\The Demonstrators\u00e2\\u0080\\u009D in The New Yorker,Joyce Carol Oates: \\In the Region of Ice\u00e2\\u0080\\u009D in The Atlantic Monthly,John Updike: \\The Bulgarian Poetess\u00e2\\u0080\\u009D in The New Yorker,Flannery O'Connor: \\Revelation\u00e2\\u0080\\u009D in The Sewanee Review,John Cheever: \\The Embarkment for Cythera\u00e2\\u0080\\u009D in The New Yorker,Terry Southern: \\The Road Out of Axotle\\\" in \\\"Esquire\\\",Katherine Anne Porter: \\Holiday\u00e2\\u0080\\u009D in The Atlantic Monthly,Tillie Olsen: \\Tell Me a Riddle\u00e2\\u0080\\u009D in New World Writing,Lawrence Sargent Hall: \\The Ledge\u00e2\\u0080\\u009D in The Hudson Review,Peter Taylor: \\Venus,Martha Gellhorn: \\In Sickness as in Health\u00e2\\u0080\\u009D in The Atlantic Monthly\",Flannery O'Connor: \\Greenleaf\u00e2\\u0080\\u009D in The Kenyon Review\",John Cheever: \\The Country Husband\u00e2\\u0080\\u009D in The New Yorker\",Jean Stafford: \\In the Zoo\u00e2\\u0080\\u009D in The New Yorker\",Thomas Mabry: \\The Indian Feather\u00e2\\u0080\\u009D in The Sewanee Review\",Harris Downey: \\The Hunters\u00e2\\u0080\\u009D in Epoch\",Wallace Stegner: \\The Blue-Winged Teal\u00e2\\u0080\\u009D in Harper's Magazine\",William Faulkner: \\A Courtship\u00e2\\u0080\\u009D in The Sewanee Review\",Truman Capote: \\Shut a Final Door\u00e2\\u0080\\u009D in The Atlantic Monthly\",John Bell Clayton: \\The White Circle\u00e2\\u0080\\u009D in Harper's Magazine\",John Mayo Goss: \\Bird Song\u00e2\\u0080\\u009D in The Atlantic Monthly\",Walter Van Tilburg Clark: \\The Wind and the Snow of Winter\u00e2\\u0080\\u009D in The Yale Review\",Irwin Shaw: \\Walking Wounded\u00e2\\u0080\\u009D in The New Yorker\",Eudora Welty: \\Livvie is Back\u00e2\\u0080\\u009D in The Atlantic Monthly\",Eudora Welty: \\The Wide Net\u00e2\\u0080\\u009D in Harper's Magazine\",Kay Boyle: \\Defeat\u00e2\\u0080\\u009D in The New Yorker\",Stephen Vincent Ben\u00c3\u00a9t: \\Freedom's a Hard-Bought Thing\u00e2\\u0080\\u009D in The Saturday Evening Post\",William Faulkner: \\Barn Burning\u00e2\\u0080\\u009D in Harper's Magazine\",Albert Maltz: \\The Happiest Man on Earth\u00e2\\u0080\\u009D in Harper's Magazine\",Stephen Vincent Ben\u00c3\u00a9t: \\The Devil and Daniel Webster\u00e2\\u0080\\u009D in The Saturday Evening Post\",James Gould Cozzens: \\Total Stranger\u00e2\\u0080\\u009D in The Saturday Evening Post,Kay Boyle: \\The White Horses of Vienna\u00e2\\u0080\\u009D in Harper's Magazine\",Louis Paul: \\No More Trouble for Jedwick\u00e2\\u0080\\u009D in Esquire\",Marjorie Kinnan Rawlings: \\Gal Young Un\u00e2\\u0080\\u009D in Harper's Magazine,Stephen Vincent Ben\u00c3\u00a9t: \\An End to Dreams\u00e2\\u0080\\u009D in Pictorial Review,Wilbur Daniel Steele: \\Can't Cross Jordan by Myself\u00e2\\u0080\\u009D in Pictorial Review\",W. R. Burnett: \\Dressing-Up\u00e2\\u0080\\u009D in Harper's Magazine,Dorothy Parker: \\Big Blonde\u00e2\\u0080\\u009D in Bookman Magazine,Walter Duranty: \\The Parrot\u00e2\\u0080\\u009D in Redbook,Roark Bradford: \\Child of God\u00e2\\u0080\\u009D in Harper's Magazine,Wilbur Daniel Steele: \\Bubbles\u00e2\\u0080\\u009D in Harper's Magazine\",Julian Street: \\Mr. Bisbee's Princess\u00e2\\u0080\\u009D in Redbook,Inez Haynes Irwin: \\The Spring Flight\u00e2\\u0080\\u009D in McCall's,Edgar Valentine Smith: \\Prelude\u00e2\\u0080\\u009D in Harper's Magazine,Irvin S. Cobb: \\Snake Doctor\u00e2\\u0080\\u009D in Cosmopolitan,Edison Marshall: \\The Heart of Little Shikara\u00e2\\u0080\\u009D in Everybody's Magazine,Maxwell Struthers Burt: \\Each in His Generation\u00e2\\u0080\\u009D in Scribner's Magazine,Margaret Prescott Montague: \\England to America\u00e2\\u0080\\u009D in The Atlantic Monthly",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Plant",
+        "input":" Aci Sivri[8],Afghan Short,Albino Bullnose[8],Aleppo,Alma Paprika[8],Anaheim[8],Ancient Sweet,Banana,Barkers Hot,Beaver Dam[8],Bird's Eye,Black Cuban[10],Black Hungarian,Black Pearl,Black Prince,Bulgarian Carrot,Bulgarian Ratund,Bullnose,California Wonder[10],Canary Bell,Cascabel,Cayenne (Red)[10],Charleston Belle,Cherry,Chervena Chuska,Chilaca,Chile Rama,Chiltepin[10],Chimayo,Chinese Five-Color,Chiltoma Grande de Ometepe,Chocolate Beauty,Ciliegia Piccante,Coban Red Pimiento,Corne De Chevre,Corno di Toro Giallo,Corno di Toro Rosso,Costeno Amarillo[10],Cowhorn,Craig's Grande Jalape\u00c3\u00b1o,Criolla De Cocina Pepper,Cubanelle,De \u00c3\u00a1rbol[10],Doux D'Espagne,Early Jalape\u00c3\u00b1o[10],Elephant Trunk,Emerald Giant,Espanola Improved[13],Estaceno,Ethiopian Brown,Etuida,Facing Heaven,Filius Blue,Fish Pepper,Floral Gem[10],Fresno,Friariello di Napoli,Fushimi,Gambo,Georgescu Chocolate,Goat Horn,Golden Cal Wonder,Golden Cayenne,Golden Marconi,Golden Treasures,Guntur Sannam,Hinkelhatz,Hole Mole,Hontaka[10],Horizon Bell,Hungarian Wax,Italian Sweet,Jalape\u00c3\u00b1o,Japones,Jigsaw[10],Jimmy Nardello Italian,Joe's Long Cayenne,Jupiter[10],Jwala,King of the North,Korean Dark Green,Krimzon Lee,Large Red Antigua,Leutschauer Paprika,Lilac Bell,Lipstick,Lumbre,Macho,Mammi Huber's Stuffing,Marta Polka,Maule's Red Hot,Medusa,Melrose,Midnight Dreams Bell,Miniature Chocolate Bell,Miniature Yellow Bell,Mirasol,Mora,Morita,Mulato[10],Moshi,New Mexico chile,New Mexico No. 6[13],New Mexico 6-4[13],New Mexico No. 9[13],Nippon Taka,NuMex April Fool's Day[10],NuMex Bailey Piquin[13],NuMex Barker's X-Hot,NuMex Big Jim[13],NuMex Centennial[13],NuMex Chinese New Year[10],NuMex Christmas[13],NuMex Cinco de Mayo[10],NuMex Conquistador[13],NuMex Earth Day,NuMex Easter[10],NuMex Eclipse[13],NuMex Garnet[13],NuMex Halloween[13],NuMex Heritage 6-4[13],NuMex Heritage Big Jim[13],NuMex Jalmundo[10],NuMex Joe E. Parker[13],NuMex Las Cruces Cayenne,NuMex Memorial Day[13],NuMex Mirasol[13],NuMex Nematador[13],NuMex Pi\u00c3\u00b1ata[13],NuMex Primavera[13],NuMex R. Naky[13],NuMex Sandia Hot,NuMex Sandia Select[13],NuMex St. Patrick's Day[13],NewMex Suave Orange[13],NewMex Suave Red[13],NuMex Sunburst[13],NuMex Sunflare[13],NuMex Sunglo[13],NuMex Sunrise[13],NuMex Sunset[13],NuMex Sweet[13],NuMex Thanksgiving[13],NuMex Twilight[13],NuMex Valentine's Day[13],NuMex Vaquero[13],NuMex Veteran's Day,Oda,Onza[10],Orange Bell Pepper,Ostra-Cyklon,Ozark Giant,Padr\u00c3\u00b3n,Paradicsom Alaku Sarga Szentes,Pasilla Bajio,Peperone di Cuneo,Peruvian Purple,Peter Pepper,Pepperoncini (peperoncini),Pequin,Piment d'Espelette[10],Pimiento De Padr\u00c3\u00b3n,Poblano[10],Polostra-Rokita Pepper,Prik Kee Nu,Purple Flash,Purple Jalape\u00c3\u00b1o,Puya,Purple Beauty,Quadrato d'Asti Giallo,Quadrato d'Asti Rosso,Ram Horn Fireboy,Red Belgian,Red Cheese,Red Marconi,Red Mini Bell,Rezha Macedonian,Ring of Fire,Rio Grande 21[13],Rooster Spur,Santa Fe Grande[10],Sandia[13],Santaka[10],Serrano[10],Serrano Tampique\u00c3\u00b1o,Sheepnose Pimento,Shishito,Sigaretta di Bergamo,Siling Mahaba,Spanish Piquillo[10],Sport Pepper,Super Chili[22],Sweet Chocolate,Sweet Red Stuffing Pepper,Sweet Yellow Stuffing Pepper,Syrian Goat Horn,Syrian Three Sided,Takanotsume[10],Tangerine Dream,Tam Jalape\u00c3\u00b1o,Tequila,Tequila Sunrise Pepper,Tiburon Pepper,Topepo Rosso,Thai Yellow Chili,Tunisian Baklouti,Tien Tsin,Violet Sparkle,White Cloud,White Lakes Pepper,Yellow Monster",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Language",
+        "input":" Kolami,Angami,Kodagu,Dogri,Dimasa,Lotha,Mao,Tibetan,Kabui (Rongmei),Phom",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"PoliticalParty",
+        "input":" Republican Party,Democratic Party,Independent,Vacant",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"VideoGame",
+        "input":" EGAint[34],Blockout,Tetris 2,Frac4D[35],Quadrapassel (Formerly Gnometris),KBlocks,Wordtris,La Bastille,Tetris 1D[39],Tetris Grand Master 3,NullpoMino,Not Tetris",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Newspaper",
+        "input":" San Antonio Express-News[1],Houston Chronicle[15],Pittsburgh Post-Gazette[16],Pittsburgh Tribune-Review[17],Hartford Courant[18],The Baltimore Sun[19],Milwaukee Journal Sentinel[20],Journal Star (Peoria)[21],Chicago Tribune[22],Daily Herald (Arlington Heights)[23],The Birmingham News[24],The Plain Dealer (Cleveland)[25],The Cincinnati Enquirer[26],The Columbus Dispatch[27],The Arizona Republic (Phoenix)[28],Detroit Free Press[29],The Grand Rapids Press[30],The Oakland Press (Pontiac)[31],The Detroit News[32],The Denver Post[33],Kansas City Star[2],Reno Gazette-Journal[34],Las Vegas Review-Journal[35],Orlando Sentinel[36],Tampa Bay Times (St. Petersburg)[37],Lakeland Ledger[38],Pensacola News Journal[39],The Post and Courier (Charleston)[40],The State (Columbia)[7][41],The Greenville News[42],The Charlotte Observer[43],The Telegraph (Nashua)[44],Boston Herald[45],Quad-City Times (Davenport)[46],Iowa City Press-Citizen[47],The Portsmouth Herald[48],The Hampton Union[48],The Exeter News-Letter[48],The Oklahoman (Oklahoma City)[49],Des Moines Register[50],The Washington Examiner[51],Sioux City Journal[52]",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Country",
+        "input":" Russia,Italy,Ukraine,Germany,United Kingdom,10",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"AcademicJournal",
+        "input":" Abstracts of Working Papers in Economics,Acta geneticae medicae et gemellologiae: twin research,Acta Neuropsychiatrica,Acta Numerica,Advances in Animal Biosciences,Advances in Applied Mathematics and Mechanics,Africa,Africa Bibliography,African Studies Review,Ageing & Society,AI EDAM,AJS Review,Albion,American Journal of Alternative Agriculture,American Political Science Review,The Americas: A Quarterly Review of Latin American History,Anatolian Studies,Ancient Mesoamerica,Anglo-Saxon England (journal),animal,Animal Genetic Resources Resources g\u00c3\u00a9n\u00c3\u00a9tiques animales Recursos gen\u00c3\u00a9ticos animales,Animal Health Research Reviews,Animal Science,International Journal of Limnology Annales de Limnologie,Annals of Actuarial Science,Annual of the British School at Athens,Annual Review of Applied Linguistics,Antarctic Science,Antichthon,The Antiquaries Journal,Antiquity (journal),The ANZIAM Journal,Applied Psycholinguistics,APSIPA Transactions on Signal and Information Processing,Aquatic Living Resources,Arabic Sciences and Philosophy,Arbor Clinical Nutrition Updates,Archaeologia Miscellaneous Tracts Relating to Antiquity,Archaeological Dialogues,Archaeological Reports,Architectural History,arq: Architectural Research Quarterly,Art Libraries Journal,Asian Journal of Comparative Law,Asian Journal of International Law,Asian Journal of Law and Society,ASTIN Bulletin,Australasian Journal of Organisational Psychology,Australasian Journal of Special Education,The Australian Educational and Developmental Psychologist,Australian Journal of Environmental Education,The Australian Journal of Indigenous Education,The Australian Journal of Rehabilitation Counselling,Austrian History Yearbook,Behavioral and Brain Sciences,Behaviour Change,Behavioural and Cognitive Psychotherapy,Bilingualism: Language and Cognition,Biofilms,BioSocieties,Bird Conservation International,BJHS Themes,Brain Impairment,Breast Cancer Online,Britannia,British Actuarial Journal,British Catholic History,British Journal of Anaesthetic and Recovery Nursing,The British Journal for the History of Science,British Journal of Music Education,British Journal of Nutrition,British Journal of Political Science,BSAP Occasional Publication,Bulletin of the Australian Mathematical Society,Bulletin of the British Association for American Studies,Bulletin of the British Society for the History of Science,Bulletin of Entomological Research,Bulletin of Entomological Research Supplement Series,Bulletin International des Societes de la Croix-Rouge,Bulletin of the International Institute of Social History,Bulletin of the School of Oriental and African Studies,Bulletin of Symbolic Logic,Business and Human Rights Journal,Business Ethics Quarterly,Business History Review,Cambridge Archaeological Journal,The Cambridge Classical Journal,Cambridge Historical Journal,Cambridge Journal of Postcolonial Literary Inquiry,The Cambridge Law Journal,Cambridge Opera Journal,Cambridge Quarterly of Healthcare Ethics,Cambridge Test Journal,Cambridge Yearbook of European Legal Studies,Camden Old Series,Camden New Series,Camden Third Series,Camden Fourth Series,Camden Fifth Series,The Canadian Entomologist,Canadian Journal of Economics and Political Science,Canadian Journal of Emergency Medicine,Canadian Journal of Law & Jurisprudence,Canadian Journal of Law & Society La Revue Canadienne Droit et Soci\u00c3\u00a9t\u00c3\u00a9,Canadian Journal of Linguistics La Revue canadienne de linguistique,Canadian Journal of Neurological Sciences Journal Canadien des Sciences Neurologiques,Canadian Journal on Aging La Revue canadienne du vieillissement,Canadian Journal of Political Science Revue canadienne de science politique,Canadian Yearbook of International Law Annuaire canadien de droit international,Cardiology in the Young,Central European History,Children Australia,The China Quarterly,Chinese Journal of Agricultural Biotechnology,Church History: Studies in Christianity and Culture,The Classical Quarterly,The Classical Review,CNS Spectrums,The Cognitive Behaviour Therapist,Combinatorics, Probability and Computing,Communications in Computational Physics,Comparative Exercise Physiology,Comparative Studies in Society and History,Compositio Mathematica,Contemporary European History,Continuity and Change,CORD Conference Proceedings,Dance Research Journal,Design Science,Development and Psychopathology,Dialogue IO,Dialogue: Canadian Philosophical Review Revue canadienne de philosophie,Diamond Light Source Proceedings,Disaster Medicine and Public Health Preparedness,Du Bois Review: Social Science Research on Race,Early China,Early Music History,Earth and Environmental Science Transactions of the Royal Society of Edinburgh,East Asian Journal on Applied Mathematics,Ecclesiastical Law Journal,Econometric Theory,Economics and Philosophy,Edinburgh Journal of Botany,Edinburgh Mathematical Notes,Eighteenth-Century Music,English Language and Linguistics,English Profile Journal,English Today,Enterprise & Society,Environment and Development Economics,Environmental Biosafety Research,Environmental Conservation,Environmental Practice,Epidemiologia e psichiatria sociale. Monograph Supplement,Epidemiology & Infection,Epidemiology and Psychiatric Sciences,Episteme,Equine and Comparative Exercise Physiology,Ergodic Theory and Dynamical Systems,ESAIM: Control, Optimisation and Calculus of Variations,ESAIM: Mathematical Modelling and Numerical Analysis,ESAIM: Probability and Statistics,Ethics & International Affairs,European Astronomical Society Publications Series,European Business Organization Law Review (EBOR),European Constitutional Law Review (EuConst),European Journal of Applied Mathematics,European Journal of International Security,European Journal of Sociology Archives Europ\u00c3\u00a9ennes de Sociologie,The European Physical Journal - Applied Physics,European Political Science Review,European Review,Experimental Agriculture,Expert Reviews in Molecular Medicine,Fetal and Maternal Medicine Review,Financial History Review,Foreign Policy Bulletin,Forum of Mathematics, Pi,Forum of Mathematics, Sigma,Fruits,Genetics Research,Geological Magazine,The Geologist,Glasgow Mathematical Journal,Global Constitutionalism,Global Health, Epidemiology and Genomics,Global Mental Health,Government and Opposition,Greece & Rome,Hague Journal on the Rule of Law,Harvard Theological Review,Health Economics, Policy and Law,Hegel Bulletin,High Power Laser Science and Engineering,Highlights of Astronomy,The Historical Journal,History in Africa,Horizons: The Journal of the College Theology Society,Industrial and Organizational Psychology,Infection Control & Hospital Epidemiology,International & Comparative Law Quarterly,International Astronomical Union Colloquium,The International Journal of Asian Studies,International Journal of Astrobiology,International Journal of Cultural Property,International Journal of Disability Management,International Journal of Law in Context,International Journal of Metrology and Quality Engineering,International Journal of Microwave and Wireless Technologies,International Journal of Middle East Studies,The International Journal of Neuropsychopharmacology,International Journal of Technology Assessment in Health Care,International Journal of Tropical Insect Science,International Labor and Working-Class History,International Organization,International Psychogeriatrics,International Review for Social History,International Review of Poultry Science,International Review of the Red Cross,International Review of the Red Cross (1961 - 1997),International Review of Social History,International Theory,Iraq,Irish Historical Studies,Irish Journal of Psychological Medicine,Israel Law Review,Italian Political Science Review Rivista Italiana di Scienza Politica,Itinerario,Japanese Journal of Political Science,The Journal of African History,Journal of African Law,Journal of Agricultural and Applied Economics,The Journal of Agricultural Science,Journal of the American Philosophical Association,Journal of American Studies,Journal of Anglican Studies,Journal of Applied Animal Nutrition,The Journal of Asian Studies,Journal of the Australian Mathematical Society,Journal of Benefit-Cost Analysis,Journal of Biosocial Science,Journal of British Studies,Journal of Child Language,Journal of Chinese History \u00e4\u00b8\u00ad\u00e5\\u009C\\u008B\u00e6\u00ad\u00b7\u00e5\\u008F\u00b2\u00e5\u00ad\u00b8\u00e5\\u0088\\u008A,The Journal of Classics Teaching,Journal of Dairy Research,Journal of Demographic Economics,Journal of Dentofacial Anomalies and Orthodontics,Journal of Developmental Origins of Health and Disease,Journal of Diagnostic Radiography and Imaging,Journal of East Asian Studies,The Journal of Ecclesiastical History,The Journal of Economic History,Journal of Experimental Political Science,Journal of Financial and Quantitative Analysis,Journal of Fluid Mechanics,Journal of French Language Studies,Journal of Functional Programming,Journal of Germanic Linguistics,The Journal of the Gilded Age and Progressive Era,Journal of Global History,The Journal of Hellenic Studies,Journal of Helminthology,Journal of the History of Economic Thought,Journal of Hospitality and Tourism Management,Journal of the Institute of Actuaries,Journal of the Institute of Mathematics of Jussieu,Journal of Institutional Economics,Journal of the International Neuropsychological Society,Journal of the International Phonetic Association,Journal of K-Theory,The Journal of Laryngology & Otology,Journal of Latin American Studies,Journal of Law and Religion,Journal of Linguistic Geography,Journal of Linguistics,Journal of Management & Organization,Journal of the Marine Biological Association of the United Kingdom,Journal of Materials Research,Journal of Mechanics,The Journal of Modern African Studies,The Journal of Navigation,Journal of Nutritional Science,Journal of Pacific Rim Psychology,Journal of Paleontology,Journal of Pension Economics and Finance,Journal of the Plainsong & Medieval Music Society,Journal of Plasma Physics,Journal of Policy History,Journal of Psychiatric Intensive Care,Journal of Psychologists and Counsellors in Schools,Journal of Public Policy,Journal of Race, Ethnicity, and Politics,Journal of Radiotherapy in Practice,Journal of Relationships Research,Journal of Roman Archaeology,The Journal of Roman Studies,Journal of the Royal Asiatic Society,Journal of Smoking Cessation,Journal of Social Policy,Journal of the Society for American Music,Journal of Southeast Asian History,Journal of Southeast Asian Studies,Journal of the Staple Inn Actuarial Society,Journal of Symbolic Logic,Journal of Tropical Ecology,Journal of Tropical Psychology,Journal of Wine Economics,Journal of Zoology,Kantian Review,The Knowledge Engineering Review,Language and Cognition,Language in Society,Language Teaching,Language Variation and Change,Laser and Particle Beams,Law and History Review,Legal Information Management,Legal Theory,Leiden Journal of International Law,Libyan Studies,The Lichenologist,LMS Journal of Computation and Mathematics,Macroeconomic Dynamics,Management and Organization Review,Marine Biodiversity Records,The Mathematical Gazette,Mathematical Modelling of Natural Phenomena,Mathematical Proceedings of the Cambridge Philosophical Society,Mathematical Structures in Computer Science,Mathematika,Mechanics & Industry,Medical History,Medieval Philosophy and Theology,Metallurgical Research & Technology,Microscopy and Microanalysis,Modern Asian Studies,Modern Intellectual History,Modern Italy,MRS Bulletin,MRS Communications,MRS Energy & Sustainability - A Review Journal,MRS Internet Journal of Nitride Semiconductor Research,MRS Online Proceedings Library,Nagoya Mathematical Journal,Natural Language Engineering,Netherlands International Law Review,Netherlands Journal of Geosciences,Netherlands Yearbook of International Law,Network Science,Neuron Glia Biology,New Perspectives on Turkey,New Surveys in the Classics,New Testament Studies,New Theatre Quarterly,Nineteenth-Century Music Review,Nordic Journal of Linguistics,Numerical Mathematics: Theory, Methods and Applications,Nurse Prescriber,Nutrition Research Reviews,Organised Sound,Oryx,Paleobiology,Palliative & Supportive Care,Papers of the American Society of Church History,Papers of the British School at Rome,Parasitology,Parasitology Open,PASA - Publications of the Astronomical Society of Australia,Perspectives on Politics,Philosophy,Phonology,Plainsong and Medieval Music,Plant Genetic Resources,Polar Record,Political Science Research and Methods,The Political Science Teacher,Politics & Gender,Politics and the Life Sciences,Politics and Religion,Popular Music,Powder Diffraction,Prehospital and Disaster Medicine,Primary Health Care Research & Development,Probability in the Engineering and Informational Sciences,Proceedings of the American Political Science Association,Proceedings of the British Society of Animal Production (1972),Proceedings of the Edinburgh Mathematical Society,Proceedings of the International Astronomical Union,Proceedings of the Nutrition Society,Proceedings of the Prehistoric Society,Proceedings of the Prehistoric Society of East Anglia,Proceedings of the Royal Society of Edinburgh,Proceedings of the Royal Society of Edinburgh Section B: Biological Sciences,Proceedings of the Royal Society of Edinburgh, Section: A Mathematics,Proceedings of the Society of Antiquaries of London,Progress in Neurotherapeutics and Neuropsychopharmacology,Prospects,PS: Political Science & Politics,Psychological Medicine,Psychological Medicine Monograph Supplement,Public Health Nutrition,Quarterly Reviews of Biophysics,Queensland Journal of Guidance and Counselling,Queensland Review,Radioprotection,RAIRO - Operations Research,RAIRO - Theoretical Informatics and Applications,Ramus,ReCALL,Louvain Economic Review Recherches Economiques de Louvain,Religious Studies,Renewable Agriculture and Food Systems,Reproductive Medicine Review,Review of International Studies,Review of Middle East Studies,The Review of Politics,The Review of Symbolic Logic,Reviews in Clinical Gerontology,Revista de Historia Econ\u00c3\u00b3mica,Revista Internacional de la Cruz Roja,Robotica,Royal Institute of Philosophy Supplements,Rural History,Science in Context,Scottish Journal of Theology,Seed Science Research,Social Anthropology,Social Philosophy and Policy,Social Policy and Society,Social Science History,South Pacific Journal of Psychology,The Spanish Journal of Psychology,Speculum,Studies in American Political Development,Studies in Church History,Studies in Second Language Acquisition,Symposium - International Astronomical Union,TEMPO,Thalamus & Related Systems,Theatre Research International,Theatre Survey,Theory and Practice of Logic Programming,Think,TRaNS: Trans-Regional and -National Studies of Southeast Asia,Transactions of the Actuarial Society of Edinburgh,Transactions of the Faculty of Actuaries,Transactions of the International Astronomical Union,Transactions of the Royal Asiatic Society of Great Britain and Ireland,Transactions of the Royal Historical Society,Transnational Environmental Law,Twentieth-Century Music,Twin Research and Human Genetics,Urban History,Utilitas,Victorian Literature and Culture,Visual Neuroscience,Wireless Power Transfer,World Politics,World Trade Review,World's Poultry Science Journal,Yearbook of International Humanitarian Law,Zygote",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Monarch",
+        "input":" Annei,Itoku",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"BaseballPlayer",
+        "input":" Red Ruffing,Bill Dickey,Hank Greenberg,Joe Gordon,Red Rolfe,Joe Cronin,George Selkirk,Joe DiMaggio,Doc Cramer",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mayor",
+        "input":" Kathy Sheehan",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"University",
+        "input":" Texas Christian University *,Boise State University **,San Diego State University **",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Book",
+        "input":" Restless Plots,Mediums, Well Done!,Psi-Lines: A Book of Psychic Quotes,Sense and S\u00c3\u00a9ance,Confessions of a 900 Psychic,How to Increase Your Income with ESP,Silentium,Loose Ends: Leaves from a Medium's Notebook,Bundles,Hand Springs,Top Ten Mentalism with Cards,Graphick: How to Read Handwriting for Fun and Profit,Psychic Blues: Confessions From a Happy Medium,Tenebrae,Psychic Blues: Confessions of a Conflicted Medium, ISBN 1936239272 ISBN 978-1936239276",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"University",
+        "input":" Harvard University,Massachusetts Institute of Technology,City of Cambridge,Novartis Institutes for BioMedical Research,Biogen Idec,Mount Auburn Hospital,Cambridge Health Alliance,Genzyme,Cambridge Innovation Center,Akamai Technologies",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"AdministrativeRegion",
+        "input":" Adams,Asotin,Benton,Chelan,Clallam,Clark,Columbia,Cowlitz,Douglas,Ferry,Franklin,Garfield,Grant,Grays Harbor,Island,Jefferson,King,Kitsap,Kittitas,Klickitat,Lewis,Lincoln,Mason,Okanogan,Pacific,Pend Oreille,Pierce,San Juan,Skagit,Skamania,Snohomish,Spokane,Stevens,Thurston,Wahkiakum,Walla Walla,Whatcom,Whitman,Yakima",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mayor",
+        "input":" Charlie Hales,Anna Peterson,Kitty Piercy,Shane Bemis,Jerry Willey,Denny Doyle,Jim Clinton,Gary Wheeler,Christine Lundberg,Oscar W. \\Biff\\\" Traber\",Sharon Konopa,John L. Cook,Kent Studebaker,Cathy Clark,Darin Fowler,Daniel \\Dan\\\" Holladay\",Rick Olson,George Endicott,Lou Ogden,Russ Axelrod,Kathy Figley,Bob Andrews,Peter B. Truax,Larry Rich,Tim Knapp",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Wrestler",
+        "input":" Pr\u00c3\u00adncipe Azul (mask),Pr\u00c3\u00adncipe Azul (mask),Pr\u00c3\u00adncipe Azul (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (mask),El Canek (Championship)",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Lake",
+        "input":" Donkmeer,Grand Large,Ixelles Ponds,Lake B\u00c3\u00bctgenbach,Lake Eau d'Heure,Lake Eupen,Lake Genval,Lake Gileppe,Lake Kraenepoel,Lake Neufch\u00c3\u00a2teau,Lake Nisramont,Lake Robertville,Lake Ry de Rome,Lake Schulens,Lake Virelles,Lake Warfaaz",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"City",
+        "input":" Wuhan, China,Ahmedabad, India,Wuxi, China,Guangzhou, China,Qian Shan, China,Pingguo, China,Qian Shan, China,Gifu, Japan",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"PoliticalParty",
+        "input":" Labour,Conservative,Liberal Democrat,Monster Raving Loony",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"VideoGame",
+        "input":" Quantum Break",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mammal",
+        "input":" Rock vole,Meadow vole,Woodland vole,Southern bog lemming,Southern red-backed vole,Muskrat",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mayor",
+        "input":" John R. Williams,Henry Jackson Hunt,Jonathan Kearsley,John Biddle,Jonathan Kearsley,John R. Williams,Marshall Chapin,Levi Cook,Marshall Chapin,Charles Christopher Trowbridge,Andrew Mack,Levi Cook,Henry Howard,Augustus Seymour Porter,Asher B. Bates,De Garmo Jones,Zina Pitcher,Douglass Houghton,Zina Pitcher,John R. Williams,James A. Van Dyke,Frederick Buhl,Charles Howard,John Ladue,Zachariah Chandler,John H. Harmon,Oliver Moulton Hyde,Henry Ledyard,Oliver Moulton Hyde,John Patton,Christian H. Buhl,William C. Duncan,Kirkland C. Barker,Merrill I. Mills,William W. Wheaton,Hugh Moffat,Alexander Lewis,George C. Langdon,William G. Thompson,Stephen Benedict Grummond,Marvin H. Chamberlain,John Pridgeon, Jr.,Hazen S. Pingree,William Richert,William C. Maybury,George P. Codd,William Barlum Thompson,Philip Breitmeyer,William Barlum Thompson,Oscar Marx",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mountain",
+        "input":" Mount Kinabalu,Mount Trusmadi,Mount Tambuyukon,Mount Murud,Mount Mulu,Mount Tahan,Mount Korbu,Mount Yong Belar,Mount Gayong,Mount Chamah,Mount Yong Yap,Mount Ulu Sepat,Mount Batu Putih,Mount Tama Abu,Mount Irau,Mount Benum,Mount Apad Runan,Mount Gerah,Batu Hill,Batu Buli Hill,Mount Junction,Mount Tumang Batak,Mount Bilah,Mount Berembun,Mount Bieh,Mount Belatok,Mount Gedung,Batu Lawit Hill,Mount Berinchang,Batu Iran Hill,Mount Tangga,Mount Swettenham,Mount Shoid,Mount Ulu Kerchau,Mount Liang Timur,Mount Liang Barat,Mount Berhid,Mount Challi\\\/Pondok,Mount Siku,Mount Tok Nenek,Mount Lumaku,Mount Noring,Mount Bintang,Mount Noring Timur,Pagon Hill,Mount Berembun\\\/Beremban,Mount Basor,Mount Semangkok,Mount Tiga Negeri,Mount Suku,Mount Kerihun,Mount Kuar,Mount Ulu Kali,Mount Bujang,Mount Lawit,Mount Rajah,Mount Tangga 15,Mount Lawit,Mount Tapis,Mount Ayam,Mount Nuang,Mount Pangkin,Pine Tree Hill,Mount Bunga Buah,Mount Stong,Mount Ophir\\\/Ledang,Bukit Larut\\\/Maxwell Hill,Mount Jerai,Mount Reskit,Mount Danum,Mount Serudum,Mount Tebu,Mount Belumut,Mount Gading,Mount Serapi,Mount Raya,Western Hill,Mount Angsi,Mount Santubong,Mount Perlis,Mount Mat Chinchang,Rajah Hill,Bombalai Hill,Mount Panti,Mount Mostyn,Broga Hill,Bukit Tabur Barat,Panorama Hill,Mount Lambak,Mount Nuang",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Language",
+        "input":" Spanish,Vietnamese,Chinese (including Mandarin and Cantonese),German,Tagalog,French,Korean and Urdu (tied),Hindi,Arabic,Niger-Congo languages of West Africa (Ibo, Kru, and Yoruba)",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Lake",
+        "input":" Nettilling Lake,Dubawnt Lake,Amadjuak Lake,Nueltin Lake,Baker Lake,Yathkyed Lake,Aberdeen Lake,Napaktulik Lake,Garry Lake,Contwoyto Lake,Ennadai Lake,Tulemalu Lake,Kamilukuak Lake,Kaminak Lake,Ferguson Lake,Tebesjuak Lake,Qamanirjuaq Lake,Lake Hazen,Princess Mary Lake,South Henik Lake,Angikuni Lake,Hall Lake,Tehek Lake,Mallery Lake,MacAlpine Lake,Bluenose Lake",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mayor",
+        "input":" Karlo Lanza,Petar Nutrizio Grisogono,Petar Cambi,Leonard Kru\u00c5\u00beevi\u00c4\\u0087,Ivan Lovro Alberti,Leonard Dudan,Jerko Capogrosso,Mihovil Tartaglia,Leonard Dudan,\u00c5 imun de Michieli-Vitturi,Antonio Bajamonti,Frano Lanza,Antonio Bajamonti,Aleksandar Nallini,Emil Ragazzini,Dujam Rendi\u00c4\\u0087-Mio\u00c4\\u008Devi\u00c4\\u0087,Gajo Filomen Bulat,Ivan Manger,Petar Katalini\u00c4\\u0087,Vinko Mili\u00c4\\u0087,Ante Trumbi\u00c4\\u0087,Vicko Mihaljevi\u00c4\\u0087,Vicko Katalini\u00c4\\u0087,Teodor \u00c5 porn,Vicko Katalini\u00c4\\u0087,Frane Madirazza,Vicko Ni\u00c5\u00a1eti\u00c4\\u0087,Teodor \u00c5 porn,Josip Smodlaka",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"PoliticalParty",
+        "input":" New Democratic,Liberal,Bloc Qu\u00c3\u00a9b\u00c3\u00a9cois,Conservative,Green",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Currency",
+        "input":" \u00e2\\u0080\\u0089United States dollar,\u00e2\\u0080\\u0089Euro,\u00e2\\u0080\\u0089Japanese yen,\u00e2\\u0080\\u0089Pound sterling,\u00e2\\u0080\\u0089Swiss franc,\u00e2\\u0080\\u0089Canadian dollar,\u00e2\\u0080\\u0089Australian dollar,\u00e2\\u0080\\u0089Mexican peso,\u00e2\\u0080\\u0089Chinese yuan,\u00e2\\u0080\\u0089New Zealand dollar,\u00e2\\u0080\\u0089Swedish krona,\u00e2\\u0080\\u0089Russian ruble,\u00e2\\u0080\\u0089Hong Kong dollar,Norwegian krone,\u00e2\\u0080\\u0089Singapore dollar,\u00e2\\u0080\\u0089Turkish lira,South Korean won,South African rand,Brazilian real,Indian rupee",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Airport",
+        "input":" Suvarnabhumi Airport (BKK),Don Mueang International Airport (DMK),Phuket International Airport (HKT),Chiang Mai International Airport (CNX),Hat Yai International Airport (HDY),Mae Fah Luang\u00e2\\u0080\\u0093Chiang Rai International Airport (CEI)",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Airport",
+        "input":" Ambriz Airport,Andulo Airport,Benguela Airport,Cabinda Airport,Cacolo Airport,Cafunfo Airport,Camabatela Airport,Camaxilo Airport,Camembe Airport,Cangamba Airport,Catoca Airport,Catumbela Airport,Cazombo Airport,Chitato Airport,Cuito Cuanavale Airport,Damba Airport,Dirico Airport,Dundo Airport,Huambo Airport,Albano Machado Airport,Kapanda Airport,Kuito Airport,Lobito Airport,Quatro de Fevereiro Airport,Angola International Airport (project),Luau Airport,Lubango Airport,Lucapa Airport,Luena Airport,Lumbala Airport,Cuango-Luzamba Airport,Malanje Airport,Maquela Airport,Mbanza Congo Airport,Menongue Airport,Nzagi Airport,N'zeto Airport,Namibe Airport,Negage Airport,Ondjiva Pereira Airport,Porto Amboim Airport,Sanza Pombo Airport,Henrique de Carvalho Airport,Soyo Airport,Sumbe Airport,Xamindele Airport,U\u00c3\u00adge Airport,Waco Kungo Airport,Xangongo Airport",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Lake",
+        "input":" Farewell Lakes,First Yarp,Flagstaff Lake,Lake Fleay,Lake Flora,Lake Florence,Forrestdale Lake,Fossil Billabong,Lake Fox,Fraser Lake",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Film",
+        "input":" Spartakiada,Charlie Chan at the Olympics,Olympia Part 1: Festival of Nations,Olympia Part 2: Festival of Beauty,Kings of the Olympics,Olympia 52,The Grand Olympics,Tokyo Olympiad,13 jours en France,The Olympics in Mexico,Visions of Eight,White Rock,A Step Away,Stade 81 a.k.a. Starting Blocks,The First Olympics: Athens 1896,16 Days of Glory,Dorf and the First Games of Mount Olympus,Fire, Ice and Dynamite,One Day in September,Asterix at the Olympic Games,Dream Weavers: Beijing 2008,Equestria Girls",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mayor",
+        "input":" Robert Butler,Wilber Clark,Monroe Evans,Charles B.C. Holt,Jack Lee,Beth Finch,Bill Hurley,J.L. Dawkins,Milo McBryde,Marshall Pitts Jr.,Tony Chavonne,Nat Robertson",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Airport",
+        "input":" Commercial Service - Primary Airports,Pago Pago International Airport,General Aviation Airports,Fitiuta Airport,Ofu Airport,Private-Use Airports (partial list),Tau Airport",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Continent",
+        "input":" North America,Europe",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Airport",
+        "input":" Indira Gandhi International Airport,Chhatrapati Shivaji International Airport,Kempegowda International Airport,Chennai International Airport,Netaji Subhash Chandra Bose International Airport,Rajiv Gandhi International Airport,Cochin International Airport,Sardar Patel International Airport,Goa International Airport,Pune International Airport,Thiruvananthapuram International Airport,Kozhikode International Airport,Chaudhary Charan Singh International Airport,Lokpriya Gopinath Bordoloi International Airport,Jaipur International Airport,Srinagar Airport,Biju Patnaik International Airport,Coimbatore International Airport,Dr. Babasaheb Ambedkar International Airport,Devi Ahilyabai Holkar Airport,Mangalore Airport,Chandigarh Airport,Lok Nayak Jayaprakash Airport,Tiruchirappalli International Airport,Visakhapatnam Airport,Sri Guru Ram Dass Jee International Airport,Bagdogra Airport,Varanasi Airport,Jammu Airport,Swami Vivekananda Airport,Agartala Airport,Veer Savarkar International Airport,Vadodara Airport,Madurai Airport,Birsa Munda Airport,Imphal Airport,Maharana Pratap Airport,Aurangabad Airport,Raja Bhoj International Airport,Leh Kushok Bakula Rimpochee Airport,Jolly Grant Airport,Rajkot Airport,Dibrugarh Airport,Jodhpur Airport,Tirupati Airport,Gaya Airport,Vijayawada Airport",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"AdministrativeRegion",
+        "input":" Alabama,California,Georgia,Illinois,Louisiana,Nevada,Texas,Washington",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"City",
+        "input":" Sacramento, California,Long Beach, California,San Diego, California,Cleveland, Ohio,Providence, Rhode Island,Milwaukee, Wisconsin,Fort Wayne, Indiana,Dayton, Ohio,Louisville, Kentucky,Chicago, Illinois",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"BaseballPlayer",
+        "input":" * Danny Goodwin,Jay Franklin,Tommy Bianco,* Condredge Holloway,Roy Branch,Roy Thomas,Roger Quiroga,Ed Kurpiel,David Sloan,Taylor Duncan,Tom Veryzer,Frank Tanana,Neil Rasmussen,Rich Puig,Jim Rice,Jeff Wehmeir,William \\Sugar Bear\\\" Daniels\",Frank Riccelli,Terry Whitfield,Rick Rhoden,Dale Soderholm,Craig Reynolds,Randy Stein,* Mike Miley",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Lake",
+        "input":" Alph Lake,Lake Bonney,Lake Brownworth,Lake Chad,Don Juan Pond,Lake Fryxell,Lake Hoare,Howchin Lake,Mount Erebus Lava Lake,Pyramid Pond,Trough Lake,Lake Vanda,Lake Vida,Walcott Lake",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Writer",
+        "input":" Tom Rob Smith,R. D. Wingfield,Dennis Lehane,Joe Hill,Jeffery Deaver,Henning Mankell,S. J. Rozan,Troy Cook,Steve Hockensmith,D. M. Devine",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Currency",
+        "input":" Thai baht,Indonesian rupiah,Philippine peso,Malaysian ringgit,South Korean won",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Book",
+        "input":" Almuric,People of the Dark,Black Canaan,Delenda Est,Golnor the Ape,The Isle of the Eons,Nekht Semerkeht,Spear and Fang,The Thunder-Rider,The Tomb of the Dragon,Under the Baobab Tree,Valley of the Lost,The Voice of El-Lil,Witch from Hell's Kitchen",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Country",
+        "input":" China,United States,Thailand,Mexico,Netherlands,Germany,Malaysia,Singapore,Czech Republic,Philippines,South Korea,Japan,Ireland,United Kingdom,Vietnam,Taiwan,Poland,Hungary,France,Hong Kong",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"SportsTeam",
+        "input":" Arsenal,Borussia Dortmund,Auxerre,PSV Eindhoven",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"AdministrativeRegion",
+        "input":" Alabama,Alaska,Arizona,Arkansas,California,Colorado,Connecticut,Delaware,Florida,Georgia,Guam,Hawaii,Idaho,Illinois,Indiana,Iowa,Kansas,Kentucky,Louisiana,Maine,Maryland,Massachusetts,Michigan,Minnesota,Mississippi,Missouri,Montana,Nebraska,Nevada,New Hampshire,New Jersey,New Mexico,New York,North Carolina,North Dakota,Ohio,Oklahoma,Oregon,Pennsylvania,Puerto Rico,Rhode Island,South Carolina,South Dakota,Tennessee,Texas,Utah,Vermont,Virgin Islands,Virginia,Washington,Washington, D.C.,West Virginia,Wisconsin,Wyoming",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Writer",
+        "input":" Indra Bahadur Rai,Shiva Kumar Rai,Guman Singh Chamling,Okima Gwyn,Asit Rai,M.M. Gurung,Indra Sundas,Ramchandra Giri,Matsyendra Pradhan,Sharad Chhetri,Lil Bahadur Chettri,Pushpalal Upadhyaya,Tulsi Bahadur Chhetri,Tulsiram Sharma Kashyap,Girmee Sherpa,R.P. Lama,Gadul Singh Lama aka Sanu Lama,Jiwan Namdung,Nagendramani Pradhan,Mohan Thakuri,Mani Prasad Rai,Man Prasad Subba,Bikram Bir Thapa,Ramlal Adhikari,Lakhi Devi Sundas,Prem Pradhan,Bindya Subba,Jas Yonjan \u00e2\\u0080\\u0098Pyasi\u00e2\\u0080\\u0099,Krishna Singh Moktan,Bhim Dahal,Lakshman Srimal,Haiman Das Rai \u00e2\\u0080\\u0098Kirat\u00e2\\u0080\\u0099,Samiran Chhetri \u00e2\\u0080\\u0098Priyadarshi\u00e2\\u0080\\u0099,Gopi Narayan Pradhan,Not awarded,Uday Thulung,Man Bahadur Pradhan,Nanda Hangkhim,Gupta Pradhan",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Wrestler",
+        "input":" Adrian Adonis,Scott Casey,Title retired",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Airport",
+        "input":" Gimpo International Airport,Gimhae International Airport,Cheongju International Airport,Gwangju Airport,Daegu International Airport,Incheon International Airport,Gunsan Airport,Wonju Airport,Sacheon Airport,Pohang Airport,Yeosu Airport,Ulsan Airport,Muan International Airport",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Mayor",
+        "input":" Jakov Cindro",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"PoliticalParty",
+        "input":" Liberal National,Labour",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Plant",
+        "input":" Adoration,Alicante,Azoychka,Beefsteak,Better Boy (Tomato),Big Beef,Big Rainbow,Blaby Special,Black Krim,Brandywine,Campari,Celebrity,Cherokee purple,Early Girl,Enchantment,Flamenco,Fourth of July,Garden Peach,Gardener's Delight,German Johnson,Granadero,Great White,Green Zebra,Hillbilly,Japanese Black Trifele,Jubilee,Juliet,Kumato,Lillian's Yellow,McDreamy,Matt's Wild Cherry,Moneymaker,Mortgage Lifter,Mr. Stripey,Pantano Romanesco,Paul Robeson,Red Currant,Roma,San Marzano,Santorini,Sasha Altai,Stupice,Super Sweet 100,Tiny Tim,Tomaccio,Traveller \\\/ Arkansas Traveler,Yellow Pear,Common name",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Plant",
+        "input":" Bulbus Lilii,Radix Rehmanniae,Radix Rehmanniae Preparata,Radix Ophiopogonis,Radix Scrophulariae,Bulbus fritillariae cirrhosae,Radix Angelicae Sinensis,Radix Paeoniae Alba,Radix Platycodonis,Radix Glycyrrhizae",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"SportsTeam",
+        "input":" Universitario,Sporting Cristal,Cienciano,Melgar,Alianza Atl\u00c3\u00a9tico,Wanka,Uni\u00c3\u00b3n Minas,Alianza Lima,Sport Boys,Juan Aurich,Municipal,UPAO",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Newspaper",
+        "input":" The Sunday Times,The Guardian,The Sunday Telegraph,The Economist,Evening Standard,Daily Mail,The Sun,City AM",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Wrestler",
+        "input":" The Iron Sheik,Buzz Sawyer,Adrian Adonis,Dynamite Kid,B. Brian Blair,Bobby Eaton,Bobby Eaton,Brad Armstrong,Tiger Mask II,Dan Kroffat,Bobby Eaton,Terry Taylor,Terry Taylor,Bobby Eaton,Brian Pillman,Skip,Leif Cassidy,Flash Funk,Chris Benoit,Chris Jericho,Chris Jericho,Lance Storm,Booker T,\u00c3\\u009Altimo Drag\u00c3\u00b3n,Paul London,Shelton Benjamin,Shelton Benjamin,Shelton Benjamin,Montel Vontavious Porter,Evan Bourne,Kaval,Dolph Ziggler,Tyson Kidd,Antonio Cesaro\\\/Cesaro,Antonio Cesaro\\\/Cesaro",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"PoliticalParty",
+        "input":" Conservative,Labour,Liberal",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"Lake",
+        "input":" Great Bear Lake,Great Slave Lake,Lac La Martre,Kasba Lake,MacKay Lake,Hottah Lake,Aylmer Lake,Nonacho Lake,Clinton-Colden Lake,Selwyn Lake,Point Lake,Wholdaia Lake,Lac de Gras,Buffalo Lake,Tathlina Lake,Artillery Lake,Snowbird Lake,Trout Lake,Lac des Bois,Colville Lake,Faber Lake",
+        "instruction":"Select the category which best matches the input. \n"
+    },
+    {
+        "output":"RadioStation",
+        "input":" WJTY",
+        "instruction":"Select the category which best matches the input. \n"
+    }
+]
