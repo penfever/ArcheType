@@ -1,4 +1,4 @@
-import os, json, requests
+import os, json, requests, copy
 import collections
 import hashlib
 import pandas as pd
@@ -47,7 +47,7 @@ def run(
 
   if model_name in ["llama", "llama-old", "sherlock"]:
     pass
-  elif "gpt" in model_name:
+  elif "gpt-4" in model_name or "gpt-3.5" in model_name:
     load_dotenv(DOTENV_PATH)
     openai.api_key = os.getenv("OPENAI_API_KEY")
     assert openai.api_key != None, "api key did not load"
@@ -56,6 +56,8 @@ def run(
   else:
     print("Initializing model...")
     init_model(model_name, args)
+
+  #DATASET SPECIFIC FLAGS
   infmods = "sherlock" in model_name or "doduo" in model_name
   isd4 = "d4" in label_set['name']
   isAmstr = "amstr" in label_set['name']
@@ -64,10 +66,14 @@ def run(
   isEF = "EF" in label_set['name']
   isVC = "viznet-chorus" in label_set['name']
   isViznet = "viznet" in label_set['name']
+
+  #Retrieve similarity model
   if "similarity" in method:
     get_sent_model(args)
-  args["prompt_hashes"] = collections.Counter()
+  
+  #prompt hashing
   args["current_prompt_hashes"] = collections.Counter()
+  args["resume_prompt_hashes"] = collections.Counter()
   if resume and not os.path.isfile(save_path):
     print("Could not open save file. Starting from scratch...")
     prompt_dict = {}
@@ -81,14 +87,23 @@ def run(
       else:
         test_entry = prompt_dict[prompt_dict_keys[0]]
         if test_entry.get("prompt_hash", -1) == -1:
-          print("No prompt hashes found in the provided dict's entries. Starting from scratch...")
+          print("No prompt hashes found in the provided dict's first entry. Starting from scratch...")
           prompt_dict = {}
         else:
-          for k, v in prompt_dict.items():
+          ph_seen = set()
+          for k, v in prompt_dict.copy().items():
             ph = v.get("prompt_hash", -1)
-            if ph != -1 and ph not in args["prompt_hashes"]:
-              args["prompt_hashes"][ph] += v.get("prompt_hash_count", 1)
-        print(f"Loaded {args['prompt_hashes'].total()} entries from the save file.")
+            ph_count = v.get("prompt_hash_count", 1)
+            if ph == -1 or ph_count == -1:
+              del prompt_dict[k]
+            if ph in ph_seen:
+              continue
+            ph_seen.add(ph)
+            if args["resume_prompt_hashes"][ph] == 0:
+              args["resume_prompt_hashes"][ph] = ph_count
+            else:
+              args["resume_prompt_hashes"][ph] += ph_count
+        print(f"Loaded {args['resume_prompt_hashes'].total()} entries from the save file.")
   else:
     prompt_dict = {}
   s = requests.Session()
@@ -104,6 +119,7 @@ def run(
       inputs.append(pd.DataFrame(c.split(",")))
     labels = origin_df["output"].tolist()
   elif isVC:
+    input_df = input_df.sample(1000, replace=False)
     inputs = input_df['data'].tolist()
     labels = input_df['class'].tolist()
   elif isinstance(inputs, dict):
@@ -128,97 +144,108 @@ def run(
         json.dump(prompt_dict, alt_f, ensure_ascii=False, indent=4)
     if stop_early > -1 and idx == stop_early:
       break
-    if isd4:
-        f_df = f
-        label_indices=[2]
-        gt_labels = labels[idx]
-    elif isT2D or isEF or isPubchem or isAmstr:
-        f_df = f
-        label_indices=[0]
-        gt_labels = labels[idx]
-    elif isViznet:
-        f_df = f
-        label_indices=[0]
-        gt_labels = labels[idx]
-    elif "skip-eval" in method:
-        f_df = pd_read_any(f)
-        gt_labels = None
-        label_indices = [i for i in range(len(f_df.columns))]
+
+    #define context and label
+    if isVC:
+      limited_context = context = f
+      orig_label = label = labels[idx]
     else:
-        gt_labels = input_df[input_df['table_name'] == f.name]
-        label_indices = pd.unique(gt_labels['column_index']).tolist()
-        f_df = pd.read_json(f, compression='gzip', lines=True)
-    
-    if infmods:
-        label_indices = pd.unique(gt_labels['column_index']).tolist()
-        # label_indices = ["values"]
-        key = get_sherlock_resp(f_df, gt_labels, prompt_dict, model_name, label_indices, str(f), label_set, args)
-        continue
-    if "coherence_sampling" in method:
-        coherence_scores = get_coherence_scores(f_df, model_name, args)
-    else:
-        coherence_scores = None
-    sample_df = get_df_sample(f_df, rand_seed, label_indices, sample_size, full=summ_stats, other_col=other_col, max_len=args["MAX_LEN"], method=method, coherence_scores=coherence_scores, args=args)
-    f_df_cols = f_df.columns
-    for idx, col in enumerate(f_df_cols):
-      if idx not in label_indices:
-        continue
-      #NOTE: skipping evaluation for columns with insufficient variance in the column
-      if len(pd.unique(sample_df.astype(str)[col])) < min_var:
-        continue
       if isd4:
-        orig_label = gt_labels
-      elif isAmstr:
-        amstr_classname_map = get_amstr_classname_map()
-        orig_label = amstr_classname_map[gt_labels]
-        # print("orig_label: ", orig_label)
-      elif isPubchem:
-        pubchem_classname_map = get_pubchem_classname_map()
-        orig_label = pubchem_classname_map[gt_labels]
-      elif isT2D or isEF:
-        orig_label = gt_labels
-      elif isViznet:
-        viznet_classname_map = get_viznet_classname_map()
-        orig_label = viznet_classname_map[gt_labels]
+          f_df = f
+          label_indices=[2]
+          gt_labels = labels[idx]
+      elif isT2D or isEF or isPubchem or isAmstr or isVC or isViznet:
+          f_df = f
+          label_indices=[0]
+          gt_labels = labels[idx]
       elif "skip-eval" in method:
-        orig_label = ""
+          f_df = pd_read_any(f)
+          gt_labels = None
+          label_indices = [i for i in range(len(f_df.columns))]
       else:
-        gt_row = gt_labels[gt_labels['column_index'] == idx]
-        orig_label = gt_row['label'].item()
-      label = fix_labels(orig_label, label_set)
-      limited_context = sample_df[col].tolist()[:sample_size]
-      #NOTE: could consider using min_var here
-      #if full and len(pd.unique(sample_df[col].tolist())) < 3:
-      if table_src:
-        if "zs" in model_name:
-          context_n = insert_source(sample_df[col].tolist(), f.name, zs="zs" in model_name)
-          args["table_name"] = context_n
-          context = sample_df[col].tolist()
+          gt_labels = input_df[input_df['table_name'] == f.name]
+          label_indices = pd.unique(gt_labels['column_index']).tolist()
+          f_df = pd.read_json(f, compression='gzip', lines=True)
+      
+      if infmods:
+          label_indices = pd.unique(gt_labels['column_index']).tolist()
+          # label_indices = ["values"]
+          key = get_sherlock_resp(f_df, gt_labels, prompt_dict, model_name, label_indices, str(f), label_set, args)
+          continue
+      if "coherence_sampling" in method:
+          coherence_scores = get_coherence_scores(f_df, model_name, args)
+      else:
+          coherence_scores = None
+      sample_df = get_df_sample(f_df, rand_seed, label_indices, sample_size, full=summ_stats, other_col=other_col, max_len=args["MAX_LEN"], method=method, coherence_scores=coherence_scores, args=args)
+      f_df_cols = f_df.columns
+      for idx, col in enumerate(f_df_cols):
+        if idx not in label_indices:
+          continue
+        #NOTE: skipping evaluation for columns with insufficient variance in the column
+        if len(pd.unique(sample_df.astype(str)[col])) < min_var:
+          continue
+        if isd4:
+          orig_label = gt_labels
+        elif isAmstr:
+          amstr_classname_map = get_amstr_classname_map()
+          orig_label = amstr_classname_map[gt_labels]
+          # print("orig_label: ", orig_label)
+        elif isPubchem:
+          pubchem_classname_map = get_pubchem_classname_map()
+          orig_label = pubchem_classname_map[gt_labels]
+        elif isT2D or isEF:
+          orig_label = gt_labels
+        elif isViznet:
+          viznet_classname_map = get_viznet_classname_map()
+          orig_label = viznet_classname_map[gt_labels]
+        elif "skip-eval" in method:
+          orig_label = ""
         else:
-          context = insert_source(sample_df[col].tolist(), f.name, zs="zs" in model_name)
-      else:
-        context = sample_df[col].tolist()
-      #Check if we have run this context before (to avoid duplicates and allow for resuming jobs)
-      prompt_hash = hashlib.md5(str(context).encode('utf-8')).hexdigest()
-      args["current_prompt_hashes"][prompt_hash] += 1
-      if args["prompt_hashes"][prompt_hash] >= args["current_prompt_hashes"][prompt_hash]:
-        continue
+          gt_row = gt_labels[gt_labels['column_index'] == idx]
+          orig_label = gt_row['label'].item()
+        label = fix_labels(orig_label, label_set)
+        limited_context = sample_df[col].tolist()[:sample_size]
+        #NOTE: could consider using min_var here
+        #if full and len(pd.unique(sample_df[col].tolist())) < 3:
+        if table_src:
+          if "zs" in model_name:
+            context_n = insert_source(sample_df[col].tolist(), f.name, zs="zs" in model_name)
+            args["table_name"] = context_n
+            context = sample_df[col].tolist()
+          else:
+            context = insert_source(sample_df[col].tolist(), f.name, zs="zs" in model_name)
+        else:
+          context = sample_df[col].tolist()
+      
+    #Check if we have run this context before (to avoid duplicates and allow for resuming jobs)
+    prompt_hash = hashlib.md5(str(context).encode('utf-8')).hexdigest()
+    args["current_prompt_hashes"][prompt_hash] += 1
+    if args["resume_prompt_hashes"][prompt_hash] >= args["current_prompt_hashes"][prompt_hash]:
+      continue
+    
+    #model response
+    try:
+      key, ans_dict = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
+    except RuntimeError as r:
       try:
-        key = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
+        key, ans_dict = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
       except RuntimeError as r:
-        try:
-          key = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
-        except RuntimeError as r:
-          prompt_dict[key] = {"response" : f"RuntimeError: {r}", "context" : context, "ground_truth" : orig_label, "correct" : False, "original_model_answer" : f"RuntimeError: {r}"}
-          with open(save_path, 'w', encoding='utf-8') as my_f:
-            json.dump(prompt_dict, my_f, ensure_ascii=False, indent=4)
-          raise RuntimeError(f"Unhandled RuntimeError: {r} \n Please check logs for more information.")
-      prompt_dict[key]['prompt_hash'] = prompt_hash
-      cur_pc = prompt_dict[key].get("prompt_hash_count", 0)
-      prompt_dict[key]['prompt_hash_count'] = cur_pc + 1
-      args["prompt_hashes"][prompt_hash] += 1
-      prompt_dict[key]['original_label'] = orig_label
-      prompt_dict[key]['file+idx'] = str(f) + "_" + str(idx)
+        with open(save_path, 'w', encoding='utf-8') as my_f:
+          json.dump(prompt_dict, my_f, ensure_ascii=False, indent=4)
+        raise RuntimeError(f"Unhandled RuntimeError: {r} \n Please check logs for more information.")
+    
+    #hash validation
+    if args["current_prompt_hashes"][prompt_hash] == 1:
+      ans_dict['prompt_hash'] = prompt_hash
+      ans_dict['prompt_hash_count'] = 1
+      ans_dict['original_label'] = orig_label
+      ans_dict['file+idx'] = str(f) + "_" + str(idx)
+      prompt_dict[key] = ans_dict
+    else:
+      for k, v in prompt_dict.items():
+        if v.get("prompt_hash", -1) == prompt_hash:
+          v['prompt_hash_count'] = args["current_prompt_hashes"][prompt_hash]
+          break
   with open(save_path, 'w', encoding='utf-8') as my_f:
     json.dump(prompt_dict, my_f, ensure_ascii=False, indent=4)
 
@@ -280,7 +307,9 @@ def main():
       for extension in extensions:
         input_files = input_files + list(Path(args.input_files).rglob(f"**/*{extension}"))
     
-    if args.input_labels == "D4" or \
+    if args.input_labels == "viznet-chorus":
+      input_df = pd.read_csv(args.input_files)
+    elif args.input_labels == "D4" or \
       "amstr" in args.input_labels or \
       "pubchem" in args.input_labels or \
       "T2D" in args.input_labels or \

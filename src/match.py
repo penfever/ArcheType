@@ -29,6 +29,7 @@ def gt_contains_ans(ans_n, fixed_labels):
     return None
 
 def basic_contains(ans_n, fixed_labels, method):
+    fixed_labels = sorted(fixed_labels, key=len, reverse=True)
     #TODO: not sure the order should be fixed like this, could be made flexible
     if ans_n in fixed_labels:
         return ans_n

@@ -183,14 +183,15 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
   if any(["speechless-llama2" in model, "llama-zs" in model, "opt-iml-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
     set_pipeline(k=1, args=args)
   prompt = prompt_context_insert(context_labels, context, args["MAX_LEN"], model, args)
-  d_p = prompt_dict.get(prompt, -1)
-  #skip existing logic
-  if d_p != -1 and "skip-existing" in method:
-    # recompute_results(prompt_dict, prompt, "llama", cbc, lsd)
-    return prompt
-  elif d_p != -1:
-    while prompt_dict.get(prompt, -1) != -1:
-        prompt = prompt + "*"
+  
+#   d_p = prompt_dict.get(prompt, -1)
+#   #skip existing logic
+#   if d_p != -1 and "skip-existing" in method:
+#     # recompute_results(prompt_dict, prompt, "llama", cbc, lsd)
+#     return prompt
+#   elif d_p != -1:
+#     while prompt_dict.get(prompt, -1) != -1:
+#         prompt = prompt + "*"
   #response logic
   if not response:
     orig_ans = ans_n = ""
@@ -242,8 +243,8 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
     ans_n = None
   res = (ans_n == ground_truth)
   ans_dict = {"response" : ans_n, "context" : context, "ground_truth" : ground_truth, "correct" : res, "original_model_answer" : orig_ans}
-  prompt_dict[prompt] = ans_dict
-  return prompt
+  # prompt_dict[prompt] = ans_dict
+  return prompt, ans_dict
 
 def get_sent_model(args):
     args["sent_model"] = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2', device='cpu')
@@ -294,7 +295,7 @@ def init_model(model, args):
     if model == "doduo":
         from doduo.doduo import Doduo
     with torch.no_grad():
-        torch.cuda.empty_cache()
+        torch.cuda.empty_cache()        
     if "speechless-llama2" in model:
         args["MAX_LEN"]=2048
         tokenizer = AutoTokenizer.from_pretrained("uukuguy/speechless-llama2-13b")
