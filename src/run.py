@@ -10,16 +10,16 @@ import openai
 from transformers import AutoTokenizer
 import numpy as np
 
-try:
-  from .model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all, free_memory
-  from .data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs, get_amstr_classname_map, get_pubchem_dfs, get_pubchem_classname_map
-  from .metrics import results_checker, results_checker_doduo
-  from .const import DOTENV_PATH, MAX_LEN
-except ImportError:
-  from model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all, free_memory
-  from data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs, get_amstr_classname_map, get_pubchem_dfs, get_pubchem_classname_map
-  from metrics import results_checker, results_checker_doduo
-  from const import DOTENV_PATH, MAX_LEN
+# try:
+#   from .model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all, free_memory
+#   from .data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs, get_amstr_classname_map, get_pubchem_dfs, get_pubchem_classname_map, get_viznet_dfs, get_viznet_classname_map
+#   from .metrics import results_checker, results_checker_doduo
+#   from .const import DOTENV_PATH, MAX_LEN
+# except ImportError:
+from model import init_model, get_sent_model, get_model_resp, get_sherlock_resp, get_coherence_scores, seed_all, free_memory
+from data import get_df_sample, fix_labels, insert_source, get_lsd, get_d4_dfs, pd_read_any, get_amstr_dfs, get_amstr_classname_map, get_pubchem_dfs, get_pubchem_classname_map, get_viznet_dfs, get_viznet_classname_map
+from metrics import results_checker, results_checker_doduo
+from const import DOTENV_PATH, MAX_LEN
 
 def run(
     model_name : str, 
@@ -54,6 +54,7 @@ def run(
     args['tokenizer'] = AutoTokenizer.from_pretrained("openai-gpt")
     args['MAX_LEN'] = 4096
   else:
+    print("Initializing model...")
     init_model(model_name, args)
   infmods = "sherlock" in model_name or "doduo" in model_name
   isd4 = "d4" in label_set['name']
@@ -62,6 +63,7 @@ def run(
   isT2D = "T2D" in label_set['name']
   isEF = "EF" in label_set['name']
   isVC = "viznet-chorus" in label_set['name']
+  isViznet = "viznet" in label_set['name']
   if "similarity" in method:
     get_sent_model(args)
   args["prompt_hashes"] = collections.Counter()
@@ -134,6 +136,10 @@ def run(
         f_df = f
         label_indices=[0]
         gt_labels = labels[idx]
+    elif isViznet:
+        f_df = f
+        label_indices=[0]
+        gt_labels = labels[idx]
     elif "skip-eval" in method:
         f_df = pd_read_any(f)
         gt_labels = None
@@ -171,6 +177,9 @@ def run(
         orig_label = pubchem_classname_map[gt_labels]
       elif isT2D or isEF:
         orig_label = gt_labels
+      elif isViznet:
+        viznet_classname_map = get_viznet_classname_map()
+        orig_label = viznet_classname_map[gt_labels]
       elif "skip-eval" in method:
         orig_label = ""
       else:
@@ -230,7 +239,7 @@ def main():
     parser.add_argument("--model_path", type=str, help="Path to ArcheType-LLAMA or zs-LLAMA model weights", default="")
     parser.add_argument("--save_path", type=str, help="Save path", required=True)
     parser.add_argument("--input_files", type=str, help="Path to input CSV files", required=True)
-    parser.add_argument("--label_set", type=str, help="Name of label set (SOTAB-91, SOTAB-55, SOTAB-27, D4-ZS, D4-DoDuo, amstr-ZS, pubchem-ZS, custom)", required=True)
+    parser.add_argument("--label_set", type=str, help="Name of label set (SOTAB-91, SOTAB-55, SOTAB-27, D4-ZS, D4-DoDuo, amstr-ZS, pubchem-ZS, viznet-ZS, custom)", required=True)
     parser.add_argument("--custom-labels", nargs='+', type=str, help="Custom labels", required=False)
     parser.add_argument("--input_labels", type=str, help="Path to input DataFrame (CSV file) for SOTAB. skip-eval will generate predictions but will not compare them to anything. D4 will use (internal) D4 ground-truth labels.", required=True)
     parser.add_argument("--resume", action='store_true', help="Resume")
@@ -262,6 +271,8 @@ def main():
       input_files = "./metadata/EF/EF_test_archetype_instr.json"
     elif args.input_labels == "viznet-chorus":
       input_files = [args.input_files]
+    elif args.input_labels == "viznet":
+      input_files = get_viznet_dfs(args.input_files, args.rand_seed)
     else:
       # Define the file extensions to search for
       extensions = ('.json', '.csv', '.json.gz', '.parquet', '.xlsx', '.xls', '.tsv')
@@ -274,7 +285,7 @@ def main():
       "pubchem" in args.input_labels or \
       "T2D" in args.input_labels or \
       "EF" in args.input_labels or \
-      "viznet-chorus" in args.input_labels or \
+      "viznet" in args.input_labels or \
       args.input_labels == "skip-eval":
       input_df = None
       if args.input_labels == "skip-eval":
