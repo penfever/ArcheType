@@ -61,6 +61,7 @@ def run(
   isPubchem = "pubchem" in label_set['name']
   isT2D = "T2D" in label_set['name']
   isEF = "EF" in label_set['name']
+  isVC = "viznet-chorus" in label_set['name']
   if "similarity" in method:
     get_sent_model(args)
   args["prompt_hashes"] = collections.Counter()
@@ -91,6 +92,8 @@ def run(
   s = requests.Session()
   if "-zs" in model_name:
     args["base_model"].eval()
+  
+  #define inputs and labels for test datasets
   if isT2D or isEF:
     origin_df = pd.read_json(inputs)
     contexts = origin_df['input'].tolist()
@@ -98,6 +101,9 @@ def run(
     for c in contexts:
       inputs.append(pd.DataFrame(c.split(",")))
     labels = origin_df["output"].tolist()
+  elif isVC:
+    inputs = input_df['data'].tolist()
+    labels = input_df['class'].tolist()
   elif isinstance(inputs, dict):
     labels = np.array(['_'.join(k.split('_')[:-1]) for k in inputs.keys()])
     inputs = [v for v in inputs.values()]
@@ -254,6 +260,8 @@ def main():
       input_files = "./metadata/T2D/T2D_test_archetype_instr.json"
     elif args.input_labels == "EF":
       input_files = "./metadata/EF/EF_test_archetype_instr.json"
+    elif args.input_labels == "viznet-chorus":
+      input_files = [args.input_files]
     else:
       # Define the file extensions to search for
       extensions = ('.json', '.csv', '.json.gz', '.parquet', '.xlsx', '.xls', '.tsv')
@@ -266,6 +274,7 @@ def main():
       "pubchem" in args.input_labels or \
       "T2D" in args.input_labels or \
       "EF" in args.input_labels or \
+      "viznet-chorus" in args.input_labels or \
       args.input_labels == "skip-eval":
       input_df = None
       if args.input_labels == "skip-eval":

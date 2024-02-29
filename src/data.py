@@ -901,6 +901,16 @@ ef_labels = {
   "dict_map" : {c : c for c in ef_label_list},
 }
 
+viznet_chorus_labels = [
+    "artist", "address", "city", "director", "album", "currency", "product", "isbn", "manufacturer", "birthDate",
+]
+
+viz_chorus_labels = {
+  "name" : "viznet-chorus",
+  "label_set" : viznet_chorus_labels,
+  "dict_map" : {c : c for c in viznet_chorus_labels},
+}
+
 def get_lsd(s):
   if s == "SOTAB-91":
     return context_labels
@@ -922,6 +932,8 @@ def get_lsd(s):
     return t2d_labels
   elif s == "EF":
     return ef_labels
+  elif s == "viznet-chorus":
+    return viz_chorus_labels
   print("Label set not found")
   return None
 
