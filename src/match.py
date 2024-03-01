@@ -29,16 +29,16 @@ def gt_contains_ans(ans_n, fixed_labels):
     return None
 
 def basic_contains(ans_n, fixed_labels, method):
-    fixed_labels = sorted(fixed_labels, key=len, reverse=True)
+    fixed_labels_s = sorted(fixed_labels, key=len, reverse=True)
     #TODO: not sure the order should be fixed like this, could be made flexible
-    if ans_n in fixed_labels:
+    if ans_n in fixed_labels_s:
         return ans_n
     if "ans_contains_gt" in method:
-        res = ans_contains_gt(ans_n, fixed_labels)
+        res = ans_contains_gt(ans_n, fixed_labels_s)
         if res:
             return res
     if "gt_contains_ans" in method:
-        res = gt_contains_ans(ans_n, fixed_labels)
+        res = gt_contains_ans(ans_n, fixed_labels_s)
         if res:
             return res
     return None
