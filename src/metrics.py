@@ -117,10 +117,11 @@ def results_checker_doduo(file_name):
 
     print(f"Total entries: {n} \n Accuracy: {round(correct/n, 4)} \n Weighted F1: {round(weighted_f1, 4)} \n Unweighted F1: {round(unweighted_f1, 4)}")
 
-def results_checker(file_name, skip_duplicates = True, naive_score = False, confusion_matrix = False):
+def results_checker(file_name, skip_duplicates = False, naive_score = False, confusion_matrix = False):
     with open(file_name, "r") as f:
       d = json.load(f)
 
+    print("Size before duplicate handling: ", len(d))
     # duplicate handling
     if skip_duplicates == True:
         pass

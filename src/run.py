@@ -178,6 +178,7 @@ def run(
           coherence_scores = None
       sample_df = get_df_sample(f_df, rand_seed, label_indices, sample_size, full=summ_stats, other_col=other_col, max_len=args["MAX_LEN"], method=method, coherence_scores=coherence_scores, args=args)
       f_df_cols = f_df.columns
+      # print(f"Sampled {len(sample_df)} rows from {f.name} with {len(f_df_cols)} columns.")
       for idx, col in enumerate(f_df_cols):
         if idx not in label_indices:
           continue
@@ -217,35 +218,35 @@ def run(
         else:
           context = sample_df[col].tolist()
       
-    #Check if we have run this context before (to avoid duplicates and allow for resuming jobs)
-    prompt_hash = hashlib.md5(str(context).encode('utf-8')).hexdigest()
-    args["current_prompt_hashes"][prompt_hash] += 1
-    if args["resume_prompt_hashes"][prompt_hash] >= args["current_prompt_hashes"][prompt_hash]:
-      continue
-    
-    #model response
-    try:
-      key, ans_dict = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
-    except RuntimeError as r:
-      try:
-        key, ans_dict = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
-      except RuntimeError as r:
-        with open(save_path, 'w', encoding='utf-8') as my_f:
-          json.dump(prompt_dict, my_f, ensure_ascii=False, indent=4)
-        raise RuntimeError(f"Unhandled RuntimeError: {r} \n Please check logs for more information.")
-    
-    #hash validation
-    if args["current_prompt_hashes"][prompt_hash] == 1:
-      ans_dict['prompt_hash'] = prompt_hash
-      ans_dict['prompt_hash_count'] = 1
-      ans_dict['original_label'] = orig_label
-      ans_dict['file+idx'] = str(f) + "_" + str(idx)
-      prompt_dict[key] = ans_dict
-    else:
-      for k, v in prompt_dict.items():
-        if v.get("prompt_hash", -1) == prompt_hash:
-          v['prompt_hash_count'] = args["current_prompt_hashes"][prompt_hash]
-          break
+        #Check if we have run this context before (to avoid duplicates and allow for resuming jobs)
+        prompt_hash = hashlib.md5(str(context).encode('utf-8')).hexdigest()
+        args["current_prompt_hashes"][prompt_hash] += 1
+        if args["resume_prompt_hashes"][prompt_hash] >= args["current_prompt_hashes"][prompt_hash]:
+          continue
+        
+        #model response
+        try:
+          key, ans_dict = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
+        except RuntimeError as r:
+          try:
+            key, ans_dict = get_model_resp(label_set, context, label, prompt_dict, link=link, response=response, session=s, cbc=None, model=model_name, limited_context=limited_context, method=method, args=args)
+          except RuntimeError as r:
+            with open(save_path, 'w', encoding='utf-8') as my_f:
+              json.dump(prompt_dict, my_f, ensure_ascii=False, indent=4)
+            raise RuntimeError(f"Unhandled RuntimeError: {r} \n Please check logs for more information.")
+        
+        #hash validation
+        if args["current_prompt_hashes"][prompt_hash] == 1:
+          ans_dict['prompt_hash'] = prompt_hash
+          ans_dict['prompt_hash_count'] = 1
+          ans_dict['original_label'] = orig_label
+          ans_dict['file+idx'] = str(f) + "_" + str(idx)
+          prompt_dict[key] = ans_dict
+        else:
+          for k, v in prompt_dict.items():
+            if v.get("prompt_hash", -1) == prompt_hash:
+              v['prompt_hash_count'] = args["current_prompt_hashes"][prompt_hash]
+              break
   with open(save_path, 'w', encoding='utf-8') as my_f:
     json.dump(prompt_dict, my_f, ensure_ascii=False, indent=4)
 
