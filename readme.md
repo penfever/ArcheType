@@ -60,7 +60,22 @@ The PubChem-20 evaluation CSVs can be downloaded from [here](https://drive.googl
 
 ArcheType training makes use of the [Alpaca-7B](https://github.com/tatsu-lab/stanford_alpaca) repository and model. In order to train your own ArcheType model as described in the paper, you will need to acquire a copy of the [Alpaca-7B weights](https://huggingface.co/chavinlo/alpaca-native) as well as the training code.
 
+### Dataset Creation
+
 You can use our [pre-formatted training JSON](https://drive.google.com/drive/folders/1WCnPvgwkHZxH6709rAa_Ox7CgxxLvjEg?usp=share_link) for SOTAB.
+
+You can also reproduce this JSON yourself (or generate a training JSON for another dataset of your choosing) via a two-stage process -- 
+
+1. To generate the formatted columns, run a standard ArcheType task for the downstream architecture you intend to use, but drop the `--response` flag.
+```console
+python archetype/src/run.py --model_name="ArcheType-llama" --model_path=%%GEN_MODEL_PATH%% --save_path=%%JSON_OUT_PATH%% --input_files="/scratch/bf996/datasets/sotab/Train" --input_labels="/scratch/bf996/datasets/sotab/CTA_training_gt.csv" --label_set="SOTAB-91" --method ans_contains_gt gt_contains_ans resample
+```
+2. To convert the generated JSON to the format expected by Alpaca, you can either write a script yourself or customize ours --
+```console
+python archetype/src/make_dataset.py --in_file %%JSON_OUT_PATH%%
+```
+
+### Training Command
 
 We used the following command to train our models --
 
