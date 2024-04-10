@@ -6,10 +6,7 @@ from pathlib import Path
 import numpy as np
 import os
 
-# try:
-#   from .const import *
-# except ImportError:
-from const import *
+from src.const import *
 
 from fuzzywuzzy import fuzz
 
@@ -406,7 +403,7 @@ def make_json(prompt, var_params, args):
           ]
       }
 
-def prompt_context_insert(context_labels: str, context : str, max_len : int = 2000, model : str = "gpt-3.5", args : dict = dict()):
+def prompt_context_insert(context_labels: str, context : str, max_len : int = 2000, model : str = "gpt-3.5", args : dict = dict(), do_kshot : bool = False):
   if "gpt" in model:
     addl_instr = "Please respond only with the name of the class."
   else:
@@ -419,6 +416,11 @@ def prompt_context_insert(context_labels: str, context : str, max_len : int = 20
     ocs = "For additional context, here are some entries from other columns in the table: " + ", ".join(args["other_context_samples"]) + "\n"
   else:
     ocs = ""
+  #kshot logic
+  if do_kshot:
+    return f'Input column: {context[:256]} \n{ocs[:256]} Output: \n'
+  else:
+    addl_instr += args['kshot']
   if context_labels == "2step":
     context_labels = "massachusetts, pennsylvania, connecticut, mississippi, washington, california, minnesota, louisiana, tennessee, wisconsin, nebraska, missouri, michigan, kentucky, arkansas, delaware, illinois, colorado, virginia, oklahoma, maryland, indiana, alabama, arizona, georgia, montana, florida, nevada, kansas, alaska, oregon, hawaii, maine, texas, idaho, iowa, ohio"
     s = f'Select the state the articles in the following column are from from {context_labels}. \n Input column: {context} \n{ocs} Output: \n'
@@ -435,9 +437,9 @@ def prompt_context_insert(context_labels: str, context : str, max_len : int = 20
   elif "fozzieprompt" in model:
     s = f'Waka waka! This is Fozzie bear! I would totally ❤️ you if you would be my friend, and also pick a class for this column{table_src_str}, before we end. \n Here\'s the column, waka waka! {context} \n{ocs} If you get the right class, it\'ll be a real gas! {context_labels} \n {addl_instr} \n What\'s the type? \n'
   elif "gpt" in model:
-    s = f'SYSTEM: Please select the class from {context_labels} which best describes the context{table_src_str}. {addl_instr} \n CONTEXT: {context} \n{ocs} \n RESPONSE: \n'
+    s = f'SYSTEM: Please select the class from {context_labels} which best describes the context{table_src_str}. {addl_instr} \n Context: {context} \n{ocs} \n Response: \n'
   elif model == "llama-old":
-    s = f'INSTRUCTION: Select the class{table_src_str} from the category which matches the input. \n CATEGORIES: {context_labels} \n INPUT:{context} \n{ocs} {addl_instr} \n OUTPUT: '
+    s = f'INSTRUCTION: Select the class{table_src_str} from the category which matches the input. \n CATEGORIES: {context_labels} \n Input:{context} \n{ocs} {addl_instr} \n Output: '
   elif "-zs" in model:
     ct = "[" + ", ".join(context).replace("[", "").replace("]", "").replace("'", "") + "]"
     lb = "\n".join(["- " + c for c in context_labels.split(", ")])

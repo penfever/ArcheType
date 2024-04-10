@@ -4,14 +4,9 @@ import json
 import os
 from tqdm.auto import tqdm
 
-try:
-  from .const import INTEGER_SET, BOOLEAN_SET
-  from .data import get_schema_df, fix_labels, get_lsd
-  from .metrics import results_checker, results_checker_doduo
-except ImportError:
-  from const import INTEGER_SET, BOOLEAN_SET
-  from data import get_schema_df, fix_labels, get_lsd
-  from metrics import results_checker, results_checker_doduo
+from src.const import INTEGER_SET, BOOLEAN_SET
+from src.data import get_schema_df, fix_labels, get_lsd
+from src.metrics import results_checker, results_checker_doduo
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Takes input parameters for the 'eval' function.")

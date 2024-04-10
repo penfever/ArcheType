@@ -17,14 +17,9 @@ import argparse
 import gc
 import time
 
-# try:
-#     from .const import *
-#     from .data import *
-#     from .match import *
-# except ImportError:
-from const import *
-from data import *
-from match import *
+from src.const import *
+from src.data import *
+from src.match import *
 
 def free_memory(sleep_time=0.1):
     """ Black magic function to free torch memory and some jupyter whims """
@@ -76,7 +71,7 @@ def query_correct_model(model, prompt, context_labels, context, session, link, l
             orig_ans = orig_ans.split(end_of_sentence)[-1]
     elif "internlm" in model:
         orig_ans = get_internlm_resp(prompt, 1, args)
-    elif any(["topp-zs" in model, "flan-t5-xxl-zs" in model, "flan-ul2-zs" in model]):
+    elif any(["topp-zs" in model, "flan" in model]):
         orig_ans = get_topp_resp(prompt, 1, args)
     else:
         orig_ans = call_llama_model(session, link, prompt, lsd, None, args)
@@ -136,7 +131,7 @@ def get_internlm_resp(prompt, k, args):
     return orig_ans
 
 @retry(Exception, tries=3, delay=3)
-def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : dict, link : str, response = True, session=None, cbc=None, model="llama", limited_context=None, method = ["ans_contains_gt", "gt_contains_ans", "resample"], args = dict()):
+def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : dict, link : str, response = True, session=None, cbc=None, model="llama", limited_context=None, method = ["ans_contains_gt", "gt_contains_ans", "resample"], args = dict(), do_kshot=False):
   ground_truth = fix_labels(ground_truth, lsd)
   all_labels = set([fix_labels(s, lsd) for s in lsd['label_set']])
   isd4 = "d4" in lsd['name']
@@ -182,7 +177,7 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
     assert ground_truth in fixed_labels, f"Ground truth {ground_truth} not in label set {fixed_labels}"
   if any(["speechless-llama2" in model, "llama-zs" in model, "opt-iml-30b-zs" in model, "ArcheType-llama" in model, "ArcheType-llama-oc" in model]):
     set_pipeline(k=1, args=args)
-  prompt = prompt_context_insert(context_labels, context, args["MAX_LEN"], model, args)
+  prompt = prompt_context_insert(context_labels, context, args["MAX_LEN"], model, args, do_kshot=do_kshot)
   
 #   d_p = prompt_dict.get(prompt, -1)
 #   #skip existing logic
@@ -196,6 +191,7 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
   if not response:
     orig_ans = ans_n = ""
   else:
+    remapped = False
     if args['rules']:
         orig_ans = apply_basic_rules(limited_context, None, lsd)
     else:
@@ -203,22 +199,26 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
     if orig_ans is None:
         #model query
         orig_ans = query_correct_model(model, prompt, context_labels, context, session, link, lsd, args)
-        
+    else:
+        remapped = True    
     #special cases
     if args['rules']:
         # ---------- d4 ------
         if orig_ans == 'abbreviation of agency' and any(len(s) > 15 for s in limited_context):
             ans_n = "nyc agency name"
+            remapped = True
         # ---------- pubchem ------
         elif orig_ans == 'patent title' and any(len(s) > 1000 for s in limited_context):
             ans_n = "abstract for patent"
+            remapped = True
     # ------------------------ 2step ------------------------
     if orig_ans == 'article' and "2step" in lsd['name']:
         context_labels = '2step'
-        prompt = prompt_context_insert(context_labels, context, args["MAX_LEN"], model, args)
+        prompt = prompt_context_insert(context_labels, context, args["MAX_LEN"], model, args, do_kshot=do_kshot)
         orig_ans = query_correct_model(model, prompt, context_labels, context, session, link, lsd, args)
         orig_ans = 'article from ' + orig_ans
         ans_n = orig_ans.lower()
+        remapped = True
     # ------------------------ 2step ------------------------
     #hierarchical matching logic
     else: 
@@ -242,7 +242,12 @@ def get_model_resp(lsd: dict, context : list, ground_truth : str, prompt_dict : 
   if "skip-eval" in method:
     ans_n = None
   res = (ans_n == ground_truth)
-  ans_dict = {"response" : ans_n, "context" : context, "ground_truth" : ground_truth, "correct" : res, "original_model_answer" : orig_ans}
+  ans_dict = {"response" : ans_n, 
+              "context" : context, 
+              "ground_truth" : ground_truth, 
+              "correct" : res, 
+              "original_model_answer" : orig_ans, 
+              "rules" : remapped}
   # prompt_dict[prompt] = ans_dict
   return prompt, ans_dict
 
@@ -353,6 +358,10 @@ def init_model(model, args):
         args["MAX_LEN"]=512
         tokenizer = AutoTokenizer.from_pretrained("bigscience/T0pp")
         base_model = AutoModelForSeq2SeqLM.from_pretrained("bigscience/T0pp", device_map="auto", torch_dtype=torch.float16, load_in_8bit=True)
+    elif "flan-t5-base-zs" in model:
+        args["MAX_LEN"]=512
+        tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-base")
+        base_model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-base", device_map="auto", torch_dtype=torch.float16)
     elif "flan-t5-xxl-zs" in model:
         args["MAX_LEN"]=512
         tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-xxl")
@@ -387,7 +396,7 @@ def init_model(model, args):
         tokenizer = template = pt = MAX_LEN = params = None
     else:
         print("Sorry, I don't recognize model name {}. Please try again.".format(model))
-    if any(["flan-t5-xxl-zs" in model, "topp-zs" in model, "flan-ul2-zs" in model, \
+    if any(["topp-zs" in model, "flan" in model, \
             "internlm" in model, \
             "-chorus" in model, "-korini" in model, "-noisy" in model, \
             "-short" in model, "-inverted" in model]):

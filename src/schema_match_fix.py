@@ -95,8 +95,11 @@ def run_comprehensive_cases(context, lsd):
     return None
 
 def schema_match_fix(d, schema_df, lsd):
+    d['rules'] = False
     if d['original_label'] == d['ground_truth']:
+        d['response'] = d['original_label']
         d['correct'] = True
+        d['rules'] = True
         return d
     d['ground_truth'] = fix_labels(d['original_label'], lsd)
     context = d["context"]
@@ -104,6 +107,7 @@ def schema_match_fix(d, schema_df, lsd):
     cc_res = run_comprehensive_cases(context, lsd)
     if cc_res:
         d['response'] = cc_res
+        d['rules'] = True
         d['correct'] = (d['response'] == d['ground_truth'])
         return d
     for s in context:
@@ -111,6 +115,7 @@ def schema_match_fix(d, schema_df, lsd):
             continue
         special_case = run_special_cases(s, d, lsd)
         if special_case:
+          special_case['remapped'] = True
           return special_case
         in_rel = False
         cont_rel = False
@@ -131,6 +136,7 @@ def schema_match_fix(d, schema_df, lsd):
             lbl = ss["label"].tolist()[0]
           lbl = fix_labels(lbl, lsd)
           d['response'] = lbl
+          d['rules'] = True
           d['correct'] = (d['response'] == d['ground_truth'])
     return d
 
