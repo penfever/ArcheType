@@ -149,6 +149,12 @@ Any LLM supported by ArcheType can be used to perform zero-shot CTA on your own 
 
 Your data can be in any format recognized by Pandas, including csv, tsv, Excel, parquet and sql.
 
+### From a Colab Notebook
+
+Please follow our example notebook, `notebooks/Custom_Predictions_with_ArcheType.ipynb`
+
+### From the Command Line
+
 This example uses ArcheType-gpt-3.5, and has a set of four custom labels: text number id, and place.
 
 ```console
