@@ -72,7 +72,7 @@ ArcheType training makes use of the [Alpaca-7B](https://github.com/tatsu-lab/sta
 
 ### Dataset Creation
 
-You can use our [pre-formatted training JSON](penfever/archetype-ft-sotab) for SOTAB.
+You can use our [pre-formatted training JSON](https://huggingface.co/datasets/penfever/archetype-ft-sotab) for SOTAB.
 
 You can also reproduce this JSON yourself (or generate a training JSON for another dataset of your choosing) via a two-stage process -- 
 
