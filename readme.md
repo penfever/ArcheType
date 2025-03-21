@@ -289,13 +289,15 @@ Here, `<STATE_NAME>` stands in for all fifty U.S. states.
 If you find this useful, please cite our work --
 
 ```
-@misc{feuer2023archetype,
-      title={ArcheType: A Novel Framework for Open-Source Column Type Annotation using Large Language Models}, 
-      author={Benjamin Feuer and Yurong Liu and Chinmay Hegde and Juliana Freire},
-      year={2023},
-      eprint={2310.18208},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@article{feuer2024archetype,
+  title={ArcheType: A Novel Framework for Open-Source Column Type Annotation Using Large Language Models},
+  author={Feuer, Benjamin and Liu, Yurong and Hegde, Chinmay and Freire, Juliana},
+  journal={Proceedings of the VLDB Endowment},
+  volume={17},
+  number={9},
+  pages={2279--2292},
+  year={2024},
+  publisher={VLDB Endowment}
 }
 ```
 
