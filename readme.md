@@ -289,13 +289,22 @@ Here, `<STATE_NAME>` stands in for all fifty U.S. states.
 If you find this useful, please cite our work --
 
 ```
-@misc{feuer2023archetype,
-      title={ArcheType: A Novel Framework for Open-Source Column Type Annotation using Large Language Models}, 
-      author={Benjamin Feuer and Yurong Liu and Chinmay Hegde and Juliana Freire},
-      year={2023},
-      eprint={2310.18208},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@article{10.14778/3665844.3665857,
+  author = {Feuer, Benjamin and Liu, Yurong and Hegde, Chinmay and Freire, Juliana},
+  title = {ArcheType: A Novel Framework for Open-Source Column Type Annotation Using Large Language Models},
+  year = {2024},
+  issue_date = {May 2024},
+  publisher = {VLDB Endowment},
+  volume = {17},
+  number = {9},
+  issn = {2150-8097},
+  url = {https://doi-org.proxy.library.nyu.edu/10.14778/3665844.3665857},
+  doi = {10.14778/3665844.3665857},
+  abstract = {Existing deep-learning approaches to semantic column type annotation (CTA) have important shortcomings: they rely on semantic types which are fixed at training time; require a large number of training samples per type; incur high run-time inference costs; and their performance can degrade when evaluated on novel datasets, even when types remain constant. Large language models have exhibited strong zero-shot classification performance on a wide range of tasks and in this paper we explore their use for CTA. We introduce ArcheType, a simple, practical method for context sampling, prompt serialization, model querying, and label remapping, which enables large language models to solve CTA problems in a fully zero-shot manner. We ablate each component of our method separately, and establish that improvements to context sampling and label remapping provide the most consistent gains. ArcheType establishes a new state-of-the-art performance on zero-shot CTA benchmarks (including three new domain-specific benchmarks which we release along with this paper), and when used in conjunction with classical CTA techniques, it outperforms a SOTA DoDuo model on the fine-tuned SOTAB benchmark.},
+  journal = {Proc. VLDB Endow.},
+  month = may,
+  pages = {2279–2292},
+  numpages = {14}
 }
 ```
 
